@@ -1,0 +1,67 @@
+/**
+ * 縦書きスタイル variation。
+ *
+ * デスクトップ: 縦書き（vertical-rl）。要素を content 幅にシュリンクし、
+ *   右端を contentSize レーンの右辺に揃える。alignwide / alignfull
+ *   選択時はそれぞれ wideSize / 100vw に切り替わる。
+ *
+ * モバイル (≤768px): 縦書きを無効化して通常の横書きに戻す。
+ *   小画面で複数列の縦書きは可読性が悪く、横スクロール対応も複雑になるため、
+ *   素直に横書きで読ませる。
+ *
+ * `!important` は WP の is-layout-constrained が子要素に当てる
+ * `margin-left: auto !important; margin-right: auto !important`（中央寄せ）を
+ * 倒すために必要。
+ */
+
+.is-style-vertical-text {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed;
+    inline-size: 38ch;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 2.4;
+    margin-block: 1em;
+    padding-inline: 1rem;
+    max-width: 100%;
+    overflow-x: hidden;
+
+    /* 要素を content 幅にシュリンク。右端を contentSize レーンの右辺に
+       アンカーするため margin-right を計算。 */
+    width: max-content;
+    margin-left: auto !important;
+    margin-right: max(
+        0px,
+        calc((100% - var(--wp--style--global--content-size, 640px)) / 2)
+    ) !important;
+}
+
+/* alignwide 選択時：wideSize レーンの右辺に切り替え */
+.is-style-vertical-text.alignwide {
+    margin-right: max(
+        0px,
+        calc((100% - var(--wp--style--global--wide-size, 1280px)) / 2)
+    ) !important;
+}
+
+/* alignfull 選択時：body 右端に張り付き */
+.is-style-vertical-text.alignfull {
+    margin-right: 0 !important;
+}
+
+/* モバイル：縦書きを無効化して通常の横書きに戻す。
+ * alignwide / alignfill ルールと同じ specificity (0,2,0) でセレクタを書いて
+ * cascade 順で確実に勝てるようにする。 */
+@media (max-width: 768px) {
+    .is-style-vertical-text,
+    .is-style-vertical-text.alignwide,
+    .is-style-vertical-text.alignfull {
+        writing-mode: horizontal-tb !important;
+        inline-size: auto;
+        width: auto;
+        overflow: visible;
+        /* WP layout の中央寄せに任せる */
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}

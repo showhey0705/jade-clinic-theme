@@ -1,0 +1,208 @@
+/* ========================================
+   Cover Block - Ken Burns Effect
+   最適化版（2025）
+   ======================================== */
+
+/* CSS変数でカスタマイズ可能 */
+.wp-block-cover.is-style-ken-burns {
+	position: relative;
+	overflow: hidden;
+
+	/* パフォーマンス: レイアウト分離 */
+	contain: layout style paint;
+
+	/* デフォルト値（Imageと同じ） */
+	--kb-duration: 30s;
+	--kb-scale-from: 1;
+	--kb-scale-to: 1.2;
+	--kb-translate-x-from: 0%;
+	--kb-translate-x-to: 8%;
+	--kb-translate-y-from: 0%;
+	--kb-translate-y-to: -5%;
+}
+
+/* バリエーション: ゆっくりズーム */
+.wp-block-cover.is-style-ken-burns.slow {
+	--kb-duration: 45s;
+	--kb-scale-to: 1.3;
+}
+
+/* アニメーション適用先: 背景画像/動画 */
+.wp-block-cover.is-style-ken-burns .wp-block-cover__image-background,
+.wp-block-cover.is-style-ken-burns .wp-block-cover__video-background {
+	/* GPU layer作成（will-changeより軽量） */
+	transform: translate3d(0, 0, 0);
+
+	/* Ken Burnsアニメーション */
+	animation: kenburns-cover var(--kb-duration) ease-in-out infinite alternate;
+	transform-origin: center center;
+}
+
+/* IMGタグの場合（background-image以外） */
+.wp-block-cover.is-style-ken-burns .wp-block-cover__image-background img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* アニメーション定義（Imageと共通だが名前を変更） */
+@keyframes kenburns-cover {
+	0% {
+		transform:
+			scale(var(--kb-scale-from))
+			translate(var(--kb-translate-x-from), var(--kb-translate-y-from))
+			translateZ(0); /* GPU加速維持 */
+	}
+	100% {
+		transform:
+			scale(var(--kb-scale-to))
+			translate(var(--kb-translate-x-to), var(--kb-translate-y-to))
+			translateZ(0);
+	}
+}
+
+/* エディタ内では選択時のみアニメーション */
+.block-editor-block-list__block .wp-block-cover.is-style-ken-burns .wp-block-cover__image-background,
+.block-editor-block-list__block .wp-block-cover.is-style-ken-burns .wp-block-cover__video-background {
+	animation: none;
+}
+
+.block-editor-block-list__block.is-selected .wp-block-cover.is-style-ken-burns .wp-block-cover__image-background,
+.block-editor-block-list__block.is-selected .wp-block-cover.is-style-ken-burns .wp-block-cover__video-background {
+	animation: kenburns-cover var(--kb-duration) ease-in-out infinite alternate;
+}
+
+/* アクセシビリティ: モーション軽減設定 */
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-cover.is-style-ken-burns .wp-block-cover__image-background,
+	.wp-block-cover.is-style-ken-burns .wp-block-cover__video-background {
+		animation: none !important;
+		transform: translate3d(0, 0, 0) !important;
+	}
+
+	/* 代替: ホバー時のシンプルズーム */
+	.wp-block-cover.is-style-ken-burns:hover .wp-block-cover__image-background,
+	.wp-block-cover.is-style-ken-burns:hover .wp-block-cover__video-background {
+		transform: scale(1.05) translate3d(0, 0, 0);
+		transition: transform 0.3s ease-out;
+	}
+}
+
+/* レスポンシブ: モバイルでは控えめに */
+@media (max-width: 768px) {
+	.wp-block-cover.is-style-ken-burns {
+		--kb-duration: 20s;
+		--kb-scale-to: 1.1;
+		--kb-translate-x-to: -5%;
+		--kb-translate-y-to: -3%;
+	}
+}
+
+/* コンテンツ（テキストなど）は固定 */
+.wp-block-cover.is-style-ken-burns .wp-block-cover__inner-container {
+	position: relative;
+	z-index: 2;
+}
+
+
+/* ========================================
+   ヒーローエリアのスケールアニメーション
+   ======================================== */
+
+:root {
+    --vip-content-size: var(--wp--style--global--content-size, 720px);
+    --vip-wide-size: var(--wp--style--global--wide-size, 1180px);
+  }
+  
+  .vip-hero-surface {
+    position: sticky;
+    top: 0;
+    height: 75vh;
+    display: grid;
+    place-items: center;
+  }
+  
+  .vip-hero-surface__inner {
+    width: 100vw;
+    height: 75vh;
+    transform-origin: center center;
+    --vip-scale: 1;
+    transform: scale(var(--vip-scale));
+  }
+  
+  /* CSS Scroll-Driven Animations */
+  @supports (animation-timeline: scroll()) {
+    .vip-hero-surface__inner {
+      --vip-scale-target: clamp(0.84, calc(var(--vip-wide-size) / 100vw), 1);
+      animation-name: vip-scale-to-wide;
+      animation-timeline: view();
+      animation-range: entry 100% exit 60%;
+      animation-fill-mode: both;
+    }
+    .vip-hero-surface__inner.is-full {
+        animation-name: vip-scale-to-full;
+    }
+    @keyframes vip-scale-to-wide {
+      from { transform: scale(1); border-radius: 0; box-shadow: none; }
+      to { transform: scale(var(--vip-scale-target)); border-radius: 24px; box-shadow: 0 20px 80px rgba(0,0,0,.15); }
+    }
+    @keyframes vip-scale-to-full {
+        from { transform: scale(var(--vip-scale-target)); border-radius: 24px; box-shadow: 0 20px 80px rgba(0,0,0,.15); }
+        to { transform: scale(1); border-radius: 0; box-shadow: none; }
+      }
+  }
+
+  /* スマホサイズでのスケールアニメーション調整 */
+  @media (max-width: 768px) {
+    .vip-hero-surface {
+      height: 61vh;
+    }
+
+    .vip-hero-surface__inner {
+      height: 61vh;
+    }
+
+    @supports (animation-timeline: scroll()) {
+      .vip-hero-surface__inner {
+        --vip-scale-target: clamp(0.75, calc(var(--vip-wide-size) / 100vw * 1.5), 0.9);
+        animation-name: vip-scale-to-wide;
+        animation-timeline: view();
+        animation-range: entry 90% exit 60%;
+        animation-fill-mode: both;
+      }
+      .vip-hero-surface__inner.is-full {
+        animation-name: vip-scale-to-full;
+      }
+    }
+  }
+
+/* ========================================
+   カバーブロック ホバーエフェクト
+   ======================================== */
+
+/* 背景画像/動画にトランジションを適用 */
+.wp-block-cover__image-background,
+.wp-block-cover__video-background {
+  transition: opacity .45s cubic-bezier(.15, .75, .5, 1) 0s,
+              transform .45s cubic-bezier(.15, .75, .5, 1) 0s;
+}
+
+/* ホバー時に背景を拡大（parallax未適用の場合のみ） */
+.wp-block-cover:not(.has-parallax):hover .wp-block-cover__image-background,
+.wp-block-cover:not(.has-parallax):hover .wp-block-cover__video-background {
+  transform: scale(1.05);
+}
+
+/* カバーブロックにホバー時、内部のテキストリンクもホバー状態にする */
+.wp-block-cover:hover a:not(.wp-block-button__link):not(.wp-element-button) {
+  background-size: 100% var(--bg-h);
+  background-position-x: left;
+}
+
+/* アクセシビリティ対応 */
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-cover__image-background,
+  .wp-block-cover__video-background {
+    transition: none;
+  }
+}

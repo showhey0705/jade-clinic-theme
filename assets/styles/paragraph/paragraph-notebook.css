@@ -1,0 +1,28 @@
+/* Notebook Styles
+--------------------------------------------- */
+
+.is-style-notebook {
+    padding-inline: 1.5em;
+    line-height: 2.6em;
+    background-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent calc(100% - 1px),
+        #ddd 100%
+    );
+    background-size: 100% 2.6em;
+    background-position: 0 0;
+    contain: paint;
+    position: relative;
+}
+
+.is-style-notebook::before {
+    content: '';
+    position: absolute;
+    left: 1em;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #f4c2c2;
+    opacity: 0.3;
+}

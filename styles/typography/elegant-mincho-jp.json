@@ -1,0 +1,208 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+	"title": "エレガント明朝",
+	"slug": "elegant-mincho-jp",
+	"styles": {
+		"typography": {
+			"fontFamily": "\"Shippori Mincho\", \"游明朝\", \"Yu Mincho\", serif",
+			"fontSize": "var(--wp--preset--font-size--base)",
+			"fontWeight": "400",
+			"lineHeight": "2.0",
+			"letterSpacing": "0.05em"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "\"Shippori Mincho B1\", \"游明朝\", \"Yu Mincho\", serif",
+					"fontWeight": "600",
+					"lineHeight": "1.5",
+					"letterSpacing": "0em"
+				}
+			},
+			"h1": {
+				"typography": {
+					"fontWeight": "500",
+					"letterSpacing": "0.2em",
+					"lineHeight": "1.4"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontWeight": "600",
+					"letterSpacing": "0.15em",
+					"lineHeight": "1.5"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontWeight": "600",
+					"letterSpacing": "0.12em",
+					"lineHeight": "1.6"
+				}
+			},
+			"h4": {
+				"typography": {
+					"fontWeight": "700",
+					"letterSpacing": "0.1em"
+				}
+			},
+			"h5": {
+				"typography": {
+					"fontWeight": "700",
+					"letterSpacing": "0.08em"
+				}
+			},
+			"h6": {
+				"typography": {
+					"fontWeight": "700",
+					"letterSpacing": "0.06em"
+				}
+			},
+			"link": {
+				"typography": {
+					"textDecoration": "none"
+				},
+				":hover": {
+					"typography": {
+						"textDecoration": "underline"
+					}
+				}
+			}
+		},
+		"blocks": {
+			"core/paragraph": {
+				"typography": {
+					"lineHeight": "2.0",
+					"letterSpacing": "0.05em"
+				}
+			},
+			"core/quote": {
+				"typography": {
+					"fontFamily": "\"Noto Serif JP\", \"游明朝\", \"Yu Mincho\", serif",
+					"fontStyle": "normal",
+					"fontWeight": "200",
+					"letterSpacing": "0.08em",
+					"lineHeight": "2.2"
+				}
+			},
+			"core/button": {
+				"typography": {
+					"fontFamily": "\"Shippori Mincho B1\", \"游明朝\", \"Yu Mincho\", serif",
+					"fontWeight": "600",
+					"letterSpacing": "0.2em"
+				}
+			}
+		}
+	},
+	"settings": {
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "\"Shippori Mincho\", \"游明朝\", \"Yu Mincho\", serif",
+					"name": "Shippori Mincho (しっぽり明朝)",
+					"slug": "shippori-mincho",
+					"fontFace": []
+				},
+				{
+					"fontFamily": "\"Shippori Mincho B1\", \"游明朝\", \"Yu Mincho\", serif",
+					"name": "Shippori Mincho B1 (しっぽり明朝B1)",
+					"slug": "shippori-mincho-b1",
+					"fontFace": []
+				},
+				{
+					"fontFamily": "\"Noto Serif JP\", \"游明朝\", \"Yu Mincho\", serif",
+					"name": "Noto Serif JP (明朝)",
+					"slug": "noto-serif-jp",
+					"fontFace": []
+				}
+			],
+			"fontSizes": [
+				{
+					"fluid": {
+						"min": "0.875rem",
+						"max": "0.9375rem"
+					},
+					"size": "0.9375rem",
+					"slug": "x-small",
+					"name": "極小"
+				},
+				{
+					"fluid": {
+						"min": "0.9375rem",
+						"max": "1rem"
+					},
+					"size": "1rem",
+					"slug": "small",
+					"name": "小"
+				},
+				{
+					"fluid": {
+						"min": "1rem",
+						"max": "1.0625rem"
+					},
+					"size": "1.0625rem",
+					"slug": "base",
+					"name": "基本"
+				},
+				{
+					"fluid": {
+						"min": "1.25rem",
+						"max": "1.5rem"
+					},
+					"size": "1.5rem",
+					"slug": "medium",
+					"name": "中"
+				},
+				{
+					"fluid": {
+						"min": "1.625rem",
+						"max": "2rem"
+					},
+					"size": "2rem",
+					"slug": "large",
+					"name": "大"
+				},
+				{
+					"fluid": {
+						"min": "2rem",
+						"max": "2.5rem"
+					},
+					"size": "2.5rem",
+					"slug": "x-large",
+					"name": "特大"
+				},
+				{
+					"fluid": {
+						"min": "2.5rem",
+						"max": "3.5rem"
+					},
+					"size": "3.5rem",
+					"slug": "xx-large",
+					"name": "極大"
+				}
+			],
+			"customLineHeight": {
+				"body": "2.0",
+				"heading": "1.5",
+				"tight": "1.3",
+				"relaxed": "2.2"
+			}
+		},
+		"custom": {
+			"typography": {
+				"letterSpacing": {
+					"body": "0.05em",
+					"heading": "0.15em",
+					"wide": "0.2em",
+					"normal": "0.08em",
+					"tight": "0.03em"
+				},
+				"fontFeatures": {
+					"palt": "\"palt\" 1",
+					"kern": "\"kern\" 1"
+				}
+			}
+		}
+	}
+}

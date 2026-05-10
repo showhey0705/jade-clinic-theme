@@ -1,0 +1,206 @@
+/* Image
+--------------------------------------------- */
+
+.wp-block-image.alignleft {
+	margin-bottom: var(--wp--preset--spacing--small);
+}
+
+.wp-block-image.alignright {
+	margin-bottom: var(--wp--preset--spacing--small);
+}
+
+@media only screen and (max-width: 600px) {
+	.is-layout-flow .wp-block-image.alignleft,
+	.is-layout-flow .wp-block-image.alignright {
+		float: none;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+html .is-layout-flex .wp-block-image {
+	flex-shrink: 0;
+}
+
+.wp-block-image.is-style-rounded img,
+.wp-block-image .is-style-rounded img {
+	border-radius: 10px;
+}
+
+.wp-block-image.is-style-rounded-full img,
+.wp-block-image .is-style-rounded-full img {
+	border-radius: 1000px;
+}
+
+.is-style-media-boxed {
+	background-color: var(--wp--preset--color--tertiary);
+	padding: var(--wp--preset--spacing--small);
+	border-radius: 5px;
+}
+.is-style-media-boxed:before {
+	
+	content: 'ドリームジャンボ';
+}
+
+.is-style-media-boxed img {
+	box-shadow:
+		1px 2px 2px hsl(233deg 38% 85% / 0.2),
+		2px 4px 4px hsl(233deg 38% 85% / 0.2),
+		4px 8px 8px hsl(233deg 38% 85% / 0.2),
+		8px 16px 16px hsl(233deg 38% 85% / 0.2),
+		16px 32px 32px hsl(233deg 38% 85% / 0.2);
+}
+
+.is-style-media-boxed figcaption {
+	margin-bottom: calc(var(--wp--preset--spacing--small) * -1) !important;
+}
+
+/* ========================================
+   Media Shine
+   ======================================== */
+.is-style-media-shine	{
+	position: relative !important;
+	overflow: hidden;
+}
+
+.is-style-media-shine::before{
+	position: absolute;
+	top: 0;
+	left: -85%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-24deg);
+	transform: skewX(-24deg);
+}
+
+.is-style-media-shine:hover::before {
+	-webkit-animation: shine 1s;
+	animation: shine 1s;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+
+.ollie-avatar-row > figure:not(:first-child) {
+	margin-left: -10px !important;
+}
+
+/* ========================================
+   Ken Burns Effect
+   ======================================== */
+
+/* カスタマイズ可能なCSS変数 */
+.is-style-ken-burns {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+
+	/* デフォルト値 */
+	--kb-duration: 30s;
+	--kb-scale-from: 1;
+	--kb-scale-to: 1.2;
+	--kb-translate-x-from: 0%;
+	--kb-translate-x-to: 8%;
+	--kb-translate-y-from: 0%;
+	--kb-translate-y-to: -5%;
+}
+
+/* ゆっくりズーム */
+.is-style-ken-burns.slow {
+	--kb-duration: 45s;
+	--kb-scale-to: 1.3;
+}
+
+/* 画像本体のアニメーション */
+.is-style-ken-burns img {
+	display: block;
+	width: 100%;
+	height: auto;
+
+	/* GPUアクセラレーション */
+	transform: translateZ(0);
+	will-change: transform;
+
+	/* Ken Burnsアニメーション */
+	animation: kenburns var(--kb-duration) ease-in-out infinite alternate;
+}
+
+/* WordPressエディタで設定されたborder-radiusに対応 */
+.is-style-ken-burns.has-custom-border img {
+	border-radius: inherit;
+}
+
+/* 既存のスタイルバリエーションとの組み合わせ */
+.is-style-ken-burns.is-style-rounded img {
+	border-radius: 10px;
+}
+
+.is-style-ken-burns.is-style-rounded-full img {
+	border-radius: 1000px;
+}
+
+/* アニメーション定義 */
+@keyframes kenburns {
+	0% {
+		transform:
+			scale(var(--kb-scale-from))
+			translate(var(--kb-translate-x-from), var(--kb-translate-y-from));
+	}
+	100% {
+		transform:
+			scale(var(--kb-scale-to))
+			translate(var(--kb-translate-x-to), var(--kb-translate-y-to));
+	}
+}
+
+/* エディタ内では選択時のみアニメーション */
+.block-editor-block-list__block .is-style-ken-burns img {
+	animation: none;
+}
+
+.block-editor-block-list__block.is-selected .is-style-ken-burns img {
+	animation: kenburns var(--kb-duration) ease-in-out infinite alternate;
+}
+
+/* アクセシビリティ: モーション軽減設定 */
+@media (prefers-reduced-motion: reduce) {
+	.is-style-ken-burns img {
+		animation: none !important;
+		will-change: auto;
+	}
+
+	/* 代替: ホバー時のシンプルズーム */
+	.is-style-ken-burns:hover img {
+		transform: scale(1.05);
+		transition: transform 0.3s ease-out;
+	}
+}
+
+/* レスポンシブ: モバイルでは控えめに */
+@media (max-width: 768px) {
+	.is-style-ken-burns {
+		--kb-duration: 20s;
+		--kb-scale-to: 1.1;
+		--kb-translate-x-to: -5%;
+		--kb-translate-y-to: -3%;
+	}
+}
+
+/* キャプション対応 */
+.is-style-ken-burns figcaption {
+	position: relative;
+	z-index: 2;
+}
+

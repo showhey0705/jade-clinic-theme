@@ -1,0 +1,207 @@
+/* ========================================
+   タブ機能 - シンプル切り替えUI
+   ======================================== */
+
+/* タブラッパー */
+/* `.tabs` は variation 登録前の旧マークアップ（Synced Pattern 等）互換用 */
+.is-style-tabs,
+.tabs {
+    position: relative;
+}
+
+/* タブリンク（ボタン群） */
+.tab-links {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* 水平スクロール対応 */
+.tab-links-horizontal {
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+}
+
+.tab-links-horizontal::-webkit-scrollbar {
+    height: 6px;
+}
+
+.tab-links-horizontal::-webkit-scrollbar-track {
+    background: var(--wp--preset--color--border-light, #e5e5e5);
+    border-radius: 3px;
+}
+
+.tab-links-horizontal::-webkit-scrollbar-thumb {
+    background: var(--wp--preset--color--secondary, #999);
+    border-radius: 3px;
+}
+
+/* グラデーション右端 */
+.tab-links-horizontal:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 32px;
+    height: calc(100% - 0.5rem);
+    background: linear-gradient(to left, var(--wp--preset--color--tertiary, #212134), transparent);
+    border-top-right-radius: 20px;
+    pointer-events: none;
+}
+
+/* 個別タブボタン */
+.tab-link {
+    transition: all 0.2s ease;
+    border-radius: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.tab-link .wp-block-button__link {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* ホバー効果 */
+.tab-link:hover .wp-block-button__link {
+    opacity: 0.85;
+}
+
+/* アクティブスタイル（デフォルト: パープル） */
+.tab-links-horizontal .tab-link.active .wp-block-button__link,
+.tab-links-horizontal .tab-link.active:hover .wp-block-button__link,
+.tab-links-active-purple .tab-link.active .wp-block-button__link,
+.tab-links-active-purple .tab-link.active:hover .wp-block-button__link {
+    background: var(--wp--preset--color--primary, #5344f4) !important;
+    color: #fff !important;
+}
+
+/* アクティブスタイル: ホワイト */
+.tab-links-active-white .tab-link.active .wp-block-button__link,
+.tab-links-active-white .tab-link.active:hover .wp-block-button__link {
+    background: #fff !important;
+    color: var(--wp--preset--color--contrast, #000) !important;
+}
+
+/* アクティブスタイル: グレー */
+.tab-links-active-gray .tab-link.active .wp-block-button__link,
+.tab-links-active-gray .tab-link.active:hover .wp-block-button__link {
+    background: var(--wp--preset--color--tertiary, #f8f7fc) !important;
+}
+
+/* コンテンツラッパー */
+.tab-content-wrapper {
+    position: relative;
+    min-height: 400px;
+    transition: height 0.3s ease;
+}
+
+/* すべてのコンテンツを重ねる */
+.tab-content-wrapper > .tab-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    transition: opacity 0.3s ease, z-index 0s 0.3s;
+}
+
+/* 最初の要素は相対配置（高さを保持） */
+.tab-content-wrapper > .tab-content:first-of-type {
+    position: relative;
+    opacity: 1;
+    z-index: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+}
+
+/* アクティブなコンテンツ */
+.tab-content-wrapper > .tab-content.active {
+    opacity: 1 !important;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+    transition: opacity 0.3s ease, z-index 0s 0s !important;
+}
+
+/* 垂直タブレイアウト */
+.tab-links-vertical {
+    flex-direction: column;
+}
+
+.tab-links-vertical .tab-link {
+    width: 100%;
+}
+
+.tab-links-vertical .wp-block-button__link {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+}
+
+/* レスポンシブ */
+@media (max-width: 782px) {
+    .tab-links-horizontal {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .tab-link {
+        min-width: 120px;
+    }
+
+    .tab-content-wrapper {
+        min-height: 300px;
+    }
+
+    /* モバイルでは縦並びに切り替え */
+    .is-style-tabs > .wp-block-columns,
+    .tabs > .wp-block-columns {
+        flex-direction: column !important;
+    }
+
+    .is-style-tabs .wp-block-column,
+    .tabs .wp-block-column {
+        flex-basis: 100% !important;
+    }
+}
+
+/* アクセシビリティ */
+.tab-link:focus-within {
+    outline: 2px solid var(--wp--preset--color--primary, #5344f4);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tab-link,
+    .tab-link .wp-block-button__link,
+    .tab-content-wrapper,
+    .tab-content-wrapper > .tab-content {
+        transition: none !important;
+    }
+}
+
+/* WordPress エディタ対応 */
+.editor-styles-wrapper .tab-content-wrapper {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.editor-styles-wrapper .tab-content-wrapper > .tab-content {
+    position: relative !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+    margin-bottom: 1rem;
+    min-height: auto !important;
+}
+
+.editor-styles-wrapper .tab-content-wrapper > .tab-content:not(.active) {
+    opacity: 0.5;
+}

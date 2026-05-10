@@ -1,0 +1,186 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+	"title": "プロフェッショナル混合",
+	"slug": "professional-mix-jp",
+	"styles": {
+		"typography": {
+			"fontFamily": "\"Noto Sans JP\", \"游ゴシック\", \"Yu Gothic\", sans-serif",
+			"fontSize": "var(--wp--preset--font-size--base)",
+			"fontWeight": "400",
+			"lineHeight": "1.8",
+			"letterSpacing": "0.03em"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "\"Noto Serif JP\", \"游明朝\", \"Yu Mincho\", serif",
+					"fontWeight": "400",
+					"lineHeight": "1.4",
+					"letterSpacing": "0.08em"
+				}
+			},
+			"h1": {
+				"typography": {
+					"fontWeight": "300",
+					"letterSpacing": "0.1em",
+					"lineHeight": "1.3"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontWeight": "400",
+					"letterSpacing": "0.08em",
+					"lineHeight": "1.4"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontWeight": "500",
+					"letterSpacing": "0.06em",
+					"lineHeight": "1.5"
+				}
+			},
+			"h4": {
+				"typography": {
+					"fontWeight": "500",
+					"letterSpacing": "0.05em"
+				}
+			},
+			"h5": {
+				"typography": {
+					"fontWeight": "500",
+					"letterSpacing": "0.05em"
+				}
+			},
+			"h6": {
+				"typography": {
+					"fontWeight": "600",
+					"letterSpacing": "0.04em"
+				}
+			},
+			"link": {
+				"typography": {
+					"textDecoration": "underline"
+				}
+			}
+		},
+		"blocks": {
+			"core/paragraph": {
+				"typography": {
+					"lineHeight": "1.8"
+				}
+			},
+			"core/quote": {
+				"typography": {
+					"fontFamily": "\"Noto Serif JP\", \"游明朝\", \"Yu Mincho\", serif",
+					"fontStyle": "italic",
+					"fontWeight": "300"
+				}
+			}
+		}
+	},
+	"settings": {
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "\"Noto Sans JP\", \"游ゴシック\", \"Yu Gothic\", sans-serif",
+					"name": "Noto Sans JP (ゴシック)",
+					"slug": "noto-sans-jp",
+					"fontFace": []
+				},
+				{
+					"fontFamily": "\"Noto Serif JP\", \"游明朝\", \"Yu Mincho\", serif",
+					"name": "Noto Serif JP (明朝)",
+					"slug": "noto-serif-jp",
+					"fontFace": []
+				}
+			],
+			"fontSizes": [
+				{
+					"fluid": {
+						"min": "0.875rem",
+						"max": "1rem"
+					},
+					"size": "1rem",
+					"slug": "x-small",
+					"name": "極小"
+				},
+				{
+					"fluid": {
+						"min": "0.9375rem",
+						"max": "1.0625rem"
+					},
+					"size": "1.0625rem",
+					"slug": "small",
+					"name": "小"
+				},
+				{
+					"fluid": {
+						"min": "1rem",
+						"max": "1.125rem"
+					},
+					"size": "1.125rem",
+					"slug": "base",
+					"name": "基本"
+				},
+				{
+					"fluid": {
+						"min": "1.25rem",
+						"max": "1.5rem"
+					},
+					"size": "1.5rem",
+					"slug": "medium",
+					"name": "中"
+				},
+				{
+					"fluid": {
+						"min": "1.75rem",
+						"max": "2.25rem"
+					},
+					"size": "2.25rem",
+					"slug": "large",
+					"name": "大"
+				},
+				{
+					"fluid": {
+						"min": "2.25rem",
+						"max": "3rem"
+					},
+					"size": "3rem",
+					"slug": "x-large",
+					"name": "特大"
+				},
+				{
+					"fluid": {
+						"min": "2.75rem",
+						"max": "4rem"
+					},
+					"size": "4rem",
+					"slug": "xx-large",
+					"name": "極大"
+				}
+			],
+			"customLineHeight": {
+				"body": "1.8",
+				"heading": "1.4",
+				"tight": "1.2",
+				"relaxed": "2.0"
+			}
+		},
+		"custom": {
+			"typography": {
+				"letterSpacing": {
+					"body": "0.03em",
+					"heading": "0.08em",
+					"wide": "0.1em",
+					"normal": "0.05em",
+					"tight": "0.02em"
+				},
+				"fontFeatures": {
+					"palt": "\"palt\" 1"
+				}
+			}
+		}
+	}
+}

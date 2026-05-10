@@ -1,0 +1,54 @@
+/* Button - Shiny Style
+--------------------------------------------- */
+
+@keyframes button-shiny-auto {
+	0% { left: -30%; }
+	8.33%, 100% { left: 135%; }
+}
+
+.wp-block-button.is-style-shiny .wp-block-button__link {
+	overflow: hidden;
+	position: relative;
+}
+
+/* 共通スタイル */
+.wp-block-button.is-style-shiny .wp-block-button__link::before,
+.wp-block-button.is-style-shiny .wp-block-button__link::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 25%;
+	background-image: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 0.42) 80%,
+		rgba(255, 255, 255, 0)
+	);
+	transform: rotate(24deg);
+	pointer-events: none;
+}
+
+/* ::before（ホバー専用） */
+.wp-block-button.is-style-shiny .wp-block-button__link::before {
+	left: -30%;
+	opacity: 0;
+	transition: left 0s;
+}
+
+/* ::after（常時アニメーション） */
+.wp-block-button.is-style-shiny .wp-block-button__link::after {
+	left: -30%;
+	animation: button-shiny-auto 3s ease-in-out infinite;
+}
+
+/* ホバー時 */
+.wp-block-button.is-style-shiny .wp-block-button__link:hover::before {
+	opacity: 1;
+	left: 135%;
+	transition: left .25s ease-in-out, opacity 0s;
+}
+
+.wp-block-button.is-style-shiny .wp-block-button__link:hover::after {
+	animation: none;
+}

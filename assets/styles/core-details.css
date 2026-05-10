@@ -1,0 +1,100 @@
+/* Details Block - Open/Close Animations
+--------------------------------------------- */
+
+/* 基本スタイル */
+.wp-block-details {
+	transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* Summary ホバーエフェクト */
+.wp-block-details summary {
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease;
+	padding: 0.5em 1em;
+	border-radius: 5px;
+	user-select: none;
+}
+
+.wp-block-details summary:hover {
+	background-color: var(--wp--preset--color--tertiary, #f8f7fc);
+}
+
+/* アイコン回転アニメーション */
+.wp-block-details summary::marker,
+.wp-block-details summary::-webkit-details-marker {
+	transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+
+.wp-block-details[open] summary::marker,
+.wp-block-details[open] summary::-webkit-details-marker {
+	transform: rotate(90deg);
+}
+
+/* コンテンツラッパー（detailsの直接の子div） */
+.wp-block-details > :not(summary) {
+	overflow: hidden;
+}
+
+/* 最新ブラウザ: interpolate-size方式（Chrome 129+, Safari 18+） */
+@supports (interpolate-size: allow-keywords) {
+	.wp-block-details {
+		interpolate-size: allow-keywords;
+	}
+
+	.wp-block-details > :not(summary) {
+		height: 0;
+		opacity: 0;
+		transition: height 0.3s cubic-bezier(.4, 0, .2, 1),
+		            opacity 0.3s cubic-bezier(.4, 0, .2, 1);
+	}
+
+	.wp-block-details[open] > :not(summary) {
+		height: auto;
+		opacity: 1;
+	}
+}
+
+/* フォールバック: Grid方式（Chrome 107+, Safari 16+） */
+@supports not (interpolate-size: allow-keywords) {
+	.wp-block-details > :not(summary) {
+		display: grid;
+		grid-template-rows: 0fr;
+		opacity: 0;
+		transition: grid-template-rows 0.3s cubic-bezier(.4, 0, .2, 1),
+		            opacity 0.3s cubic-bezier(.4, 0, .2, 1);
+	}
+
+	.wp-block-details > :not(summary) > * {
+		overflow: hidden;
+	}
+
+	.wp-block-details[open] > :not(summary) {
+		grid-template-rows: 1fr;
+		opacity: 1;
+	}
+}
+
+/* フォーカス時のアクセシビリティ */
+.wp-block-details summary:focus {
+	outline: 2px solid var(--wp--preset--color--primary, #5344F4);
+	outline-offset: 2px;
+}
+
+.wp-block-details summary:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* アクセシビリティ: 動きを減らす設定の場合 */
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-details,
+	.wp-block-details summary::marker,
+	.wp-block-details summary::-webkit-details-marker,
+	.wp-block-details > :not(summary) {
+		transition: none;
+	}
+
+	.wp-block-details[open] summary::marker,
+	.wp-block-details[open] summary::-webkit-details-marker {
+		transform: none;
+	}
+}

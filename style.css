@@ -1,0 +1,780 @@
+/*
+Theme Name: JADE CLINIC
+Theme URI:  https://jadeclinic.jp/
+Description: JADE CLINIC 公式サイト専用の Ollie 子テーマ。日本語タイポグラフィと美容医療サイト向けの UI 拡張を組み込み、最新の WordPress ブロックエディタ機能に最適化しています。
+Author:      VIPCREW
+Author URI:  https://photoshopvip.net
+Template:     ollie
+Version:      0.2.0
+Requires at least: 6.6
+Requires PHP: 7.4
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+Tags:         block-patterns, block-styles, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, rtl-language-support, style-variations, template-editing, theme-options, translation-ready, wide-blocks
+Text Domain:  vip2026
+Domain Path:  /languages
+*/
+
+    /* 水平スクロールボタン for 金額表 モバイル対応 */
+    @media (width <= 1180px) {
+
+        /* 使うガター変数を一元化（存在しないときのフォールバックも用意） */
+        :root {
+          /* 好きな方に合わせてOK。まずはご要望の padding-medium を優先 */
+          --vip-scroll-gutter: var(--wp--preset--spacing--medium,
+                                var(--wp--preset--spacing--40, 16px));
+        }
+      
+        .button-scroll-wrap {
+          /* 既存プロパティはそのまま */
+          justify-content: flex-start !important;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scroll-behavior: smooth;
+          text-align: left;
+          padding-block: 0.2rem;
+      
+          /* 左だけガターを与える */
+          padding-inline-start: var(--vip-scroll-gutter);
+          scroll-padding-inline-start: var(--vip-scroll-gutter);
+    
+        }
+      
+        .button-scroll-wrap.is-content-justification-right,
+        .button-scroll-wrap.is-content-justification-center,
+        .button-scroll-wrap.is-content-justification-space-between {
+          justify-content: flex-start !important;
+        }
+      
+        .button-scroll-wrap .wp-block-button {
+          flex: 0 0 auto;
+          scroll-snap-align: start;
+        }
+      
+        /* スクロールバー非表示（Safari/Chrome系） */
+        .button-scroll-wrap::-webkit-scrollbar { display: none; }
+      }
+  
+      @media (width <= 800px) {
+        .button-scroll-wrap .ollie-animate,
+        .button-scroll-wrap .ollie-animate-on-scroll {
+          animation: none !important;
+          transition: none !important;
+          transform: none !important;
+          opacity: 1 !important;
+        }
+      }
+
+
+@supports (view-transition-name: none) {
+    @view-transition { navigation: auto; } 
+}
+
+  /* ウェルカムスライド */
+.welcome-slide{
+    position: relative;
+}
+/* 手描きコメント */
+/* .welcome-slide::before{
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: -40px;
+    width: 240px;
+    height: 100px;
+    z-index: 10;
+    background-image: url("https://jadeclinic.local/wp-content/uploads/2025/08/support-white2.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+.welcome-slide:hover::before{
+    transform: scale(.85) rotate(5deg);
+} */
+/* メガメニューの不要な水平スクロールを無効化 */
+body:has(.wp-block-navigation .wp-block-ollie-mega-menu ) {
+	overflow-x: hidden;
+}
+/* 画像のradius無効 */
+.br0 img{
+    border-radius: 0;
+}
+.jet-smart-filters-pagination jet-filter{
+    font-weight:bold;
+}
+/* 診療日カレンダー */
+.wp-block-table .has-fixed-layout td, .wp-block-table .has-fixed-layout th {
+    word-break: break-word;
+    text-align: center;
+    font-size: 13px;
+}
+.wp-block-table td, .wp-block-table th {
+    border: .5px solid rgba(0, 0, 0, .05);
+    padding: .5em;
+}
+.wp-block-table .has-fixed-layout {
+    width: 99%;
+    border-spacing: 0;
+}
+
+
+table.has-main-accent-background-color {
+    color: var(--wp--preset--color--secondary);
+}
+
+
+.cellWorkday{
+    background: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--primary-accent);
+}
+table.has-main-accent-background-color .cellWorkday {
+    background: var(--wp--preset--color--base);
+    color: var(--wp--preset--color--base-accent);
+}
+.cellWorkday-half {
+    background: var(--wp--preset--color--main-accent);
+}
+/* 背景色付きのとき */
+table.has-main-accent-background-color .cellWorkday-half {
+    background: var(--wp--preset--color--tertiary);
+}
+
+.cellSunday, .cellHoliday {
+    background: #ECC6C7;
+}
+ .cellSaturday {
+    background: #BDE2E8;
+}
+
+.z-index-10 {
+    position: relative;
+    z-index: 10;
+}
+.vertical-rl {
+    display: flex;
+    flex-direction: column;
+    writing-mode: vertical-rl;
+    height: 420px;
+}
+/* マーカー */
+h1.marker mark,
+h2.marker {
+	position: relative;
+}
+
+h1.marker mark::after,
+h2.marker mark::after {
+	content: " ";
+	display: block;
+	width: 100%;
+	height: 22px;
+	background-image: url('assets/src-images/underline.svg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: absolute;
+	bottom: -.9rem;
+	left: 50%; 
+	transform: translateX(-50%);
+	z-index: -1;
+  }
+
+
+/* グラデーションテキスト */
+.text-gradient2 {
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(45deg, #4D35FA, #FF4AC2);
+    -webkit-background-clip: text;
+    -webkit-box-decoration-break: clone;
+    color: #4D35FA;
+    display: inline;
+}
+/* グラデーション文字 */
+.text-gradient {
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(45deg, var(--wp--preset--color--primary-alt), var(--wp--preset--color--main-accent));
+    -webkit-background-clip: text;
+    -webkit-box-decoration-break: clone;
+    color: var(--wp--preset--color--main);
+    display: inline;
+}
+/* Mike Cover */
+.mike-cover section {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} 
+
+/* インスタDM スクロール */
+.chat-container{
+    max-height: 620px;
+    overflow: hidden
+}
+@keyframes scrollchat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-45%);
+    }
+	100% {
+		transform: translateY(0);
+	}
+}
+.chat-scroll{
+    height: 200%;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+    -webkit-overflow-scrolling: touch;
+    animation: scrollchat 10s linear infinite;
+    animation-play-state: running;
+    position: relative;
+    z-index: 20;
+}
+
+/* Ollie Hero スクロール */
+.hero-container {
+    max-height: 1200px;
+}
+
+.hero-scroll-container {
+    transform: rotate(-28deg) skew(10deg, 10deg);
+}
+@keyframes scrollhero {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-45%);
+    }
+	100% {
+		transform: translateX(0);
+	}
+}
+.hero-scroll {
+    width: 200%;
+    -webkit-overflow-scrolling: touch;
+    animation: scrollhero 100s linear infinite;
+    animation-play-state: running;
+    position: relative;
+    z-index: 20;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.hero-scroll img {
+    border-radius: 5px;
+    transition: .3s ease;
+    box-shadow: 0px 38px 11px 0px rgba(162, 129, 146, 0.00), 0px 24px 10px 0px rgba(162, 129, 146, 0.01), 0px 14px 8px 0px rgba(162, 129, 146, 0.05), 0px 6px 6px 0px rgba(162, 129, 146, 0.09), 0px 2px 3px 0px rgba(162, 129, 146, 0.10);
+    z-index: 5;
+     /* スナップポイントを設定 */
+     scroll-snap-align: start;
+}
+
+.hero-scroll img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 240px 67px 0px rgba(162, 129, 146, 0.00), 0px 154px 62px 0px rgba(162, 129, 146, 0.01), 0px 87px 52px 0px rgba(162, 129, 146, 0.05), 0px 38px 38px 0px rgba(162, 129, 146, 0.09), 0px 10px 21px 0px rgba(162, 129, 146, 0.10);
+    z-index: 10;
+}
+
+/* Ollie はみ出し画像 */
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.relative {
+	position: relative;
+}
+
+.meet-wordpress,
+.meet-ollie,
+.road-of-jade {
+	position: relative;
+	overflow: hidden;
+}
+
+@media only screen and (min-width: 782px) {
+	.meet-wordpress:hover .site-editor-image img,
+	.meet-ollie:hover .ollie-collage img {
+		transform: scale(1.04);
+	}
+
+	.site-editor-image img {
+		max-width: 160% !important;
+		transition: .5s ease;
+	}
+}
+
+@media only screen and (max-width: 781px) {
+	.site-editor-image img {
+		margin-bottom: 5%;
+	}
+}
+
+/* Marquee エフェクト */
+.vip-no-shrink{
+    flex-shrink: 0;
+}
+@media only screen and (min-width: 782px) {
+	.road-of-jade:before {
+
+        content: "";
+        position: absolute;
+        bottom: -8%;
+        left: 0;
+        width: 240px;                  /* 横幅を決める */
+        aspect-ratio: 799 / 1200;           /* 元画像に近い比率（または height: auto; は不可） */
+        background-image: url(http://jadeclinic.local/wp-content/uploads/2025/08/doctor-person.avif);
+        background-size: contain;      /* 枠に収める */
+        background-repeat: no-repeat;
+        background-position: bottom left;
+        z-index: 5;
+        pointer-events: none; 
+    }
+    .road-of-jade:after {
+
+        content: "";
+        position: absolute;
+        bottom: -8%;
+        right: 0;
+        width: 240px;                  /* 横幅を決める */
+        aspect-ratio: 799 / 1200;           /* 元画像に近い比率（または height: auto; は不可） */
+        background-image: url(http://jadeclinic.local/wp-content/uploads/2025/08/team-people.avif);
+        background-size: contain;      /* 枠に収める */
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        z-index: 5;
+        pointer-events: none; 
+    }
+}
+
+@keyframes scrollwide {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-150%);
+    }
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.pattern-scroll {
+	-webkit-overflow-scrolling: touch;
+	animation-play-state: running;
+}
+
+
+
+.pattern-scroll img {
+	max-height: 420px;
+	width: auto;
+	border-radius: 10px;
+	transition: .240s ease;}
+
+.pattern-scroll img:hover {
+	transform: scale(1.03);
+}
+
+@media only screen and (max-width: 781px) {
+
+	
+	.pattern-scroll img {
+		max-height: 300px;
+        scroll-snap-align: start;
+	}
+}
+
+/* Beginner スクロール */
+	.beginner-scroll {
+        -webkit-overflow-scrolling: touch;
+	    animation-play-state: running;
+		animation: none !important;
+		overflow-x: scroll;
+		position: relative;
+		scrollbar-width: none;
+  		-ms-overflow-style: none; 
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scroll-padding: 0 var(--wp--preset--spacing--medium);;
+	}
+
+	.beginner-scroll-container {
+		position: relative;
+	}
+
+	.beginner-scroll ::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.beginner-scroll-container:after,
+	.beginner-scroll-container:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 30px;
+		pointer-events: none;
+		background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+	}
+
+	.beginner-scroll-container:before {
+		right: auto;
+		left: 0;
+		background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+		z-index: 5;
+	}
+
+	.beginner-scroll > div {
+		width: 85% !important;
+        scroll-snap-align: center;
+	}
+
+    .beginner-scroll img {
+        max-height: 420px;
+        width: auto;
+        border-radius: 10px;
+        transition: .240s ease;}
+    
+    .beginner-scroll img:hover {
+        transform: scale(1.03);
+    }
+
+.beginner-scroll:hover {
+	animation-play-state: paused !important;
+}
+
+/* Testimonial スクロール */
+.testimonial-scroll {
+	animation: scrollwide 100s linear infinite !important;
+}
+
+@media only screen and (max-width: 781px) {
+	.testimonial-scroll {
+		animation: none !important;
+		overflow-x: scroll;
+		position: relative;
+		scrollbar-width: none;
+  		-ms-overflow-style: none; 
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scroll-padding: 0 var(--wp--preset--spacing--medium);;
+	}
+
+	.testimonial-scroll-container {
+		position: relative;
+	}
+
+	.testimonial-scroll ::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.testimonial-scroll-container:after,
+	.testimonial-scroll-container:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 30px;
+		pointer-events: none;
+		background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+	}
+
+	.testimonial-scroll-container:before {
+		right: auto;
+		left: 0;
+		background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+		z-index: 5;
+	}
+
+	.testimonial-scroll > div {
+		width: 85% !important;
+        scroll-snap-align: center;
+	}
+}
+
+.testimonial-scroll:hover {
+	animation-play-state: paused !important;
+}
+/*--------------------------------------------------------------
+# 基本設定
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# スムーズスクロール
+--------------------------------------------------------------*/
+html {
+    scroll-behavior: smooth;
+}
+
+/* アクセシビリティ対応：ユーザーが動きを減らす設定を選択している場合 */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* 日本語の文字詰め調整（見出しH、段落P）*/
+.wp-block-heading,
+.entry-content p,
+.wp-block-post-content p,
+.wp-block-post-title {
+    font-feature-settings: "palt" 1;
+    word-break: auto-phrase;
+    text-wrap: balance;
+}
+
+
+/*--------------------------------------------------------------
+# エディタレイアウト調整
+--------------------------------------------------------------*/
+.editor-styles-wrapper .block-editor-block-list__layout [data-block] {
+    position: relative;
+}
+
+.editor-styles-wrapper .block-editor-block-list__layout {
+    position: relative;
+    z-index: 1;
+}
+
+/* ブロックツールバー */
+.block-editor-block-toolbar {
+    z-index: 10;
+}
+
+/*--------------------------------------------------------------
+# Ollie Pro アニメーションのカスタマイズ
+--------------------------------------------------------------*/
+
+/* フェード系アニメーションにスプリングイージングを適用 */
+.ollie-animate:not(.ollie-animate-on-scroll):not(.ollie-animate-scaleOnHover)[class*="ollie-animate-fadeIn"],
+.ollie-animate-on-scroll.ollie-animated[class*="ollie-animate-fadeIn"] {
+    animation-timing-function: var(--spring-easing) !important;
+    animation-duration: var(--animation-duration, var(--spring-duration, 1s)) !important;
+}
+
+/*--------------------------------------------------------------
+# テキストリンク ホバーエフェクト
+--------------------------------------------------------------*/
+
+/* すべてのテキストリンク（ボタン除く） - 下線エフェクト */
+a:not(.wp-block-button__link):not(.wp-element-button) {
+  background: linear-gradient(0deg, var(--wp--preset--color--primary), var(--wp--preset--color--primary)) no-repeat right bottom / 0 var(--bg-h);
+  transition: background-size 350ms;
+  --bg-h: 2px;
+  padding-bottom: 2px;
+  text-decoration: none;
+}
+
+
+
+/* ナビゲーションメニュー内のリンクは除外 */
+.wp-block-navigation a {
+  background: none;
+  transition: none;
+}
+
+.wp-block-navigation a:hover {
+  color: inherit;
+}
+
+/* アクセシビリティ対応 */
+@media (prefers-reduced-motion: reduce) {
+  a:not(.wp-block-button__link):not(.wp-element-button) {
+    transition: background-size 150ms ease;
+  }
+}
+
+/*--------------------------------------------------------------
+# FAQ Section (Yoast schema-faq)
+--------------------------------------------------------------*/
+
+/* ======== FAQ Section (Yoast schema-faq) ======== */
+
+/* 各 Q&A ブロック */
+.schema-faq-section {
+	padding-block: var(--wp--preset--spacing--50);
+}
+
+.schema-faq-section:first-of-type {
+}
+
+/* 質問 */
+.schema-faq-section .schema-faq-question {
+	display: block;
+	margin: 0 0 var(--wp--preset--spacing--30);
+	font-family: var(--wp--preset--font-family--jp-serif);
+	font-size: var(--wp--preset--font-size--medium, 1.125rem);
+	font-weight: var(--wp--custom--font-weight--bold);
+	line-height: 1.7;
+	color: var(--wp--preset--color--main);
+}
+
+/* 回答 */
+.schema-faq-section .schema-faq-answer {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--normal);
+	line-height: 1.9;
+	color: var(--wp--preset--color--main);
+}
+
+
+/*--------------------------------------------------------------
+# アイコン回転アニメーション
+--------------------------------------------------------------*/
+
+/* 基本: 90度回転 */
+.icon-rotate-90 svg,
+.icon-rotate-90 img,
+.icon-rotate-90 i {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.icon-rotate-90:hover svg,
+.icon-rotate-90:hover img,
+.icon-rotate-90:hover i,
+.wp-block-cover:hover .icon-rotate-90 svg,
+.wp-block-cover:hover .icon-rotate-90 img,
+.wp-block-cover:hover .icon-rotate-90 i {
+  transform: rotate(90deg);
+}
+
+/* バリエーション: 180度回転 */
+.icon-rotate-180 svg,
+.icon-rotate-180 img,
+.icon-rotate-180 i {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.icon-rotate-180:hover svg,
+.icon-rotate-180:hover img,
+.icon-rotate-180:hover i,
+.wp-block-cover:hover .icon-rotate-180 svg,
+.wp-block-cover:hover .icon-rotate-180 img,
+.wp-block-cover:hover .icon-rotate-180 i {
+  transform: rotate(180deg);
+}
+
+/* バリエーション: 360度回転 */
+.icon-rotate-360 svg,
+.icon-rotate-360 img,
+.icon-rotate-360 i {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.5s ease;
+}
+
+.icon-rotate-360:hover svg,
+.icon-rotate-360:hover img,
+.icon-rotate-360:hover i,
+.wp-block-cover:hover .icon-rotate-360 svg,
+.wp-block-cover:hover .icon-rotate-360 img,
+.wp-block-cover:hover .icon-rotate-360 i {
+  transform: rotate(360deg);
+}
+
+/* バリエーション: ゆっくり回転 */
+.icon-rotate-slow svg,
+.icon-rotate-slow img,
+.icon-rotate-slow i {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.6s ease;
+}
+
+.icon-rotate-slow:hover svg,
+.icon-rotate-slow:hover img,
+.icon-rotate-slow:hover i,
+.wp-block-cover:hover .icon-rotate-slow svg,
+.wp-block-cover:hover .icon-rotate-slow img,
+.wp-block-cover:hover .icon-rotate-slow i {
+  transform: rotate(90deg);
+}
+
+/* バリエーション: 素早く回転 */
+.icon-rotate-fast svg,
+.icon-rotate-fast img,
+.icon-rotate-fast i {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.15s ease;
+}
+
+.icon-rotate-fast:hover svg,
+.icon-rotate-fast:hover img,
+.icon-rotate-fast:hover i,
+.wp-block-cover:hover .icon-rotate-fast svg,
+.wp-block-cover:hover .icon-rotate-fast img,
+.wp-block-cover:hover .icon-rotate-fast i {
+  transform: rotate(90deg);
+}
+
+/* バリエーション: 常に回転し続ける */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.icon-spin svg,
+.icon-spin img,
+.icon-spin i {
+  display: inline-block;
+  vertical-align: middle;
+  animation: spin 2s linear infinite;
+}
+
+/* アクセシビリティ対応: アニメーション無効化 */
+@media (prefers-reduced-motion: reduce) {
+  .icon-rotate-90 svg,
+  .icon-rotate-90 img,
+  .icon-rotate-90 i,
+  .icon-rotate-180 svg,
+  .icon-rotate-180 img,
+  .icon-rotate-180 i,
+  .icon-rotate-360 svg,
+  .icon-rotate-360 img,
+  .icon-rotate-360 i,
+  .icon-rotate-slow svg,
+  .icon-rotate-slow img,
+  .icon-rotate-slow i,
+  .icon-rotate-fast svg,
+  .icon-rotate-fast img,
+  .icon-rotate-fast i,
+  .icon-spin svg,
+  .icon-spin img,
+  .icon-spin i {
+    transition: none;
+    animation: none;
+  }
+
+  .icon-rotate-90:hover svg,
+  .icon-rotate-90:hover img,
+  .icon-rotate-90:hover i,
+  .icon-rotate-180:hover svg,
+  .icon-rotate-180:hover img,
+  .icon-rotate-180:hover i,
+  .icon-rotate-360:hover svg,
+  .icon-rotate-360:hover img,
+  .icon-rotate-360:hover i,
+  .icon-rotate-slow:hover svg,
+  .icon-rotate-slow:hover img,
+  .icon-rotate-slow:hover i,
+  .icon-rotate-fast:hover svg,
+  .icon-rotate-fast:hover img,
+  .icon-rotate-fast:hover i {
+    transform: none;
+  }
+}

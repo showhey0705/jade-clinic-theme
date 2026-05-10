@@ -1,0 +1,1620 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ollie-child\n"
+"POT-Creation-Date: 2025-03-11 13:19+0900\n"
+"PO-Revision-Date: 2025-08-22 12:55+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.7\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: assets/js/custom-animation-settings.js:47
+msgid "アニメーション設定"
+msgstr "アニメーション設定"
+
+#: assets/js/motion-animation-settings.js:163
+#, fuzzy
+#| msgid "アニメーション設定"
+msgid "💫 アニメーション"
+msgstr "アニメーション設定"
+
+#: assets/js/motion-animation-settings.js:167
+msgid "アニメーションタイプ"
+msgstr "アニメーションタイプ"
+
+#: assets/js/motion-animation-settings.js:183
+msgid "アニメーション時間（秒）"
+msgstr "アニメーション時間（秒）"
+
+#: assets/js/motion-animation-settings.js:194
+msgid "遅延時間（秒）"
+msgstr "遅延時間（秒）"
+
+#: functions.php:47
+msgid "Blur Image Less"
+msgstr "ぼかし効果（小）"
+
+#: functions.php:48
+msgid "Blur Image More"
+msgstr "ぼかし効果（大）"
+
+#: functions.php:49
+msgid "Rounded"
+msgstr "角丸"
+
+#: functions.php:50
+msgid "Circle"
+msgstr "円形"
+
+#: functions.php:53 functions.php:62
+msgid "Box Shadow"
+msgstr "ボックスシャドウ"
+
+#: functions.php:54
+msgid "Reverse on Mobile"
+msgstr "モバイルではカラムを逆にする"
+
+#: functions.php:57
+msgid "Truncate 2 Lines"
+msgstr "2行を切り捨てる"
+
+#: functions.php:58
+msgid "Truncate 3 Lines"
+msgstr "3行を切り捨てる"
+
+#: functions.php:59
+msgid "Truncate 4 Lines"
+msgstr "4行を切り捨てる"
+
+#: functions.php:63
+msgid "Background Blur"
+msgstr "背景ぼかし"
+
+#: functions.php:66
+msgid "Dotted"
+msgstr "点線"
+
+#: functions.php:67
+msgid "Thin"
+msgstr "薄い"
+
+#: functions.php:70
+msgid "Rounded Full"
+msgstr "完全な角丸"
+
+#: functions.php:71 functions.php:82
+msgid "Boxed"
+msgstr "ボックス"
+
+#: functions.php:72
+msgid "Shine"
+msgstr "キラリと輝く"
+
+#: functions.php:73
+msgid "Ken Burns"
+msgstr "クロップズーム"
+
+#: functions.php:76
+msgid "Dark Style"
+msgstr "ダークスタイル"
+
+#: functions.php:79
+msgid "Button Style"
+msgstr "ボタンスタイル"
+
+#: functions.php:120
+msgid "Cards"
+msgstr "🖼️ カード"
+
+#: functions.php:123
+msgid "Call To Action"
+msgstr "🚀 コールトゥアクション"
+
+#: functions.php:126 patterns/footer-dark.php:91 patterns/footer-light.php:91
+msgid "Features"
+msgstr "🔑 特徴・サービス"
+
+#: functions.php:129
+msgid "Hero"
+msgstr "🏅 ヒーロー"
+
+#: functions.php:132
+msgid "Pages"
+msgstr "📑 固定ページ"
+
+#: functions.php:135
+msgid "Posts"
+msgstr "📰 投稿"
+
+#: functions.php:138 patterns/footer-dark.php:95 patterns/footer-light.php:95
+msgid "Pricing"
+msgstr "💰 価格"
+
+#: functions.php:141 patterns/testimonials-and-logos.php:17
+#: patterns/testimonials-with-big-text.php:18
+#: patterns/testimonials-with-social-links.php:17
+msgid "Testimonials"
+msgstr "💬 お客様の声"
+
+#: patterns/blog-post-columns.php:17
+msgid "Latest and Greatest"
+msgstr "最新かつ最高"
+
+#: patterns/blog-post-columns.php:21
+msgid "Read our latest blog articles"
+msgstr "最新のブログ記事を読む"
+
+#: patterns/blog-post-columns.php:25
+msgid ""
+"Learn the latest and greatest in WordPress site building. We're offering "
+"tutorials, tips and tricks, and video walkthroughs on our blog."
+msgstr ""
+"WordPressサイト構築の最新＆最高のテクニックを学ぼう！チュートリアルやヒント・"
+"コツ、動画解説をブログでお届けします。"
+
+#: patterns/card-big-text-call-to-action.php:17
+#: patterns/card-text-and-call-to-action.php:19
+#: patterns/hero-call-to-action-buttons-light.php:33
+#: patterns/hero-text-image-and-logos.php:34
+msgid "Explore Ollie"
+msgstr ""
+
+#: patterns/card-big-text-call-to-action.php:21
+msgid "Design your site without code"
+msgstr "コード不要でサイトをデザインしよう"
+
+#: patterns/card-big-text-call-to-action.php:25
+#: patterns/hero-call-to-action-buttons-light.php:24
+#: patterns/hero-call-to-action-buttons.php:28 patterns/hero-dark.php:28
+#: patterns/hero-light.php:28 patterns/hero-text-image-and-logos.php:25
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme. No coding skills required."
+msgstr ""
+"新しいWordPressサイトエディターとOllieブロックテーマで、自由に美しく。 コード"
+"不要。"
+
+#: patterns/card-big-text-call-to-action.php:31
+#: patterns/card-call-to-action-with-buttons.php:27
+#: patterns/hero-text-image-and-logos.php:50
+#: patterns/text-and-image-columns-with-testimonial.php:41
+#: patterns/text-call-to-action-buttons.php:33
+#: patterns/text-call-to-action.php:28
+msgid "Get Started Today"
+msgstr "今すぐ始めよう"
+
+#: patterns/card-call-to-action-with-buttons.php:17
+msgid "Build With Patterns"
+msgstr "パターンで楽々デザイン"
+
+#: patterns/card-call-to-action-with-buttons.php:21
+msgid ""
+"Build your blazing fast website with the power of the WordPress Site Editor "
+"and beautiful, pre-made pattern designs from Ollie. No coding skills "
+"required."
+msgstr ""
+"WordPressサイトエディターのパワーと、Ollieの美しいプリセットパターンを活用し"
+"て、超高速なウェブサイトを作成しよう。コーディングスキルは不要です。"
+
+#: patterns/card-call-to-action-with-buttons.php:31
+msgid "Explore Features"
+msgstr "特徴・サービス"
+
+#: patterns/card-call-to-action.php:17 patterns/card-lead-magnet.php:26
+#: patterns/card-text-and-call-to-action.php:55
+#: patterns/card-text-and-details.php:35
+#: patterns/hero-call-to-action-buttons.php:33 patterns/hero-dark.php:33
+#: patterns/hero-light.php:33
+msgid "Download Ollie"
+msgstr "Ollieをダウンロード"
+
+#: patterns/card-call-to-action.php:21
+#: patterns/card-text-and-call-to-action.php:59
+msgctxt "Theme version number"
+msgid "Version 1.0"
+msgstr "バージョン1.0"
+
+#: patterns/card-call-to-action.php:31
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme. No coding skills required. Anyone can "
+"do it!"
+msgstr ""
+"新しいWordPressサイトエディターとOllieブロックテーマを使えば、誰でも簡単に美"
+"しくカスタマイズ可能なサイトを作成できます。コードは一切不要です。"
+
+#: patterns/card-call-to-action.php:36
+#: patterns/card-text-and-call-to-action.php:77
+#: patterns/header-dark-with-banner.php:23
+#: patterns/header-dark-with-buttons.php:20
+#: patterns/header-light-with-banner.php:23
+#: patterns/header-light-with-buttons.php:20
+msgid "Download Now"
+msgstr "すぐにダウンロード"
+
+#: patterns/card-call-to-action.php:41
+#: patterns/card-text-and-call-to-action.php:82
+msgctxt "Link to WordPress.org"
+msgid "or view on <a href=\"#\">WordPress.org</a>"
+msgstr "または <a href=\"#\">WordPress.org</a> で見る"
+
+#: patterns/card-contact.php:17 patterns/contact-details.php:19
+#: patterns/contact-details.php:33 patterns/contact-details.php:63
+msgid "Contact Us"
+msgstr ""
+
+#: patterns/card-contact.php:38 patterns/contact-details.php:84
+msgid "Email"
+msgstr "メールアドレス"
+
+#: patterns/card-contact.php:52 patterns/contact-details.php:98
+msgid "Phone"
+msgstr "電話番号"
+
+#: patterns/card-contact.php:66 patterns/contact-details.php:112
+msgid "Address"
+msgstr "住所"
+
+#: patterns/card-details.php:17 patterns/card-text-and-details.php:69
+msgid "Theme Details"
+msgstr "テーマ詳細"
+
+#: patterns/card-details.php:27 patterns/card-text-and-details.php:79
+msgid "Downloads:"
+msgstr "ダウンロード:"
+
+#: patterns/card-details.php:37 patterns/card-text-and-details.php:89
+msgid "Version:"
+msgstr "バージョン:"
+
+#: patterns/card-details.php:47 patterns/card-text-and-details.php:99
+msgid "Average Rating:"
+msgstr "レビュー評価："
+
+#: patterns/card-details.php:57 patterns/card-text-and-details.php:109
+msgid "Filesize:"
+msgstr "ファイルサイズ:"
+
+#: patterns/card-details.php:67 patterns/card-text-and-details.php:119
+msgid "Patterns:"
+msgstr "パターン数："
+
+#: patterns/card-image-and-text.php:21
+msgid "Image and Text Card"
+msgstr "画像＆テキストカード"
+
+#: patterns/card-image-and-text.php:25 patterns/card-testimonial.php:16
+#: patterns/testimonials-with-big-text.php:47
+msgid ""
+"I love using WordPress but traditionally it has been hard to design in. Not "
+"any more! Now, I can quickly build full page designs with beautiful patterns!"
+msgstr ""
+"WordPressは大好き。でも、これまでデザインは大変だった。もうそんな心配はいりま"
+"せん。美しいパターンを使って、簡単にフルページデザインが作れます。"
+
+#: patterns/card-image-and-text.php:31 patterns/card-pricing-table-dark.php:37
+#: patterns/card-pricing-table.php:37 patterns/pricing-table-3-column.php:53
+#: patterns/pricing-table-3-column.php:135
+#: patterns/pricing-table-3-column.php:231
+#: patterns/pricing-table-with-testimonials.php:53
+#: patterns/pricing-table-with-testimonials.php:135
+#: patterns/pricing-table-with-testimonials.php:231
+#: patterns/pricing-table.php:53 patterns/pricing-table.php:135
+msgid "Get Started"
+msgstr "今すぐはじめる"
+
+#: patterns/card-image-and-text.php:35 patterns/card-text-box-with-arrow.php:31
+msgid "Read More"
+msgstr "続きを読む"
+
+#: patterns/card-lead-magnet.php:30
+msgid "Start using the powerful new WordPress editor with Ollie"
+msgstr "Ollieと新しいWordPress。もっと自由に。"
+
+#: patterns/card-lead-magnet.php:34
+msgid ""
+"Start creating beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme."
+msgstr ""
+"新しいWordPressサイトエディターとOllieブロックテーマで、美しくカスタマイズ可"
+"能なウェブサイトを作り始めよう！"
+
+#: patterns/card-lead-magnet.php:39
+msgid "Download Ollie for free!"
+msgstr "Ollieを無料でダウンロードする"
+
+#: patterns/card-post-list.php:17
+msgid "Latest Posts"
+msgstr "最新の投稿"
+
+#: patterns/card-post-list.php:21
+msgid "View All →"
+msgstr "すべてを表示 →"
+
+#: patterns/card-post-list.php:44
+msgid "Looks like you haven't added any posts yet."
+msgstr "まだ投稿が追加されていないようです。"
+
+#: patterns/card-pricing-table-dark.php:21 patterns/card-pricing-table.php:21
+#: patterns/pricing-table-3-column.php:37
+#: patterns/pricing-table-3-column.php:119
+#: patterns/pricing-table-3-column.php:215
+#: patterns/pricing-table-with-testimonials.php:37
+#: patterns/pricing-table-with-testimonials.php:119
+#: patterns/pricing-table-with-testimonials.php:215
+msgid "per month"
+msgstr "月額 / 税抜"
+
+#: patterns/card-pricing-table-dark.php:27
+#: patterns/pricing-table-3-column.php:125
+#: patterns/pricing-table-with-testimonials.php:125
+#: patterns/pricing-table.php:125
+msgid "Professional"
+msgstr "プロフェッショナル"
+
+#: patterns/card-pricing-table-dark.php:31
+#: patterns/pricing-table-3-column.php:129
+#: patterns/pricing-table-with-testimonials.php:129
+#: patterns/pricing-table.php:129
+msgid ""
+"Great for professionals who are building a lot of WordPress websites and "
+"need all the tools."
+msgstr ""
+"多くのWordPressサイトを構築するプロフェッショナルに最適。必要なツールがすべて"
+"揃っています。"
+
+#: patterns/card-pricing-table-dark.php:48
+#: patterns/pricing-table-3-column.php:146
+#: patterns/pricing-table-with-testimonials.php:146
+#: patterns/pricing-table.php:146
+msgid "Everything in Essential plus..."
+msgstr "エッセンシャルのすべてに加えて..."
+
+#: patterns/card-pricing-table-dark.php:62
+#: patterns/pricing-table-3-column.php:160
+#: patterns/pricing-table-with-testimonials.php:160
+#: patterns/pricing-table.php:160
+msgid "Video Course"
+msgstr "ビデオコース"
+
+#: patterns/card-pricing-table-dark.php:76
+#: patterns/pricing-table-3-column.php:174
+#: patterns/pricing-table-with-testimonials.php:174
+#: patterns/pricing-table.php:174
+msgid "Private Coaching"
+msgstr "プライベートコーチング"
+
+#: patterns/card-pricing-table-dark.php:90
+#: patterns/pricing-table-3-column.php:188
+#: patterns/pricing-table-with-testimonials.php:188
+#: patterns/pricing-table.php:188
+msgid "Access to Slack"
+msgstr "Slack へのアクセス"
+
+#: patterns/card-pricing-table-dark.php:104
+#: patterns/pricing-table-3-column.php:202
+#: patterns/pricing-table-with-testimonials.php:202
+msgid "Online Workshops"
+msgstr "オンラインワークショップ"
+
+#: patterns/card-pricing-table.php:27 patterns/pricing-table-3-column.php:43
+#: patterns/pricing-table-with-testimonials.php:43
+#: patterns/pricing-table.php:43
+msgid "Beginner"
+msgstr "ビギナー"
+
+#: patterns/card-pricing-table.php:31 patterns/pricing-table-3-column.php:47
+#: patterns/pricing-table-with-testimonials.php:47
+#: patterns/pricing-table.php:47
+msgid ""
+"Great for beginners who want to give your product a trial run and see if it "
+"fits their workflow."
+msgstr ""
+"初心者にもぴったり！まずは気軽に試して、自分のワークフローに合うかチェックし"
+"てみよう。"
+
+#: patterns/card-pricing-table.php:48 patterns/pricing-table-3-column.php:64
+#: patterns/pricing-table-3-column.php:242
+#: patterns/pricing-table-with-testimonials.php:64
+#: patterns/pricing-table-with-testimonials.php:242
+#: patterns/pricing-table.php:64
+msgid "Publishing Suite"
+msgstr "パブリッシングスイート"
+
+#: patterns/card-pricing-table.php:62 patterns/pricing-table-3-column.php:78
+#: patterns/pricing-table-3-column.php:256
+#: patterns/pricing-table-with-testimonials.php:78
+#: patterns/pricing-table-with-testimonials.php:256
+#: patterns/pricing-table.php:78
+msgid "Advanced Tools"
+msgstr "有料アドオンツール"
+
+#: patterns/card-pricing-table.php:76 patterns/pricing-table-3-column.php:92
+#: patterns/pricing-table-3-column.php:270
+#: patterns/pricing-table-with-testimonials.php:92
+#: patterns/pricing-table-with-testimonials.php:270
+#: patterns/pricing-table.php:92
+msgid "Priority Support"
+msgstr "優先サポート"
+
+#: patterns/card-pricing-table.php:90 patterns/pricing-table-3-column.php:106
+#: patterns/pricing-table-3-column.php:284
+#: patterns/pricing-table-with-testimonials.php:106
+#: patterns/pricing-table-with-testimonials.php:284
+#: patterns/pricing-table.php:106
+msgid "Blazing-Fast Performance"
+msgstr "超高速パフォーマンス"
+
+#: patterns/card-social-profile.php:22
+msgid "Eric Voyager"
+msgstr "佐々木 健太"
+
+#: patterns/card-social-profile.php:26
+msgid "Creator and Product Director at IdeaFlow"
+msgstr "IdeaFlow クリエイター兼プロダクトディレクター"
+
+#: patterns/card-social-profile.php:33
+msgid ""
+"Use this profile box as a LinkTree alternative. Link your social media "
+"accounts to this page so your followers can find all of your important links."
+msgstr ""
+"このプロフィールボックスをLinkTreeの代わりに活用できます。SNSアカウントをこの"
+"ページにまとめて、フォロワーがあなたの大切なリンクを簡単に見つけられるように"
+"しましょう。"
+
+#: patterns/card-testimonial.php:30 patterns/testimonials-with-big-text.php:57
+#: patterns/testimonials-with-social-links.php:92
+msgid "Alex Glacier"
+msgstr "高橋 涼介"
+
+#: patterns/card-text-and-call-to-action.php:23
+msgid "Design with a few clicks. No code required."
+msgstr "数クリックでデザイン完了。コード不要。"
+
+#: patterns/card-text-and-call-to-action.php:27
+msgid ""
+"Ollie is a block theme for the next generation of WordPress creators. With "
+"beautiful patterns and templates built right in, you can get a site launched "
+"in record time."
+msgstr ""
+"Ollieは次世代のWordPressクリエイターのためのブロックテーマです。美しいパター"
+"ンやテンプレートがあらかじめ組み込まれているので、驚くほど短時間でサイトを公"
+"開できます。"
+
+#: patterns/card-text-and-call-to-action.php:42 patterns/contact-details.php:51
+#: patterns/testimonials-with-big-text.php:35
+msgid "\"Working with Ollie has been a delight from start to finish.\""
+msgstr "「Ollieを使うことで、最初から最後まで快適に作業できました。」"
+
+#: patterns/card-text-and-call-to-action.php:46
+msgid "Rated 5/5 stars by 1,420 happy reviewers"
+msgstr "1,420人の満足レビュー、評価5/5。"
+
+#: patterns/card-text-and-call-to-action.php:70
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme. Anyone can do it! No coding skills "
+"required."
+msgstr ""
+"新しいWordPressサイトエディタとOllieブロックテーマを使用して、美しく完全にカ"
+"スタマイズ可能なWebサイトを簡単に作成できます。誰でもできる!コーディングのス"
+"キルは必要ありません。"
+
+#: patterns/card-text-and-details.php:20
+msgid "Start Designing"
+msgstr ""
+
+#: patterns/card-text-and-details.php:24
+msgid "Download Ollie for free today and start building"
+msgstr "Ollieを無料で。さあ、作ろう。"
+
+#: patterns/card-text-and-details.php:28
+#: patterns/text-and-image-columns-with-icons.php:27
+msgid ""
+"Ollie ships with a growing collection of design patterns that cohesively "
+"click together. Drag, drop, mix, and match patterns to create stunning "
+"designs in just a few minutes."
+msgstr ""
+"Ollieには、まとまりのあるカチッと音を立てるデザインパターンのコレクションが増"
+"え続けています。ドラッグ&ドロップ、ミキシング、パターンのマッチングにより、わ"
+"ずか数分で見事なデザインを作成できます。"
+
+#: patterns/card-text-and-details.php:40
+msgid "View on WordPress.org"
+msgstr "WordPress.org で見る"
+
+#: patterns/card-text-and-details.php:55
+#: patterns/text-and-image-columns-with-testimonial.php:56
+msgid ""
+"The WordPress Site Editor is a total game changer. It's blazing fast and I "
+"don't need a page builder anymore. 😍"
+msgstr ""
+"WordPressサイトエディターはまさに革命。驚くほど速く、もうページビルダーは不"
+"要。😍"
+
+#: patterns/card-text-and-details.php:59
+msgid "— Mandi Alpine, Brandwich"
+msgstr "— 松本 美咲（Brandwich）"
+
+#: patterns/card-text-box-with-arrow.php:17
+msgid "Post Page"
+msgstr "投稿ページ"
+
+#: patterns/card-text-box-with-arrow.php:21
+#: patterns/feature-boxes-with-button.php:41
+#: patterns/feature-boxes-with-icon-dark.php:41
+#: patterns/image-and-numbered-features.php:38
+#: patterns/large-text-and-text-boxes.php:45
+msgid ""
+"Add your splash of colors, pick your header, choose your favorite font — all "
+"with a few quick clicks. No coding skills required."
+msgstr ""
+"色を選び、ヘッダーを決めて、お気に入りのフォントをセットすれば完成。クリック"
+"だけで、思い通りのデザインをノーコードで実現しよう☺️"
+
+#: patterns/comments.php:18 patterns/template-post-centered.php:48
+#: patterns/template-post-left-sidebar.php:56
+#: patterns/template-post-right-sidebar.php:52
+#: patterns/template-post-wide.php:48
+msgid "Comments"
+msgstr "コメント"
+
+#: patterns/contact-details.php:23
+msgid "Give us a ring, we'd love to chat with you."
+msgstr "気軽に話そう。いつでもどうぞ。"
+
+#: patterns/contact-details.php:27
+msgid ""
+"Whether you're looking for a brand refresh, a new web presence, or are "
+"curious about consultation, please drop us a line and let's start a "
+"blossoming relationship!"
+msgstr ""
+"新しいブランドの一歩を踏み出したい時、ウェブの可能性を広げたい時、 誰かの視点"
+"が欲しい時—どんな想いでも大歓迎です。 \n"
+"ぜひ、お気軽にご連絡ください。ここから、一緒に未来をつくりましょう。"
+
+#: patterns/contact-details.php:37
+msgid "Join Our Team"
+msgstr "私たちのチームに参加しませんか"
+
+#: patterns/contact-details.php:55 patterns/testimonials-with-big-text.php:39
+msgid "Rated 5/5 stars by 1,620 happy reviewers"
+msgstr "評価 5/5 スター 投稿者: 1,620 ハッピーレビュアー"
+
+#: patterns/faq.php:17
+msgid "Frequently Asked"
+msgstr ""
+
+#: patterns/faq.php:21
+msgid "Learn about our product"
+msgstr "よくあるご質問"
+
+#: patterns/faq.php:25
+msgid ""
+"Got a question? We've got you covered! Check out the resources below and be "
+"sure to let us know if we can answer anything else."
+msgstr ""
+"他に質問がありますか？おまかせください。まずは以下のリソースをご覧ください。"
+"その他、気になることがございましたら、お気軽にお問い合わせください。"
+
+#: patterns/faq.php:35
+msgctxt "FAQ question"
+msgid "What exactly is Ollie?"
+msgstr "Ollieとは何ですか？"
+
+#: patterns/faq.php:39
+msgctxt "FAQ answer"
+msgid ""
+"Ollie is a WordPress block theme that is designed to work with the new "
+"WordPress Site Editor. That means your site can be built with blocks, "
+"patterns, and other design elements that can be easily edited without any "
+"coding skills."
+msgstr ""
+"Ollieは、新しいWordPressサイトエディター対応のブロックテーマです。ブロックや"
+"パターンを使って、コードなしで簡単にサイトを作成・編集できます。"
+
+#: patterns/faq.php:47
+msgctxt "FAQ question"
+msgid "Do I need any other plugins?"
+msgstr "他のプラグインは必要ですか?"
+
+#: patterns/faq.php:51
+msgctxt "FAQ answer"
+msgid ""
+"Nope! Ollie is designed to work with the native WordPress editor, meaning "
+"you don't need a page builder plugin to build a beautiful website on "
+"WordPress anymore. Of course, you can continue using your favorite plugins "
+"alongside Ollie!"
+msgstr ""
+"いいえ、OllieはWordPressの標準エディターに対応しているので、ページビルダープ"
+"ラグインは不要です。そのままブロックとパターンを使って、美しいサイトを作成で"
+"きます。もちろん、お気に入りのプラグインと一緒に使うことも可能です。"
+
+#: patterns/faq.php:61
+msgctxt "FAQ question"
+msgid "What if I've never used the Site Editor?"
+msgstr "サイトエディタを使用したことがないんだけど…"
+
+#: patterns/faq.php:65
+msgctxt "FAQ answer"
+msgid ""
+"Don't worry, we'll show you around! The Site Editor is fairly new, and lots "
+"of folks are still trying it out for the first time. There's a lot to learn, "
+"but the site building power you'll unlock with all of the new design tools "
+"will be well worth it!"
+msgstr ""
+"ご安心ください。サイトエディターはまだ新しく、多くの人が使いはじめたばかりで"
+"す。使い方は順番にお教えします。新しいデザインツールを使えば、思い通りのサイ"
+"ト作りがもっと簡単になります。"
+
+#: patterns/faq.php:73
+msgctxt "FAQ question"
+msgid "What are patterns?"
+msgstr "そもそも、パターンって何？"
+
+#: patterns/faq.php:77
+msgctxt "FAQ answer"
+msgid ""
+"Patterns are pre-designed page elements that you can drag and drop to create "
+"unique designs. Ollie comes with an extensive collection of expertly-"
+"designed patterns, but you can also design your own patterns."
+msgstr ""
+"パターンは、ドラッグ＆ドロップで使えるデザイン済みのページ要素。  \n"
+"Ollieにはプロが手掛けた豊富なパターンが揃っていますが、自分だけのオリジナルパ"
+"ターンを作成することもできます。"
+
+#: patterns/faq.php:95
+msgid "Still have questions?"
+msgstr "他にご質問はありますか？"
+
+#: patterns/faq.php:99
+msgid "Can't find what you're looking for? Let's have a chat!"
+msgstr "お探しのものが見つかりませんか？ぜひご相談ください。"
+
+#: patterns/faq.php:107
+msgid "Contact Us →"
+msgstr "お問い合わせ →"
+
+#: patterns/feature-boxes-with-button.php:17
+#: patterns/feature-boxes-with-icon-dark.php:17
+#: patterns/large-text-and-text-boxes.php:17
+msgid "Built For The Future"
+msgstr ""
+
+#: patterns/feature-boxes-with-button.php:21
+#: patterns/feature-boxes-with-icon-dark.php:21
+msgid "Get a 40 hour head start"
+msgstr "40時間のリードを掴め。"
+
+#: patterns/feature-boxes-with-button.php:25
+#: patterns/feature-boxes-with-icon-dark.php:25
+msgid ""
+"Building with blocks and patterns is super easy and fun! You can design "
+"beautiful landing pages with just a few clicks."
+msgstr ""
+"ブロックとパターンでのサイト作りは、驚くほど簡単で楽しい。  \n"
+"わずか数クリックで、美しいランディングページが完成します。"
+
+#: patterns/feature-boxes-with-button.php:37
+#: patterns/feature-boxes-with-icon-dark.php:37
+#: patterns/large-text-and-text-boxes.php:41
+msgid "Customize with clicks, not code"
+msgstr "コード不要、クリックでカスタマイズ"
+
+#: patterns/feature-boxes-with-button.php:47
+#: patterns/feature-boxes-with-button.php:69
+#: patterns/feature-boxes-with-button.php:91
+#: patterns/feature-boxes-with-button.php:113
+#: patterns/feature-boxes-with-button.php:135
+#: patterns/feature-boxes-with-button.php:157
+#: patterns/feature-boxes-with-icon-dark.php:47
+#: patterns/feature-boxes-with-icon-dark.php:69
+#: patterns/feature-boxes-with-icon-dark.php:91
+#: patterns/feature-boxes-with-icon-dark.php:113
+#: patterns/feature-boxes-with-icon-dark.php:135
+#: patterns/feature-boxes-with-icon-dark.php:157
+#: patterns/header-dark-with-buttons.php:24
+#: patterns/header-light-with-buttons.php:24
+#: patterns/large-text-and-text-boxes.php:51
+#: patterns/large-text-and-text-boxes.php:73
+#: patterns/large-text-and-text-boxes.php:95
+msgid "Learn More"
+msgstr "詳細はこちら"
+
+#: patterns/feature-boxes-with-button.php:59
+#: patterns/feature-boxes-with-icon-dark.php:59
+#: patterns/large-text-and-text-boxes.php:63
+msgid "Pixel perfect responsive design"
+msgstr "ピクセル単位まで美しい、完璧なレスポンシブデザイン"
+
+#: patterns/feature-boxes-with-button.php:63
+#: patterns/feature-boxes-with-icon-dark.php:63
+#: patterns/image-and-numbered-features.php:56
+#: patterns/large-text-and-text-boxes.php:67
+msgid ""
+"Your website deserves to look pixel-perfect on every device. Ollie ensures "
+"your entire design scales down gracefully automagically."
+msgstr ""
+"あなたのサイトは、どのデバイスでもピクセルパーフェクトであるべき。 Ollieな"
+"ら、デザイン全体が美しく自動調整されます。"
+
+#: patterns/feature-boxes-with-button.php:81
+#: patterns/feature-boxes-with-icon-dark.php:81
+#: patterns/large-text-and-text-boxes.php:85
+msgid "Blazing fast performance"
+msgstr "超高速パフォーマンス"
+
+#: patterns/feature-boxes-with-button.php:85
+#: patterns/feature-boxes-with-icon-dark.php:85
+#: patterns/image-and-numbered-features.php:74
+#: patterns/large-text-and-text-boxes.php:89
+msgid ""
+"We obsess over performance so you don't have to. Ollie is super lightweight "
+"and scores top marks on Google PageSpeed Insights."
+msgstr ""
+"パフォーマンスにこだわり抜いたOllie。超軽量で、Google PageSpeed Insightsも最"
+"高評価。"
+
+#: patterns/feature-boxes-with-button.php:103
+#: patterns/feature-boxes-with-icon-dark.php:103
+msgid "Build with beautiful patterns"
+msgstr "美しいパターンで、思い通りに"
+
+#: patterns/feature-boxes-with-button.php:107
+#: patterns/feature-boxes-with-icon-dark.php:107
+msgid ""
+"Creating unique designs has never been easier. Ollie's growing pattern "
+"library puts expertly designed patterns at your fingertips."
+msgstr ""
+"オリジナルデザインが、これまでになく簡単に。 Ollieの進化するパターンライブラ"
+"リで、プロのデザインを思いのままに。"
+
+#: patterns/feature-boxes-with-button.php:125
+#: patterns/feature-boxes-with-icon-dark.php:125
+msgid "Gorgeous typography"
+msgstr "美しく、洗練されたタイポグラフィ"
+
+#: patterns/feature-boxes-with-button.php:129
+#: patterns/feature-boxes-with-icon-dark.php:129
+msgid ""
+"Finely-crafted typography that makes your content shine and automatically "
+"scales down to the perfect size on every device."
+msgstr ""
+"日本語に最適化された美しいタイポグラフィ。 どのデバイスでもバランスよく自動調"
+"整されます。"
+
+#: patterns/feature-boxes-with-button.php:147
+#: patterns/feature-boxes-with-icon-dark.php:147
+msgid "Launch quicker"
+msgstr "サイト公開を、より速く"
+
+#: patterns/feature-boxes-with-button.php:151
+#: patterns/feature-boxes-with-icon-dark.php:151
+msgid ""
+"Ollie launches with built-in pattern designs, page templates, style "
+"variations and more so you can get your site launched quickly."
+msgstr ""
+"Ollieには、パターンデザイン、ページテンプレート、スタイルバリエーションなどが"
+"標準搭載。 すぐにサイトを公開できます。"
+
+#: patterns/features-with-emojis.php:22
+msgid "Ollie Patterns"
+msgstr "日本語対応、Ollieパターン"
+
+#: patterns/features-with-emojis.php:26
+msgid ""
+"Ollie ships with over twenty beautiful pattern designs you can use to build "
+"a stunning and powerful website. Easily drag and drop patterns to create a "
+"design and hit publish!"
+msgstr ""
+"Ollieには、見事で強力なWebサイトを構築するために使用できる20を超える美しいパ"
+"ターンデザインが付属しています。パターンを簡単にドラッグアンドドロップしてデ"
+"ザインを作成し、公開をクリックします。"
+
+#: patterns/features-with-emojis.php:36
+msgid "Ollie Templates"
+msgstr "Ollie テンプレート"
+
+#: patterns/features-with-emojis.php:40
+msgid ""
+"Ollie ships with over ten professionally-designed page templates (About, "
+"Profile, Download, etc.) so you can get your site off the ground in no time."
+msgstr ""
+"Ollieには、プロがデザインした10種類以上のページテンプレート（About、プロ"
+"フィール、ダウンロードなど）が揃っているので、ほんの数分でホームページを公開"
+"できます。"
+
+#: patterns/features-with-emojis.php:50
+msgid "Ollie Block Theme"
+msgstr "Ollie ブロックテーマ"
+
+#: patterns/features-with-emojis.php:54
+msgid ""
+"Build your entire site visually in WordPress with a powerful drag and drop "
+"page builder. No costly plugins or coding skills required! WordPress has "
+"never looked so good."
+msgstr ""
+"WordPressで、ドラッグ＆ドロップだけでサイト全体をデザイン。\n"
+"高額なプラグインもコードも不要。\n"
+"かつてない美しさを、あなたのサイトに。"
+
+#: patterns/features-with-emojis.php:64
+msgid "Ollie Onboarding"
+msgstr "Ollie オンボーディング"
+
+#: patterns/features-with-emojis.php:68
+msgid ""
+"Setting up a new site can be a pain! The Ollie Site Wizard takes care of "
+"those annoying setup steps and configures your site with a few clicks "
+"instead."
+msgstr ""
+"新しいサイトを立ち上げるのは大変な作業です。「Ollie サイトウィザード」機能"
+"は、これらの面倒なセットアップ手順を処理し、代わりに数回クリックするだけでサ"
+"イトを構成できます。"
+
+#: patterns/footer-dark-centered.php:20 patterns/footer-dark.php:123
+#: patterns/footer-light-centered.php:20 patterns/footer-light.php:119
+msgid "Download"
+msgstr "ダウンロード"
+
+#: patterns/footer-dark-centered.php:24 patterns/footer-dark.php:127
+#: patterns/footer-light-centered.php:24 patterns/footer-light.php:123
+msgid "Visit Ollie"
+msgstr "Ollie について"
+
+#: patterns/footer-dark-centered.php:28 patterns/footer-light-centered.php:28
+msgid "Twitter"
+msgstr "Twitter"
+
+#: patterns/footer-dark-centered.php:32 patterns/footer-dark.php:131
+#: patterns/footer-light-centered.php:32 patterns/footer-light.php:127
+msgid "Visit Mike"
+msgstr ""
+
+#: patterns/footer-dark-centered.php:37 patterns/footer-light-centered.php:37
+msgctxt "Copyright text"
+msgid ""
+"© 2024 · Powered by WordPress and <a href=\"https://olliewp.com\">Ollie</a>"
+msgstr ""
+"© 2024年度 ·Powered by WordPress と <a href=\"https://olliewp.com\">Ollie</a>"
+
+#: patterns/footer-dark-minimal.php:19 patterns/footer-light-minimal.php:19
+msgctxt "Copyright text"
+msgid ""
+"© 2025 · Powered by WordPress and <a href=\"https://olliewp.com\">Ollie</a>"
+msgstr ""
+"© 2025年度 ·Powered by WordPress と <a href=\"https://olliewp.com\">Ollie</a>"
+
+#: patterns/footer-dark.php:20 patterns/footer-light.php:20
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme. No coding skills required. Download "
+"for free today!"
+msgstr "美しく、自由に。コード不要。Ollieで、新しいWordPressを体験しよう。"
+
+#: patterns/footer-dark.php:38
+msgid "Company"
+msgstr "会社名"
+
+#: patterns/footer-dark.php:43 patterns/footer-light.php:43
+msgid "About"
+msgstr "概要"
+
+#: patterns/footer-dark.php:47 patterns/footer-light.php:47
+msgid "Careers"
+msgstr "採用情報"
+
+#: patterns/footer-dark.php:51 patterns/footer-light.php:51
+msgid "Brand Assets"
+msgstr "ブランドガイドライン"
+
+#: patterns/footer-dark.php:55 patterns/footer-dark.php:71
+#: patterns/footer-light.php:55 patterns/footer-light.php:71
+msgid "Contact"
+msgstr "お問い合わせ"
+
+#: patterns/footer-dark.php:62
+msgid "Resources"
+msgstr "リソース"
+
+#: patterns/footer-dark.php:67 patterns/footer-light.php:67
+msgid "Blog"
+msgstr "ブログ"
+
+#: patterns/footer-dark.php:75 patterns/footer-light.php:75
+msgid "Support Docs"
+msgstr "サポートドキュメント"
+
+#: patterns/footer-dark.php:79 patterns/footer-light.php:79
+msgid "Get Help"
+msgstr "ヘルプ"
+
+#: patterns/footer-dark.php:86
+msgid "Product"
+msgstr "商品"
+
+#: patterns/footer-dark.php:99 patterns/footer-light.php:99
+msgid "Use Cases"
+msgstr "利用例"
+
+#: patterns/footer-dark.php:103 patterns/footer-light.php:103
+msgid "Demo"
+msgstr "デモ"
+
+#: patterns/footer-dark.php:118 patterns/footer-light.php:114
+msgctxt "Copyright text"
+msgid ""
+"© 2025 <strong>·</strong> Powered by WordPress and <a href=\"https://"
+"olliewp.com\">Ollie</a>"
+msgstr ""
+"© 2025年度 <strong>·</strong> Powered by WordPress と <a href=\"https://"
+"olliewp.com\">Ollie</a>"
+
+#: patterns/footer-light.php:38
+msgctxt "Section heading"
+msgid "Company"
+msgstr "会社名"
+
+#: patterns/footer-light.php:62
+msgctxt "Section heading"
+msgid "Resources"
+msgstr "リソース"
+
+#: patterns/footer-light.php:86
+msgctxt "Section heading"
+msgid "Product"
+msgstr "商品"
+
+#: patterns/header-dark-with-banner.php:18
+#: patterns/header-light-with-banner.php:18
+msgid "We've just launched a new product!"
+msgstr "新製品を発売しました!"
+
+#: patterns/hero-call-to-action-buttons-light.php:16
+#: patterns/hero-text-image-and-logos.php:17
+msgid "Welcome to Ollie"
+msgstr ""
+
+#: patterns/hero-call-to-action-buttons-light.php:20
+#: patterns/hero-call-to-action-buttons.php:23
+#: patterns/hero-text-image-and-logos.php:21
+msgid "Design faster and publish sooner with Ollie"
+msgstr "Ollieで最速デザイン、瞬速公開"
+
+#: patterns/hero-call-to-action-buttons-light.php:29
+#: patterns/hero-text-image-and-logos.php:30
+msgid "Free Download"
+msgstr "無料ダウンロード"
+
+#: patterns/hero-call-to-action-buttons.php:15 patterns/hero-dark.php:15
+msgid "Person working on laptop"
+msgstr "ノートパソコンで作業する人"
+
+#: patterns/hero-call-to-action-buttons.php:19 patterns/hero-dark.php:19
+#: patterns/hero-light.php:19
+msgid "WordPress Reimagined"
+msgstr "WordPressの再考"
+
+#: patterns/hero-call-to-action-buttons.php:37 patterns/hero-dark.php:37
+#: patterns/hero-light.php:37
+msgid "Ollie Features"
+msgstr "特徴・サービス"
+
+#: patterns/hero-dark.php:23 patterns/hero-light.php:23
+msgid "Build your site with clicks, not code."
+msgstr "コード不要、クリックでサイトを完成させよう"
+
+#: patterns/hero-dark.php:43 patterns/hero-light.php:43
+msgid "Desktop screenshot"
+msgstr "デスクトップのスクリーンショット"
+
+#: patterns/hero-text-image-and-logos.php:44
+msgid "✴︎ Built for the future, but ready to use today"
+msgstr "✴︎ 未来基準のデザイン、今すぐ使える。"
+
+#: patterns/image-and-numbered-features.php:34
+msgid "Super simple customization"
+msgstr "超シンプルなカスタマイズ"
+
+#: patterns/image-and-numbered-features.php:52
+msgid "Pixel-perfect patterns"
+msgstr "ピクセル単位まで美しいパターン"
+
+#: patterns/image-and-numbered-features.php:70
+msgid "Blazing fast by default"
+msgstr "デフォルトで超高速"
+
+#: patterns/job-openings.php:17
+msgid "We're Hiring"
+msgstr ""
+
+#: patterns/job-openings.php:21
+msgid "Let's work together!"
+msgstr "一緒に働きませんか？"
+
+#: patterns/job-openings.php:25
+msgid ""
+"We're currently hiring for several different roles. All of our positions are "
+"remote flexible and our salaries are above competitive in the industry."
+msgstr ""
+"現在、複数のポジションで採用中です。すべてリモートフレックス対応、業界トップ"
+"クラスの給与を保証します。"
+
+#: patterns/job-openings.php:34 patterns/single-testimonial.php:34
+#: patterns/team-members.php:38 patterns/team-members.php:60
+#: patterns/team-members.php:82 patterns/testimonial-highlight.php:34
+#: patterns/testimonials-and-logos.php:46
+msgid "Product Designer"
+msgstr "プロダクトデザイナー"
+
+#: patterns/job-openings.php:39 patterns/job-openings.php:64
+msgid "Full Time · Remote"
+msgstr "フルタイム・リモート"
+
+#: patterns/job-openings.php:46 patterns/job-openings.php:70
+#: patterns/job-openings.php:94 patterns/job-openings.php:118
+msgid "Apply →"
+msgstr "応募する →"
+
+#: patterns/job-openings.php:60 patterns/testimonials-with-social-links.php:60
+msgid "Software Engineer"
+msgstr "ソフトウェアエンジニア"
+
+#: patterns/job-openings.php:84
+msgid "Principal Engineer"
+msgstr "プリンシパルエンジニア"
+
+#: patterns/job-openings.php:88
+msgid "Full Time · San Francisco"
+msgstr "フルタイム ·サンフランシスコ"
+
+#: patterns/job-openings.php:108
+msgid "Marketing Manager"
+msgstr "マーケティングマネージャー"
+
+#: patterns/job-openings.php:112
+msgid "Part Time · Remote"
+msgstr "パートタイム ·リモート"
+
+#: patterns/large-text-and-text-boxes.php:25
+#, php-format
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme. %s"
+msgstr ""
+"新しいWordPressサイトエディターとOllieブロックテーマで、自由に美しく。%s"
+
+#: patterns/large-text-and-text-boxes.php:26
+#: patterns/testimonials-with-big-text.php:22
+msgid "No coding skills required."
+msgstr "コード不要。"
+
+#: patterns/numbers-stacked.php:18
+msgid "50+ Patterns"
+msgstr "50+パターン"
+
+#: patterns/numbers-stacked.php:22
+msgid ""
+"Ollie ships with over 50 pixel-perfect pattern designs you can use to build "
+"a stunning website with a few clicks."
+msgstr ""
+"Ollieには、わずか数クリックで魅力的なWebサイトを作れる、50以上のピクセルパー"
+"フェクトなパターンが揃っています。"
+
+#: patterns/numbers-stacked.php:28
+msgid "5+ Layouts"
+msgstr "5+レイアウト"
+
+#: patterns/numbers-stacked.php:32
+msgid ""
+"Ollie ships with several full page designs such as Homepage, About, "
+"Features, Download, and more."
+msgstr ""
+"Ollieには、ホームページ、バージョン情報、機能、ダウンロードなど、いくつかのフ"
+"ルページデザインが付属しています。"
+
+#: patterns/numbers-stacked.php:38
+msgid "1000+ Hours"
+msgstr "1000+時間"
+
+#: patterns/numbers-stacked.php:42
+msgid ""
+"We've spent thousands of hours crafting WordPress themes and applied "
+"everything we know to Ollie."
+msgstr ""
+"私たちは何千時間もかけてWordPressテーマを作成し、私たちが知っていることをすべ"
+"てOllieに適用しました。"
+
+#: patterns/numbers-stacked.php:48
+msgid "200+ Ratings"
+msgstr "200+ 評価"
+
+#: patterns/numbers-stacked.php:52
+msgid ""
+"Ollie boasts over two hundred 5 star reviews and an average rating of 9 on "
+"Rotten Tomatoes."
+msgstr ""
+"Ollieは、Rotten Tomatoesで200以上の5つ星レビューを獲得し、平均評価9を誇りま"
+"す。"
+
+#: patterns/numbers.php:23
+msgid "Performance"
+msgstr "パフォーマンス"
+
+#: patterns/numbers.php:27
+msgid "Blazing-fast performance out of the box. No caching plugins needed."
+msgstr "すぐに使える超高速パフォーマンス。キャッシュプラグインは不要です。"
+
+#: patterns/numbers.php:37
+msgid "SEO Boost"
+msgstr "SEOブースト"
+
+#: patterns/numbers.php:41
+msgid ""
+"Built with SEO best practices in mind to help you rank in search engines."
+msgstr "SEOのベストプラクティスを採用し、検索上位を狙える設計"
+
+#: patterns/numbers.php:51
+msgid "Accessibility"
+msgstr "アクセシビリティ"
+
+#: patterns/numbers.php:55
+msgid ""
+"Accessibility compliant to ensure equal access to content and functionality."
+msgstr ""
+"アクセシビリティに対応し、すべての人がコンテンツと機能にアクセスできるように"
+"設計されています。"
+
+#: patterns/page-profile.php:22
+msgid "Sandra Voyager"
+msgstr "佐藤 彩花"
+
+#: patterns/page-profile.php:26
+msgid ""
+"Use this page as a LinkTree alternative. Link your social media accounts to "
+"this page so your followers can find all of your important links."
+msgstr ""
+"このページをLinkTreeの代わりに活用できます。SNSアカウントをまとめて、フォロ"
+"ワーがすぐにリンクにアクセスできるようにしましょう。"
+
+#: patterns/page-profile.php:44
+msgid "Visit My Website"
+msgstr "私のウェブサイトにアクセス"
+
+#: patterns/page-profile.php:48
+msgid "Follow on Twitter"
+msgstr "Twitterでフォロー"
+
+#: patterns/page-profile.php:52
+msgid "Buy My Creator Course"
+msgstr "My Creatorコースを購入する"
+
+#: patterns/page-profile.php:56
+msgid "Join my Patreon"
+msgstr "Patreonに参加する"
+
+#: patterns/pricing-table-3-column.php:17
+#: patterns/pricing-table-with-testimonials.php:17
+#: patterns/pricing-table.php:17
+msgid "Simple Pricing"
+msgstr ""
+
+#: patterns/pricing-table-3-column.php:21
+#: patterns/pricing-table-with-testimonials.php:21
+#: patterns/pricing-table.php:21
+msgid "Small prices, huge value"
+msgstr "お手頃価格で、圧倒的な価値を"
+
+#: patterns/pricing-table-3-column.php:25
+#: patterns/pricing-table-with-testimonials.php:25
+#: patterns/pricing-table.php:25
+msgid ""
+"Easily create beautiful and responsive pricing tables with Ollie patterns. "
+"Connect your eCommerce solution and start making bank."
+msgstr ""
+"Ollieのパターンを使って、美しくレスポンシブな料金表を簡単に作成。  \n"
+"eコマースのソリューションと連携して、売上を伸ばしましょう。"
+
+#: patterns/pricing-table-3-column.php:221
+#: patterns/pricing-table-with-testimonials.php:221
+msgid "Essential"
+msgstr "エッセンシャル"
+
+#: patterns/pricing-table-3-column.php:225
+#: patterns/pricing-table-with-testimonials.php:225
+msgid ""
+"Great for folks who are just getting started and only need the basic "
+"features and support."
+msgstr "始めたばかりで、基本的な機能とサポートのみが必要な人に最適です。"
+
+#: patterns/pricing-table.php:200
+#, php-format
+msgid ""
+"Not convinced? We offer a %s for all purchases. Try our product with "
+"confidence, and if you don't like it, we'll make it right."
+msgstr ""
+"納得できませんか?すべての購入に%sを提供しています。自信を持って私たちの製品を"
+"試してみてください、そしてあなたがそれを好きでなければ、私たちはそれを正しく"
+"します。"
+
+#: patterns/pricing-table.php:201
+msgid "100% money back guarantee"
+msgstr "100%返金保証"
+
+#: patterns/single-testimonial.php:16
+msgid ""
+"Wow, I really can't believe how powerful the WordPress Site Editor is "
+"combined with Ollie. I don't even need a page builder anymore!"
+msgstr ""
+"WordPressサイトエディターとOllieの組み合わせがすごい🤯もうページビルダーは必"
+"要ないかも😂"
+
+#: patterns/single-testimonial.php:30 patterns/team-members.php:78
+#: patterns/testimonial-highlight.php:30 patterns/testimonials-and-logos.php:42
+#: patterns/testimonials-with-big-text.php:75
+#: patterns/testimonials-with-social-links.php:56
+msgid "Maryann Alpine"
+msgstr "佐藤 真理"
+
+#: patterns/team-members.php:17
+msgid "Meet Our People"
+msgstr ""
+
+#: patterns/team-members.php:21
+msgid "A small but mighty team"
+msgstr "少数精鋭の強力なチーム"
+
+#: patterns/team-members.php:25
+msgid ""
+"We're a small team of diverse creators with the aim of creating the best "
+"possible WordPress products for you. Join our team today!"
+msgstr ""
+"私たちは、最高のWordPress製品を提供することを目指す、多様なクリエイターたちの"
+"小さなチームです。  \n"
+"今すぐ、私たちのチームに参加しましょう！"
+
+#: patterns/team-members.php:34
+msgid "Tracy Capitan"
+msgstr "高橋 翔太"
+
+#: patterns/team-members.php:56
+msgid "Michael Glacier"
+msgstr "田中 大輔"
+
+#: patterns/template-page-404.php:16
+msgid "Page Not Found"
+msgstr "お探しのページが見つかりません。"
+
+#: patterns/template-page-404.php:20
+msgid ""
+"Unfortunately, the page you are looking for no longer exists, or has been "
+"moved. Please try searching for your content below."
+msgstr ""
+"申し訳ありませんが、お探しのページは存在しないか、移動された可能性がありま"
+"す。  \n"
+"下記の検索バーからコンテンツをお探しください。🔍"
+
+#: patterns/template-page-404.php:24 patterns/template-page-search.php:18
+msgid "Search"
+msgstr "検索"
+
+#: patterns/template-page-search.php:18
+msgid "Search site..."
+msgstr "サイトを検索..."
+
+#: patterns/template-page-search.php:42
+msgid "Sorry, nothing was found for that search term."
+msgstr "申し訳ありませんが、その検索キーワードでは何も見つかりませんでした。"
+
+#: patterns/testimonial-highlight.php:16
+msgid ""
+"I'm super impressed with how powerful the WordPress Site Editor is. I can "
+"design my site so quickly with patterns!"
+msgstr ""
+"WordPressサイトエディターのパワーに感動。\n"
+"パターンを使えば、あっという間にサイトが完成。"
+
+#: patterns/testimonial-highlight.php:25 patterns/testimonials-and-logos.php:37
+#: patterns/testimonials-and-logos.php:59
+#: patterns/testimonials-and-logos.php:81
+#: patterns/testimonials-and-logos.php:103
+#: patterns/testimonials-with-social-links.php:51
+#: patterns/testimonials-with-social-links.php:87
+msgid "Testimonial author avatar"
+msgstr "推薦状著者アバター"
+
+#: patterns/testimonials-and-logos.php:21
+msgid "We love our customers"
+msgstr "あなたに寄り添う存在でありたい"
+
+#: patterns/testimonials-and-logos.php:25
+msgid ""
+"Customer happiness is at the core of our business model. If our customers "
+"aren't succeeding, we're not succeeding. See what they're saying below."
+msgstr ""
+"お客様の満足が、私たちのビジネスの中心です。お客様が成功しなければ、私たちも"
+"成功していません。実際にお客様がどう感じているか、下記でご覧ください。"
+
+#: patterns/testimonials-and-logos.php:32
+msgid ""
+"Wow, I really can't believe how powerful the WordPress Site Editor is "
+"combined with Ollie. I don't even need my page builder plugin anymore! "
+"Everything I need is built right in and ready for me at the beginning of "
+"every project."
+msgstr ""
+"すごい！🎉 WordPressサイトエディターとOllieの組み合わせがこんなに強力だとは信"
+"じられません。\n"
+"もうページビルダープラグインも必要ありません。必要なものはすべて最初から組み"
+"込まれていて、プロジェクト開始時からすぐに使えます。⚡"
+
+#: patterns/testimonials-and-logos.php:54
+#: patterns/testimonials-with-social-links.php:46
+msgid ""
+"I love using WordPress but traditionally it has been hard to design in. Not "
+"any more! I can quickly build out page sections or full page designs with "
+"Ollie patterns. Saves me so much time!"
+msgstr ""
+"WordPressは大好き。でも、デザインは大変だった。Ollieのパターンなら、ページの"
+"セクションもフルデザインも一瞬で完成🎯圧倒的な時短を実現。"
+
+#: patterns/testimonials-and-logos.php:64
+msgid "Bill Glacier"
+msgstr "鈴木 一郎"
+
+#: patterns/testimonials-and-logos.php:68
+msgid "Marketer"
+msgstr "マーケティング 担当者"
+
+#: patterns/testimonials-and-logos.php:76
+#: patterns/testimonials-with-social-links.php:82
+msgid ""
+"I create a lot of landing pages, and the Site Editor and Ollie have been "
+"huge for this. I can choose from a pre-designed landing page, customize my "
+"brand colors, and I'm ready to launch."
+msgstr ""
+"ランディングページをたくさん作るけど、サイトエディターとOllieのおかげで驚くほ"
+"どスムーズに。 \n"
+"デザイン済みのテンプレートを選び、ブランドカラーを調整するだけで、すぐに公開"
+"できるようになった🐣"
+
+#: patterns/testimonials-and-logos.php:86
+msgid "Erik Acadia"
+msgstr "藤井 輝"
+
+#: patterns/testimonials-and-logos.php:90
+msgid "Video Producer"
+msgstr "ビデオプロデューサー"
+
+#: patterns/testimonials-and-logos.php:98
+msgid ""
+"I was skeptical about all the changes going on in WordPress, but now that "
+"I've seen how powerful it can be, I'm convinced. Ollie made it super easy to "
+"get started with the \"new\" WordPress."
+msgstr ""
+"WordPressの変化には半信半疑だったけど、そのパワーを実感して考えが変わった。 "
+"Ollieのおかげで、新しいWordPressをスムーズに使いこなせるようになりました。"
+
+#: patterns/testimonials-and-logos.php:108
+msgid "Andrea Sequoia"
+msgstr "中村 彩花"
+
+#: patterns/testimonials-and-logos.php:112
+msgid "Customer Support"
+msgstr "カスタマーサポート"
+
+#: patterns/testimonials-and-logos.php:121
+msgid "Trusted by the biggest brands on the planet"
+msgstr "世界のトップブランドからも信頼されています"
+
+#: patterns/testimonials-and-logos.php:126
+#: patterns/testimonials-and-logos.php:130
+#: patterns/testimonials-and-logos.php:134
+#: patterns/testimonials-and-logos.php:138
+#: patterns/testimonials-and-logos.php:142
+msgid "Brand logo"
+msgstr "ブランドロゴ"
+
+#: patterns/testimonials-with-big-text.php:22
+msgid ""
+"Easily create beautiful, blazing-fast websites with the new WordPress Site "
+"Editor."
+msgstr "新しいWordPressサイトエディターで、美しく高速なサイトを簡単に構築。"
+
+#: patterns/testimonials-with-big-text.php:31
+msgid "★★★★★"
+msgstr "★★★★★"
+
+#: patterns/testimonials-with-big-text.php:65
+msgid ""
+"I create a lot of landing pages, and the Site Editor and Ollie have been a "
+"game changer for this. Choose a layout, add my content, hit publish."
+msgstr ""
+"ランディングページをたくさん作るけど、サイトエディターとOllieのおかげで劇的に"
+"変わった。  \n"
+"レイアウトを選び、コンテンツを追加して、あとは公開するだけ。"
+
+#: patterns/testimonials-with-social-links.php:21
+msgid "Meet our happy campers"
+msgstr "私たちの満足ユーザーをご紹介"
+
+#: patterns/testimonials-with-social-links.php:25
+msgid ""
+"Customer happiness as at the core of our business model. If our customers "
+"aren't succeeding, we're not succeeding. See what they're saying below."
+msgstr ""
+"私たちは、お客様の成功を何より大切にしています。 実際にOllieを使ったユーザー"
+"の声をご紹介します。"
+
+#: patterns/testimonials-with-social-links.php:33
+msgid "Via Twitter →"
+msgstr "Twitter →"
+
+#: patterns/testimonials-with-social-links.php:69
+msgid "Via Facebook →"
+msgstr "Facebook →"
+
+#: patterns/testimonials-with-social-links.php:96
+msgid "Brand Designer"
+msgstr "ブランドデザイナー"
+
+#: patterns/text-and-image-columns-with-icons.php:19
+msgid "Pick Your Pattern"
+msgstr "パターンを選ぶ"
+
+#: patterns/text-and-image-columns-with-icons.php:23
+msgid "Beautiful design just got a whole lot easier"
+msgstr "美しさを、もっとシンプルに。"
+
+#: patterns/text-and-image-columns-with-icons.php:33
+msgid "View Ollie Patterns"
+msgstr "Ollieパターンを見てみる"
+
+#: patterns/text-and-image-columns-with-icons.php:49
+msgid ""
+"All patterns are designed with mobile and tablet in mind. All designs and "
+"typography scale down to pixel-perfect perfection."
+msgstr ""
+"すべてのパターンはモバイルとタブレットを考慮して設計。  \n"
+"デザインもタイポグラフィも、美しくピクセルパーフェクトに調整されます。"
+
+#: patterns/text-and-image-columns-with-icons.php:61
+msgid ""
+"With a growing pattern collection, you can create 100's of different page "
+"designs without repeating the same design."
+msgstr ""
+"増え続けるパターンコレクションで、何百通りものページデザインを作成可能。  \n"
+"同じデザインを繰り返すことなく、自由にカスタマイズできます。"
+
+#: patterns/text-and-image-columns-with-icons.php:70
+msgid "Hands typing on computer"
+msgstr "コンピューターでの手入力"
+
+#: patterns/text-and-image-columns-with-testimonial.php:27
+msgid "Build on WordPress"
+msgstr "WordPressで構築"
+
+#: patterns/text-and-image-columns-with-testimonial.php:31
+msgid "Ollie is built for the new WordPress Site Editor"
+msgstr "Ollie、新しいWordPressサイトエディターとともに。"
+
+#: patterns/text-and-image-columns-with-testimonial.php:35
+msgid ""
+"Did you know you can build a blazing-fast, fully-customizable website with "
+"the native WordPress editor now? Download the Ollie block theme to start "
+"learning the new WordPress today!"
+msgstr ""
+"WordPressのネイティブエディターだけで、超高速＆フルカスタマイズ可能なサイトを"
+"作れるって知ってましたか？Ollieブロックテーマをダウンロードして、新しい"
+"WordPressを体験しましょう。"
+
+#: patterns/text-and-image-columns-with-testimonial.php:60
+msgctxt "Testimonial author"
+msgid "— Mandi Alpine, Brandwich"
+msgstr "— 松本 美咲（Brandwich）"
+
+#: patterns/text-call-to-action-buttons.php:18
+msgid "Launch Faster"
+msgstr "公開までを、より速く"
+
+#: patterns/text-call-to-action-buttons.php:22
+msgid "No code? No problem. Design websites faster with patterns."
+msgstr "コード不要。パターンで、もっと速く美しく。"
+
+#: patterns/text-call-to-action-buttons.php:28
+msgid "The future of WordPress site building is here. Are you ready?"
+msgstr "WordPressサイト構築の未来がここにあります。準備はいいですか。"
+
+#: patterns/text-call-to-action-buttons.php:37
+msgid "See Our Features"
+msgstr "特徴・サービス"
+
+#: patterns/text-call-to-action.php:18
+msgid "No code? No problem."
+msgstr "ノーコード、ノープロブレム。"
+
+#: patterns/text-call-to-action.php:22
+msgid ""
+"Build your blazing fast website with the power of the WordPress Site Editor "
+"and beautiful, pre-made designs from Ollie. No coding skills required."
+msgstr ""
+"WordPressサイトエディターのパワーとOllieの美しいデザインで、超高速なサイトを"
+"構築。  \n"
+"コード不要で、誰でも簡単に。"
+
+#. Theme Name of the plugin/theme
+msgid "Ollie Child"
+msgstr "Ollie Child"
+
+#. Theme URI of the plugin/theme
+msgid "https://olliewp.com"
+msgstr "https://example.com"
+
+#. Description of the plugin/theme
+msgid "A child theme for Ollie."
+msgstr "Ollieの子テーマ"
+
+#. Author of the plugin/theme
+msgid "OllieWP"
+msgstr "OllieWP"
+
+#. Author URI of the plugin/theme
+msgid "http://example.com"
+msgstr "https://example.com"
+
+#~ msgid "Animation Settings"
+#~ msgstr "アニメーション設定"
+
+#~ msgid "💫 Animation"
+#~ msgstr "💫 アニメーション"
+
+#~ msgid "Animation Type"
+#~ msgstr "アニメーションタイプ"
+
+#~ msgid "Animation Duration (seconds)"
+#~ msgstr "アニメーション時間（秒）"
+
+#~ msgid "Delay Time (seconds)"
+#~ msgstr "遅延時間（秒）"
+
+#~ msgid "Secondary"
+#~ msgstr "セカンダリー"
+
+#~ msgid "チェック"
+#~ msgstr "チェック"
+
+#~ msgid "Dark"
+#~ msgstr "ダーク"
+
+#~ msgid "Sidebar"
+#~ msgstr "サイドバー"
+
+#~ msgid ""
+#~ "The Sidebar template defines a page area that can be found on the Page "
+#~ "(With Sidebar) template."
+#~ msgstr ""
+#~ "「サイドバー」テンプレートは、サイドバーが付いたページのレイアウトを決める"
+#~ "ためのテンプレートです。\n"
+#~ "簡単に言うと、ページのメイン部分（記事など）とサイドバー（メニューやリンク"
+#~ "など）をどう配置するかを設定するものです。"
+
+#~ msgid "Japonizm"
+#~ msgstr "ジャポニズム"
+
+#, fuzzy
+#~ msgid "https://example.com/japonizm"
+#~ msgstr "https://example.com/japonizm"
+
+#, fuzzy
+#~ msgid "A Japanese-focused Full Site Editing theme based on JaponizmWP."
+#~ msgstr "JaponizmWPをベースにした日本語に特化したフルサイト編集FSEテーマ"

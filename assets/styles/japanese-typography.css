@@ -1,0 +1,315 @@
+/* Japanese Typography Optimization
+--------------------------------------------- */
+
+/* 共通の日本語最適化設定 */
+.is-style-professional-mix-jp,
+.is-style-elegant-mincho-jp,
+.is-style-modern-pop-jp,
+[data-style-variation="professional-mix-jp"],
+[data-style-variation="elegant-mincho-jp"],
+[data-style-variation="modern-pop-jp"] {
+    /* 日本語最適化 */
+    font-feature-settings: "palt" 1; /* 約物詰め */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* プロフェッショナル混合スタイル専用の設定 */
+.is-style-professional-mix-jp,
+[data-style-variation="professional-mix-jp"] {
+    /* Professional Mix 固有の設定 */
+}
+
+/* 見出しの日本語最適化 */
+.is-style-professional-mix-jp h1,
+.is-style-professional-mix-jp h2,
+.is-style-professional-mix-jp h3,
+.is-style-professional-mix-jp h4,
+.is-style-professional-mix-jp h5,
+.is-style-professional-mix-jp h6,
+[data-style-variation="professional-mix-jp"] h1,
+[data-style-variation="professional-mix-jp"] h2,
+[data-style-variation="professional-mix-jp"] h3,
+[data-style-variation="professional-mix-jp"] h4,
+[data-style-variation="professional-mix-jp"] h5,
+[data-style-variation="professional-mix-jp"] h6 {
+    font-feature-settings: "palt" 1;
+    word-break: keep-all; /* 単語の途中で改行しない */
+    overflow-wrap: break-word;
+    hanging-punctuation: first last; /* 句読点のぶら下げ */
+}
+
+/* 本文の読みやすさ向上 */
+.is-style-professional-mix-jp p,
+.is-style-professional-mix-jp li,
+[data-style-variation="professional-mix-jp"] p,
+[data-style-variation="professional-mix-jp"] li {
+    text-align: justify;
+    text-justify: inter-ideograph; /* 日本語の均等配置 */
+    word-break: break-all; /* 日本語の改行 */
+    line-break: strict; /* 厳密な改行規則 */
+}
+
+/* リード文・大きめテキスト */
+.is-style-professional-mix-jp .has-large-font-size,
+.is-style-professional-mix-jp .has-x-large-font-size,
+[data-style-variation="professional-mix-jp"] .has-large-font-size,
+[data-style-variation="professional-mix-jp"] .has-x-large-font-size {
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+}
+
+/* 引用文の装飾 */
+.is-style-professional-mix-jp blockquote,
+[data-style-variation="professional-mix-jp"] blockquote {
+    font-family: "Noto Serif JP", "游明朝", "Yu Mincho", serif;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.9;
+    padding-left: 1.5em;
+    border-left: 3px solid currentColor;
+    opacity: 0.9;
+}
+
+/* リストの調整 */
+.is-style-professional-mix-jp ul,
+.is-style-professional-mix-jp ol,
+[data-style-variation="professional-mix-jp"] ul,
+[data-style-variation="professional-mix-jp"] ol {
+    line-height: 1.8;
+}
+
+.is-style-professional-mix-jp li,
+[data-style-variation="professional-mix-jp"] li {
+    margin-bottom: 0.5em;
+}
+
+/* テーブルの日本語最適化 */
+.is-style-professional-mix-jp table,
+[data-style-variation="professional-mix-jp"] table {
+    font-feature-settings: "palt" 1, "tnum" 1; /* 約物詰め + 等幅数字 */
+}
+
+.is-style-professional-mix-jp th,
+[data-style-variation="professional-mix-jp"] th {
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* ボタンテキスト */
+.is-style-professional-mix-jp .wp-block-button__link,
+[data-style-variation="professional-mix-jp"] .wp-block-button__link {
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+/* 英数字混在時の調整 */
+.is-style-professional-mix-jp,
+[data-style-variation="professional-mix-jp"] {
+    /* 欧文と和文の間隔調整 */
+    font-kerning: normal;
+}
+
+/* コード・整形済みテキスト */
+.is-style-professional-mix-jp code,
+.is-style-professional-mix-jp pre,
+[data-style-variation="professional-mix-jp"] code,
+[data-style-variation="professional-mix-jp"] pre {
+    font-family: "Source Code Pro", "Noto Sans Mono CJK JP", monospace;
+    letter-spacing: 0;
+}
+
+/* スマートフォン対応 */
+@media (max-width: 768px) {
+    .is-style-professional-mix-jp,
+    [data-style-variation="professional-mix-jp"] {
+        font-size: 15px; /* 基本サイズを少し小さく */
+    }
+    
+    .is-style-professional-mix-jp h1,
+    .is-style-professional-mix-jp h2,
+    .is-style-professional-mix-jp h3,
+    [data-style-variation="professional-mix-jp"] h1,
+    [data-style-variation="professional-mix-jp"] h2,
+    [data-style-variation="professional-mix-jp"] h3 {
+        letter-spacing: 0.05em; /* モバイルでは文字間を狭く */
+        line-height: 1.5;
+    }
+    
+    .is-style-professional-mix-jp p,
+    [data-style-variation="professional-mix-jp"] p {
+        line-height: 1.75;
+        letter-spacing: 0.02em;
+        text-align: left; /* モバイルでは左寄せ */
+    }
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+    .is-style-professional-mix-jp,
+    [data-style-variation="professional-mix-jp"] {
+        /* ダークモードでの文字の見やすさ向上 */
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}
+
+/* 印刷対応 */
+@media print {
+    .is-style-professional-mix-jp,
+    [data-style-variation="professional-mix-jp"] {
+        font-family: "游明朝", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    }
+    
+    .is-style-professional-mix-jp h1,
+    .is-style-professional-mix-jp h2,
+    .is-style-professional-mix-jp h3,
+    [data-style-variation="professional-mix-jp"] h1,
+    [data-style-variation="professional-mix-jp"] h2,
+    [data-style-variation="professional-mix-jp"] h3 {
+        font-weight: bold;
+        page-break-after: avoid;
+    }
+}
+
+/* ================================================================
+   エレガント明朝スタイル専用
+   ================================================================ */
+
+.is-style-elegant-mincho-jp,
+[data-style-variation="elegant-mincho-jp"] {
+    /* 全体的に余白を広めに */
+    --wp--custom--spacing--paragraph: 2em;
+}
+
+/* エレガント明朝の見出し装飾 */
+.is-style-elegant-mincho-jp h1,
+[data-style-variation="elegant-mincho-jp"] h1 {
+    position: relative;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+.is-style-elegant-mincho-jp h1::after,
+[data-style-variation="elegant-mincho-jp"] h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3em;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.3;
+}
+
+/* エレガント明朝の引用文 */
+.is-style-elegant-mincho-jp blockquote,
+[data-style-variation="elegant-mincho-jp"] blockquote {
+    position: relative;
+    padding: 2em;
+    font-style: normal;
+}
+
+.is-style-elegant-mincho-jp blockquote::before,
+[data-style-variation="elegant-mincho-jp"] blockquote::before {
+    content: "「";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 3em;
+    opacity: 0.2;
+    line-height: 1;
+}
+
+/* エレガント明朝のボタン */
+.is-style-elegant-mincho-jp .wp-block-button__link,
+[data-style-variation="elegant-mincho-jp"] .wp-block-button__link {
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.is-style-elegant-mincho-jp .wp-block-button__link:hover,
+[data-style-variation="elegant-mincho-jp"] .wp-block-button__link:hover {
+    background: currentColor;
+    color: white;
+}
+
+/* ================================================================
+   モダンポップスタイル専用
+   ================================================================ */
+
+.is-style-modern-pop-jp,
+[data-style-variation="modern-pop-jp"] {
+    /* 活発な印象のための設定 */
+    --wp--custom--spacing--paragraph: 1.5em;
+}
+
+/* モダンポップの見出し装飾 */
+.is-style-modern-pop-jp h1,
+.is-style-modern-pop-jp h2,
+[data-style-variation="modern-pop-jp"] h1,
+[data-style-variation="modern-pop-jp"] h2 {
+    position: relative;
+    padding-left: 0.5em;
+}
+
+.is-style-modern-pop-jp h1::before,
+.is-style-modern-pop-jp h2::before,
+[data-style-variation="modern-pop-jp"] h1::before,
+[data-style-variation="modern-pop-jp"] h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 1.2em;
+    background: linear-gradient(180deg, #FF6B6B 0%, #4ECDC4 100%);
+    border-radius: 2px;
+}
+
+/* モダンポップのリスト */
+.is-style-modern-pop-jp ul li,
+[data-style-variation="modern-pop-jp"] ul li {
+    position: relative;
+    padding-left: 1.5em;
+}
+
+.is-style-modern-pop-jp ul li::before,
+[data-style-variation="modern-pop-jp"] ul li::before {
+    content: "▶";
+    position: absolute;
+    left: 0;
+    color: #FF6B6B;
+    font-size: 0.8em;
+}
+
+/* モダンポップのボタン */
+.is-style-modern-pop-jp .wp-block-button__link,
+[data-style-variation="modern-pop-jp"] .wp-block-button__link {
+    border-radius: 50px;
+    padding: 0.8em 2em;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+}
+
+.is-style-modern-pop-jp .wp-block-button__link:hover,
+[data-style-variation="modern-pop-jp"] .wp-block-button__link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* モダンポップの引用文 */
+.is-style-modern-pop-jp blockquote,
+[data-style-variation="modern-pop-jp"] blockquote {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    border-radius: 20px;
+    padding: 1.5em;
+    border: none;
+    color: #2d3436;
+}

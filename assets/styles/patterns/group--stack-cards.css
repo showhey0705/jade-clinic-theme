@@ -1,0 +1,166 @@
+/* ========================================
+   Card Stack Effect - Scroll-driven Animations
+   元のCodeHouseデモに完全に忠実な実装
+   https://scroll-driven-animations.style/demos/stacking-cards/css/
+   ======================================== */
+
+/* カードコンテナ */
+/* `.stack-cards` は variation 登録前の旧マークアップ（Synced Pattern 等）互換用 */
+#cards,
+.is-style-stack-cards,
+.stack-cards {
+  --numcards: 4;
+  view-timeline-name: --cards-element-scrolls-in-body;
+
+  /* カスタマイズ可能な変数（theme.json プリセット参照）。
+     radius は親 Ollie が xs/sm/md/lg/xl/2-xl/full を提供。
+     WP コアが生成する CSS 変数は --wp--preset--border-radius--{slug}
+     （"radius" ではなく "border-radius" 始まり、WP 6.9+ の仕様）。
+     shadow は子で 11 種定義済み（small-light 等の 8 種は親由来）。 */
+  --card-top-offset: 1.5rem;
+  --card-radius: var(--wp--preset--border-radius--lg);
+  --card-shadow: var(--wp--preset--shadow--large-light);
+  /* カードの最大幅。デフォルトは親に追従（content-size）。
+     親に inline style で `--card-max-width: 800px` のように指定すれば
+     カード単位で絞り込み可能。 */
+  --card-max-width: 100%;
+}
+
+/* Scroll-driven Animations対応ブラウザのみ */
+@supports (animation-timeline: view()) {
+  @keyframes scale {
+    to {
+      transform: scale(calc(1.05 - calc(0.04 * var(--reverse-index))));
+    }
+  }
+
+  .card__content,
+  .stack-card__content {
+    --start-range: calc(var(--index0) / var(--numcards) * 100%);
+    --end-range: calc((var(--index)) / var(--numcards) * 100%);
+
+    animation: linear scale forwards;
+    animation-timeline: --cards-element-scrolls-in-body;
+    animation-range: exit-crossing var(--start-range) exit-crossing var(--end-range);
+  }
+}
+
+/* 各カードのインデックス設定 */
+.card:nth-child(1),
+.stack-card:nth-child(1) { --index: 1; }
+.card:nth-child(2),
+.stack-card:nth-child(2) { --index: 2; }
+.card:nth-child(3),
+.stack-card:nth-child(3) { --index: 3; }
+.card:nth-child(4),
+.stack-card:nth-child(4) { --index: 4; }
+.card:nth-child(5),
+.stack-card:nth-child(5) { --index: 5; }
+.card:nth-child(6),
+.stack-card:nth-child(6) { --index: 6; }
+
+/* インデックス計算（@supports外で定義） */
+.card,
+.stack-card {
+  --index0: calc(var(--index) - 1); /* 0-based index */
+  --reverse-index: calc(var(--numcards) - var(--index0)); /* reverse index */
+  --reverse-index0: calc(var(--reverse-index) - 1); /* 0-based reverse index */
+}
+
+/* カードコンテナ */
+.is-style-stack-cards,
+.stack-cards {
+  display: block !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  list-style: none;
+  margin: 0;
+}
+
+/* 各カード（外側） - ここにstickyを適用 */
+.card,
+.stack-card {
+  display: block !important;
+  margin: 0;
+  list-style: none;
+
+  /* 重要: position: stickyは.cardに適用 */
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+
+  /* padding-topでカード間のオフセットを作る */
+  padding-top: calc(var(--index) * var(--card-top-offset));
+
+  /* --card-max-width で絞り込んだ場合に中央寄せ */
+  max-width: var(--card-max-width);
+  margin-inline: auto;
+}
+
+/* カードコンテンツ（アニメーションのみ） */
+.card__content,
+.stack-card__content {
+  /* WordPress干渉防止 */
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  /* カード見た目（cover ブロック廃止に伴いここで担当） */
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+
+  /* パフォーマンス最適化 */
+  will-change: transform;
+}
+
+/* WordPressレイアウトクラスの干渉を防ぐ */
+.stack-card.has-global-padding,
+.stack-card.is-layout-constrained {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+  /* padding-top は残す（カードオフセット用） */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+  max-width: none !important;
+}
+
+.stack-card__content.has-global-padding,
+.stack-card__content.is-layout-constrained {
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+/* カード間のスペーシング - すべてのカードに統一したスクロール距離を持たせる */
+.stack-card {
+  margin-bottom: calc(100vh + var(--card-top-offset));
+}
+
+/* 最後のカードは margin-bottom を削除（コンテナの padding-bottom で制御） */
+.stack-card:last-child {
+  margin-bottom: 0;
+}
+
+/* レスポンシブ: モバイルではスタック効果を無効化 */
+@media (max-width: 768px) {
+  .stack-card {
+    padding-bottom: 0;
+    margin-bottom: 2rem;
+  }
+
+  .stack-card__content {
+    position: relative !important;
+  }
+}
+
+/* アクセシビリティ対応 */
+@media (prefers-reduced-motion: reduce) {
+  .card__content,
+  .stack-card__content {
+    animation: none !important;
+    transform: none !important;
+  }
+}

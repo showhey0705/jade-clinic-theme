@@ -1,0 +1,193 @@
+/* ==========================================
+   WP Table Block 比較表（Ollie対応・フォント継承版）
+   追加CSSクラス: vip-compare
+   ========================================== */
+
+   .wp-block-table.vip-compare table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font: inherit; /* ← 重要：エディタの設定を継承 */
+  }
+  
+  /* セル共通 */
+  .wp-block-table.vip-compare th,
+  .wp-block-table.vip-compare td {
+    padding: var(--wp--preset--spacing--small) var(--wp--preset--spacing--small);
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    font: inherit;
+  }
+  
+  /* 1列目（ラベル） */
+  .wp-block-table.vip-compare tbody tr > :first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--wp--preset--color--foreground, #111);
+  }
+  
+  /* ヘッダー */
+  .wp-block-table.vip-compare thead th {
+    text-align: center;
+    vertical-align: top;
+    padding: var(--wp--preset--spacing--medium) var(--wp--preset--spacing--small);
+    font-weight: 600;
+  }
+  .wp-block-table.vip-compare thead th:first-child {
+    width: 220px;
+  }
+  
+  /* トランジション設定 */
+  .wp-block-table.vip-compare tbody tr {
+    transition:
+      background-color 200ms ease-out,
+      transform 100ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 200ms ease-out;
+  }
+
+  /* ホバー：柔らかいアクセントカラー */
+  .wp-block-table.vip-compare tbody tr:not(:has([colspan])):hover {
+    background: var(--wp--preset--color--primary-accent, #e9e7ff);
+    transform: translateY(-1px);
+    box-shadow:
+      0 2px 8px rgba(83, 68, 244, 0.08),
+      0 0 20px rgba(83, 68, 244, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* ホバー時のラベル：ブランドカラーで強調 */
+  .wp-block-table.vip-compare tbody tr:not(:has([colspan])):hover > :first-child {
+    color: var(--wp--preset--color--primary, #5344F4);
+    font-weight: 700;
+    transition: color 150ms ease-out, font-weight 100ms ease;
+  }
+
+  /* アクティブ（クリック）：より濃い色 */
+  .wp-block-table.vip-compare tbody tr:not(:has([colspan])):active {
+    background: var(--wp--preset--color--primary-alt, #DEC9FF);
+    transform: translateY(0);
+    transition-duration: 50ms;
+  }
+
+  /* フォーカス状態（アクセシビリティ） */
+  .wp-block-table.vip-compare tbody tr:focus-within {
+    outline: 2px solid var(--wp--preset--color--primary, #5344F4);
+    outline-offset: 2px;
+  }
+
+  /* モーション軽減設定 */
+  @media (prefers-reduced-motion: reduce) {
+    .wp-block-table.vip-compare tbody tr,
+    .wp-block-table.vip-compare tbody tr > :first-child {
+      transition: none !important;
+      transform: none !important;
+    }
+
+    .wp-block-table.vip-compare tbody tr:hover {
+      background: var(--wp--preset--color--primary-accent, #e9e7ff);
+      box-shadow: none;
+    }
+  }
+  
+  /* セクション見出し */
+  .wp-block-table.vip-compare tbody tr:has([colspan]) :is(th, td) {
+    color: var(--wp--preset--color--primary, #46a787);
+    font-weight: 700;
+    text-align: left;
+    padding: 20px 10px 10px;
+    background: transparent;
+  }
+  
+  /* CTAボタン */
+  .wp-block-table.vip-compare a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    background: var(--wp--preset--color--primary, #46a787);
+    color: #fff !important;
+    transition: transform .12s ease, background-color .2s ease;
+  }
+  .wp-block-table.vip-compare a:hover {
+    background: color-mix(in srgb, var(--wp--preset--color--primary, #46a787) 85%, #fff);
+    transform: translateY(-1px);
+  }
+  
+  /* YES / NO ピル */
+  .wp-block-table.vip-compare :is(.yes, .no) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 999px;
+    font-size: 0.8em; /* 相対サイズで調整 */
+    line-height: 1;
+    color: #fff;
+  }
+  .wp-block-table.vip-compare .yes { background: #34b534; }
+  .wp-block-table.vip-compare .no  { background: #ea4f4f; }
+  
+  /* =============== スマホ =============== */
+  @media (max-width: 767px) {
+  
+    .wp-block-table.vip-compare table,
+    .wp-block-table.vip-compare tbody,
+    .wp-block-table.vip-compare thead {
+      display: block;
+    }
+  
+    /* ヘッダー（3分割固定・ラベル列非表示） */
+    .wp-block-table.vip-compare thead tr {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .wp-block-table.vip-compare thead th:first-child {
+      display: none;
+    }
+  
+    /* 各データ行：ラベル + 値3つ */
+    .wp-block-table.vip-compare tbody tr {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 8px;
+      padding: 12px 10px;
+      border-radius: 6px;
+      background: var(--wp--preset--color--background, #fff);
+      margin-block: 8px;
+    }
+  
+    .wp-block-table.vip-compare tbody tr > :first-child {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      text-align: center;
+      font-weight: 700;
+    }
+  
+    .wp-block-table.vip-compare tbody tr > :nth-child(2) { grid-column: 1; grid-row: 2; }
+    .wp-block-table.vip-compare tbody tr > :nth-child(3) { grid-column: 2; grid-row: 2; }
+    .wp-block-table.vip-compare tbody tr > :nth-child(4) { grid-column: 3; grid-row: 2; }
+  
+    /* セクション見出し */
+    .wp-block-table.vip-compare tbody tr:has([colspan]) {
+      grid-template-columns: 1fr;
+      background: transparent;
+      margin-top: 18px;
+      padding: 8px 0;
+    }
+    .wp-block-table.vip-compare tbody tr:has([colspan]) :is(th, td) {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      text-align: center;
+      color: var(--wp--preset--color--primary, #46a787);
+      font-weight: 700;
+    }
+  }
+  
