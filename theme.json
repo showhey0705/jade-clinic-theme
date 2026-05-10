@@ -69,17 +69,61 @@
 				}
 			],
 			"palette": [
-				{ "name": "Brand", "slug": "primary", "color": "#5344F4" },
-				{ "name": "Brand Accent", "slug": "primary-accent", "color": "#e9e7ff" },
-				{ "name": "Brand Alt", "slug": "primary-alt", "color": "#DEC9FF" },
-				{ "name": "Brand Alt Accent", "slug": "primary-alt-accent", "color": "#3d386b" },
-				{ "name": "Contrast", "slug": "main", "color": "#1E1E26" },
-				{ "name": "Contrast Accent", "slug": "main-accent", "color": "#d4d4ec" },
-				{ "name": "Base", "slug": "base", "color": "#fff" },
-				{ "name": "Base Accent", "slug": "secondary", "color": "#545473" },
-				{ "name": "Tint", "slug": "tertiary", "color": "#f8f7fc" },
-				{ "name": "Border Base", "slug": "border-light", "color": "#E3E3F0" },
-				{ "name": "Border Contrast", "slug": "border-dark", "color": "#4E4E60" }
+				{
+					"name": "Brand",
+					"slug": "primary",
+					"color": "#5344F4"
+				},
+				{
+					"name": "Brand Accent",
+					"slug": "primary-accent",
+					"color": "#e9e7ff"
+				},
+				{
+					"name": "Brand Alt",
+					"slug": "primary-alt",
+					"color": "#DEC9FF"
+				},
+				{
+					"name": "Brand Alt Accent",
+					"slug": "primary-alt-accent",
+					"color": "#3d386b"
+				},
+				{
+					"name": "Contrast",
+					"slug": "main",
+					"color": "#1E1E26"
+				},
+				{
+					"name": "Contrast Accent",
+					"slug": "main-accent",
+					"color": "#d4d4ec"
+				},
+				{
+					"name": "Base",
+					"slug": "base",
+					"color": "#fff"
+				},
+				{
+					"name": "Base Accent",
+					"slug": "secondary",
+					"color": "#545473"
+				},
+				{
+					"name": "Tint",
+					"slug": "tertiary",
+					"color": "#f8f7fc"
+				},
+				{
+					"name": "Border Base",
+					"slug": "border-light",
+					"color": "#E3E3F0"
+				},
+				{
+					"name": "Border Contrast",
+					"slug": "border-dark",
+					"color": "#4E4E60"
+				}
 			]
 		},
 		"custom": {
@@ -171,15 +215,50 @@
 		"spacing": {
 			"defaultSpacingSizes": false,
 			"spacingSizes": [
-				{ "name": "Small", "size": "clamp(.5rem, 2.5vw, 1.3rem)", "slug": "small" },
-				{ "name": "Medium", "size": "clamp(1.5rem, 4vw, 1.69rem)", "slug": "medium" },
-				{ "name": "Large", "size": "clamp(2rem, 5vw, 3rem)", "slug": "large" },
-				{ "name": "Extra Large", "size": "clamp(3rem, 7vw, 5rem)", "slug": "x-large" },
-				{ "name": "2xl", "size": "clamp(4rem, 9vw, 7rem)", "slug": "xx-large" },
-				{ "name": "3xl", "size": "clamp(5rem, 12vw, 9rem)", "slug": "xxx-large" },
-				{ "name": "4xl", "size": "clamp(2.625rem, 9.72vw, 11.25rem)", "slug": "xxxx-large" }
+				{
+					"name": "Small",
+					"size": "clamp(.5rem, 2.5vw, 1.3rem)",
+					"slug": "small"
+				},
+				{
+					"name": "Medium",
+					"size": "clamp(1.5rem, 4vw, 1.69rem)",
+					"slug": "medium"
+				},
+				{
+					"name": "Large",
+					"size": "clamp(2rem, 5vw, 3rem)",
+					"slug": "large"
+				},
+				{
+					"name": "Extra Large",
+					"size": "clamp(3rem, 7vw, 5rem)",
+					"slug": "x-large"
+				},
+				{
+					"name": "2xl",
+					"size": "clamp(4rem, 9vw, 7rem)",
+					"slug": "xx-large"
+				},
+				{
+					"name": "3xl",
+					"size": "clamp(5rem, 12vw, 9rem)",
+					"slug": "xxx-large"
+				},
+				{
+					"name": "4xl",
+					"size": "clamp(2.625rem, 9.72vw, 11.25rem)",
+					"slug": "xxxx-large"
+				}
 			],
-			"units": [ "px", "em", "rem", "vh", "vw", "%" ],
+			"units": [
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw",
+				"%"
+			],
 			"blockGap": true,
 			"padding": true,
 			"margin": true
@@ -225,7 +304,9 @@
 							"fontFamily": "seriously_nostalgic_varRg",
 							"fontStyle": "normal",
 							"fontWeight": "normal",
-							"src": [ "file:./assets/fonts/seriously-nostalgic/seriouslynostalgic-regular-webfont.woff2" ]
+							"src": [
+								"file:./assets/fonts/seriously-nostalgic/seriouslynostalgic-regular-webfont.woff2"
+							]
 						}
 					]
 				},
@@ -239,56 +320,92 @@
 							"fontFamily": "seriously_nostalgic_italic_Rg",
 							"fontStyle": "italic",
 							"fontWeight": "normal",
-							"src": [ "file:./assets/fonts/seriously-nostalgic/seriouslynostalgicital-reg-webfont.woff2" ]
+							"src": [
+								"file:./assets/fonts/seriously-nostalgic/seriouslynostalgicital-reg-webfont.woff2"
+							]
 						}
 					]
+				},
+				{
+					"fontFamily": "\"Geist Pixel Circle\", monospace",
+					"name": "Geist Pixel Circle",
+					"slug": "geist-pixel-circle"
+				},
+				{
+					"fontFamily": "\"DotGothic16\", sans-serif",
+					"name": "DotGothic16",
+					"slug": "dot-gothic-16"
 				}
 			],
 			"fontSizes": [
 				{
-					"fluid": { "min": ".8rem", "max": ".89rem" },
+					"fluid": {
+						"min": ".8rem",
+						"max": ".89rem"
+					},
 					"size": ".89rem",
 					"slug": "x-small",
 					"name": "Extra Small"
 				},
 				{
-					"fluid": { "min": ".9rem", "max": "1.0rem" },
+					"fluid": {
+						"min": ".9rem",
+						"max": "1.0rem"
+					},
 					"size": "1.05rem",
 					"slug": "small",
 					"name": "Small"
 				},
 				{
-					"fluid": { "min": "1rem", "max": "1.1rem" },
+					"fluid": {
+						"min": "1rem",
+						"max": "1.1rem"
+					},
 					"size": "1.1rem",
 					"slug": "base",
 					"name": "Base"
 				},
 				{
-					"fluid": { "min": "1.2rem", "max": "1.65rem" },
+					"fluid": {
+						"min": "1.2rem",
+						"max": "1.65rem"
+					},
 					"size": "1.42rem",
 					"slug": "medium",
 					"name": "Medium"
 				},
 				{
-					"fluid": { "min": "1.5rem", "max": "2.75rem" },
+					"fluid": {
+						"min": "1.5rem",
+						"max": "2.75rem"
+					},
 					"size": "2.75rem",
 					"slug": "large",
 					"name": "Large"
 				},
 				{
-					"fluid": { "min": "1.875rem", "max": "3.5rem" },
+					"fluid": {
+						"min": "1.875rem",
+						"max": "3.5rem"
+					},
 					"size": "3.5rem",
 					"slug": "x-large",
 					"name": "Extra Large"
 				},
 				{
-					"fluid": { "min": "2.25rem", "max": "4.3875rem" },
+					"fluid": {
+						"min": "2.25rem",
+						"max": "4.3875rem"
+					},
 					"size": "4.3875rem",
 					"slug": "xx-large",
 					"name": "Extra Extra Large"
 				},
 				{
-					"fluid": { "min": "6rem", "max": "9rem" },
+					"fluid": {
+						"min": "6rem",
+						"max": "9rem"
+					},
 					"size": "9rem",
 					"slug": "xxx-large",
 					"name": "Triple Large"
@@ -719,12 +836,18 @@
 		{
 			"name": "page-no-title",
 			"title": "Page (Full Width, No Title)",
-			"postTypes": [ "page", "post" ]
+			"postTypes": [
+				"page",
+				"post"
+			]
 		},
 		{
 			"name": "page-with-sidebar",
 			"title": "Page (With Sidebar)",
-			"postTypes": [ "post", "page" ]
+			"postTypes": [
+				"post",
+				"page"
+			]
 		}
 	],
 	"templateParts": [

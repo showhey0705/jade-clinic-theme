@@ -97,6 +97,13 @@ require_once get_stylesheet_directory() . '/inc/editor-controls.php';
 require_once get_stylesheet_directory() . '/inc/pattern-styles.php';
 
 /**
+ * 書体（フォント）の遅延 enqueue。
+ * theme.json で slug だけ登録した書体の @font-face を、
+ * has-{slug}-font-family を含むブロックが描画された時のみ読み込む。
+ */
+require_once get_stylesheet_directory() . '/inc/fonts.php';
+
+/**
  * jadeclinic.jp 専用：FB ドメイン認証 / JSON-LD / LP femcare のヘッダフッタ非表示。
  * 別サイト転用時はこの 1 行を消せば全部止まる。
  */
