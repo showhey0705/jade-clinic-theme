@@ -16,7 +16,10 @@ const TYPEKIT_HOSTS = array( 'https://use.typekit.net', 'https://p.typekit.net' 
  *
  * - textdomain ロード（i18n）
  * - エディタ用スタイル（front と同じ見た目をエディタにも）
- *   `add_editor_style()` に配列で渡せば一括登録できる。Adobe Fonts も同じ口で OK。
+ *
+ * Adobe Fonts はこの口（CSS link）では読み込まない。Kit `bzy5pnl` は JS async
+ * loader 専用構成で `.css` エンドポイントが全ドメインに対して 412 を返すため、
+ * `enqueue_typekit()` で `<script>` 経由で読み込む。
  */
 function setup(): void {
 	load_child_theme_textdomain( 'vip2026', get_stylesheet_directory() . '/languages' );
@@ -24,7 +27,6 @@ function setup(): void {
 	add_editor_style( array(
 		'style.css',
 		'assets/styles/japanese-typography.css',
-		'https://use.typekit.net/' . TYPEKIT_KIT . '.css',
 	) );
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
@@ -34,7 +36,6 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
  *
  * - 子テーマ style.css（親テーマ後に読まれるよう priority 20）
  * - 日本語タイポグラフィ補助 CSS
- * - Adobe Fonts（Typekit）
  */
 function enqueue_styles(): void {
 	wp_enqueue_style(
@@ -50,15 +51,42 @@ function enqueue_styles(): void {
 		array(),
 		VERSION
 	);
-
-	wp_enqueue_style(
-		'vip2026-adobe-fonts',
-		'https://use.typekit.net/' . TYPEKIT_KIT . '.css',
-		array(),
-		null
-	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_styles', 20 );
+
+/**
+ * Adobe Fonts（Typekit）の JS async loader を読み込む。
+ *
+ * 経緯: この Kit (`bzy5pnl`) は CSS API が無効化されており `.css` エンドポイントが
+ * 全ドメインに対して 412 を返す。`.js` エンドポイント経由で動的に @font-face を
+ * 注入する標準ローダーパターンに切り替える必要がある。
+ *
+ * 適用先:
+ *   - フロント (wp_enqueue_scripts)
+ *   - ブロックエディタ親 + iframe キャンバス (enqueue_block_assets, is_admin guard)
+ */
+function enqueue_typekit(): void {
+	wp_enqueue_script(
+		'vip2026-typekit',
+		'https://use.typekit.net/' . TYPEKIT_KIT . '.js',
+		array(),
+		null,
+		false // head 配置でフォント取得を早める。FOUT 抑制のため async/defer は付けない。
+	);
+	wp_add_inline_script(
+		'vip2026-typekit',
+		'try { Typekit.load({ async: true }); } catch (e) {}'
+	);
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_typekit', 20 );
+
+function enqueue_typekit_in_editor(): void {
+	if ( ! is_admin() ) {
+		return;
+	}
+	enqueue_typekit();
+}
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_typekit_in_editor' );
 
 /**
  * Adobe Fonts に preconnect ヒントを追加（CORS 必須なので crossorigin 付き）。
