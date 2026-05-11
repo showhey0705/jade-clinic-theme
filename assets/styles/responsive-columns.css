@@ -1,0 +1,21 @@
+/**
+ * Responsive Columns — vip2026
+ *
+ * Ollie Pro Responsive Controls の Typography「カラム」(column-count) 拡張。
+ * `inc/responsive-columns.php` が render_block 時に CSS 変数とマーカークラスを
+ * ルートタグへ注入し、本 CSS がブレイクポイント別に column-count を当てる。
+ *
+ * ブレイクポイントは Ollie Pro responsive-controls.css と完全一致 (768 / 480px)。
+ */
+
+@media (max-width: 768px) {
+	.has-ollie-columns-tablet {
+		column-count: var(--ollie-columns-tablet) !important;
+	}
+}
+
+@media (max-width: 480px) {
+	.has-ollie-columns-mobile {
+		column-count: var(--ollie-columns-mobile) !important;
+	}
+}

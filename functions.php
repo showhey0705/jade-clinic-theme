@@ -143,6 +143,12 @@ require_once get_stylesheet_directory() . '/inc/pattern-styles.php';
 require_once get_stylesheet_directory() . '/inc/fonts.php';
 
 /**
+ * Ollie Pro Responsive Controls の「Typography → カラム (column-count)」拡張。
+ * Ollie Pro が無効/未導入なら自動 no-op。
+ */
+require_once get_stylesheet_directory() . '/inc/responsive-columns.php';
+
+/**
  * jadeclinic.jp 専用：FB ドメイン認証 / JSON-LD / LP femcare のヘッダフッタ非表示。
  * 別サイト転用時はこの 1 行を消せば全部止まる。
  */
