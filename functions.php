@@ -8,6 +8,9 @@
 namespace VIP2026;
 
 const VERSION       = '0.3.3';
+// Adobe Fonts (Typekit) の Kit ID（starter デフォルト）。
+// サイト固有の Kit ID は inc/{sitename}.php から `vip2026/typekit_kit` フィルタで返す。
+// 空文字なら Typekit 読み込みをスキップ。
 const TYPEKIT_KIT   = '';
 const TYPEKIT_HOSTS = array( 'https://use.typekit.net', 'https://p.typekit.net' );
 
@@ -57,18 +60,26 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_styles', 20 );
 /**
  * Adobe Fonts（Typekit）の JS async loader を読み込む。
  *
- * 経緯: この Kit (`bzy5pnl`) は CSS API が無効化されており `.css` エンドポイントが
- * 全ドメインに対して 412 を返す。`.js` エンドポイント経由で動的に @font-face を
- * 注入する標準ローダーパターンに切り替える必要がある。
+ * 経緯: Adobe Fonts は `.css` エンドポイントを kit 設定で無効化できるため、
+ * `.js` エンドポイント経由で動的に @font-face を注入する標準ローダーパターンを採用。
+ *
+ * Kit ID 解決: starter デフォルトは `TYPEKIT_KIT = ''`（空）。サイト固有の Kit ID は
+ * inc/{sitename}.php から `vip2026/typekit_kit` フィルタで返す。
+ *
+ *   add_filter( 'vip2026/typekit_kit', static fn(): string => 'xxxxxxx' );
  *
  * 適用先:
  *   - フロント (wp_enqueue_scripts)
  *   - ブロックエディタ親 + iframe キャンバス (enqueue_block_assets, is_admin guard)
  */
 function enqueue_typekit(): void {
+	$kit = (string) apply_filters( 'vip2026/typekit_kit', TYPEKIT_KIT );
+	if ( '' === $kit ) {
+		return; // Kit ID 未設定なら何もしない。starter デフォルトの挙動。
+	}
 	wp_enqueue_script(
 		'vip2026-typekit',
-		'https://use.typekit.net/' . TYPEKIT_KIT . '.js',
+		'https://use.typekit.net/' . $kit . '.js',
 		array(),
 		null,
 		false // head 配置でフォント取得を早める。FOUT 抑制のため async/defer は付けない。
