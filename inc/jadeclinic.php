@@ -14,6 +14,17 @@ namespace VIP2026\JadeClinic;
 const FACEBOOK_DOMAIN_VERIFICATION = 'ipp97vpf9catcvoxwmfi8bnnzgszj8';
 
 /**
+ * Adobe Fonts Kit ID をスターターのデフォルト（空文字）から上書きする。
+ *
+ * `functions.php` の `enqueue_typekit()` が `vip2026/typekit_kit` フィルタを通すので、
+ * サイト固有ファイルでは Kit ID を返すだけでよい。空文字を返せば Typekit 読み込みは
+ * スキップされる。
+ */
+add_filter( 'vip2026/typekit_kit', static function (): string {
+	return 'bzy5pnl';
+} );
+
+/**
  * Facebook Meta Pixel ドメイン認証 meta。
  */
 function facebook_domain_verification(): void {

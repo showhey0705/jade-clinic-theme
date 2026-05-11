@@ -8,7 +8,7 @@
 namespace VIP2026;
 
 const VERSION       = '0.3.3';
-const TYPEKIT_KIT   = 'bzy5pnl';
+const TYPEKIT_KIT   = '';
 const TYPEKIT_HOSTS = array( 'https://use.typekit.net', 'https://p.typekit.net' );
 
 /**
