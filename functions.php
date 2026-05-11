@@ -7,7 +7,7 @@
 
 namespace VIP2026;
 
-const VERSION       = '0.3.3';
+const VERSION       = '0.4.0';
 // Adobe Fonts (Typekit) の Kit ID（starter デフォルト）。
 // サイト固有の Kit ID は inc/{sitename}.php から `vip2026/typekit_kit` フィルタで返す。
 // 空文字なら Typekit 読み込みをスキップ。
