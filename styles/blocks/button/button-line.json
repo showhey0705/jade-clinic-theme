@@ -1,0 +1,14 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "LINE 緑",
+	"slug": "button-line",
+	"blockTypes": ["core/button"],
+	"styles": {
+		"color": {
+			"background": "var:preset|color|line-green",
+			"text": "var:preset|color|line-green-fg"
+		},
+		"shadow": "0 4px 20px rgba(6, 199, 85, 0.25)"
+	}
+}

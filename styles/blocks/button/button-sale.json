@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Sale 強調",
+	"slug": "button-sale",
+	"blockTypes": ["core/button"],
+	"styles": {
+		"color": {
+			"background": "var:preset|color|sale",
+			"text": "var:preset|color|sale-fg"
+		},
+		"typography": {
+			"fontWeight": "700"
+		}
+	}
+}

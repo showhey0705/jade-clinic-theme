@@ -123,6 +123,26 @@
 					"name": "Border Contrast",
 					"slug": "border-dark",
 					"color": "#4E4E60"
+				},
+				{
+					"name": "LINE Green",
+					"slug": "line-green",
+					"color": "#06C755"
+				},
+				{
+					"name": "LINE Green Foreground",
+					"slug": "line-green-fg",
+					"color": "#FFFFFF"
+				},
+				{
+					"name": "Sale",
+					"slug": "sale",
+					"color": "#E11D48"
+				},
+				{
+					"name": "Sale Foreground",
+					"slug": "sale-fg",
+					"color": "#FFFFFF"
 				}
 			]
 		},
