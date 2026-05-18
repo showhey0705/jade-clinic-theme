@@ -155,6 +155,12 @@ require_once get_stylesheet_directory() . '/inc/fonts.php';
 require_once get_stylesheet_directory() . '/inc/responsive-columns.php';
 
 /**
+ * "LINE 緑" ボタン variation (.is-style-button-line) に Ollie Pro の Button Icon
+ * 機構経由で LINE 公式 SVG を自動付与。Inspector 側で別アイコンが選ばれていれば尊重。
+ */
+require_once get_stylesheet_directory() . '/inc/button-line-auto-icon.php';
+
+/**
  * jadeclinic.jp 専用：FB ドメイン認証 / JSON-LD / LP femcare のヘッダフッタ非表示。
  * 別サイト転用時はこの 1 行を消せば全部止まる。
  */
