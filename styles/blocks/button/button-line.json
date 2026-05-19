@@ -1,31 +1,29 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/theme.json",
-  "version": 3,
-  "title": "LINE 緑",
-  "slug": "button-line",
-  "blockTypes": [
-    "core/button"
-  ],
-  "styles": {
-    "color": {
-      "background": "var:preset|color|line-green",
-      "text": "var:preset|color|line-green-fg"
-    },
-    "border": {
-      "radius": "var:preset|spacing|xx-large"
-    },
-    "spacing": {
-      "padding": {
-        "left": "var:preset|spacing|medium",
-        "right": "var:preset|spacing|medium"
-      }
-    },
-    "shadow": "0 4px 20px rgba(6, 199, 85, 0.25)",
-    ":hover": {
-      "color": {
-        "background": "#05b04c"
-      }
-    },
-    "css": "& .wp-block-button__link { transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.15s ease; } & .wp-block-button__link:hover, & .wp-block-button__link:focus, & .wp-block-button__link:focus-visible { background-color: #05b04c !important; box-shadow: 0 6px 24px rgba(5, 176, 76, 0.32) !important; } &:not(.has-icon__custom):not([class*=\"has-icon__\"]) .wp-block-button__link::before { content: \"\"; display: inline-block; width: 1.2em; height: 1.2em; margin-right: 0.5em; vertical-align: -0.15em; background-color: currentColor; -webkit-mask: url(\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2036%2036%22%3E%3Cpath%20d%3D%22M18%203C9.16%203%202%208.85%202%2016.06c0%206.46%205.64%2011.87%2013.27%2012.91.52.11%201.22.34%201.4.79.16.4.1%201.03.05%201.44l-.23%201.36c-.07.4-.32%201.58%201.39.86%201.71-.72%209.22-5.43%2012.58-9.29C32.78%2021.49%2034%2018.93%2034%2016.06%2034%208.85%2026.84%203%2018%203zm-6.51%2016.92h-3.18a.84.84%200%200%201-.84-.84v-6.36c0-.46.38-.84.84-.84.47%200%20.85.38.85.84v5.52h2.33c.47%200%20.85.38.85.84a.85.85%200%200%201-.85.84zm3.31-.84a.85.85%200%200%201-.85.84.84.84%200%200%201-.84-.84v-6.36c0-.46.38-.84.84-.84.47%200%20.85.38.85.84v6.36zm7.66%200a.85.85%200%200%201-.58.8.84.84%200%200%201-.27.05.83.83%200%200%201-.68-.34l-3.26-4.44v3.93a.85.85%200%200%201-.85.84.84.84%200%200%201-.84-.84v-6.36c0-.36.23-.68.58-.79a.71.71%200%200%201%20.26-.05c.26%200%20.51.13.67.34l3.27%204.44v-3.94c0-.46.37-.84.84-.84.46%200%20.85.38.85.84v6.36zm5.15-3.96c.47%200%20.85.38.85.85a.85.85%200%200%201-.85.84h-2.33v1.43h2.33c.46%200%20.85.38.85.84a.85.85%200%200%201-.85.84h-3.18a.85.85%200%200%201-.84-.84v-6.36c0-.46.38-.84.84-.84h3.18c.47%200%20.85.38.85.84a.85.85%200%200%201-.85.85h-2.33v1.43h2.33z%22%2F%3E%3C%2Fsvg%3E\") no-repeat center / contain; mask: url(\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2036%2036%22%3E%3Cpath%20d%3D%22M18%203C9.16%203%202%208.85%202%2016.06c0%206.46%205.64%2011.87%2013.27%2012.91.52.11%201.22.34%201.4.79.16.4.1%201.03.05%201.44l-.23%201.36c-.07.4-.32%201.58%201.39.86%201.71-.72%209.22-5.43%2012.58-9.29C32.78%2021.49%2034%2018.93%2034%2016.06%2034%208.85%2026.84%203%2018%203zm-6.51%2016.92h-3.18a.84.84%200%200%201-.84-.84v-6.36c0-.46.38-.84.84-.84.47%200%20.85.38.85.84v5.52h2.33c.47%200%20.85.38.85.84a.85.85%200%200%201-.85.84zm3.31-.84a.85.85%200%200%201-.85.84.84.84%200%200%201-.84-.84v-6.36c0-.46.38-.84.84-.84.47%200%20.85.38.85.84v6.36zm7.66%200a.85.85%200%200%201-.58.8.84.84%200%200%201-.27.05.83.83%200%200%201-.68-.34l-3.26-4.44v3.93a.85.85%200%200%201-.85.84.84.84%200%200%201-.84-.84v-6.36c0-.36.23-.68.58-.79a.71.71%200%200%201%20.26-.05c.26%200%20.51.13.67.34l3.27%204.44v-3.94c0-.46.37-.84.84-.84.46%200%20.85.38.85.84v6.36zm5.15-3.96c.47%200%20.85.38.85.85a.85.85%200%200%201-.85.84h-2.33v1.43h2.33c.46%200%20.85.38.85.84a.85.85%200%200%201-.85.84h-3.18a.85.85%200%200%201-.84-.84v-6.36c0-.46.38-.84.84-.84h3.18c.47%200%20.85.38.85.84a.85.85%200%200%201-.85.85h-2.33v1.43h2.33z%22%2F%3E%3C%2Fsvg%3E\") no-repeat center / contain; }"
-  }
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "LINE 緑",
+	"slug": "button-line",
+	"blockTypes": ["core/button"],
+	"styles": {
+		"color": {
+			"background": "var:preset|color|line-green",
+			"text": "var:preset|color|line-green-fg"
+		},
+		"border": {
+			"radius": "var:preset|spacing|xx-large"
+		},
+		"spacing": {
+			"padding": {
+				"left": "var:preset|spacing|medium",
+				"right": "var:preset|spacing|medium"
+			}
+		},
+		"shadow": "0 4px 20px rgba(6, 199, 85, 0.25)",
+		":hover": {
+			"color": {
+				"background": "#05b04c"
+			}
+		},
+		"css": "& .wp-block-button__link { transition: background-color 0.18s ease, box-shadow 0.18s ease, transform 0.15s ease; } & .wp-block-button__link:hover, & .wp-block-button__link:focus, & .wp-block-button__link:focus-visible { background-color: #05b04c !important; box-shadow: 0 6px 24px rgba(5, 176, 76, 0.32) !important; }"
+	}
 }

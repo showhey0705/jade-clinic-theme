@@ -155,6 +155,12 @@ require_once get_stylesheet_directory() . '/inc/fonts.php';
 require_once get_stylesheet_directory() . '/inc/responsive-columns.php';
 
 /**
+ * "LINE 緑" ボタン variation 選択時に customIconSvg + iconPositionLeft を
+ * 自動セットする HOC (assets/js/button-line-defaults.js) を block editor に enqueue。
+ */
+require_once get_stylesheet_directory() . '/inc/button-line-defaults.php';
+
+/**
  * jadeclinic.jp 専用：FB ドメイン認証 / JSON-LD / LP femcare のヘッダフッタ非表示。
  * 別サイト転用時はこの 1 行を消せば全部止まる。
  */
