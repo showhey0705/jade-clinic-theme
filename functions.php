@@ -7,12 +7,28 @@
 
 namespace VIP2026;
 
-const VERSION       = '0.4.0';
 // Adobe Fonts (Typekit) の Kit ID（starter デフォルト）。
 // サイト固有の Kit ID は inc/{sitename}.php から `vip2026/typekit_kit` フィルタで返す。
 // 空文字なら Typekit 読み込みをスキップ。
 const TYPEKIT_KIT   = '';
 const TYPEKIT_HOSTS = array( 'https://use.typekit.net', 'https://p.typekit.net' );
+
+/**
+ * 子テーマのバージョン。style.css の Version ヘッダを唯一の正とし、アセットの
+ * cache-bust 文字列に使う。
+ *
+ * 以前は `const VERSION` を別途持っていたが style.css と二重管理になり乖離した
+ * (style.css だけ bump され const が 0.4.0 のまま取り残された)。style.css ヘッダ
+ * 参照に一本化し、二度と乖離しないようにしている。bump 時は style.css の Version
+ * だけ更新すればよい。
+ */
+function version(): string {
+	static $version = null;
+	if ( null === $version ) {
+		$version = (string) wp_get_theme()->get( 'Version' );
+	}
+	return $version;
+}
 
 /**
  * 子テーマ初期設定。
@@ -45,14 +61,14 @@ function enqueue_styles(): void {
 		'vip2026-style',
 		get_stylesheet_uri(),
 		array(),
-		VERSION
+		version()
 	);
 
 	wp_enqueue_style(
 		'vip2026-japanese-typography',
 		get_stylesheet_directory_uri() . '/assets/styles/japanese-typography.css',
 		array(),
-		VERSION
+		version()
 	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_styles', 20 );
