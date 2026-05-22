@@ -161,6 +161,12 @@ require_once get_stylesheet_directory() . '/inc/responsive-columns.php';
 require_once get_stylesheet_directory() . '/inc/button-line-defaults.php';
 
 /**
+ * パフォーマンス最適化：Ollie 親テーマがフロントでも誘発するパターン全
+ * ハイドレーションを、パターンを参照する文脈(エディタ / REST)に限定する。
+ */
+require_once get_stylesheet_directory() . '/inc/performance.php';
+
+/**
  * jadeclinic.jp 専用：FB ドメイン認証 / JSON-LD / LP femcare のヘッダフッタ非表示。
  * 別サイト転用時はこの 1 行を消せば全部止まる。
  */
