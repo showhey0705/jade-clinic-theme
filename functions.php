@@ -183,6 +183,14 @@ require_once get_stylesheet_directory() . '/inc/button-line-defaults.php';
 require_once get_stylesheet_directory() . '/inc/performance.php';
 
 /**
+ * 内部ブログカード(JADE Blog Card)。
+ * 投稿エディタで「URL を単独段落として貼り付け」たとき、同サイト URL を
+ * WP 標準の post-embed iframe ではなくサムネ + タイトル + 抜粋のカードに置換。
+ * 詳細: inc/internal-blog-card.php
+ */
+require_once get_stylesheet_directory() . '/inc/internal-blog-card.php';
+
+/**
  * jadeclinic.jp 専用：FB ドメイン認証 / JSON-LD / LP femcare のヘッダフッタ非表示。
  * 別サイト転用時はこの 1 行を消せば全部止まる。
  */

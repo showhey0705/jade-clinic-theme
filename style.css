@@ -5,7 +5,7 @@ Description: JADE CLINIC 公式サイト専用の Ollie 子テーマ。日本語
 Author:      VIPCREW
 Author URI:  https://photoshopvip.net
 Template:     ollie
-Version:      0.5.5
+Version:      0.6.0
 Requires at least: 6.6
 Requires PHP: 7.4
 License:      GNU General Public License v2 or later
@@ -562,8 +562,8 @@ html {
 # テキストリンク ホバーエフェクト
 --------------------------------------------------------------*/
 
-/* すべてのテキストリンク（ボタン除く） - 下線エフェクト */
-a:not(.wp-block-button__link):not(.wp-element-button) {
+/* すべてのテキストリンク（ボタン・カード等の構造系リンク除く） - 下線エフェクト */
+a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link) {
   background: linear-gradient(0deg, var(--wp--preset--color--primary), var(--wp--preset--color--primary)) no-repeat right bottom / 0 var(--bg-h);
   transition: background-size 350ms;
   --bg-h: 2px;
@@ -585,7 +585,7 @@ a:not(.wp-block-button__link):not(.wp-element-button) {
 
 /* アクセシビリティ対応 */
 @media (prefers-reduced-motion: reduce) {
-  a:not(.wp-block-button__link):not(.wp-element-button) {
+  a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link) {
     transition: background-size 150ms ease;
   }
 }

@@ -1,0 +1,211 @@
+/**
+ * Internal Blog Card — vip2026
+ *
+ * `<p>サイト内URL</p>` を WP の post-embed iframe ではなく、
+ * このカードに自動置換した時のスタイル。
+ *
+ * 設計:
+ *   - 常に横並び(100px サムネ + 本文)
+ *   - カード内側に padding を持たせ、サムネは card 縁から離す
+ *   - Ollie / vip2026 の theme.json トークンに揃える
+ *   - hover でほんのり浮く / 影が伸びる
+ *   - prefers-reduced-motion で transition 無効化
+ *   - ダーク時は --*-dark shadow に差し替え
+ *
+ * クラス名は BEM ライク。
+ */
+
+.vip2026-blogcard {
+	--vbc-radius:       var(--wp--preset--border-radius--md);
+	--vbc-radius-thumb: var(--wp--preset--border-radius--sm);
+	--vbc-border:       var(--wp--preset--color--border-light);
+	/* hover はアクセント(primary)をそのまま当ててコントラストを出す。 */
+	--vbc-border-hover: var(--vbc-accent);
+	--vbc-bg:           var(--wp--preset--color--base);
+	--vbc-shadow:       var(--wp--preset--shadow--small-light);
+	/* hover も small-light をベースに、accent をごく薄く滲ませた一段。
+	   medium-light まで上げると重いので不採用。 */
+	--vbc-shadow-hover: 0 1px 1px color-mix(in srgb, var(--vbc-accent) 6%, transparent),
+	                    0 6px 14px color-mix(in srgb, var(--vbc-accent) 8%, transparent);
+	--vbc-text:         var(--wp--preset--color--main);
+	--vbc-muted:        var(--wp--preset--color--secondary);
+	--vbc-accent:       var(--wp--preset--color--primary);
+	--vbc-pad:          var(--wp--preset--spacing--small);
+	--vbc-thumb-size:   100px;
+	/* easeOutQuint: 初速やや速く、終端で滑らかに落ち着く。控えめ UI と相性◎ */
+	--vbc-ease:         cubic-bezier(0.22, 1, 0.36, 1);
+	--vbc-duration:     0.32s;
+
+	display: block;
+	margin-block: var(--wp--preset--spacing--medium);
+	max-width: 100%;
+}
+
+.vip2026-blogcard__link {
+	display: grid;
+	grid-template-columns: var(--vbc-thumb-size) 1fr;
+	gap: var(--vbc-pad);
+	/* start 揃え: thumb と body が両方とも上辺から始まり、下辺の余白も
+	   padding 値そのままに見える(center だと body 高>thumb 時に下が詰まる)。 */
+	align-items: start;
+	background: var(--vbc-bg);
+	border: 1px solid var(--vbc-border);
+	border-radius: var(--vbc-radius);
+	box-shadow: var(--vbc-shadow);
+	color: inherit;
+	padding-block: var(--vbc-pad);
+	padding-inline: var(--vbc-pad);
+	text-decoration: none;
+	transition:
+		transform var(--vbc-duration) var(--vbc-ease),
+		box-shadow var(--vbc-duration) var(--vbc-ease),
+		border-color var(--vbc-duration) var(--vbc-ease);
+	will-change: transform;
+}
+
+.vip2026-blogcard__link:hover,
+.vip2026-blogcard__link:focus-visible {
+	transform: translateY(-1px);
+	box-shadow: var(--vbc-shadow-hover);
+	border-color: var(--vbc-border-hover);
+	text-decoration: none;
+}
+
+.vip2026-blogcard__link:focus-visible {
+	outline: 2px solid var(--vbc-accent);
+	outline-offset: 2px;
+}
+
+.vip2026-blogcard__thumb {
+	display: block;
+	position: relative;
+	width: var(--vbc-thumb-size);
+	aspect-ratio: 1 / 1;
+	border-radius: var(--vbc-radius-thumb);
+	background:
+		linear-gradient(
+			135deg,
+			color-mix(in srgb, var(--vbc-accent) 16%, transparent),
+			color-mix(in srgb, var(--vbc-accent) 4%, transparent)
+		);
+	overflow: hidden;
+}
+
+.vip2026-blogcard__thumb img,
+.vip2026-blogcard__img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.6s var(--vbc-ease);
+}
+
+.vip2026-blogcard__link:hover .vip2026-blogcard__thumb img {
+	transform: scale(1.03);
+}
+
+.vip2026-blogcard__body {
+	display: grid;
+	gap: 0.25rem;
+	/* align-content は指定しない(start = 上から積む)。link 側の padding が
+	   下辺にもそのまま効くようにする。 */
+	min-width: 0; /* grid item の text-overflow を効かせる */
+}
+
+.vip2026-blogcard__meta {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.25rem var(--wp--preset--spacing--small);
+	font-size: var(--wp--preset--font-size--x-small);
+	line-height: var(--wp--custom--line-height--tight);
+	color: var(--vbc-muted);
+}
+
+.vip2026-blogcard__label {
+	display: inline-block;
+	padding: 0.1rem 0.55rem;
+	border-radius: var(--wp--preset--border-radius--full);
+	background: color-mix(in srgb, var(--vbc-accent) 10%, transparent);
+	color: var(--vbc-accent);
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+.vip2026-blogcard__date {
+	font-variant-numeric: tabular-nums;
+	letter-spacing: 0.04em;
+}
+
+.vip2026-blogcard__title {
+	margin: 0;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 700;
+	line-height: var(--wp--custom--line-height--snug);
+	color: var(--vbc-text);
+	letter-spacing: 0.02em;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.vip2026-blogcard__excerpt {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	font-size: var(--wp--preset--font-size--x-small);
+	line-height: var(--wp--custom--line-height--body);
+	color: var(--vbc-muted);
+	margin: 0;
+}
+
+.vip2026-blogcard__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	margin-top: 0.25rem;
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 600;
+	color: var(--vbc-accent);
+	letter-spacing: 0.04em;
+	transition: gap var(--vbc-duration) var(--vbc-ease);
+}
+
+.vip2026-blogcard__link:hover .vip2026-blogcard__cta {
+	gap: 0.55rem;
+}
+
+/* ── プレースホルダ(アイキャッチ無し) ─────────────── */
+.vip2026-blogcard__thumb--placeholder::after {
+	content: "";
+	position: absolute;
+	inset: 50% auto auto 50%;
+	width: 28%;
+	aspect-ratio: 1;
+	transform: translate(-50%, -50%);
+	border-radius: var(--wp--preset--border-radius--full);
+	background: color-mix(in srgb, var(--vbc-accent) 18%, transparent);
+}
+
+/* ── reduced motion ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+	.vip2026-blogcard__link,
+	.vip2026-blogcard__thumb img,
+	.vip2026-blogcard__cta {
+		transition: none;
+	}
+
+	.vip2026-blogcard__link:hover {
+		transform: none;
+	}
+}
+
+/* ── ダークモード ────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+	.vip2026-blogcard {
+		--vbc-shadow:       var(--wp--preset--shadow--small-dark);
+		--vbc-shadow-hover: var(--wp--preset--shadow--medium-dark);
+	}
+}
