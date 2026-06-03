@@ -1,0 +1,2253 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ollie ja (child-theme override)\n"
+"POT-Creation-Date: 2026-06-03 00:51\n"
+"PO-Revision-Date: 2026-06-03 10:06+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: ollie\n"
+"X-Generator: Poedit 3.9\n"
+
+#: patterns/card-text-and-call-to-action.php:44
+#: patterns/contact-details.php:52 patterns/testimonials-with-big-text.php:35
+msgid "\"Working with Ollie has been a delight from start to finish.\""
+msgstr "「Ollieを使うことで、最初から最後まで快適に作業できました。」"
+
+#: patterns/pricing-table-3-column.php:217
+#: patterns/pricing-table-with-testimonials.php:217
+msgid "$19"
+msgstr "$19"
+
+#: patterns/card-pricing-table-dark.php:19
+#: patterns/pricing-table-3-column.php:120
+#: patterns/pricing-table-with-testimonials.php:120
+#: patterns/pricing-table.php:120
+msgid "$29"
+msgstr "$29"
+
+#: patterns/card-pricing-table.php:19 patterns/pricing-table-3-column.php:36
+#: patterns/pricing-table-with-testimonials.php:36
+#: patterns/pricing-table.php:36
+msgid "$9"
+msgstr "$9"
+
+#: patterns/footer-light.php:118
+msgid "&nbsp;Powered by WordPress and "
+msgstr "&nbsp;Powered by WordPress and "
+
+#: patterns/image-and-numbered-features.php:36
+msgid "1"
+msgstr "1"
+
+#: patterns/card-details.php:44 patterns/card-text-and-details.php:101
+msgid "1.1.0"
+msgstr "1.1.0"
+
+#: patterns/menu-panel-5.php:142
+msgid "10 Items"
+msgstr "10 点"
+
+#: patterns/numbers.php:23 patterns/numbers.php:36 patterns/numbers.php:49
+msgid "100%"
+msgstr "100%"
+
+#: patterns/pricing-table-3-column.php:299
+#: patterns/pricing-table-with-testimonials.php:299
+#: patterns/pricing-table.php:202
+msgid "100% money back guarantee"
+msgstr "100%返金保証"
+
+#: patterns/numbers-stacked.php:41
+msgid "1000+ Hours"
+msgstr "1000+時間"
+
+#: patterns/menu-panel-5.php:62
+msgid "12 Items"
+msgstr "12 点"
+
+#: patterns/card-contact.php:68 patterns/contact-details.php:115
+msgid "1234 Theme Street"
+msgstr "テーマ通り1-2-3"
+
+#: patterns/menu-panel-5.php:222
+msgid "14 Items"
+msgstr "14 点"
+
+#: patterns/menu-panel-5.php:102 patterns/menu-panel-5.php:182
+msgid "15 Items"
+msgstr "15 点"
+
+#: patterns/image-and-numbered-features.php:57
+msgid "2"
+msgstr "2"
+
+#: patterns/card-details.php:64 patterns/card-text-and-details.php:121
+msgid "2.2MB"
+msgstr "2.2MB"
+
+#: patterns/numbers-stacked.php:51
+msgid "200+ Ratings"
+msgstr "200+ 評価"
+
+#: patterns/menu-panel-1.php:140 patterns/menu-panel-2.php:122
+msgid "24/7 Support"
+msgstr "24 時間 365 日サポート"
+
+#: patterns/image-and-numbered-features.php:78
+msgid "3"
+msgstr "3"
+
+#: patterns/card-details.php:74
+msgid "30+"
+msgstr "30+"
+
+#: patterns/card-details.php:34 patterns/card-text-and-details.php:91
+msgid "33,240"
+msgstr "33,240"
+
+#: patterns/menu-panel-5.php:162
+msgid "5 Items"
+msgstr "5 点"
+
+#: patterns/numbers-stacked.php:31
+msgid "5+ Layouts"
+msgstr "5+レイアウト"
+
+#: patterns/card-text-and-details.php:131
+msgid "50+"
+msgstr "50+"
+
+#: patterns/numbers-stacked.php:21
+msgid "50+ Patterns"
+msgstr "50+パターン"
+
+#: patterns/menu-panel-5.php:122
+msgid "6 Items"
+msgstr "6 点"
+
+#: patterns/menu-panel-5.php:82
+msgid "8 Items"
+msgstr "8 点"
+
+#: patterns/card-contact.php:55 patterns/contact-details.php:102
+msgid "815-420-2024"
+msgstr "03-1234-5678"
+
+#: patterns/menu-panel-5.php:202
+msgid "9 Items"
+msgstr "9 点"
+
+#: patterns/menu-panel-1.php:123 patterns/menu-panel-2.php:105
+msgid "99.9% Uptime"
+msgstr "稼働率 99.9%"
+
+#: patterns/team-members.php:22
+msgid "A small but mighty team"
+msgstr "少数精鋭の強力なチーム"
+
+#: patterns/menu-panel-1.php:75 patterns/menu-panel-2.php:64
+msgid "API Integration"
+msgstr "API 連携"
+
+#: patterns/footer-dark.php:46 patterns/footer-light.php:46
+msgid "About"
+msgstr "概要"
+
+#: patterns/card-pricing-table-dark.php:90
+#: patterns/pricing-table-3-column.php:191
+#: patterns/pricing-table-with-testimonials.php:191
+#: patterns/pricing-table.php:191
+msgid "Access to Slack"
+msgstr "Slack へのアクセス"
+
+#: patterns/numbers.php:52
+msgid "Accessibility"
+msgstr "アクセシビリティ"
+
+#: patterns/numbers.php:55
+msgid ""
+"Accessibility compliant to ensure equal access to content and functionality."
+msgstr ""
+"アクセシビリティに対応し、すべての人がコンテンツと機能にアクセスできるように"
+"設計されています。"
+
+#: patterns/card-post-list.php:48 patterns/template-page-search.php:39
+msgid "Add text or blocks that will display when a query returns no results."
+msgstr "検索結果が無いときに表示するテキストやブロックを追加します。"
+
+#: patterns/card-text-box-with-link.php:22
+#: patterns/feature-boxes-with-button.php:42
+#: patterns/feature-boxes-with-icon-dark.php:42
+#: patterns/image-and-numbered-features.php:46
+#: patterns/large-text-and-text-boxes.php:39
+msgid ""
+"Add your splash of colors, pick your header, choose your favorite font — "
+"all with a few quick clicks. No coding skills required."
+msgstr ""
+"色を選び、ヘッダーを決めて、お気に入りのフォントをセットすれば完成。クリック"
+"だけで、思い通りのデザインをノーコードで実現しよう☺️"
+
+#: patterns/card-contact.php:65 patterns/contact-details.php:112
+msgid "Address"
+msgstr "住所"
+
+#: patterns/menu-panel-1.php:106 patterns/menu-panel-2.php:88
+msgid "Advanced Security"
+msgstr "高度なセキュリティ"
+
+#: patterns/card-pricing-table.php:64 patterns/pricing-table-3-column.php:262
+#: patterns/pricing-table-3-column.php:81
+#: patterns/pricing-table-with-testimonials.php:262
+#: patterns/pricing-table-with-testimonials.php:81
+#: patterns/pricing-table.php:81
+msgid "Advanced Tools"
+msgstr "有料アドオンツール"
+
+#: patterns/card-testimonial.php:27 patterns/testimonials-with-big-text.php:59
+#: patterns/testimonials-with-social-links.php:98
+msgid "Alex Glacier"
+msgstr "高橋 涼介"
+
+#: patterns/text-and-image-columns-with-icons.php:53
+msgid ""
+"All patterns are designed with mobile and tablet in mind. All designs and "
+"typography scale down to pixel-perfect perfection."
+msgstr ""
+"すべてのパターンはモバイルとタブレットを考慮して設計。  \n"
+"デザインもタイポグラフィも、美しくピクセルパーフェクトに調整されます。"
+
+#: patterns/menu-mobile-5.php:28
+msgid "Analytics"
+msgstr "アナリティクス"
+
+#: patterns/testimonials-and-logos.php:116
+msgid "Andrea Sequoia"
+msgstr "中村 彩花"
+
+#: patterns/job-openings.php:108 patterns/job-openings.php:136
+#: patterns/job-openings.php:52 patterns/job-openings.php:80
+msgid "Apply →"
+msgstr "応募する →"
+
+#: patterns/menu-mobile-6.php:28
+msgid "Automations"
+msgstr "自動化"
+
+#: patterns/card-details.php:51 patterns/card-text-and-details.php:108
+msgid "Average Rating:"
+msgstr "レビュー評価："
+
+#: functions.php:65
+msgid "Background Blur"
+msgstr "背景ぼかし"
+
+#: patterns/menu-mobile-1.php:76
+msgid "Beautiful Content"
+msgstr "美しいコンテンツ"
+
+#: patterns/menu-mobile-1.php:30
+msgid "Beautiful Templates"
+msgstr "美しいテンプレート"
+
+#: patterns/text-and-image-columns-with-icons.php:26
+msgid "Beautiful design just got a whole lot easier"
+msgstr "美しさを、もっとシンプルに。"
+
+#: patterns/card-pricing-table.php:29 patterns/pricing-table-3-column.php:46
+#: patterns/pricing-table-with-testimonials.php:46
+#: patterns/pricing-table.php:46
+msgid "Beginner"
+msgstr "ビギナー"
+
+#: patterns/testimonials-and-logos.php:68
+msgid "Bill Glacier"
+msgstr "鈴木 一郎"
+
+#: patterns/image-and-numbered-features.php:85
+msgid "Blazing fast by default"
+msgstr "デフォルトで超高速"
+
+#: patterns/feature-boxes-with-button.php:87
+#: patterns/feature-boxes-with-icon-dark.php:87
+#: patterns/large-text-and-text-boxes.php:84
+msgid "Blazing fast performance"
+msgstr "超高速パフォーマンス"
+
+#: patterns/card-pricing-table.php:90 patterns/pricing-table-3-column.php:107
+#: patterns/pricing-table-3-column.php:288
+#: patterns/pricing-table-with-testimonials.php:107
+#: patterns/pricing-table-with-testimonials.php:288
+#: patterns/pricing-table.php:107
+msgid "Blazing-Fast Performance"
+msgstr "超高速パフォーマンス"
+
+#: patterns/numbers.php:29
+msgid "Blazing-fast performance out of the box. No caching plugins needed."
+msgstr "すぐに使える超高速パフォーマンス。キャッシュプラグインは不要です。"
+
+#: patterns/footer-dark.php:69 patterns/footer-light.php:69
+#: patterns/menu-mobile-5.php:50 patterns/menu-mobile-6.php:52
+msgid "Blog"
+msgstr "ブログ"
+
+#: functions.php:51
+msgid "Blur Image Less"
+msgstr "ぼかし効果（小）"
+
+#: functions.php:52
+msgid "Blur Image More"
+msgstr "ぼかし効果（大）"
+
+#: functions.php:56 functions.php:64
+msgid "Box Shadow"
+msgstr "ボックスシャドウ"
+
+#: functions.php:45 functions.php:73 functions.php:82
+msgid "Boxed"
+msgstr "ボックス"
+
+#: patterns/footer-dark.php:52 patterns/footer-light.php:52
+msgid "Brand Assets"
+msgstr "ブランドガイドライン"
+
+#: patterns/testimonials-with-social-links.php:101
+msgid "Brand Designer"
+msgstr "ブランドデザイナー"
+
+#: patterns/menu-card-3.php:21 patterns/menu-panel-6.php:57
+msgid "Brand Identity"
+msgstr "ブランドアイデンティティ"
+
+#: patterns/testimonials-and-logos.php:137
+#: patterns/testimonials-and-logos.php:140
+#: patterns/testimonials-and-logos.php:143
+#: patterns/testimonials-and-logos.php:146
+#: patterns/testimonials-and-logos.php:149
+msgid "Brand logo"
+msgstr "ブランドロゴ"
+
+#: patterns/menu-panel-3.php:50 patterns/menu-panel-3.php:89
+msgid "Browse All"
+msgstr "すべて見る"
+
+#: patterns/menu-panel-5.php:24
+msgid "Browse our product categories"
+msgstr "製品カテゴリーを見る"
+
+#: patterns/menu-mobile-1.php:42
+msgid "Build"
+msgstr "構築"
+
+#: patterns/card-call-to-action-with-buttons.php:19
+msgid "Build With Patterns"
+msgstr "パターンで楽々デザイン"
+
+#: patterns/text-and-image-columns-with-testimonial.php:34
+msgid "Build on WordPress"
+msgstr "WordPressで構築"
+
+#: patterns/feature-boxes-with-button.php:111
+#: patterns/feature-boxes-with-icon-dark.php:111
+msgid "Build with beautiful patterns"
+msgstr "美しいパターンで、思い通りに"
+
+#: patterns/text-call-to-action.php:24
+msgid ""
+"Build your blazing fast website with the power of the WordPress Site Editor "
+"and beautiful, pre-made designs from Ollie. No coding skills required."
+msgstr ""
+"WordPressサイトエディターのパワーとOllieの美しいデザインで、超高速なサイトを"
+"構築。  \n"
+"コード不要で、誰でも簡単に。"
+
+#: patterns/card-call-to-action-with-buttons.php:22
+msgid ""
+"Build your blazing fast website with the power of the WordPress Site Editor "
+"and beautiful, pre-made pattern designs from Ollie. No coding skills "
+"required."
+msgstr ""
+"WordPressサイトエディターのパワーと、Ollieの美しいプリセットパターンを活用し"
+"て、超高速なウェブサイトを作成しよう。コーディングスキルは不要です。"
+
+#: patterns/features-with-emojis.php:53
+msgid ""
+"Build your entire site visually in WordPress with a powerful drag and drop "
+"page builder. No costly plugins or coding skills required! WordPress has "
+"never looked so good."
+msgstr ""
+"WordPressで、ドラッグ＆ドロップだけでサイト全体をデザイン。\n"
+"高額なプラグインもコードも不要。\n"
+"かつてない美しさを、あなたのサイトに。"
+
+#: patterns/hero-dark.php:26 patterns/hero-light.php:26
+msgid "Build your site with clicks, not code."
+msgstr "コード不要、クリックでサイトを完成させよう"
+
+#: patterns/menu-mobile-6.php:22
+msgid "Builder"
+msgstr "ビルダー"
+
+#: patterns/feature-boxes-with-button.php:25
+#: patterns/feature-boxes-with-icon-dark.php:25
+msgid ""
+"Building with blocks and patterns is super easy and fun! You can design "
+"beautiful landing pages with just a few clicks."
+msgstr ""
+"ブロックとパターンでのサイト作りは、驚くほど簡単で楽しい。  \n"
+"わずか数クリックで、美しいランディングページが完成します。"
+
+#: patterns/feature-boxes-with-button.php:19
+#: patterns/feature-boxes-with-icon-dark.php:19
+#: patterns/large-text-and-text-boxes.php:19
+msgid "Built For The Future"
+msgstr "未来を見据えた設計"
+
+#: patterns/menu-mobile-1.php:50 patterns/menu-mobile-2.php:38
+#: patterns/menu-mobile-3.php:49 patterns/menu-mobile-4.php:36
+msgid "Built for the Future"
+msgstr "未来を見据えた設計"
+
+#: patterns/numbers.php:42
+msgid ""
+"Built with SEO best practices in mind to help you rank in search engines."
+msgstr "SEOのベストプラクティスを採用し、検索上位を狙える設計"
+
+#: functions.php:79
+msgid "Button Style"
+msgstr "ボタンスタイル"
+
+#: patterns/page-profile.php:52
+msgid "Buy My Creator Course"
+msgstr "My Creatorコースを購入する"
+
+#: functions.php:138
+msgid "Call To Action"
+msgstr "🚀 コールトゥアクション"
+
+#: patterns/faq.php:118
+msgid "Can't find what you're looking for? Let's have a chat!"
+msgstr "お探しのものが見つかりませんか？ぜひご相談ください。"
+
+#: functions.php:135
+msgid "Cards"
+msgstr "🖼️ カード"
+
+#: patterns/footer-dark.php:49 patterns/footer-light.php:49
+#: patterns/menu-mobile-5.php:53 patterns/menu-mobile-6.php:55
+msgid "Careers"
+msgstr "採用情報"
+
+#: patterns/menu-panel-5.php:198
+msgid "Category Eight"
+msgstr "カテゴリー 8"
+
+#: patterns/menu-panel-5.php:138
+msgid "Category Five"
+msgstr "カテゴリー 5"
+
+#: patterns/menu-panel-5.php:118
+msgid "Category Four"
+msgstr "カテゴリー 4"
+
+#: patterns/menu-panel-5.php:218
+msgid "Category Nine"
+msgstr "カテゴリー 9"
+
+#: patterns/menu-panel-5.php:58
+msgid "Category One"
+msgstr "カテゴリー 1"
+
+#: patterns/menu-panel-5.php:178
+msgid "Category Seven"
+msgstr "カテゴリー 7"
+
+#: patterns/menu-panel-5.php:158
+msgid "Category Six"
+msgstr "カテゴリー 6"
+
+#: patterns/menu-panel-5.php:98
+msgid "Category Three"
+msgstr "カテゴリー 3"
+
+#: patterns/menu-panel-5.php:78
+msgid "Category Two"
+msgstr "カテゴリー 2"
+
+#: functions.php:43
+msgid "Check"
+msgstr "チェック"
+
+#: functions.php:44
+msgid "Check Circle"
+msgstr "チェック（丸）"
+
+#: patterns/menu-mobile-3.php:85
+msgid "Check out my new podcast, VectorAI."
+msgstr "新しいポッドキャスト「VectorAI」をぜひチェックしてください。"
+
+#: patterns/menu-card-1.php:63 patterns/menu-card-4.php:74
+msgid "Collaborate without the chaos"
+msgstr "混乱なくスムーズに共同作業"
+
+#: patterns/menu-mobile-5.php:22
+msgid "Collections"
+msgstr "コレクション"
+
+#: patterns/comments.php:21 patterns/template-post-centered.php:53
+#: patterns/template-post-left-sidebar.php:64
+#: patterns/template-post-right-sidebar.php:61
+#: patterns/template-post-sticky.php:86 patterns/template-post-wide.php:53
+msgid "Comments"
+msgstr "コメント"
+
+#: patterns/menu-panel-3.php:76
+msgid "Community"
+msgstr "コミュニティ"
+
+#: patterns/footer-dark.php:41 patterns/footer-light.php:41
+#: patterns/menu-mobile-5.php:45 patterns/menu-mobile-6.php:47
+msgid "Company"
+msgstr "会社名"
+
+#: patterns/menu-mobile-6.php:25
+msgid "Components"
+msgstr "コンポーネント"
+
+#: patterns/menu-panel-1.php:78 patterns/menu-panel-2.php:67
+msgid "Connect with existing tools"
+msgstr "既存ツールと接続"
+
+#: patterns/footer-dark.php:55 patterns/footer-dark.php:72
+#: patterns/footer-light.php:55 patterns/footer-light.php:72
+msgid "Contact"
+msgstr "お問い合わせ"
+
+#: patterns/card-contact.php:19 patterns/contact-details.php:23
+#: patterns/contact-details.php:36 patterns/contact-details.php:66
+#: patterns/menu-mobile-4.php:59
+msgid "Contact Us"
+msgstr "お問い合わせ"
+
+#: patterns/faq.php:129
+msgid "Contact Us →"
+msgstr "お問い合わせ →"
+
+#: patterns/feature-boxes-with-button.php:114
+#: patterns/feature-boxes-with-icon-dark.php:114
+msgid ""
+"Creating unique designs has never been easier. Ollie's growing pattern "
+"library puts expertly designed patterns at your fingertips."
+msgstr ""
+"オリジナルデザインが、これまでになく簡単に。 Ollieの進化するパターンライブラ"
+"リで、プロのデザインを思いのままに。"
+
+#: patterns/card-social-profile.php:27
+msgid "Creator and Product Director at IdeaFlow"
+msgstr "IdeaFlow クリエイター兼プロダクトディレクター"
+
+#: patterns/menu-card-3.php:44
+msgid "Custom websites that captivate and convert"
+msgstr "魅了し、成果につながるオリジナルサイト"
+
+#: patterns/testimonials-and-logos.php:119
+msgid "Customer Support"
+msgstr "カスタマーサポート"
+
+#: patterns/testimonials-with-social-links.php:25
+msgid ""
+"Customer happiness as at the core of our business model. If our customers "
+"aren't succeeding, we're not succeeding. See what they're saying below."
+msgstr ""
+"私たちは、お客様の成功を何より大切にしています。 実際にOllieを使ったユーザー"
+"の声をご紹介します。"
+
+#: patterns/testimonials-and-logos.php:25
+msgid ""
+"Customer happiness is at the core of our business model. If our customers "
+"aren't succeeding, we're not succeeding. See what they're saying below."
+msgstr ""
+"お客様の満足が、私たちのビジネスの中心です。お客様が成功しなければ、私たちも"
+"成功していません。実際にお客様がどう感じているか、下記でご覧ください。"
+
+#: patterns/menu-mobile-5.php:59 patterns/menu-mobile-6.php:61
+msgid "Customers"
+msgstr "お客様の声"
+
+#: patterns/feature-boxes-with-button.php:39
+#: patterns/feature-boxes-with-icon-dark.php:39
+#: patterns/large-text-and-text-boxes.php:36
+msgid "Customize with clicks, not code"
+msgstr "コード不要、クリックでカスタマイズ"
+
+#: functions.php:48
+msgid "Dark"
+msgstr "ダーク"
+
+#: functions.php:76
+msgid "Dark Style"
+msgstr "ダークスタイル"
+
+#: patterns/menu-panel-3.php:73
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+#: patterns/footer-dark.php:101 patterns/footer-light.php:101
+msgid "Demo"
+msgstr "デモ"
+
+#: patterns/menu-mobile-1.php:19
+msgid "Design"
+msgstr "デザイン"
+
+#: patterns/hero-call-to-action-buttons-light.php:20
+#: patterns/hero-call-to-action-buttons.php:26
+#: patterns/hero-text-image-and-logos.php:22
+msgid "Design faster and publish sooner with Ollie"
+msgstr "Ollieで最速デザイン、瞬速公開"
+
+#: patterns/menu-mobile-4.php:24
+msgid "Design solutions that scale"
+msgstr "スケールするデザインソリューション"
+
+#: patterns/card-text-and-call-to-action.php:26
+msgid "Design with a few clicks. No code required."
+msgstr "数クリックでデザイン完了。コード不要。"
+
+#: patterns/card-big-text-call-to-action.php:22
+msgid "Design your site without code"
+msgstr "コード不要でサイトをデザインしよう"
+
+#: patterns/hero-text-image-and-logos.php:40
+msgid "Desktop preview"
+msgstr "デスクトッププレビュー"
+
+#: patterns/hero-dark.php:46 patterns/hero-light.php:46
+msgid "Desktop screenshot"
+msgstr "デスクトップのスクリーンショット"
+
+#: patterns/menu-mobile-1.php:56 patterns/menu-mobile-2.php:44
+#: patterns/menu-mobile-3.php:61 patterns/menu-mobile-4.php:42
+msgid "Developer Friendly"
+msgstr "開発者にやさしい"
+
+#: patterns/menu-mobile-5.php:82 patterns/menu-mobile-6.php:84
+msgid "Developers"
+msgstr "開発者"
+
+#: patterns/text-and-image-columns-with-testimonial.php:40
+msgid ""
+"Did you know you can build a blazing-fast, fully-customizable website with "
+"the native WordPress editor now? Download the Ollie block theme to start "
+"learning the new WordPress today!"
+msgstr ""
+"WordPressのネイティブエディターだけで、超高速＆フルカスタマイズ可能なサイト"
+"を作れるって知ってましたか？Ollieブロックテーマをダウンロードして、新しい"
+"WordPressを体験しましょう。"
+
+#: patterns/menu-card-3.php:61
+msgid "Digital Marketing"
+msgstr "デジタルマーケティング"
+
+#: patterns/menu-panel-6.php:89
+msgid "Digital Strategy"
+msgstr "デジタル戦略"
+
+#: patterns/menu-mobile-2.php:29 patterns/menu-mobile-3.php:29
+msgid "Director of AI"
+msgstr "AI ディレクター"
+
+#: patterns/faq.php:54
+msgctxt "FAQ question"
+msgid "Do I need any other plugins?"
+msgstr "他のプラグインは必要ですか?"
+
+#: patterns/menu-mobile-5.php:73 patterns/menu-mobile-6.php:75
+msgid "Docs"
+msgstr "ドキュメント"
+
+#: patterns/menu-panel-3.php:67
+msgid "Documentation"
+msgstr "ドキュメント"
+
+#: patterns/faq.php:75
+msgctxt "FAQ answer"
+msgid ""
+"Don't worry, we'll show you around! The Site Editor is fairly new, and lots "
+"of folks are still trying it out for the first time. There's a lot to "
+"learn, but the site building power you'll unlock with all of the new design "
+"tools will be well worth it!"
+msgstr ""
+"ご安心ください。サイトエディターはまだ新しく、多くの人が使いはじめたばかりで"
+"す。使い方は順番にお教えします。新しいデザインツールを使えば、思い通りのサイ"
+"ト作りがもっと簡単になります。"
+
+#: functions.php:68
+msgid "Dotted"
+msgstr "点線"
+
+#: patterns/footer-dark-centered.php:22 patterns/footer-dark.php:126
+#: patterns/footer-light-centered.php:22 patterns/footer-light.php:123
+msgid "Download"
+msgstr "ダウンロード"
+
+#: patterns/card-call-to-action.php:34
+#: patterns/card-text-and-call-to-action.php:81
+#: patterns/header-dark-with-banner.php:26
+#: patterns/header-dark-with-buttons.php:22
+#: patterns/header-light-with-banner.php:26
+#: patterns/header-light-with-buttons.php:22
+msgid "Download Now"
+msgstr "すぐにダウンロード"
+
+#: patterns/card-call-to-action.php:19 patterns/card-lead-magnet.php:32
+#: patterns/card-text-and-call-to-action.php:60
+#: patterns/card-text-and-details.php:38
+#: patterns/hero-call-to-action-buttons.php:36 patterns/hero-dark.php:36
+#: patterns/hero-light.php:36
+msgid "Download Ollie"
+msgstr "Ollieをダウンロード"
+
+#: patterns/card-text-and-details.php:26
+msgid "Download Ollie for free today and start building"
+msgstr "Ollieを無料で。さあ、作ろう。"
+
+#: patterns/card-lead-magnet.php:43
+msgid "Download Ollie for free!"
+msgstr "Ollieを無料でダウンロードする"
+
+#: patterns/card-details.php:31 patterns/card-text-and-details.php:88
+msgid "Downloads:"
+msgstr "ダウンロード:"
+
+#: patterns/pricing-table-3-column.php:25
+#: patterns/pricing-table-with-testimonials.php:25
+#: patterns/pricing-table.php:25
+msgid ""
+"Easily create beautiful and responsive pricing tables with Ollie patterns. "
+"Connect your eCommerce solution and start making bank."
+msgstr ""
+"Ollieのパターンを使って、美しくレスポンシブな料金表を簡単に作成。  \n"
+"eコマースのソリューションと連携して、売上を伸ばしましょう。"
+
+#: patterns/testimonials-with-big-text.php:24
+msgid ""
+"Easily create beautiful, blazing-fast websites with the new WordPress Site "
+"Editor."
+msgstr "新しいWordPressサイトエディターで、美しく高速なサイトを簡単に構築。"
+
+#: patterns/large-text-and-text-boxes.php:22
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme."
+msgstr ""
+"新しい WordPress サイトエディターと Ollie ブロックテーマで、美しく自由にカス"
+"タマイズできるサイトを手軽に作成できます。"
+
+#: patterns/card-text-and-call-to-action.php:72
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme. Anyone can do it! No coding skills "
+"required."
+msgstr ""
+"新しいWordPressサイトエディタとOllieブロックテーマを使用して、美しく完全にカ"
+"スタマイズ可能なWebサイトを簡単に作成できます。誰でもできる!コーディングのス"
+"キルは必要ありません。"
+
+#: patterns/card-big-text-call-to-action.php:25
+#: patterns/hero-call-to-action-buttons-light.php:23
+#: patterns/hero-call-to-action-buttons.php:31 patterns/hero-dark.php:31
+#: patterns/hero-light.php:31 patterns/hero-text-image-and-logos.php:25
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme. No coding skills required."
+msgstr ""
+"新しいWordPressサイトエディターとOllieブロックテーマで、自由に美しく。 コー"
+"ド不要。"
+
+#: patterns/card-call-to-action.php:29
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme. No coding skills required. Anyone "
+"can do it!"
+msgstr ""
+"新しいWordPressサイトエディターとOllieブロックテーマを使えば、誰でも簡単に美"
+"しくカスタマイズ可能なサイトを作成できます。コードは一切不要です。"
+
+#: patterns/footer-dark.php:22 patterns/footer-light.php:22
+msgid ""
+"Easily create beautiful, fully-customizable websites with the new WordPress "
+"Site Editor and the Ollie block theme. No coding skills required. Download "
+"for free today!"
+msgstr "美しく、自由に。コード不要。Ollieで、新しいWordPressを体験しよう。"
+
+#: patterns/menu-mobile-1.php:53 patterns/menu-mobile-2.php:41
+#: patterns/menu-mobile-3.php:55 patterns/menu-mobile-4.php:39
+msgid "Easy to Extend"
+msgstr "簡単に拡張"
+
+#: patterns/card-contact.php:39 patterns/contact-details.php:86
+msgid "Email"
+msgstr "メールアドレス"
+
+#: patterns/menu-panel-3.php:79
+msgid "Enterprise"
+msgstr "エンタープライズ"
+
+#: patterns/menu-panel-1.php:93 patterns/menu-panel-2.php:78
+msgid "Enterprise Ready"
+msgstr "エンタープライズ対応"
+
+#: patterns/card-social-profile.php:24
+msgid "Eric Voyager"
+msgstr "佐々木 健太"
+
+#: patterns/testimonials-and-logos.php:92
+msgid "Erik Acadia"
+msgstr "藤井 輝"
+
+#: patterns/pricing-table-3-column.php:227
+#: patterns/pricing-table-with-testimonials.php:227
+msgid "Essential"
+msgstr "エッセンシャル"
+
+#: patterns/card-pricing-table-dark.php:51
+#: patterns/pricing-table-3-column.php:152
+#: patterns/pricing-table-with-testimonials.php:152
+#: patterns/pricing-table.php:152
+msgid "Everything in Essential plus..."
+msgstr "エッセンシャルのすべてに加えて..."
+
+#: patterns/menu-panel-1.php:143 patterns/menu-panel-2.php:125
+msgid "Expert help when you need it"
+msgstr "必要なときに専門家がサポート"
+
+#: patterns/card-call-to-action-with-buttons.php:32
+msgid "Explore Features"
+msgstr "特徴・サービス"
+
+#: patterns/card-big-text-call-to-action.php:19
+#: patterns/card-text-and-call-to-action.php:23
+#: patterns/hero-call-to-action-buttons-light.php:31
+#: patterns/hero-text-image-and-logos.php:33
+msgid "Explore Ollie"
+msgstr "Ollie を見る"
+
+#: patterns/menu-panel-5.php:28
+msgid ""
+"Explore our curated selection of products organized by category to find "
+"exactly what you need."
+msgstr ""
+"カテゴリー別に厳選した製品の中から、お探しのものをすぐに見つけられます。"
+
+#: patterns/menu-mobile-5.php:76 patterns/menu-mobile-6.php:78
+#: patterns/menu-panel-3.php:43
+msgid "FAQs"
+msgstr "よくある質問"
+
+#: functions.php:141 patterns/footer-dark.php:92 patterns/footer-light.php:92
+msgid "Features"
+msgstr "🔑 特徴・サービス"
+
+#: patterns/card-details.php:61 patterns/card-text-and-details.php:118
+msgid "Filesize:"
+msgstr "ファイルサイズ:"
+
+#: patterns/menu-panel-4.php:85
+msgid ""
+"Find out how businesses just like yours have grown by 30% or more in just "
+"over a month."
+msgstr ""
+"貴社と同じような企業が、わずか 1 か月あまりで 30% 以上成長した方法をご紹介し"
+"ます。"
+
+#: patterns/menu-mobile-1.php:95 patterns/menu-mobile-2.php:66
+msgid "Find out how we can help you scale."
+msgstr "私たちがどのように成長を支援できるかご紹介します。"
+
+#: patterns/feature-boxes-with-button.php:138
+#: patterns/feature-boxes-with-icon-dark.php:138
+msgid ""
+"Finely-crafted typography that makes your content shine and automatically "
+"scales down to the perfect size on every device."
+msgstr ""
+"日本語に最適化された美しいタイポグラフィ。 どのデバイスでもバランスよく自動"
+"調整されます。"
+
+#: patterns/page-profile.php:49
+msgid "Follow on Twitter"
+msgstr "Twitterでフォロー"
+
+#: patterns/hero-call-to-action-buttons-light.php:28
+#: patterns/hero-text-image-and-logos.php:30
+msgid "Free Download"
+msgstr "無料ダウンロード"
+
+#: patterns/faq.php:19
+msgid "Frequently Asked"
+msgstr "よくある質問"
+
+#: patterns/menu-panel-6.php:28
+msgid ""
+"From brand identity to digital experiences, we craft solutions that elevate "
+"your business and connect with your audience."
+msgstr ""
+"ブランドアイデンティティからデジタル体験まで、ビジネスを高め、オーディエンス"
+"とつなぐソリューションを生み出します。"
+
+#: patterns/job-openings.php:43 patterns/job-openings.php:73
+msgid "Full Time · Remote"
+msgstr "フルタイム・リモート"
+
+#: patterns/job-openings.php:101
+msgid "Full Time · San Francisco"
+msgstr "フルタイム ·サンフランシスコ"
+
+#: patterns/menu-mobile-6.php:31
+msgid "Gallery"
+msgstr "ギャラリー"
+
+#: patterns/footer-dark.php:78 patterns/footer-light.php:78
+msgid "Get Help"
+msgstr "ヘルプ"
+
+#: patterns/card-image-and-text.php:32 patterns/card-pricing-table-dark.php:39
+#: patterns/card-pricing-table.php:39 patterns/menu-card-1.php:82
+#: patterns/menu-panel-4.php:92 patterns/pricing-table-3-column.php:140
+#: patterns/pricing-table-3-column.php:237
+#: patterns/pricing-table-3-column.php:56
+#: patterns/pricing-table-with-testimonials.php:140
+#: patterns/pricing-table-with-testimonials.php:237
+#: patterns/pricing-table-with-testimonials.php:56
+#: patterns/pricing-table.php:140 patterns/pricing-table.php:56
+msgid "Get Started"
+msgstr "今すぐはじめる"
+
+#: patterns/card-big-text-call-to-action.php:32
+#: patterns/card-call-to-action-with-buttons.php:29
+#: patterns/menu-mobile-4.php:52 patterns/menu-mobile-5.php:95
+#: patterns/text-and-image-columns-with-testimonial.php:47
+#: patterns/text-call-to-action-buttons.php:36
+#: patterns/text-call-to-action.php:31
+msgid "Get Started Today"
+msgstr "今すぐ始めよう"
+
+#: patterns/feature-boxes-with-button.php:22
+#: patterns/feature-boxes-with-icon-dark.php:22
+msgid "Get a 40 hour head start"
+msgstr "40時間のリードを掴め。"
+
+#: patterns/menu-mobile-1.php:90 patterns/menu-mobile-2.php:61
+msgid "Get started today!"
+msgstr "今すぐ始めましょう！"
+
+#: patterns/pricing-table-with-testimonials.php:337
+msgid "Giannis Holiday · Creatif"
+msgstr "Giannis Holiday · Creatif"
+
+#: patterns/contact-details.php:26
+msgid "Give us a ring, we'd love to chat with you."
+msgstr "気軽に話そう。いつでもどうぞ。"
+
+#: patterns/menu-mobile-1.php:79
+msgid "Go Live Quicker"
+msgstr "すぐに公開"
+
+#: patterns/feature-boxes-with-button.php:135
+#: patterns/feature-boxes-with-icon-dark.php:135
+msgid "Gorgeous typography"
+msgstr "美しく、洗練されたタイポグラフィ"
+
+#: patterns/faq.php:25
+msgid ""
+"Got a question? We've got you covered! Check out the resources below and be "
+"sure to let us know if we can answer anything else."
+msgstr ""
+"他に質問がありますか？おまかせください。まずは以下のリソースをご覧ください。"
+"その他、気になることがございましたら、お気軽にお問い合わせください。"
+
+#: patterns/card-pricing-table.php:32 patterns/pricing-table-3-column.php:49
+#: patterns/pricing-table-with-testimonials.php:49
+#: patterns/pricing-table.php:49
+msgid ""
+"Great for beginners who want to give your product a trial run and see if it "
+"fits their workflow."
+msgstr ""
+"初心者にもぴったり！まずは気軽に試して、自分のワークフローに合うかチェックし"
+"てみよう。"
+
+#: patterns/pricing-table-3-column.php:230
+#: patterns/pricing-table-with-testimonials.php:230
+msgid ""
+"Great for folks who are just getting started and only need the basic "
+"features and support."
+msgstr "始めたばかりで、基本的な機能とサポートのみが必要な人に最適です。"
+
+#: patterns/card-pricing-table-dark.php:32
+#: patterns/pricing-table-3-column.php:133
+#: patterns/pricing-table-with-testimonials.php:133
+#: patterns/pricing-table.php:133
+msgid ""
+"Great for professionals who are building a lot of WordPress websites and "
+"need all the tools."
+msgstr ""
+"多くのWordPressサイトを構築するプロフェッショナルに最適。必要なツールがすべ"
+"て揃っています。"
+
+#: patterns/text-and-image-columns-with-icons.php:80
+msgid "Hands typing on computer"
+msgstr "コンピューターでの手入力"
+
+#: functions.php:144
+msgid "Hero"
+msgstr "🏅 ヒーロー"
+
+#: patterns/menu-card-2.php:19
+msgid "How we can help"
+msgstr "私たちにできること"
+
+#: patterns/testimonials-with-big-text.php:70
+msgid ""
+"I create a lot of landing pages, and the Site Editor and Ollie have been a "
+"game changer for this. Choose a layout, add my content, hit publish."
+msgstr ""
+"ランディングページをたくさん作るけど、サイトエディターとOllieのおかげで劇的"
+"に変わった。  \n"
+"レイアウトを選び、コンテンツを追加して、あとは公開するだけ。"
+
+#: patterns/testimonials-and-logos.php:82
+#: patterns/testimonials-with-social-links.php:88
+msgid ""
+"I create a lot of landing pages, and the Site Editor and Ollie have been "
+"huge for this. I can choose from a pre-designed landing page, customize my "
+"brand colors, and I'm ready to launch."
+msgstr ""
+"ランディングページをたくさん作るけど、サイトエディターとOllieのおかげで驚く"
+"ほどスムーズに。 \n"
+"デザイン済みのテンプレートを選び、ブランドカラーを調整するだけで、すぐに公開"
+"できるようになった🐣"
+
+#: patterns/pricing-table-with-testimonials.php:334
+msgid ""
+"I finally feel like I can ditch my costly page builder plugin. Now, I can "
+"quickly build out page sections or full page designs with Ollie patterns."
+msgstr ""
+"ようやく高価なページビルダープラグインを手放せそうです。今では Ollie のパ"
+"ターンで、ページのセクションもページ全体のデザインも素早く作れます。"
+
+#: patterns/testimonials-and-logos.php:58
+#: patterns/testimonials-with-social-links.php:49
+msgid ""
+"I love using WordPress but traditionally it has been hard to design in. Not "
+"any more! I can quickly build out page sections or full page designs with "
+"Ollie patterns. Saves me so much time!"
+msgstr ""
+"WordPressは大好き。でも、デザインは大変だった。Ollieのパターンなら、ページの"
+"セクションもフルデザインも一瞬で完成🎯圧倒的な時短を実現。"
+
+#: patterns/card-image-and-text.php:25 patterns/card-testimonial.php:17
+#: patterns/testimonials-with-big-text.php:49
+msgid ""
+"I love using WordPress but traditionally it has been hard to design in. Not "
+"any more! Now, I can quickly build full page designs with beautiful "
+"patterns!"
+msgstr ""
+"WordPressは大好き。でも、これまでデザインは大変だった。もうそんな心配はいり"
+"ません。美しいパターンを使って、簡単にフルページデザインが作れます。"
+
+#: patterns/testimonials-and-logos.php:106
+msgid ""
+"I was skeptical about all the changes going on in WordPress, but now that "
+"I've seen how powerful it can be, I'm convinced. Ollie made it super easy "
+"to get started with the \"new\" WordPress."
+msgstr ""
+"WordPressの変化には半信半疑だったけど、そのパワーを実感して考えが変わった。 "
+"Ollieのおかげで、新しいWordPressをスムーズに使いこなせるようになりました。"
+
+#: patterns/testimonial-highlight.php:17
+msgid ""
+"I'm super impressed with how powerful the WordPress Site Editor is. I can "
+"design my site so quickly with patterns!"
+msgstr ""
+"WordPressサイトエディターのパワーに感動。\n"
+"パターンを使えば、あっという間にサイトが完成。"
+
+#: patterns/card-image-and-text.php:22
+msgid "Image and Text Card"
+msgstr "画像＆テキストカード"
+
+#: patterns/menu-card-2.php:40 patterns/menu-panel-4.php:28
+msgid "Insights you can act on"
+msgstr "行動につながるインサイト"
+
+#: patterns/menu-panel-3.php:37
+msgid "Integrations"
+msgstr "連携"
+
+#: patterns/contact-details.php:39
+msgid "Join Our Team"
+msgstr "私たちのチームに参加しませんか"
+
+#: patterns/page-profile.php:55
+msgid "Join my Patreon"
+msgstr "Patreonに参加する"
+
+#: patterns/card-post-list.php:19
+msgid "Latest Posts"
+msgstr "最新の投稿"
+
+#: patterns/blog-post-columns.php:19
+msgid "Latest and Greatest"
+msgstr "最新かつ最高"
+
+#: patterns/text-call-to-action-buttons.php:21
+msgid "Launch Faster"
+msgstr "公開までを、より速く"
+
+#: patterns/feature-boxes-with-button.php:159
+#: patterns/feature-boxes-with-icon-dark.php:159
+msgid "Launch quicker"
+msgstr "サイト公開を、より速く"
+
+#: patterns/feature-boxes-with-button.php:121
+#: patterns/feature-boxes-with-button.php:145
+#: patterns/feature-boxes-with-button.php:169
+#: patterns/feature-boxes-with-button.php:49
+#: patterns/feature-boxes-with-button.php:73
+#: patterns/feature-boxes-with-button.php:97
+#: patterns/feature-boxes-with-icon-dark.php:121
+#: patterns/feature-boxes-with-icon-dark.php:145
+#: patterns/feature-boxes-with-icon-dark.php:169
+#: patterns/feature-boxes-with-icon-dark.php:49
+#: patterns/feature-boxes-with-icon-dark.php:73
+#: patterns/feature-boxes-with-icon-dark.php:97
+#: patterns/header-dark-with-buttons.php:25
+#: patterns/header-light-with-buttons.php:25
+#: patterns/large-text-and-text-boxes.php:46
+#: patterns/large-text-and-text-boxes.php:70
+#: patterns/large-text-and-text-boxes.php:94
+msgid "Learn More"
+msgstr "詳細はこちら"
+
+#: patterns/menu-panel-3.php:59
+msgid "Learn Our Product"
+msgstr "製品について知る"
+
+#: patterns/faq.php:22
+msgid "Learn about our product"
+msgstr "よくあるご質問"
+
+#: patterns/menu-mobile-1.php:95 patterns/menu-mobile-2.php:66
+#: patterns/menu-mobile-3.php:85
+msgid "Learn more"
+msgstr "詳しく見る"
+
+#: patterns/blog-post-columns.php:25
+msgid ""
+"Learn the latest and greatest in WordPress site building. We're offering "
+"tutorials, tips and tricks, and video walkthroughs on our blog."
+msgstr ""
+"WordPressサイト構築の最新＆最高のテクニックを学ぼう！チュートリアルやヒン"
+"ト・コツ、動画解説をブログでお届けします。"
+
+#: patterns/job-openings.php:22
+msgid "Let's work together!"
+msgstr "一緒に働きませんか？"
+
+#: patterns/menu-mobile-5.php:19
+msgid "Library"
+msgstr "ライブラリ"
+
+#: patterns/menu-card-3.php:24
+msgid "Logo design, brand guidelines, and visual systems"
+msgstr "ロゴデザイン、ブランドガイドライン、ビジュアルシステム"
+
+#: patterns/card-post-list.php:49
+msgid "Looks like you haven't added any posts yet."
+msgstr "まだ投稿が追加されていないようです。"
+
+#: patterns/menu-mobile-2.php:26 patterns/menu-mobile-3.php:26
+msgid "Margo Middleton"
+msgstr "Margo Middleton"
+
+#: patterns/pricing-table-with-testimonials.php:316
+msgid "Marion Alpine · SparkCode"
+msgstr "Marion Alpine · SparkCode"
+
+#: patterns/testimonials-and-logos.php:71
+msgid "Marketer"
+msgstr "マーケティング 担当者"
+
+#: patterns/job-openings.php:126
+msgid "Marketing Manager"
+msgstr "マーケティングマネージャー"
+
+#: patterns/menu-mobile-5.php:31 patterns/menu-panel-3.php:82
+msgid "Marketplace"
+msgstr "マーケットプレイス"
+
+#: patterns/single-testimonial.php:30 patterns/team-members.php:88
+#: patterns/testimonial-highlight.php:30
+#: patterns/testimonials-and-logos.php:44
+#: patterns/testimonials-with-big-text.php:80
+#: patterns/testimonials-with-social-links.php:59
+msgid "Maryann Alpine"
+msgstr "佐藤 真理"
+
+#: patterns/team-members.php:19
+msgid "Meet Our People"
+msgstr "チームを紹介"
+
+#: patterns/testimonials-with-social-links.php:22
+msgid "Meet our happy campers"
+msgstr "私たちの満足ユーザーをご紹介"
+
+#: functions.php:159
+msgid "Menu"
+msgstr "メニュー"
+
+#: patterns/team-members.php:63
+msgid "Michael Glacier"
+msgstr "田中 大輔"
+
+#: patterns/menu-card-1.php:46 patterns/menu-card-4.php:50
+msgid "Never lose a design iteration again"
+msgstr "デザインの変更履歴を二度と失いません"
+
+#: patterns/text-call-to-action.php:21
+msgid "No code? No problem."
+msgstr "ノーコード、ノープロブレム。"
+
+#: patterns/text-call-to-action-buttons.php:24
+msgid "No code? No problem. Design websites faster with patterns."
+msgstr "コード不要。パターンで、もっと速く美しく。"
+
+#: patterns/large-text-and-text-boxes.php:22
+#: patterns/testimonials-with-big-text.php:24
+msgid "No coding skills required."
+msgstr "コード不要。"
+
+#: patterns/faq.php:57
+msgctxt "FAQ answer"
+msgid ""
+"Nope! Ollie is designed to work with the native WordPress editor, meaning "
+"you don't need a page builder plugin to build a beautiful website on "
+"WordPress anymore. Of course, you can continue using your favorite plugins "
+"alongside Ollie!"
+msgstr ""
+"いいえ、OllieはWordPressの標準エディターに対応しているので、ページビルダープ"
+"ラグインは不要です。そのままブロックとパターンを使って、美しいサイトを作成で"
+"きます。もちろん、お気に入りのプラグインと一緒に使うことも可能です。"
+
+#: patterns/pricing-table-3-column.php:299
+#: patterns/pricing-table-with-testimonials.php:299
+#: patterns/pricing-table.php:202
+msgid "Not convinced? We offer a"
+msgstr "迷っていますか？私たちは"
+
+#: patterns/pricing-table-with-testimonials.php:313
+msgid ""
+"Now that I've seen how powerful the Site Editor can be, I can't live "
+"without it. Ollie made it super easy to get started with the \"new\" "
+"WordPress."
+msgstr ""
+"サイトエディターの強力さを知った今、もう手放せません。Ollie のおかげで「新し"
+"い」WordPress をとても簡単に始められました。"
+
+#: patterns/footer-dark-centered.php:36 patterns/footer-dark-minimal.php:20
+#: patterns/footer-dark.php:121 patterns/footer-light-centered.php:36
+#: patterns/footer-light-minimal.php:20 patterns/footer-light.php:118
+msgid "Ollie"
+msgstr "Ollie"
+
+#: patterns/features-with-emojis.php:50
+msgid "Ollie Block Theme"
+msgstr "Ollie ブロックテーマ"
+
+#: patterns/hero-call-to-action-buttons.php:39 patterns/hero-dark.php:39
+#: patterns/hero-light.php:39
+msgid "Ollie Features"
+msgstr "特徴・サービス"
+
+#: patterns/features-with-emojis.php:63
+msgid "Ollie Onboarding"
+msgstr "Ollie オンボーディング"
+
+#: patterns/features-with-emojis.php:24
+msgid "Ollie Patterns"
+msgstr "日本語対応、Ollieパターン"
+
+#: patterns/features-with-emojis.php:37
+msgid "Ollie Templates"
+msgstr "Ollie テンプレート"
+
+#: patterns/numbers-stacked.php:54
+msgid ""
+"Ollie boasts over two hundred 5 star reviews and an average rating of 9 on "
+"Rotten Tomatoes."
+msgstr ""
+"Ollieは、Rotten Tomatoesで200以上の5つ星レビューを獲得し、平均評価9を誇りま"
+"す。"
+
+#: patterns/faq.php:43
+msgctxt "FAQ answer"
+msgid ""
+"Ollie is a WordPress block theme that is designed to work with the new "
+"WordPress Site Editor. That means your site can be built with blocks, "
+"patterns, and other design elements that can be easily edited without any "
+"coding skills."
+msgstr ""
+"Ollieは、新しいWordPressサイトエディター対応のブロックテーマです。ブロックや"
+"パターンを使って、コードなしで簡単にサイトを作成・編集できます。"
+
+#: patterns/card-text-and-call-to-action.php:29
+msgid ""
+"Ollie is a block theme for the next generation of WordPress creators. With "
+"beautiful patterns and templates built right in, you can get a site "
+"launched in record time."
+msgstr ""
+"Ollieは次世代のWordPressクリエイターのためのブロックテーマです。美しいパター"
+"ンやテンプレートがあらかじめ組み込まれているので、驚くほど短時間でサイトを公"
+"開できます。"
+
+#: patterns/text-and-image-columns-with-testimonial.php:37
+msgid "Ollie is built for the new WordPress Site Editor"
+msgstr "Ollie、新しいWordPressサイトエディターとともに。"
+
+#: patterns/feature-boxes-with-button.php:162
+#: patterns/feature-boxes-with-icon-dark.php:162
+msgid ""
+"Ollie launches with built-in pattern designs, page templates, style "
+"variations and more so you can get your site launched quickly."
+msgstr ""
+"Ollieには、パターンデザイン、ページテンプレート、スタイルバリエーションなど"
+"が標準搭載。 すぐにサイトを公開できます。"
+
+#: patterns/card-text-and-details.php:29
+#: patterns/text-and-image-columns-with-icons.php:29
+msgid ""
+"Ollie ships with a growing collection of design patterns that cohesively "
+"click together. Drag, drop, mix, and match patterns to create stunning "
+"designs in just a few minutes."
+msgstr ""
+"Ollieには、まとまりのあるカチッと音を立てるデザインパターンのコレクションが"
+"増え続けています。ドラッグ&ドロップ、ミキシング、パターンのマッチングによ"
+"り、わずか数分で見事なデザインを作成できます。"
+
+#: patterns/numbers-stacked.php:24
+msgid ""
+"Ollie ships with over 50 pixel-perfect pattern designs you can use to build "
+"a stunning website with a few clicks."
+msgstr ""
+"Ollieには、わずか数クリックで魅力的なWebサイトを作れる、50以上のピクセルパー"
+"フェクトなパターンが揃っています。"
+
+#: patterns/features-with-emojis.php:40
+msgid ""
+"Ollie ships with over ten professionally-designed page templates (About, "
+"Profile, Download, etc.) so you can get your site off the ground in no time."
+msgstr ""
+"Ollieには、プロがデザインした10種類以上のページテンプレート（About、プロ"
+"フィール、ダウンロードなど）が揃っているので、ほんの数分でホームページを公開"
+"できます。"
+
+#: patterns/features-with-emojis.php:27
+msgid ""
+"Ollie ships with over twenty beautiful pattern designs you can use to build "
+"a stunning and powerful website. Easily drag and drop patterns to create a "
+"design and hit publish!"
+msgstr ""
+"Ollieには、見事で強力なWebサイトを構築するために使用できる20を超える美しいパ"
+"ターンデザインが付属しています。パターンを簡単にドラッグアンドドロップしてデ"
+"ザインを作成し、公開をクリックします。"
+
+#: patterns/numbers-stacked.php:34
+msgid ""
+"Ollie ships with several full page designs such as Homepage, About, "
+"Features, Download, and more."
+msgstr ""
+"Ollieには、ホームページ、バージョン情報、機能、ダウンロードなど、いくつかの"
+"フルページデザインが付属しています。"
+
+#: patterns/card-pricing-table-dark.php:103
+#: patterns/pricing-table-3-column.php:204
+#: patterns/pricing-table-with-testimonials.php:204
+msgid "Online Workshops"
+msgstr "オンラインワークショップ"
+
+#: patterns/menu-panel-6.php:24
+msgid "Our creative studio services"
+msgstr "私たちのクリエイティブスタジオのサービス"
+
+#: patterns/menu-card-2.php:71 patterns/menu-panel-4.php:56
+msgid ""
+"Our tested growth strategies have helped clients across industries achieve "
+"breakthrough results."
+msgstr ""
+"実証済みの成長戦略により、さまざまな業界のお客様が飛躍的な成果を上げていま"
+"す。"
+
+#: patterns/template-page-404.php:16
+msgid "Page Not Found"
+msgstr "お探しのページが見つかりません。"
+
+#: functions.php:147
+msgid "Pages"
+msgstr "📑 固定ページ"
+
+#: patterns/job-openings.php:129
+msgid "Part Time · Remote"
+msgstr "パートタイム ·リモート"
+
+#: patterns/faq.php:89
+msgctxt "FAQ answer"
+msgid ""
+"Patterns are pre-designed page elements that you can drag and drop to "
+"create unique designs. Ollie comes with an extensive collection of expertly-"
+"designed patterns, but you can also design your own patterns."
+msgstr ""
+"パターンは、ドラッグ＆ドロップで使えるデザイン済みのページ要素。  \n"
+"Ollieにはプロが手掛けた豊富なパターンが揃っていますが、自分だけのオリジナル"
+"パターンを作成することもできます。"
+
+#: patterns/card-details.php:71 patterns/card-text-and-details.php:128
+msgid "Patterns:"
+msgstr "パターン数："
+
+#: patterns/numbers.php:26
+msgid "Performance"
+msgstr "パフォーマンス"
+
+#: patterns/hero-call-to-action-buttons.php:15 patterns/hero-dark.php:15
+msgid "Person working on laptop"
+msgstr "ノートパソコンで作業する人"
+
+#: patterns/card-contact.php:52 patterns/contact-details.php:99
+msgid "Phone"
+msgstr "電話番号"
+
+#: patterns/text-and-image-columns-with-icons.php:23
+msgid "Pick Your Pattern"
+msgstr "パターンを選ぶ"
+
+#: patterns/feature-boxes-with-button.php:63
+#: patterns/feature-boxes-with-icon-dark.php:63
+#: patterns/large-text-and-text-boxes.php:60
+msgid "Pixel perfect responsive design"
+msgstr "ピクセル単位まで美しい、完璧なレスポンシブデザイン"
+
+#: patterns/image-and-numbered-features.php:64
+msgid "Pixel-perfect patterns"
+msgstr "ピクセル単位まで美しいパターン"
+
+#: patterns/menu-panel-1.php:28 patterns/menu-panel-2.php:20
+msgid "Platform Features"
+msgstr "プラットフォームの機能"
+
+#: patterns/menu-panel-3.php:70
+msgid "Playground"
+msgstr "プレイグラウンド"
+
+#: patterns/card-text-box-with-link.php:19
+msgid "Post Page"
+msgstr "投稿ページ"
+
+#: functions.php:150
+msgid "Posts"
+msgstr "📰 投稿"
+
+#: patterns/menu-mobile-1.php:27 patterns/menu-mobile-3.php:43
+#: patterns/menu-mobile-4.php:33
+msgid "Pre-designed Patterns"
+msgstr "用意済みのパターン"
+
+#: patterns/menu-mobile-5.php:79 patterns/menu-mobile-6.php:81
+msgid "Press"
+msgstr "プレス"
+
+#: functions.php:153 patterns/footer-dark.php:95 patterns/footer-light.php:95
+#: patterns/menu-mobile-5.php:56 patterns/menu-mobile-6.php:58
+#: patterns/menu-panel-3.php:40
+msgid "Pricing"
+msgstr "💰 価格"
+
+#: patterns/job-openings.php:98
+msgid "Principal Engineer"
+msgstr "プリンシパルエンジニア"
+
+#: patterns/card-pricing-table.php:77 patterns/pricing-table-3-column.php:275
+#: patterns/pricing-table-3-column.php:94
+#: patterns/pricing-table-with-testimonials.php:275
+#: patterns/pricing-table-with-testimonials.php:94
+#: patterns/pricing-table.php:94
+msgid "Priority Support"
+msgstr "優先サポート"
+
+#: patterns/menu-mobile-4.php:21
+msgid "Prism AI"
+msgstr "Prism AI"
+
+#: patterns/card-pricing-table-dark.php:77
+#: patterns/pricing-table-3-column.php:178
+#: patterns/pricing-table-with-testimonials.php:178
+#: patterns/pricing-table.php:178
+msgid "Private Coaching"
+msgstr "プライベートコーチング"
+
+#: patterns/footer-dark.php:87 patterns/footer-light.php:87
+msgid "Product"
+msgstr "商品"
+
+#: patterns/job-openings.php:38 patterns/single-testimonial.php:33
+#: patterns/team-members.php:41 patterns/team-members.php:66
+#: patterns/team-members.php:91 patterns/testimonial-highlight.php:33
+#: patterns/testimonials-and-logos.php:47
+msgid "Product Designer"
+msgstr "プロダクトデザイナー"
+
+#: patterns/card-pricing-table-dark.php:29
+#: patterns/pricing-table-3-column.php:130
+#: patterns/pricing-table-with-testimonials.php:130
+#: patterns/pricing-table.php:130
+msgid "Professional"
+msgstr "プロフェッショナル"
+
+#: patterns/menu-panel-3.php:28
+msgid "Projects"
+msgstr "プロジェクト"
+
+#: patterns/menu-card-2.php:68 patterns/menu-panel-4.php:53
+msgid "Proven growth techniques"
+msgstr "実証済みの成長手法"
+
+#: patterns/menu-mobile-1.php:65
+msgid "Publish"
+msgstr "公開"
+
+#: patterns/menu-mobile-1.php:73 patterns/menu-mobile-2.php:47
+#: patterns/menu-mobile-3.php:67 patterns/menu-mobile-4.php:45
+msgid "Publish Faster"
+msgstr "より速く公開"
+
+#: patterns/card-pricing-table.php:51 patterns/pricing-table-3-column.php:249
+#: patterns/pricing-table-3-column.php:68
+#: patterns/pricing-table-with-testimonials.php:249
+#: patterns/pricing-table-with-testimonials.php:68
+#: patterns/pricing-table.php:68
+msgid "Publishing Suite"
+msgstr "パブリッシングスイート"
+
+#: patterns/menu-panel-3.php:20
+msgid "Quick Resources"
+msgstr "クイックリンク"
+
+#: patterns/card-text-and-call-to-action.php:47
+msgid "Rated 5/5 stars by 1,420 happy reviewers"
+msgstr "1,420人の満足レビュー、評価5/5。"
+
+#: patterns/contact-details.php:55 patterns/testimonials-with-big-text.php:38
+msgid "Rated 5/5 stars by 1,620 happy reviewers"
+msgstr "評価 5/5 スター 投稿者: 1,620 ハッピーレビュアー"
+
+#: patterns/card-image-and-text.php:35 patterns/card-text-box-with-link.php:32
+#: patterns/menu-card-2.php:50 patterns/menu-card-2.php:78
+#: patterns/menu-card-4.php:33 patterns/menu-card-4.php:57
+#: patterns/menu-card-4.php:81 patterns/menu-panel-4.php:38
+#: patterns/menu-panel-4.php:63
+msgid "Read More"
+msgstr "続きを読む"
+
+#: patterns/blog-post-columns.php:22
+msgid "Read our latest blog articles"
+msgstr "最新のブログ記事を読む"
+
+#: patterns/menu-panel-1.php:189 patterns/menu-panel-2.php:138
+msgid "Ready to scale your business? Start your free trial today."
+msgstr ""
+"ビジネスをさらに成長させませんか？今すぐ無料トライアルを始めましょう。"
+
+#: patterns/menu-panel-1.php:41 patterns/menu-panel-2.php:30
+msgid "Real-time Analytics"
+msgstr "リアルタイム分析"
+
+#: patterns/menu-panel-1.php:126 patterns/menu-panel-2.php:108
+msgid "Reliable infrastructure that scales"
+msgstr "スケールする信頼性の高いインフラ"
+
+#: patterns/footer-dark.php:64 patterns/footer-light.php:64
+#: patterns/menu-mobile-5.php:68 patterns/menu-mobile-6.php:34
+#: patterns/menu-mobile-6.php:70
+msgid "Resources"
+msgstr "リソース"
+
+#: patterns/menu-mobile-1.php:33
+msgid "Robust Design System"
+msgstr "充実したデザインシステム"
+
+#: functions.php:53
+msgid "Rounded"
+msgstr "角丸"
+
+#: functions.php:72
+msgid "Rounded Full"
+msgstr "完全な角丸"
+
+#: patterns/numbers.php:39
+msgid "SEO Boost"
+msgstr "SEOブースト"
+
+#: patterns/menu-card-3.php:64
+msgid "SEO, social media, and content strategies"
+msgstr "SEO・SNS・コンテンツ戦略"
+
+#: patterns/menu-panel-1.php:109 patterns/menu-panel-2.php:91
+msgid "SOC 2 compliant with E2E"
+msgstr "SOC 2 準拠・エンドツーエンド暗号化"
+
+#: patterns/card-contact.php:68 patterns/contact-details.php:115
+msgid "San Francisco, CA 94070"
+msgstr "東京都千代田区 100-0001"
+
+#: patterns/page-profile.php:24
+msgid "Sandra Voyager"
+msgstr "佐藤 彩花"
+
+#: patterns/woo-header.php:21
+msgid "Save 25% off during our Winter Sale! Use code SELLWISE25"
+msgstr ""
+"ウィンターセール開催中、25% OFF！クーポンコード SELLWISE25 をご利用くださ"
+"い。"
+
+#: patterns/menu-mobile-6.php:18 patterns/template-page-404.php:23
+#: patterns/template-page-search.php:18
+msgid "Search"
+msgstr "検索"
+
+#: patterns/menu-mobile-6.php:18
+msgid "Search our site"
+msgstr "サイト内を検索"
+
+#: patterns/template-page-search.php:18
+msgid "Search site..."
+msgstr "サイトを検索..."
+
+#: patterns/text-call-to-action-buttons.php:39
+msgid "See Our Features"
+msgstr "特徴・サービス"
+
+#: patterns/menu-panel-1.php:170
+msgid ""
+"See how companies like yours increased productivity by 40% and reduced "
+"operational costs within their first quarter."
+msgstr ""
+"貴社のような企業が、最初の四半期で生産性を 40% 高め、運用コストを削減した事"
+"例をご覧ください。"
+
+#: patterns/menu-panel-3.php:103
+msgid "See how companies like yours increased productivity by 40% overnight."
+msgstr "貴社のような企業が一夜にして生産性を 40% 高めた事例をご覧ください。"
+
+#: patterns/features-with-emojis.php:66
+msgid ""
+"Setting up a new site can be a pain! The Ollie Site Wizard takes care of "
+"those annoying setup steps and configures your site with a few clicks "
+"instead."
+msgstr ""
+"新しいサイトを立ち上げるのは大変な作業です。「Ollie サイトウィザード」機能"
+"は、これらの面倒なセットアップ手順を処理し、代わりに数回クリックするだけでサ"
+"イトを構成できます。"
+
+#: functions.php:189
+msgid "Sidebar"
+msgstr "サイドバー"
+
+#: patterns/pricing-table-3-column.php:19
+#: patterns/pricing-table-with-testimonials.php:19
+#: patterns/pricing-table.php:19
+msgid "Simple Pricing"
+msgstr "シンプルな料金"
+
+#: patterns/pricing-table-3-column.php:22
+#: patterns/pricing-table-with-testimonials.php:22
+#: patterns/pricing-table.php:22
+msgid "Small prices, huge value"
+msgstr "お手頃価格で、圧倒的な価値を"
+
+#: patterns/menu-card-1.php:26 patterns/menu-card-4.php:23
+msgid "Smart Sync"
+msgstr "スマート同期"
+
+#: patterns/job-openings.php:70 patterns/testimonials-with-social-links.php:62
+msgid "Software Engineer"
+msgstr "ソフトウェアエンジニア"
+
+#: patterns/template-page-search.php:40
+msgid "Sorry, nothing was found for that search term."
+msgstr "申し訳ありませんが、その検索キーワードでは何も見つかりませんでした。"
+
+#: patterns/card-text-and-details.php:23
+msgid "Start Designing"
+msgstr "デザインを始める"
+
+#: patterns/menu-panel-1.php:194 patterns/menu-panel-2.php:143
+#: patterns/menu-panel-3.php:113
+msgid "Start Free Trial"
+msgstr "無料トライアルを始める"
+
+#: patterns/menu-card-1.php:77
+msgid "Start building smarter and faster today!"
+msgstr "今日からもっと賢く、速く作り始めましょう！"
+
+#: patterns/card-lead-magnet.php:38
+msgid ""
+"Start creating beautiful, fully-customizable websites with the new "
+"WordPress Site Editor and the Ollie block theme."
+msgstr ""
+"新しいWordPressサイトエディターとOllieブロックテーマで、美しくカスタマイズ可"
+"能なウェブサイトを作り始めよう！"
+
+#: patterns/card-lead-magnet.php:35
+msgid "Start using the powerful new WordPress editor with Ollie"
+msgstr "Ollieと新しいWordPress。もっと自由に。"
+
+#: patterns/faq.php:115
+msgid "Still have questions?"
+msgstr "他にご質問はありますか？"
+
+#: patterns/menu-panel-1.php:167 patterns/menu-panel-3.php:100
+msgid "Success Stories"
+msgstr "導入事例"
+
+#: patterns/image-and-numbered-features.php:43
+msgid "Super simple customization"
+msgstr "超シンプルなカスタマイズ"
+
+#: patterns/footer-dark.php:75 patterns/footer-light.php:75
+msgid "Support Docs"
+msgstr "サポートドキュメント"
+
+#: patterns/menu-panel-3.php:34
+msgid "Team"
+msgstr "チーム"
+
+#: patterns/menu-panel-1.php:58 patterns/menu-panel-2.php:47
+msgid "Team Collaboration"
+msgstr "チームでの共同作業"
+
+#: patterns/menu-card-1.php:60 patterns/menu-card-4.php:71
+msgid "Team Comments"
+msgstr "チームコメント"
+
+#: patterns/menu-panel-3.php:31
+msgid "Templates"
+msgstr "テンプレート"
+
+#: patterns/testimonial-highlight.php:25
+#: patterns/testimonials-and-logos.php:111
+#: patterns/testimonials-and-logos.php:39
+#: patterns/testimonials-and-logos.php:63
+#: patterns/testimonials-and-logos.php:87
+#: patterns/testimonials-with-social-links.php:54
+#: patterns/testimonials-with-social-links.php:93
+msgid "Testimonial author avatar"
+msgstr "推薦状著者アバター"
+
+#: functions.php:156 patterns/testimonials-and-logos.php:19
+#: patterns/testimonials-with-big-text.php:21
+#: patterns/testimonials-with-social-links.php:19
+msgid "Testimonials"
+msgstr "💬 お客様の声"
+
+#: functions.php:190
+msgid ""
+"The Sidebar template defines a page area that can be found on the Page "
+"(With Sidebar) template."
+msgstr ""
+"サイドバーテンプレートは、「ページ（サイドバー付き）」テンプレートで使われる"
+"ページ領域を定義します。"
+
+#: patterns/card-text-and-details.php:58
+#: patterns/text-and-image-columns-with-testimonial.php:62
+msgid ""
+"The WordPress Site Editor is a total game changer. It's blazing fast and I "
+"don't need a page builder anymore. 😍"
+msgstr ""
+"WordPressサイトエディターはまさに革命。驚くほど速く、もうページビルダーは不"
+"要。😍"
+
+#: patterns/text-call-to-action-buttons.php:31
+msgid "The future of WordPress site building is here. Are you ready?"
+msgstr "WordPressサイト構築の未来がここにあります。準備はいいですか。"
+
+#: patterns/card-details.php:19 patterns/card-text-and-details.php:76
+msgid "Theme Details"
+msgstr "テーマ詳細"
+
+#: functions.php:69
+msgid "Thin"
+msgstr "薄い"
+
+#: patterns/menu-panel-1.php:44 patterns/menu-panel-2.php:33
+msgid "Track performance live"
+msgstr "パフォーマンスをライブで把握"
+
+#: patterns/team-members.php:38
+msgid "Tracy Capitan"
+msgstr "高橋 翔太"
+
+#: functions.php:59
+msgid "Truncate 2 Lines"
+msgstr "2行を切り捨てる"
+
+#: functions.php:60
+msgid "Truncate 3 Lines"
+msgstr "3行を切り捨てる"
+
+#: functions.php:61
+msgid "Truncate 4 Lines"
+msgstr "4行を切り捨てる"
+
+#: patterns/testimonials-and-logos.php:132
+msgid "Trusted by the biggest brands on the planet"
+msgstr "世界のトップブランドからも信頼されています"
+
+#: patterns/menu-card-2.php:43 patterns/menu-panel-4.php:31
+msgid ""
+"Turn data into decisions with our strategic analysis and actionable "
+"recommendations."
+msgstr "戦略的な分析と実践的な提案で、データを意思決定に変えます。"
+
+#: patterns/footer-dark-centered.php:28 patterns/footer-light-centered.php:28
+msgid "Twitter"
+msgstr "Twitter"
+
+#: patterns/template-page-404.php:19
+msgid ""
+"Unfortunately, the page you are looking for no longer exists, or has been "
+"moved. Please try searching for your content below."
+msgstr ""
+"申し訳ありませんが、お探しのページは存在しないか、移動された可能性がありま"
+"す。  \n"
+"下記の検索バーからコンテンツをお探しください。🔍"
+
+#: patterns/menu-panel-4.php:82
+msgid "Unleash Growth"
+msgstr "成長を解き放つ"
+
+#: patterns/menu-card-1.php:29 patterns/menu-card-4.php:26
+msgid "Updates in real-time across all devices"
+msgstr "すべてのデバイスでリアルタイムに更新"
+
+#: patterns/footer-dark.php:98 patterns/footer-light.php:98
+msgid "Use Cases"
+msgstr "利用例"
+
+#: patterns/page-profile.php:27
+msgid ""
+"Use this page as a LinkTree alternative. Link your social media accounts to "
+"this page so your followers can find all of your important links."
+msgstr ""
+"このページをLinkTreeの代わりに活用できます。SNSアカウントをまとめて、フォロ"
+"ワーがすぐにリンクにアクセスできるようにしましょう。"
+
+#: patterns/card-social-profile.php:36
+msgid ""
+"Use this profile box as a LinkTree alternative. Link your social media "
+"accounts to this page so your followers can find all of your important "
+"links."
+msgstr ""
+"このプロフィールボックスをLinkTreeの代わりに活用できます。SNSアカウントをこ"
+"のページにまとめて、フォロワーがあなたの大切なリンクを簡単に見つけられるよう"
+"にしましょう。"
+
+#: patterns/card-call-to-action.php:22
+#: patterns/card-text-and-call-to-action.php:63
+msgid "Version 1.0"
+msgstr "バージョン1.0"
+
+#: patterns/menu-card-1.php:43 patterns/menu-card-4.php:47
+msgid "Version Control"
+msgstr "バージョン管理"
+
+#: patterns/card-details.php:41 patterns/card-text-and-details.php:98
+msgid "Version:"
+msgstr "バージョン:"
+
+#: patterns/testimonials-with-social-links.php:75
+msgid "Via Facebook →"
+msgstr "Facebook →"
+
+#: patterns/testimonials-with-social-links.php:36
+msgid "Via Twitter →"
+msgstr "Twitter →"
+
+#: patterns/card-pricing-table-dark.php:64
+#: patterns/pricing-table-3-column.php:165
+#: patterns/pricing-table-with-testimonials.php:165
+#: patterns/pricing-table.php:165
+msgid "Video Course"
+msgstr "ビデオコース"
+
+#: patterns/testimonials-and-logos.php:95
+msgid "Video Producer"
+msgstr "ビデオプロデューサー"
+
+#: patterns/menu-panel-5.php:36
+msgid "View All Products"
+msgstr "すべての製品を見る"
+
+#: patterns/menu-panel-6.php:36
+msgid "View All Services"
+msgstr "すべてのサービスを見る"
+
+#: patterns/card-post-list.php:22
+msgid "View All →"
+msgstr "すべてを表示 →"
+
+#: patterns/menu-panel-1.php:173
+msgid "View Case Studies"
+msgstr "事例を見る"
+
+#: patterns/text-and-image-columns-with-icons.php:36
+msgid "View Ollie Patterns"
+msgstr "Ollieパターンを見てみる"
+
+#: patterns/card-text-and-details.php:43
+msgid "View on WordPress.org"
+msgstr "WordPress.org で見る"
+
+#: patterns/footer-dark-centered.php:31 patterns/footer-light-centered.php:31
+msgid "Visit Mike"
+msgstr "Mike を見る"
+
+#: patterns/page-profile.php:46
+msgid "Visit My Website"
+msgstr "私のウェブサイトにアクセス"
+
+#: patterns/footer-dark-centered.php:25 patterns/footer-dark.php:129
+#: patterns/footer-light-centered.php:25 patterns/footer-light.php:126
+msgid "Visit Ollie"
+msgstr "Ollie について"
+
+#: patterns/footer-dark.php:132 patterns/footer-light.php:129
+msgid "Visit YouTube"
+msgstr "YouTube を見る"
+
+#: patterns/testimonials-and-logos.php:22
+msgid "We love our customers"
+msgstr "あなたに寄り添う存在でありたい"
+
+#: patterns/feature-boxes-with-button.php:90
+#: patterns/feature-boxes-with-icon-dark.php:90
+#: patterns/image-and-numbered-features.php:88
+#: patterns/large-text-and-text-boxes.php:87
+msgid ""
+"We obsess over performance so you don't have to. Ollie is super lightweight "
+"and scores top marks on Google PageSpeed Insights."
+msgstr ""
+"パフォーマンスにこだわり抜いたOllie。超軽量で、Google PageSpeed Insightsも最"
+"高評価。"
+
+#: patterns/job-openings.php:19
+msgid "We're Hiring"
+msgstr "採用情報"
+
+#: patterns/team-members.php:25
+msgid ""
+"We're a small team of diverse creators with the aim of creating the best "
+"possible WordPress products for you. Join our team today!"
+msgstr ""
+"私たちは、最高のWordPress製品を提供することを目指す、多様なクリエイターたち"
+"の小さなチームです。  \n"
+"今すぐ、私たちのチームに参加しましょう！"
+
+#: patterns/job-openings.php:25
+msgid ""
+"We're currently hiring for several different roles. All of our positions "
+"are remote flexible and our salaries are above competitive in the industry."
+msgstr ""
+"現在、複数のポジションで採用中です。すべてリモートフレックス対応、業界トップ"
+"クラスの給与を保証します。"
+
+#: patterns/menu-mobile-4.php:84 patterns/menu-mobile-5.php:110
+#: patterns/menu-mobile-6.php:105
+msgid "We're hiring! Join our growing team today."
+msgstr "採用中！成長中のチームに今すぐ参加しませんか。"
+
+#: patterns/header-dark-with-banner.php:21
+#: patterns/header-light-with-banner.php:21
+msgid "We've just launched a new product!"
+msgstr "新製品を発売しました!"
+
+#: patterns/numbers-stacked.php:44
+msgid ""
+"We've spent thousands of hours crafting WordPress themes and applied "
+"everything we know to Ollie."
+msgstr ""
+"私たちは何千時間もかけてWordPressテーマを作成し、私たちが知っていることをす"
+"べてOllieに適用しました。"
+
+#: patterns/menu-card-3.php:41 patterns/menu-panel-6.php:73
+msgid "Web Design"
+msgstr "Web デザイン"
+
+#: patterns/hero-call-to-action-buttons-light.php:17
+#: patterns/hero-text-image-and-logos.php:19
+msgid "Welcome to Ollie"
+msgstr "Ollie へようこそ"
+
+#: patterns/faq.php:86
+msgctxt "FAQ question"
+msgid "What are patterns?"
+msgstr "そもそも、パターンって何？"
+
+#: patterns/faq.php:40
+msgctxt "FAQ question"
+msgid "What exactly is Ollie?"
+msgstr "Ollieとは何ですか？"
+
+#: patterns/faq.php:72
+msgctxt "FAQ question"
+msgid "What if I've never used the Site Editor?"
+msgstr "サイトエディタを使用したことがないんだけど…"
+
+#: patterns/contact-details.php:29
+msgid ""
+"Whether you're looking for a brand refresh, a new web presence, or are "
+"curious about consultation, please drop us a line and let's start a "
+"blossoming relationship!"
+msgstr ""
+"新しいブランドの一歩を踏み出したい時、ウェブの可能性を広げたい時、 誰かの視"
+"点が欲しい時—どんな想いでも大歓迎です。 \n"
+"ぜひ、お気軽にご連絡ください。ここから、一緒に未来をつくりましょう。"
+
+#: patterns/text-and-image-columns-with-icons.php:67
+msgid ""
+"With a growing pattern collection, you can create 100's of different page "
+"designs without repeating the same design."
+msgstr ""
+"増え続けるパターンコレクションで、何百通りものページデザインを作成可能。  \n"
+"同じデザインを繰り返すことなく、自由にカスタマイズできます。"
+
+#: patterns/hero-call-to-action-buttons.php:23 patterns/hero-dark.php:23
+#: patterns/hero-light.php:23
+msgid "WordPress Reimagined"
+msgstr "WordPressの再考"
+
+#: patterns/card-call-to-action.php:39
+#: patterns/card-text-and-call-to-action.php:86
+msgid "WordPress.org"
+msgstr "WordPress.org"
+
+#: patterns/menu-panel-1.php:61 patterns/menu-panel-2.php:50
+msgid "Work together seamlessly"
+msgstr "シームレスに連携"
+
+#: patterns/menu-mobile-5.php:25
+msgid "Workflows"
+msgstr "ワークフロー"
+
+#: patterns/single-testimonial.php:17
+msgid ""
+"Wow, I really can't believe how powerful the WordPress Site Editor is "
+"combined with Ollie. I don't even need a page builder anymore!"
+msgstr ""
+"WordPressサイトエディターとOllieの組み合わせがすごい🤯もうページビルダーは必"
+"要ないかも😂"
+
+#: patterns/testimonials-and-logos.php:34
+msgid ""
+"Wow, I really can't believe how powerful the WordPress Site Editor is "
+"combined with Ollie. I don't even need my page builder plugin anymore! "
+"Everything I need is built right in and ready for me at the beginning of "
+"every project."
+msgstr ""
+"すごい！🎉 WordPressサイトエディターとOllieの組み合わせがこんなに強力だとは"
+"信じられません。\n"
+"もうページビルダープラグインも必要ありません。必要なものはすべて最初から組み"
+"込まれていて、プロジェクト開始時からすぐに使えます。⚡"
+
+#: patterns/card-lead-magnet.php:22 patterns/hero-text-image-and-logos.php:41
+#: patterns/image-and-numbered-features.php:22
+#: patterns/text-and-image-columns-with-icons.php:81
+#: patterns/text-and-image-columns-with-testimonial.php:22
+msgid "Write title…"
+msgstr "タイトルを入力…"
+
+#: patterns/feature-boxes-with-button.php:66
+#: patterns/feature-boxes-with-icon-dark.php:66
+#: patterns/image-and-numbered-features.php:67
+#: patterns/large-text-and-text-boxes.php:63
+msgid ""
+"Your website deserves to look pixel-perfect on every device. Ollie ensures "
+"your entire design scales down gracefully automagically."
+msgstr ""
+"あなたのサイトは、どのデバイスでもピクセルパーフェクトであるべき。 Ollieな"
+"ら、デザイン全体が美しく自動調整されます。"
+
+#: patterns/pricing-table-3-column.php:299
+#: patterns/pricing-table-with-testimonials.php:299
+#: patterns/pricing-table.php:202
+msgid ""
+"for all purchases. Try our product with confidence, and if you don't like "
+"it, we'll make it right."
+msgstr ""
+"をすべてのご購入に適用しています。安心してお試しください。ご満足いただけない"
+"場合は責任を持って対応いたします。"
+
+#: patterns/menu-mobile-4.php:64
+msgid "hello@example.com"
+msgstr "hello@example.com"
+
+#: patterns/card-contact.php:42 patterns/contact-details.php:89
+msgid "mail@example.com"
+msgstr "mail@example.com"
+
+#: patterns/card-call-to-action.php:39
+#: patterns/card-text-and-call-to-action.php:86
+msgid "or view on"
+msgstr "または次で見る"
+
+#: patterns/card-pricing-table-dark.php:22 patterns/card-pricing-table.php:22
+#: patterns/pricing-table-3-column.php:123
+#: patterns/pricing-table-3-column.php:220
+#: patterns/pricing-table-3-column.php:39
+#: patterns/pricing-table-with-testimonials.php:123
+#: patterns/pricing-table-with-testimonials.php:220
+#: patterns/pricing-table-with-testimonials.php:39
+#: patterns/pricing-table.php:123 patterns/pricing-table.php:39
+msgid "per month"
+msgstr "月額 / 税抜"
+
+#: patterns/menu-mobile-4.php:67
+msgid "support@example.com"
+msgstr "support@example.com"
+
+#: patterns/footer-light.php:118
+msgid "© 2026"
+msgstr "© 2026"
+
+#: patterns/footer-dark-centered.php:36 patterns/footer-dark-minimal.php:20
+#: patterns/footer-dark.php:121 patterns/footer-light-centered.php:36
+#: patterns/footer-light-minimal.php:20
+msgid "© 2026 · Powered by WordPress and "
+msgstr "© 2026 · Powered by WordPress and "
+
+#: patterns/footer-light.php:118 patterns/post-loop-grid-custom.php:28
+#: patterns/post-loop-list.php:29 patterns/template-post-centered.php:24
+#: patterns/template-post-left-sidebar.php:33
+#: patterns/template-post-right-sidebar.php:28
+#: patterns/template-post-wide.php:24
+msgid "·"
+msgstr "·"
+
+#: patterns/card-text-and-details.php:61
+msgid "— Mandi Alpine, Brandwich"
+msgstr "— 松本 美咲（Brandwich）"
+
+#: patterns/text-and-image-columns-with-testimonial.php:65
+msgctxt "Testimonial author"
+msgid "— Mandi Alpine, Brandwich"
+msgstr "— 松本 美咲（Brandwich）"
+
+#: patterns/menu-card-1.php:21 patterns/menu-card-1.php:38
+#: patterns/menu-card-1.php:55 patterns/menu-card-2.php:33
+#: patterns/menu-card-2.php:61 patterns/menu-card-3.php:29
+#: patterns/menu-card-3.php:49 patterns/menu-card-3.php:69
+#: patterns/menu-panel-1.php:101 patterns/menu-panel-1.php:118
+#: patterns/menu-panel-1.php:135 patterns/menu-panel-1.php:36
+#: patterns/menu-panel-1.php:53 patterns/menu-panel-1.php:70
+#: patterns/menu-panel-2.php:100 patterns/menu-panel-2.php:117
+#: patterns/menu-panel-2.php:25 patterns/menu-panel-2.php:42
+#: patterns/menu-panel-2.php:59 patterns/menu-panel-2.php:83
+msgid "›"
+msgstr "›"
+
+#: patterns/menu-panel-1.php:173
+msgid "→"
+msgstr "→"
+
+#: patterns/card-details.php:54 patterns/card-text-and-call-to-action.php:41
+#: patterns/card-text-and-details.php:111 patterns/contact-details.php:49
+#: patterns/testimonials-with-big-text.php:32
+msgid "★★★★★"
+msgstr "★★★★★"
+
+#: patterns/card-pricing-table-dark.php:100
+#: patterns/card-pricing-table-dark.php:48
+#: patterns/card-pricing-table-dark.php:61
+#: patterns/card-pricing-table-dark.php:74
+#: patterns/card-pricing-table-dark.php:87 patterns/card-pricing-table.php:48
+#: patterns/card-pricing-table.php:61 patterns/card-pricing-table.php:74
+#: patterns/card-pricing-table.php:87 patterns/pricing-table-3-column.php:104
+#: patterns/pricing-table-3-column.php:149
+#: patterns/pricing-table-3-column.php:162
+#: patterns/pricing-table-3-column.php:175
+#: patterns/pricing-table-3-column.php:188
+#: patterns/pricing-table-3-column.php:201
+#: patterns/pricing-table-3-column.php:246
+#: patterns/pricing-table-3-column.php:259
+#: patterns/pricing-table-3-column.php:272
+#: patterns/pricing-table-3-column.php:285
+#: patterns/pricing-table-3-column.php:65
+#: patterns/pricing-table-3-column.php:78
+#: patterns/pricing-table-3-column.php:91
+#: patterns/pricing-table-with-testimonials.php:104
+#: patterns/pricing-table-with-testimonials.php:149
+#: patterns/pricing-table-with-testimonials.php:162
+#: patterns/pricing-table-with-testimonials.php:175
+#: patterns/pricing-table-with-testimonials.php:188
+#: patterns/pricing-table-with-testimonials.php:201
+#: patterns/pricing-table-with-testimonials.php:246
+#: patterns/pricing-table-with-testimonials.php:259
+#: patterns/pricing-table-with-testimonials.php:272
+#: patterns/pricing-table-with-testimonials.php:285
+#: patterns/pricing-table-with-testimonials.php:65
+#: patterns/pricing-table-with-testimonials.php:78
+#: patterns/pricing-table-with-testimonials.php:91
+#: patterns/pricing-table.php:104 patterns/pricing-table.php:149
+#: patterns/pricing-table.php:162 patterns/pricing-table.php:175
+#: patterns/pricing-table.php:188 patterns/pricing-table.php:65
+#: patterns/pricing-table.php:78 patterns/pricing-table.php:91
+msgid "✓"
+msgstr "✓"
+
+#: patterns/feature-boxes-with-button.php:108
+#: patterns/feature-boxes-with-button.php:132
+#: patterns/feature-boxes-with-button.php:156
+#: patterns/feature-boxes-with-button.php:36
+#: patterns/feature-boxes-with-button.php:60
+#: patterns/feature-boxes-with-button.php:84
+#: patterns/feature-boxes-with-icon-dark.php:108
+#: patterns/feature-boxes-with-icon-dark.php:132
+#: patterns/feature-boxes-with-icon-dark.php:156
+#: patterns/feature-boxes-with-icon-dark.php:36
+#: patterns/feature-boxes-with-icon-dark.php:60
+#: patterns/feature-boxes-with-icon-dark.php:84
+#: patterns/large-text-and-text-boxes.php:33
+#: patterns/large-text-and-text-boxes.php:57
+#: patterns/large-text-and-text-boxes.php:81
+#: patterns/text-and-image-columns-with-icons.php:50
+#: patterns/text-and-image-columns-with-icons.php:64
+msgid "✴"
+msgstr "✴"
+
+#: patterns/features-with-emojis.php:21
+msgid "😍"
+msgstr "😍"
+
+#: patterns/features-with-emojis.php:34
+msgid "😎"
+msgstr "😎"
+
+#: patterns/features-with-emojis.php:47
+msgid "🤓"
+msgstr "🤓"
+
+#: patterns/features-with-emojis.php:60
+msgid "🤣"
+msgstr "🤣"

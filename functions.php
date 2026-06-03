@@ -190,6 +190,8 @@ require_once get_stylesheet_directory() . '/inc/performance.php';
  */
 require_once get_stylesheet_directory() . '/inc/internal-blog-card.php';
 
+require_once get_stylesheet_directory() . '/inc/ollie-i18n.php';
+
 /**
  * jadeclinic.jp 専用：FB ドメイン認証 / JSON-LD / LP femcare のヘッダフッタ非表示。
  * 別サイト転用時はこの 1 行を消せば全部止まる。
