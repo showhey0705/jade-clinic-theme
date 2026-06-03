@@ -187,11 +187,6 @@
               transform .45s cubic-bezier(.15, .75, .5, 1) 0s;
 }
 
-/* ホバー時に背景を拡大（parallax未適用の場合のみ） */
-.wp-block-cover:not(.has-parallax):hover .wp-block-cover__image-background,
-.wp-block-cover:not(.has-parallax):hover .wp-block-cover__video-background {
-  transform: scale(1.05);
-}
 
 /* カバーブロックにホバー時、内部のテキストリンクもホバー状態にする */
 .wp-block-cover:hover a:not(.wp-block-button__link):not(.wp-element-button) {
