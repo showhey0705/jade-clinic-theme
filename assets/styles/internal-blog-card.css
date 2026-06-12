@@ -19,8 +19,8 @@
 	--vbc-radius:       var(--wp--preset--border-radius--md);
 	--vbc-radius-thumb: var(--wp--preset--border-radius--sm);
 	--vbc-border:       var(--wp--preset--color--border-light);
-	/* hover はアクセント(primary)をそのまま当ててコントラストを出す。 */
-	--vbc-border-hover: var(--vbc-accent);
+	/* hover は accent を 35% だけ滲ませた控えめな一段。primary 直当ては強すぎた。 */
+	--vbc-border-hover: color-mix(in srgb, var(--vbc-accent) 35%, var(--vbc-border));
 	--vbc-bg:           var(--wp--preset--color--base);
 	--vbc-shadow:       var(--wp--preset--shadow--small-light);
 	/* hover も small-light をベースに、accent をごく薄く滲ませた一段。
@@ -34,7 +34,7 @@
 	--vbc-thumb-size:   100px;
 	/* easeOutQuint: 初速やや速く、終端で滑らかに落ち着く。控えめ UI と相性◎ */
 	--vbc-ease:         cubic-bezier(0.22, 1, 0.36, 1);
-	--vbc-duration:     0.32s;
+	--vbc-duration:     0.4s;
 
 	display: block;
 	margin-block: var(--wp--preset--spacing--medium);
