@@ -1,0 +1,88 @@
+name: Deploy theme
+
+# main へ push → STG に自動デプロイ → (GitHub 上で承認) → 本番に同じコードをデプロイ
+#
+# 必要な Secrets (リポジトリ Settings > Secrets and variables > Actions):
+#   KINSTA_SSH_KEY  : デプロイ用 ed25519 秘密鍵
+#   KINSTA_HOST     : 161.33.178.222
+#   KINSTA_USER     : jadeclinic
+#   KINSTA_STG_PORT : STG の SSH ポート
+#   KINSTA_LIVE_PORT: 本番の SSH ポート
+#
+# Environments:
+#   staging    : 保護なし(自動デプロイ)
+#   production : Required reviewers にオーナーを設定(承認するまで止まる)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  THEME_PATH: public/wp-content/themes/vip2026/
+
+jobs:
+  deploy-staging:
+    name: Deploy to STG
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: https://stg-jadeclinic-jadedemo.kinsta.cloud
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.KINSTA_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ secrets.KINSTA_STG_PORT }}" "${{ secrets.KINSTA_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Rsync theme to STG
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -p ${{ secrets.KINSTA_STG_PORT }}" \
+            --exclude='.git' --exclude='.gitignore' --exclude='.github' \
+            --exclude='node_modules' \
+            ./ "${{ secrets.KINSTA_USER }}@${{ secrets.KINSTA_HOST }}:${THEME_PATH}"
+
+      - name: Purge cache (best effort)
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -p "${{ secrets.KINSTA_STG_PORT }}" \
+            "${{ secrets.KINSTA_USER }}@${{ secrets.KINSTA_HOST }}" \
+            'wp kinsta cache purge --path=$HOME/public 2>/dev/null || wp cache flush --path=$HOME/public 2>/dev/null || true'
+
+  deploy-production:
+    name: Deploy to Production (要承認)
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://jadeclinic.jp
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.KINSTA_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ secrets.KINSTA_LIVE_PORT }}" "${{ secrets.KINSTA_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Rsync theme to Production
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -p ${{ secrets.KINSTA_LIVE_PORT }}" \
+            --exclude='.git' --exclude='.gitignore' --exclude='.github' \
+            --exclude='node_modules' \
+            ./ "${{ secrets.KINSTA_USER }}@${{ secrets.KINSTA_HOST }}:${THEME_PATH}"
+
+      - name: Purge cache (best effort)
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -p "${{ secrets.KINSTA_LIVE_PORT }}" \
+            "${{ secrets.KINSTA_USER }}@${{ secrets.KINSTA_HOST }}" \
+            'wp kinsta cache purge --path=$HOME/public 2>/dev/null || wp cache flush --path=$HOME/public 2>/dev/null || true'
