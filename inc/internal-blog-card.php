@@ -11,8 +11,9 @@
  *      `wp-embedded-content` iframe を、内部 URL の場合だけカードに置換。
  *   2. `the_content` — `<p>https://stg-...</p>` の単独段落(URL が
  *      自動 oEmbed されず素のままになっているケース)も検出して置換。
- *   3. ショートコード `[jade_blogcard url="..."]` — 編集者が任意のリンクを
+ *   3. ショートコード `[vip_blogcard url="..."]` — 編集者が任意のリンクを
  *      明示的にカード表示したい場合の手動エントリ。
+ *      旧名 `[jade_blogcard ...]` は後方互換 alias として登録(既存記事保護)。
  *
  * デザイン: assets/styles/internal-blog-card.css を遅延 enqueue。
  *
@@ -295,7 +296,14 @@ function filter_the_content( string $content ): string {
 add_filter( 'the_content', __NAMESPACE__ . '\filter_the_content', 9 ); // wpautop(10) より早く
 
 /**
- * 3) ショートコード `[jade_blogcard url="..."]` / `[jade_blogcard id="123"]`
+ * 3) ショートコード `[vip_blogcard url="..."]` / `[vip_blogcard id="123"]`
+ *
+ * 旧名 `[jade_blogcard ...]` も後方互換 alias として動作する(既存記事保護)。
+ * 新規記事では `vip_blogcard` を使うこと。
+ *
+ * shortcode_atts の第3引数(タグ名)は `vip_blogcard` 固定とし、
+ * `shortcode_atts_vip_blogcard` フィルタを介して属性を一括拡張できるようにする。
+ * 旧名経由でも同じ関数を通すため、alias 側でもこのフィルタが走る。
  */
 function shortcode( $atts ): string {
 	$atts = shortcode_atts(
@@ -304,7 +312,7 @@ function shortcode( $atts ): string {
 			'id'  => 0,
 		),
 		$atts,
-		'jade_blogcard'
+		'vip_blogcard'
 	);
 
 	$post = null;
@@ -319,6 +327,8 @@ function shortcode( $atts ): string {
 	maybe_enqueue_style();
 	return build_card_html( $post );
 }
+add_shortcode( 'vip_blogcard', __NAMESPACE__ . '\shortcode' );
+// 後方互換: 旧名 `[jade_blogcard ...]` も同じハンドラに通す。既存記事の表示を壊さない。
 add_shortcode( 'jade_blogcard', __NAMESPACE__ . '\shortcode' );
 
 /**
