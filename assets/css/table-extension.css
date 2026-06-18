@@ -1,0 +1,573 @@
+/**
+ * core/table 拡張のフロント/エディタ共通スタイル。
+ * SWELL のテーブル設定を参考に再実装（色・余白は theme.json トークンに委譲）。
+ *
+ * 出力契約は class-table-extension.php を参照:
+ *   figure.wp-block-table[data-bcp-scrollable|data-bcp-theadfix|data-bcp-cell1fixed]
+ *     div.bcp-table-scrollhint          ← 右上ガイド（figure 基準。スクロールしない）
+ *     div.bcp-table-scroll              ← 横スクロールするのはこのラッパーだけ
+ *       table
+ *
+ * セル記号: <span class="bcp-cell-mark" data-bcp-mark data-bcp-mark-bg data-bcp-mark-size>
+ *
+ * ブレークポイント: スマホ判定は max-width: 781px（WP コアの medium と整合）。
+ *
+ * 既知の制約: 「ヘッダー固定(thead)」は縦に長い表（横スクロール無し）向け。
+ *   横スクロールと同時併用すると、スクロールラッパーの overflow により
+ *   ビューポート基準の position: sticky が効かない場合がある（ブラウザ仕様）。
+ */
+
+/* フェード／ガイドの絶対配置の基準にするため figure を相対配置に。 */
+.wp-block-table[data-bcp-scrollable] {
+	position: relative;
+	/* 上に配置する「スクロールできます」ガイドが figure の overflow:auto(テーマ由来)に
+	   切られて消えるのを防ぐ。横スクロールは内側 .bcp-table-scroll が担うため visible で安全。 */
+	overflow: visible;
+}
+
+/* セルの基本パディング */
+.wp-block-table td,
+.wp-block-table th {
+	padding: 1em;
+}
+
+/* 1 列目（見出し列）の背景色・文字色（Inspector「色」で figure に CSS 変数を設定） */
+.wp-block-table[style*="--bcp-col1-bg"] tr > :first-child {
+	background-color: var(--bcp-col1-bg) !important;
+}
+.wp-block-table[style*="--bcp-col1-text"] tr > :first-child {
+	color: var(--bcp-col1-text) !important;
+}
+
+/* ── 横スクロール本体（内側ラッパーだけがスクロールする） ─────── */
+.bcp-table-scroll > table {
+	min-width: 100%;
+	width: max-content;
+	max-width: none;
+	margin: 0;
+}
+
+/* テーブルの横幅を明示指定した場合（--bcp-table-width: NNNpx） */
+.bcp-table-scroll > table[style*="--bcp-table-width"] {
+	width: var(--bcp-table-width);
+	min-width: 0;
+}
+
+.bcp-table-scroll[data-bcp-scrollable] {
+	/* フェード＋「スクロールできます」で可スクロールを示すため、
+	   素のスクロールバーは隠してクリーンに（ホイール/ドラッグ/タッチでスクロール可）。
+	   フェード/ヒントの不透明度は table-view.js が scroll に応じて制御する。 */
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	overscroll-behavior-x: contain;
+}
+.bcp-table-scroll[data-bcp-scrollable]::-webkit-scrollbar {
+	display: none;
+}
+
+/* テーブルブロック(figure)自体の素の水平スクロールバーも隠す。
+   figure は overflow-x:auto（テーマ由来）のため、最低幅等で横にはみ出すと
+   バーが出る。スクロール演出はフェード/ヒント＋内側ラッパーが担うので非表示にする。 */
+.wp-block-table[data-bcp-scrollable],
+.wp-block-table[data-bcp-stack="sp"],
+.wp-block-table[data-bcp-mincol] {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+.wp-block-table[data-bcp-scrollable]::-webkit-scrollbar,
+.wp-block-table[data-bcp-stack="sp"]::-webkit-scrollbar,
+.wp-block-table[data-bcp-mincol]::-webkit-scrollbar {
+	display: none;
+}
+
+.bcp-table-scroll[data-bcp-scrollable="both"] {
+	display: block;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 781px) {
+	.bcp-table-scroll[data-bcp-scrollable="sp"] {
+		display: block;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+@media (min-width: 782px) {
+	.bcp-table-scroll[data-bcp-scrollable="pc"] {
+		display: block;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+/* ── 「スクロールできます」ガイド（テーブル外・右上） ─────────── */
+/* 見出しと重ならないよう、表の直前のブロックとして右寄せ配置する。
+   実際に横オーバーフローがある時だけ表示する（スクロール駆動タイムライン）。
+   - オーバーフロー無し → タイムライン非アクティブ → 基準値 opacity:0（非表示）
+   - 末尾までスクロール → progress 100% で opacity:0（もう右に無いので消す） */
+.bcp-table-scrollhint {
+	display: none;
+	position: absolute;
+	bottom: calc( 100% + 4px ); /* 表の上端から 4px 離す */
+	right: 0;
+	pointer-events: none;
+	opacity: 0;
+}
+
+/* ボタン/ピルではなくテキストラベルのみ＋右シェブロン。右方向に少し動くループ。 */
+.bcp-table-scrollhint__inner {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25em;
+	font-size: var(--wp--preset--font-size--small, 0.8rem);
+	line-height: 1.4;
+	white-space: nowrap;
+	color: var(--bcp-table-hint-text, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 65%, transparent));
+	animation: bcp-table-hint-slide 1.4s ease-in-out infinite;
+}
+
+.bcp-table-scrollhint__arrow {
+	flex: none;
+	opacity: 0.85;
+}
+
+@keyframes bcp-table-hint-slide {
+	0%, 100% { transform: translateX(0); }
+	50% { transform: translateX(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.bcp-table-scrollhint__inner {
+		animation: none;
+	}
+}
+
+.bcp-table-scrollhint[data-bcp-scrollable="both"] {
+	display: block;
+}
+
+/* ── 左右フェードグラデーション（黒ベース） ───────────────────── */
+/* opacity は table-view.js がスクロール量に応じて制御。
+ * 既定 opacity:0（JS 未実行 / 非オーバーフロー時は非表示）。 */
+.bcp-fade {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 44px;
+	z-index: 3;
+	pointer-events: none;
+	opacity: 0;
+}
+.bcp-fade-left {
+	left: 0;
+	background: linear-gradient( to right, var(--bcp-table-fade-color, rgba( 0, 0, 0, 0.28 )), transparent );
+}
+
+/* 1 列目固定時は、左フェードを固定列の右端（＝2 列目）から開始する。
+   固定列の右端（figure 基準）は table-view.js が --bcp-cell1-right に設定し、
+   外枠ボーダーの有無にも追従する（未適用時は 0 ＝左端から）。 */
+.wp-block-table[data-bcp-cell1fixed] .bcp-fade-left {
+	left: var(--bcp-cell1-right, 0);
+}
+.bcp-fade-right {
+	right: 0;
+	background: linear-gradient( to left, var(--bcp-table-fade-color, rgba( 0, 0, 0, 0.28 )), transparent );
+}
+
+@media (max-width: 781px) {
+	.bcp-table-scrollhint[data-bcp-scrollable="sp"] {
+		display: block;
+	}
+}
+@media (min-width: 782px) {
+	.bcp-table-scrollhint[data-bcp-scrollable="pc"] {
+		display: block;
+	}
+}
+
+/* ── ヘッダー(thead)固定（縦スクロール / 横スクロール無し向け） ──── */
+.wp-block-table[data-bcp-theadfix] > table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.wp-block-table[data-bcp-theadfix="both"] thead th,
+.wp-block-table[data-bcp-theadfix="both"] thead td {
+	position: sticky;
+	top: var(--bcp-table-thead-top, 0);
+	z-index: 3;
+	background: var(--bcp-table-sticky-bg, var(--wp--preset--color--base, #fff));
+}
+
+@media (max-width: 781px) {
+	.wp-block-table[data-bcp-theadfix="sp"] thead th,
+	.wp-block-table[data-bcp-theadfix="sp"] thead td {
+		position: sticky;
+		top: var(--bcp-table-thead-top, 0);
+		z-index: 3;
+		background: var(--bcp-table-sticky-bg, var(--wp--preset--color--base, #fff));
+	}
+}
+
+/* ── 1 列目固定（横スクロール時のみ。内側ラッパーが左右スクロール） ── */
+.bcp-table-scroll > table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.wp-block-table[data-bcp-cell1fixed="both"] .bcp-table-scroll tr > :first-child {
+	position: sticky;
+	left: 0;
+	z-index: 2;
+	background: var(--bcp-table-sticky-bg, var(--wp--preset--color--base, #fff));
+}
+
+@media (max-width: 781px) {
+	.wp-block-table[data-bcp-cell1fixed="sp"] .bcp-table-scroll tr > :first-child {
+		position: sticky;
+		left: 0;
+		z-index: 2;
+		background: var(--bcp-table-sticky-bg, var(--wp--preset--color--base, #fff));
+	}
+}
+
+@media (min-width: 782px) {
+	.wp-block-table[data-bcp-cell1fixed="pc"] .bcp-table-scroll tr > :first-child {
+		position: sticky;
+		left: 0;
+		z-index: 2;
+		background: var(--bcp-table-sticky-bg, var(--wp--preset--color--base, #fff));
+	}
+}
+
+.wp-block-table[data-bcp-theadfix][data-bcp-cell1fixed] thead tr > :first-child {
+	z-index: 5;
+}
+
+/* ── 1 列目を th 風に（タグは td のまま、見た目だけ見出し化） ──── */
+.wp-block-table[data-bcp-firstcol-th] tbody tr > :first-child {
+	font-weight: 700;
+	background-color: var(--bcp-table-firstcol-bg, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 6%, transparent));
+}
+
+/* ── 各列で最低限維持する幅（長文セルで他列が潰れるのを防ぐ） ──── */
+.wp-block-table[data-bcp-mincol="10"] td,
+.wp-block-table[data-bcp-mincol="10"] th { min-width: 8em; }
+.wp-block-table[data-bcp-mincol="20"] td,
+.wp-block-table[data-bcp-mincol="20"] th { min-width: 12em; }
+.wp-block-table[data-bcp-mincol="30"] td,
+.wp-block-table[data-bcp-mincol="30"] th { min-width: 16em; }
+
+/* ── スマホで縦並び（カード状）に表示 ─────────────────── */
+/* RWD「リスト→テーブル」方式（参考: Geddski RWD table）。スマホ幅で各行をカード化。
+ * 判定はビューポート幅のメディアクエリ（container-type は他演出への副作用を避け不使用）。 */
+@media (max-width: 600px) {
+	.wp-block-table[data-bcp-stack="sp"] table,
+	.wp-block-table[data-bcp-stack="sp"] tbody,
+	.wp-block-table[data-bcp-stack="sp"] tfoot,
+	.wp-block-table[data-bcp-stack="sp"] tr,
+	.wp-block-table[data-bcp-stack="sp"] td {
+		display: block;
+		width: 100% !important;
+	}
+	.wp-block-table[data-bcp-stack="sp"] thead {
+		display: none; /* アクセシビリティ上は data-bcp-label で各セルに見出しを補完 */
+	}
+
+	/* 1 行＝1 カード */
+	.wp-block-table[data-bcp-stack="sp"] :is(tbody, tfoot) tr {
+		margin-bottom: 0.9em;
+		border: 1px solid var(--bcp-table-border, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 14%, transparent));
+		border-radius: var(--wp--custom--radius--small, 6px);
+		overflow: hidden;
+		background: transparent !important;
+	}
+
+	/* 行見出し（1 列目）＝カードのヘッダー */
+	.wp-block-table[data-bcp-stack="sp"] :is(tbody, tfoot) tr > :first-child {
+		font-weight: 700;
+		text-align: left;
+		background-color: var(--bcp-table-firstcol-bg, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 6%, transparent));
+		padding: 0.55em 0.85em;
+		border-bottom: 1px solid var(--bcp-table-border, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 10%, transparent));
+	}
+
+	/* 値セル: 値は背景アイコンの上に重ねて中央表示（デスクトップと同じ見え方を維持）、
+	   プラン名は左側にタグとして絶対配置で重ねる。背景アイコンは全サイズで維持。 */
+	.wp-block-table[data-bcp-stack="sp"] :is(tbody, tfoot) td[data-bcp-label] {
+		position: relative;
+		text-align: center;
+		padding-left: 0.9em !important;
+		padding-right: 0.9em !important;
+		border: 0;
+		border-bottom: 1px solid var(--bcp-table-border, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 8%, transparent));
+	}
+	.wp-block-table[data-bcp-stack="sp"] :is(tbody, tfoot) tr > td[data-bcp-label]:last-child {
+		border-bottom: 0;
+	}
+	/* 左側のプラン名タグ（縦中央・最前面） */
+	.wp-block-table[data-bcp-stack="sp"] td[data-bcp-label]::before {
+		content: attr(data-bcp-label);
+		position: absolute;
+		left: 0.9em;
+		top: 50%;
+		transform: translateY( -50% );
+		max-width: 42%;
+		text-align: left;
+		line-height: 1.25;
+		font-weight: 700;
+		font-size: 0.92em;
+		color: var(--bcp-stack-label-color, var(--wp--preset--color--primary, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 72%, transparent)));
+		z-index: 2;
+	}
+}
+
+/* ════════════════════════════════════════════════════════════════
+ * セル記号（◎ 〇 △ × ？ ✓ ―）
+ * 各記号の SVG とセマンティック色を CSS 変数で定義し、
+ * インライン表示と背景表示の両方で共用する。
+ * 色は --bcp-mark-color-* で上書き可能。
+ * ════════════════════════════════════════════════════════════════ */
+
+.bcp-cell-mark[data-bcp-mark="doubleCircle"] {
+	--bcp-mark-color: var(--bcp-mark-color-best, #e8883a);
+	--bcp-mark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="black" stroke-width="2"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="black" stroke-width="2"/></svg>');
+}
+.bcp-cell-mark[data-bcp-mark="circle"] {
+	--bcp-mark-color: var(--bcp-mark-color-good, #2f9e69);
+	--bcp-mark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="black" stroke-width="2"/></svg>');
+}
+.bcp-cell-mark[data-bcp-mark="triangle"] {
+	--bcp-mark-color: var(--bcp-mark-color-caution, #d8a200);
+	--bcp-mark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 L22 21 L2 21 Z" fill="none" stroke="black" stroke-width="2" stroke-linejoin="round"/></svg>');
+}
+.bcp-cell-mark[data-bcp-mark="cross"] {
+	--bcp-mark-color: var(--bcp-mark-color-ng, #d0463b);
+	--bcp-mark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 5 L19 19 M19 5 L5 19" fill="none" stroke="black" stroke-width="2.4" stroke-linecap="round"/></svg>');
+}
+.bcp-cell-mark[data-bcp-mark="question"] {
+	--bcp-mark-color: var(--bcp-mark-color-unknown, #4f86d6);
+	--bcp-mark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.5 9a3.5 3.5 0 1 1 5 3.2c-1.1 .6 -1.7 1.2 -1.7 2.3 v .4" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11.9" cy="18.4" r="1.3" fill="black"/></svg>');
+}
+.bcp-cell-mark[data-bcp-mark="check"] {
+	--bcp-mark-color: var(--bcp-mark-color-good, #2f9e69);
+	--bcp-mark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 13 L9 18 L20 6" fill="none" stroke="black" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.bcp-cell-mark[data-bcp-mark="dash"] {
+	--bcp-mark-color: var(--bcp-mark-color-none, #b0b4ba);
+	--bcp-mark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12 L19 12" fill="none" stroke="black" stroke-width="2.4" stroke-linecap="round"/></svg>');
+}
+
+/* ── インライン表示（既定） ───────────────────────── */
+.bcp-cell-mark {
+	display: inline-block;
+	width: 1.15em;
+	height: 1.15em;
+	vertical-align: -0.2em;
+	background-color: var(--bcp-mark-color, currentColor);
+	-webkit-mask: var(--bcp-mark-svg) no-repeat center / contain;
+	mask: var(--bcp-mark-svg) no-repeat center / contain;
+}
+
+/* ── 背景表示モード（:has() でセルを検出。エディタ/フロント共通） ── */
+:where(td, th):has(.bcp-cell-mark[data-bcp-mark-bg]) {
+	position: relative;
+	z-index: 0; /* スタッキングコンテキストを作り、z-index:-1 のアイコンをセル背景の上・文字の下に置く */
+}
+/* 背景アイコンのセルは常に中央（テキストとアイコンを重ねる設計のため、
+   カラム配置で左右に寄せるとアイコンが分離するので中央固定）。 */
+.wp-block-table td:has(.bcp-cell-mark[data-bcp-mark-bg]),
+.wp-block-table th:has(.bcp-cell-mark[data-bcp-mark-bg]) {
+	text-align: center;
+}
+
+/* セル内の文字（テキストノードを除く要素）はアイコンより前面へ */
+:where(td, th):has(.bcp-cell-mark[data-bcp-mark-bg]) > :not(.bcp-cell-mark) {
+	position: relative;
+	z-index: 1;
+}
+
+.bcp-cell-mark[data-bcp-mark-bg] {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+	/* セル高に依存せずアイコン実寸で中央配置 → エディタでも上下が見切れない */
+	width: var(--bcp-mark-bg-size, 2.6em);
+	height: var(--bcp-mark-bg-size, 2.6em);
+	margin: 0;
+	z-index: -1; /* セル背景の上・入力テキストの下 */
+	opacity: var(--bcp-mark-bg-opacity, 0.5);
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	-webkit-mask-position: center;
+	mask-position: center;
+}
+/* 背景表示のセルは入力テキストが映えるよう中央寄せ＆上下に余白を確保
+   （参考: SWELL は背景アイコンのセルに上下パディングを足して窮屈さを解消している）。
+   余白はアイコンサイズ（大/中/小）に追従。 */
+.wp-block-table td:has(.bcp-cell-mark[data-bcp-mark-bg]),
+.wp-block-table th:has(.bcp-cell-mark[data-bcp-mark-bg]) {
+	vertical-align: middle;
+	padding-top: var(--bcp-cellbg-pad, 1.1em);
+	padding-bottom: var(--bcp-cellbg-pad, 1.1em);
+}
+:where(td, th):has(.bcp-cell-mark[data-bcp-mark-bg][data-bcp-mark-size="l"]) { --bcp-cellbg-pad: 1.5em; }
+:where(td, th):has(.bcp-cell-mark[data-bcp-mark-bg][data-bcp-mark-size="m"]) { --bcp-cellbg-pad: 1.1em; }
+:where(td, th):has(.bcp-cell-mark[data-bcp-mark-bg][data-bcp-mark-size="s"]) { --bcp-cellbg-pad: 0.85em; }
+.bcp-cell-mark[data-bcp-mark-bg][data-bcp-mark-size="l"] { --bcp-mark-bg-size: 3.6em; }
+.bcp-cell-mark[data-bcp-mark-bg][data-bcp-mark-size="m"] { --bcp-mark-bg-size: 2.6em; }
+.bcp-cell-mark[data-bcp-mark-bg][data-bcp-mark-size="s"] { --bcp-mark-bg-size: 1.9em; }
+
+/* ── ボタン化（リンク → ボタン表示。予約 / アフィリエイト CTA） ──── */
+/* テーマの a リセットに勝つよう !important で背景/文字色を確定。
+   色は --bcp-cell-button-bg / -text で上書き可能（既定はブランド系トークン→緑フォールバック）。 */
+.bcp-cell-button {
+	display: inline-block; /* block にすると RichText 内でキャレット不正になりエディタで消えるため inline-block 固定 */
+	text-decoration: none !important;
+	/* テーマの a:not(...) が padding-bottom:2px を付けてラベルが下寄りになるため !important で上書き */
+	padding: 0.55em 1.2em !important;
+	background-color: var(--bcp-cell-button-bg, var(--wp--preset--color--primary, var(--wp--preset--color--accent, #2f9e69))) !important;
+	color: var(--bcp-cell-button-text, #fff) !important;
+	border-radius: var(--wp--custom--radius--small, 999px);
+	font-weight: 700;
+	line-height: 1.4;
+	transition: filter 0.15s ease, transform 0.12s ease;
+}
+.bcp-cell-button:visited { color: var(--bcp-cell-button-text, #fff) !important; }
+.bcp-cell-button:hover { filter: brightness(1.07); transform: translateY(-1px); }
+.bcp-cell-button:active { transform: scale(0.97); }
+/* 入れ子リンク（旧構造の core link 等）はボタンの文字色を継承して消えないように */
+.bcp-cell-button a,
+.bcp-cell-button a:visited { color: inherit !important; text-decoration: none !important; }
+
+/* 白抜き（アウトライン）スタイル */
+.bcp-cell-button[data-bcp-btn="outline"],
+.bcp-cell-button[data-bcp-btn="outline"]:visited {
+	background-color: transparent !important;
+	color: var(--bcp-cell-button-bg, var(--wp--preset--color--primary, var(--wp--preset--color--accent, #2f9e69))) !important;
+	box-shadow: inset 0 0 0 2px currentColor;
+}
+
+/* ボタンのあるセルは背景アイコンと同等の上下余白＋中央寄せ */
+.wp-block-table td:has(.bcp-cell-button),
+.wp-block-table th:has(.bcp-cell-button) {
+	padding-top: 1.4em;
+	padding-bottom: 1.4em;
+	vertical-align: middle;
+}
+.wp-block-table td:has(.bcp-cell-button),
+.wp-block-table th:has(.bcp-cell-button) {
+	text-align: center;
+}
+
+/* 星評価セルは常に中央寄せ＋上下余白（CTAボタンと同じ） */
+.wp-block-table td:has(.bcp-cell-stars),
+.wp-block-table th:has(.bcp-cell-stars) {
+	text-align: center;
+	padding-top: 1.4em;
+	padding-bottom: 1.4em;
+	vertical-align: middle;
+}
+
+/* ── 星評価（おすすめ度 5 段階・0.5 刻み） ─────────────── */
+.bcp-cell-stars {
+	display: inline-block;
+	position: relative;
+	white-space: nowrap;
+	line-height: 1;
+	font-size: 1.5em;
+	vertical-align: -0.05em;
+}
+.bcp-cell-stars::before,
+.bcp-cell-stars::after {
+	content: "★★★★★";
+	letter-spacing: 2px;
+}
+.bcp-cell-stars::before {
+	color: color-mix(in srgb, var(--wp--preset--color--contrast, #111) 18%, transparent);
+}
+.bcp-cell-stars::after {
+	color: var(--bcp-star-color, #f5a623);
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	width: 0;
+}
+.bcp-cell-stars[data-bcp-stars="0.5"]::after { width: 10%; }
+.bcp-cell-stars[data-bcp-stars="1"]::after { width: 20%; }
+.bcp-cell-stars[data-bcp-stars="1.5"]::after { width: 30%; }
+.bcp-cell-stars[data-bcp-stars="2"]::after { width: 40%; }
+.bcp-cell-stars[data-bcp-stars="2.5"]::after { width: 50%; }
+.bcp-cell-stars[data-bcp-stars="3"]::after { width: 60%; }
+.bcp-cell-stars[data-bcp-stars="3.5"]::after { width: 70%; }
+.bcp-cell-stars[data-bcp-stars="4"]::after { width: 80%; }
+.bcp-cell-stars[data-bcp-stars="4.5"]::after { width: 90%; }
+.bcp-cell-stars[data-bcp-stars="5"]::after { width: 100%; }
+
+/* ════════════════════════════════════════════════════════════════
+ * ブロックスタイル（ストライプ / シンプル / ダブルライン）
+ * SWELL の is-style-stripes / simple / double を参考にテーマ非依存で再現。
+ * 罫線色はトークン contrast を color-mix で薄めて使用（ハードコード回避）。
+ * ════════════════════════════════════════════════════════════════ */
+
+/* ストライプ（交互背景） */
+.wp-block-table.is-style-bcp-stripe tbody tr:nth-child(odd) td,
+.wp-block-table.is-style-bcp-stripe tbody tr:nth-child(odd) th {
+	background-color: var(--bcp-table-stripe-bg, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 5%, transparent));
+}
+
+/* シンプル（縦罫線なし・見出し下を強調） */
+.wp-block-table.is-style-bcp-simple table,
+.wp-block-table.is-style-bcp-simple td,
+.wp-block-table.is-style-bcp-simple th {
+	border-left: 0;
+	border-right: 0;
+}
+.wp-block-table.is-style-bcp-simple td,
+.wp-block-table.is-style-bcp-simple th {
+	border-top: 0;
+	border-bottom: 1px solid var(--bcp-table-border, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 14%, transparent));
+}
+.wp-block-table.is-style-bcp-simple thead th,
+.wp-block-table.is-style-bcp-simple thead td {
+	border-bottom: 2px solid var(--bcp-table-border-strong, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 38%, transparent));
+}
+
+/* ダブルライン（二重罫線） */
+.wp-block-table.is-style-bcp-double table {
+	border: 4px double var(--bcp-table-border-strong, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 32%, transparent));
+	border-collapse: separate;
+	border-spacing: 0;
+}
+.wp-block-table.is-style-bcp-double td,
+.wp-block-table.is-style-bcp-double th {
+	border: 1px solid var(--bcp-table-border, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 16%, transparent));
+}
+/* 横スクロール時は外枠をスクロールしないラッパーに移す。
+   table に外枠があると、スクロール中に左枠が画面外へ消え（左端が欠ける）、
+   固定中の 1 列目が枠幅ぶんジャンプ（全体が数 px ずれる）してしまうため。 */
+.wp-block-table[data-bcp-scrollable].is-style-bcp-double .bcp-table-scroll {
+	border: 4px double var(--bcp-table-border-strong, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 32%, transparent));
+}
+.wp-block-table[data-bcp-scrollable].is-style-bcp-double .bcp-table-scroll > table {
+	border: 0;
+}
+
+/* 商品比較スタイル（アフィリ向け）: ヘッダーのインライン画像を統一サムネイル化。
+   コアの「インライン画像」で各列の商品画像/バナーを入れると揃った見た目になる。 */
+.wp-block-table.is-style-bcp-product thead th {
+	text-align: center;
+	vertical-align: middle;
+}
+.wp-block-table.is-style-bcp-product thead img {
+	display: block;
+	width: 100%;
+	max-width: 120px;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	border-radius: var(--wp--custom--radius--small, 8px);
+	margin: 0 auto 0.4em;
+}

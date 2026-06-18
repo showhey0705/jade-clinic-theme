@@ -190,6 +190,13 @@ require_once get_stylesheet_directory() . '/inc/performance.php';
  */
 require_once get_stylesheet_directory() . '/inc/internal-blog-card.php';
 
+/**
+ * core/table 拡張（横スクロール / 固定 / スマホ縦並び / セル記号・星評価・ボタン化 / 比較表スタイル）。
+ * beauty-clinic-patterns の Table_Extension をテーマへ移植。BCP が有効な本サイトでは
+ * 二重登録を避けるため起動せず BCP 側へ委譲する（inc 内 after_setup_theme ガード）。
+ */
+require_once get_stylesheet_directory() . '/inc/table-extension.php';
+
 require_once get_stylesheet_directory() . '/inc/ollie-i18n.php';
 
 /**
