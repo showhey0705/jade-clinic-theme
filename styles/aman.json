@@ -1,0 +1,296 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Aman",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "name": "Brand",
+          "slug": "primary",
+          "color": "#0C4A59"
+        },
+        {
+          "name": "Brand Accent",
+          "slug": "primary-accent",
+          "color": "#DCE6E8"
+        },
+        {
+          "name": "Brand Alt",
+          "slug": "primary-alt",
+          "color": "#A07C2C"
+        },
+        {
+          "name": "Brand Alt Accent",
+          "slug": "primary-alt-accent",
+          "color": "#3F2E20"
+        },
+        {
+          "name": "Contrast",
+          "slug": "main",
+          "color": "#16150F"
+        },
+        {
+          "name": "Contrast Accent",
+          "slug": "main-accent",
+          "color": "#E8E2D9"
+        },
+        {
+          "name": "Base",
+          "slug": "base",
+          "color": "#F5F2EC"
+        },
+        {
+          "name": "Base Accent",
+          "slug": "secondary",
+          "color": "#6E6354"
+        },
+        {
+          "name": "Tint",
+          "slug": "tertiary",
+          "color": "#EDE7DE"
+        },
+        {
+          "name": "Border Base",
+          "slug": "border-light",
+          "color": "#E0D9CD"
+        },
+        {
+          "name": "Border Contrast",
+          "slug": "border-dark",
+          "color": "#C3B8A8"
+        }
+      ]
+    },
+    "typography": {
+      "fluid": true,
+      "fontFamilies": [
+        {
+          "name": "Shippori Mincho",
+          "slug": "primary",
+          "fontFamily": "\"Shippori Mincho\", \"Noto Serif JP\", serif",
+          "fontFace": [
+            {
+              "fontFamily": "Shippori Mincho",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/shippori-mincho-400.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cormorant Garamond",
+          "slug": "display",
+          "fontFamily": "\"Cormorant Garamond\", \"Shippori Mincho\", serif",
+          "fontFace": [
+            {
+              "fontFamily": "Cormorant Garamond",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/cormorant-garamond-400.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Cormorant Garamond",
+              "fontWeight": "400",
+              "fontStyle": "italic",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/cormorant-garamond-400-italic.woff2"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Oswald",
+          "slug": "label",
+          "fontFamily": "\"Oswald\", \"Shippori Mincho\", sans-serif",
+          "fontFace": [
+            {
+              "fontFamily": "Oswald",
+              "fontWeight": "300",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/oswald-300.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Oswald",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/oswald-400.woff2"
+              ]
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "x-small",
+          "name": "X Small",
+          "size": "0.95rem",
+          "fluid": {
+            "min": "0.825rem",
+            "max": "0.95rem"
+          }
+        },
+        {
+          "slug": "small",
+          "name": "Small",
+          "size": "1.05rem",
+          "fluid": {
+            "min": "0.9rem",
+            "max": "1.05rem"
+          }
+        },
+        {
+          "slug": "base",
+          "name": "Base",
+          "size": "1.165rem",
+          "fluid": {
+            "min": "1rem",
+            "max": "1.165rem"
+          }
+        },
+        {
+          "slug": "medium",
+          "name": "Medium",
+          "size": "1.65rem",
+          "fluid": {
+            "min": "1.2rem",
+            "max": "1.65rem"
+          }
+        },
+        {
+          "slug": "large",
+          "name": "Large",
+          "size": "2.35rem",
+          "fluid": {
+            "min": "1.5rem",
+            "max": "2.35rem"
+          }
+        },
+        {
+          "slug": "x-large",
+          "name": "X Large",
+          "size": "2.9rem",
+          "fluid": {
+            "min": "1.875rem",
+            "max": "2.9rem"
+          }
+        },
+        {
+          "slug": "xx-large",
+          "name": "XX Large",
+          "size": "3.75rem",
+          "fluid": {
+            "min": "2.25rem",
+            "max": "3.75rem"
+          }
+        }
+      ]
+    },
+    "custom": {
+      "fontWeight": {
+        "thin": "100",
+        "extra-light": "200",
+        "light": "300",
+        "regular": "425",
+        "medium": "500",
+        "semi-bold": "600",
+        "bold": "700",
+        "extra-bold": "800",
+        "black": "900"
+      },
+      "lineHeight": {
+        "none": "1",
+        "tight": "1.1",
+        "snug": "1.2",
+        "body": "1.5",
+        "relaxed": "1.625",
+        "loose": "2"
+      }
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|base",
+      "text": "var:preset|color|main"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|primary",
+      "fontSize": "var:preset|font-size|base",
+      "fontWeight": "var:custom|fontWeight|regular",
+      "lineHeight": "var:custom|lineHeight|relaxed"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|display",
+          "fontWeight": "var:custom|fontWeight|regular",
+          "lineHeight": "var:custom|lineHeight|snug"
+        }
+      },
+      "h1": {
+        "typography": {
+          "fontSize": "var:preset|font-size|xx-large",
+          "lineHeight": "var:custom|lineHeight|tight"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontSize": "var:preset|font-size|x-large"
+        }
+      },
+      "h3": {
+        "typography": {
+          "fontSize": "var:preset|font-size|large"
+        }
+      },
+      "h4": {
+        "typography": {
+          "fontSize": "var:preset|font-size|medium"
+        }
+      },
+      "h5": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|label",
+          "fontSize": "var:preset|font-size|x-small",
+          "fontWeight": "var:custom|fontWeight|regular",
+          "textTransform": "uppercase",
+          "letterSpacing": "0.18em"
+        }
+      },
+      "h6": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|label",
+          "fontSize": "var:preset|font-size|x-small",
+          "fontWeight": "var:custom|fontWeight|light",
+          "textTransform": "uppercase",
+          "letterSpacing": "0.3em"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var:preset|color|primary"
+        }
+      },
+      "button": {
+        "typography": {
+          "fontFamily": "var:preset|font-family|label",
+          "fontWeight": "var:custom|fontWeight|regular",
+          "textTransform": "uppercase",
+          "letterSpacing": "0.08em"
+        }
+      }
+    }
+  }
+}

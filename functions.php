@@ -135,12 +135,6 @@ function resource_hints( array $hints, string $relation ): array {
 add_filter( 'wp_resource_hints', __NAMESPACE__ . '\resource_hints', 10, 2 );
 
 /**
- * カラーパレット拡張: Ollie Pro が theme palette を上書きするため、その後で
- * `line-green` / `sale` 等の汎用カラーを再注入する。
- */
-require_once get_stylesheet_directory() . '/inc/palette-extras.php';
-
-/**
  * 子テーマ独自のブロックスタイル登録（後続 Phase で実装）。
  */
 require_once get_stylesheet_directory() . '/inc/block-styles.php';

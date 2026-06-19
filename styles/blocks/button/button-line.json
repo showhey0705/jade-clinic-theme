@@ -6,8 +6,8 @@
 	"blockTypes": ["core/button"],
 	"styles": {
 		"color": {
-			"background": "var:preset|color|line-green",
-			"text": "var:preset|color|line-green-fg"
+			"background": "var:custom|line-green",
+			"text": "var:custom|line-green-fg"
 		},
 		"border": {
 			"radius": "var:preset|spacing|xx-large"

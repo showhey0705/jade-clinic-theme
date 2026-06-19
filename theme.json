@@ -123,30 +123,14 @@
 					"name": "Border Contrast",
 					"slug": "border-dark",
 					"color": "#4E4E60"
-				},
-				{
-					"name": "LINE Green",
-					"slug": "line-green",
-					"color": "#06C755"
-				},
-				{
-					"name": "LINE Green Foreground",
-					"slug": "line-green-fg",
-					"color": "#FFFFFF"
-				},
-				{
-					"name": "Sale",
-					"slug": "sale",
-					"color": "#E11D48"
-				},
-				{
-					"name": "Sale Foreground",
-					"slug": "sale-fg",
-					"color": "#FFFFFF"
 				}
 			]
 		},
 		"custom": {
+			"line-green": "#06C755",
+			"line-green-fg": "#FFFFFF",
+			"sale": "#E11D48",
+			"sale-fg": "#FFFFFF",
 			"fontWeight": {
 				"thin": 100,
 				"extra-light": 200,
@@ -313,6 +297,31 @@
 					"fontFamily": "'Hiragino Sans', '游ゴシック', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', sans-serif",
 					"name": "ゴシック体",
 					"slug": "jp-sans"
+				},
+				{
+					"fontFamily": "\"Cormorant Garamond\", 'Hiragino Mincho ProN', '游明朝', serif",
+					"name": "Cormorant Garamond",
+					"slug": "cormorant-garamond",
+					"fontFace": [
+						{
+							"fontDisplay": "swap",
+							"fontFamily": "Cormorant Garamond",
+							"fontStyle": "normal",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/cormorant/cormorant-garamond-300.woff2"
+							]
+						},
+						{
+							"fontDisplay": "swap",
+							"fontFamily": "Cormorant Garamond",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"src": [
+								"file:./assets/fonts/cormorant/cormorant-garamond-400.woff2"
+							]
+						}
+					]
 				},
 				{
 					"fontFamily": "seriously_nostalgic_varRg, sans-serif",

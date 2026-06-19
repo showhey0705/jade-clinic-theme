@@ -1,0 +1,66 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Lime",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"name": "Brand",
+					"slug": "primary",
+					"color": "#355F3B"
+				},
+				{
+					"name": "Brand Accent",
+					"slug": "primary-accent",
+					"color": "#E0EDE2"
+				},
+				{
+					"name": "Brand Alt",
+					"slug": "primary-alt",
+					"color": "#479052"
+				},
+				{
+					"name": "Brand Alt Accent",
+					"slug": "primary-alt-accent",
+					"color": "#1D3921"
+				},
+				{
+					"name": "Contrast",
+					"slug": "main",
+					"color": "#1E241F"
+				},
+				{
+					"name": "Contrast Accent",
+					"slug": "main-accent",
+					"color": "#D5DDD6"
+				},
+				{
+					"name": "Base",
+					"slug": "base",
+					"color": "#FFFFFF"
+				},
+				{
+					"name": "Base Accent",
+					"slug": "secondary",
+					"color": "#4E5A50"
+				},
+				{
+					"name": "Tint",
+					"slug": "tertiary",
+					"color": "#F6F8F7"
+				},
+				{
+					"name": "Border Base",
+					"slug": "border-light",
+					"color": "#E0E6E1"
+				},
+				{
+					"name": "Border Contrast",
+					"slug": "border-dark",
+					"color": "#9CAB9E"
+				}
+			]
+		}
+	}
+}

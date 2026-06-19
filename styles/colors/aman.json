@@ -1,0 +1,66 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Aman",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"name": "Brand",
+					"slug": "primary",
+					"color": "#0C4A59"
+				},
+				{
+					"name": "Brand Accent",
+					"slug": "primary-accent",
+					"color": "#DCE6E8"
+				},
+				{
+					"name": "Brand Alt",
+					"slug": "primary-alt",
+					"color": "#A07C2C"
+				},
+				{
+					"name": "Brand Alt Accent",
+					"slug": "primary-alt-accent",
+					"color": "#3F2E20"
+				},
+				{
+					"name": "Contrast",
+					"slug": "main",
+					"color": "#16150F"
+				},
+				{
+					"name": "Contrast Accent",
+					"slug": "main-accent",
+					"color": "#E8E2D9"
+				},
+				{
+					"name": "Base",
+					"slug": "base",
+					"color": "#F5F2EC"
+				},
+				{
+					"name": "Base Accent",
+					"slug": "secondary",
+					"color": "#6E6354"
+				},
+				{
+					"name": "Tint",
+					"slug": "tertiary",
+					"color": "#EDE7DE"
+				},
+				{
+					"name": "Border Base",
+					"slug": "border-light",
+					"color": "#E0D9CD"
+				},
+				{
+					"name": "Border Contrast",
+					"slug": "border-dark",
+					"color": "#C3B8A8"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,66 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Jade Green",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"name": "Brand",
+					"slug": "primary",
+					"color": "#8F6F52"
+				},
+				{
+					"name": "Brand Accent",
+					"slug": "primary-accent",
+					"color": "#EAE1D5"
+				},
+				{
+					"name": "Brand Alt",
+					"slug": "primary-alt",
+					"color": "#002416"
+				},
+				{
+					"name": "Brand Alt Accent",
+					"slug": "primary-alt-accent",
+					"color": "#234E3A"
+				},
+				{
+					"name": "Contrast",
+					"slug": "main",
+					"color": "#211C16"
+				},
+				{
+					"name": "Contrast Accent",
+					"slug": "main-accent",
+					"color": "#E6DFD3"
+				},
+				{
+					"name": "Base",
+					"slug": "base",
+					"color": "#F7F5F2"
+				},
+				{
+					"name": "Base Accent",
+					"slug": "secondary",
+					"color": "#6E6353"
+				},
+				{
+					"name": "Tint",
+					"slug": "tertiary",
+					"color": "#EDE7DC"
+				},
+				{
+					"name": "Border Base",
+					"slug": "border-light",
+					"color": "#E0D9CC"
+				},
+				{
+					"name": "Border Contrast",
+					"slug": "border-dark",
+					"color": "#B7AB97"
+				}
+			]
+		}
+	}
+}
