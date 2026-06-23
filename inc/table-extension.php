@@ -42,6 +42,12 @@ final class Table_Extension {
 	/** view スクリプトを一度だけ enqueue するためのガード。 */
 	private static $view_enqueued = false;
 
+	/** 出現アニメ発火スクリプトを一度だけ enqueue するためのガード。 */
+	private static $anim_enqueued = false;
+
+	/** 税込/税抜トグルの切替スクリプトを一度だけ enqueue するためのガード。 */
+	private static $tax_enqueued = false;
+
 	/** テーマディレクトリの絶対パス（末尾スラッシュ付き）。 */
 	private static function path(): string {
 		return \trailingslashit( \get_stylesheet_directory() );
@@ -112,9 +118,16 @@ final class Table_Extension {
 		$args['attributes']['bcpFirstColTh']    = [ 'type' => 'boolean', 'default' => false ];
 		$args['attributes']['bcpStack']         = [ 'type' => 'boolean', 'default' => false ];
 		$args['attributes']['bcpMinCol']        = [ 'type' => 'string', 'default' => '' ];
+		$args['attributes']['bcpBodyAlign']     = [ 'type' => 'string', 'default' => '' ];
+		$args['attributes']['bcpLegend']        = [ 'type' => 'boolean', 'default' => false ];
+		$args['attributes']['bcpAnimate']       = [ 'type' => 'boolean', 'default' => false ];
 		$args['attributes']['bcpCol1Width']     = [ 'type' => 'string', 'default' => '' ];
 		$args['attributes']['bcpCol1Bg']        = [ 'type' => 'string', 'default' => '' ];
 		$args['attributes']['bcpCol1Text']      = [ 'type' => 'string', 'default' => '' ];
+		$args['attributes']['bcpNote']          = [ 'type' => 'boolean', 'default' => false ];
+		$args['attributes']['bcpNoteText']      = [ 'type' => 'string', 'default' => '' ];
+		$args['attributes']['bcpTaxToggle']     = [ 'type' => 'boolean', 'default' => false ];
+		$args['attributes']['bcpStickyCta']     = [ 'type' => 'boolean', 'default' => false ];
 		return $args;
 	}
 
@@ -158,7 +171,17 @@ final class Table_Extension {
 		$theadfix     = in_array( $theadfix, $valid_thead, true ) ? $theadfix : '';
 		$mincol       = isset( $attrs['bcpMinCol'] ) ? (string) $attrs['bcpMinCol'] : '';
 		$mincol       = in_array( $mincol, $valid_mincol, true ) ? $mincol : '';
+		$bodyalign    = isset( $attrs['bcpBodyAlign'] ) ? (string) $attrs['bcpBodyAlign'] : '';
+		$bodyalign    = in_array( $bodyalign, [ 'center', 'right' ], true ) ? $bodyalign : '';
+		$legend       = ! empty( $attrs['bcpLegend'] );
+		$animate      = ! empty( $attrs['bcpAnimate'] );
 		$table_w      = isset( $attrs['bcpTableWidth'] ) ? preg_replace( '/[^0-9]/', '', (string) $attrs['bcpTableWidth'] ) : '';
+
+		// C-10/C-11/C-12: テーブル別トグルの新規 3 機能。
+		$note       = ! empty( $attrs['bcpNote'] );
+		$note_text  = isset( $attrs['bcpNoteText'] ) ? trim( (string) $attrs['bcpNoteText'] ) : '';
+		$tax_toggle = ! empty( $attrs['bcpTaxToggle'] );
+		$sticky_cta = ! empty( $attrs['bcpStickyCta'] );
 
 		$class_name    = isset( $attrs['className'] ) ? (string) $attrs['className'] : '';
 		$has_bcp_style = ( false !== strpos( $class_name, 'is-style-bcp-' ) );
@@ -169,7 +192,8 @@ final class Table_Extension {
 		$apply_col1col = $has_col1col && $firstcolth;
 
 		$has_feature = ( '' !== $scrollable ) || ( '' !== $theadfix ) || $firstcolth || $stack
-			|| ( '' !== $mincol ) || $has_colw || $apply_col1col || $has_bcp_style || $has_mark;
+			|| ( '' !== $mincol ) || ( '' !== $bodyalign ) || $legend || $animate || $has_colw || $apply_col1col || $has_bcp_style || $has_mark
+			|| $note || $tax_toggle || $sticky_cta;
 		if ( ! $has_feature ) {
 			return $block_content;
 		}
@@ -216,6 +240,20 @@ final class Table_Extension {
 		if ( '' !== $mincol ) {
 			$props .= ' data-bcp-mincol="' . esc_attr( $mincol ) . '"';
 		}
+		if ( '' !== $bodyalign ) {
+			$props .= ' data-bcp-bodyalign="' . esc_attr( $bodyalign ) . '"';
+		}
+		if ( $animate ) {
+			$props .= ' data-bcp-animate="1"';
+		}
+		// C-12: スマホで申込行（最終行）を追従。CSS のみ（ゼロJS）。
+		if ( $sticky_cta ) {
+			$props .= ' data-bcp-sticky-cta="1"';
+		}
+		// C-11: 税込/税抜トグル有効時は figure に初期モードを付与。
+		if ( $tax_toggle ) {
+			$props .= ' data-bcp-tax-mode="in"';
+		}
 
 		if ( '' !== $props ) {
 			$block_content = preg_replace( '/<figure\b/', '<figure' . $props, $block_content, 1 );
@@ -257,11 +295,88 @@ final class Table_Extension {
 			$block_content = preg_replace( '/<\/figure>/', $tail . '</figure>', $block_content, 1 );
 		}
 
+		// 記号の凡例: 本文に現れた data-bcp-mark を出現順に拾い、意味を表下に自動出力。
+		if ( $legend && preg_match_all( '/data-bcp-mark="([a-zA-Z]+)"/', $block_content, $mm ) ) {
+			$labels = [
+				'doubleCircle' => __( '最適', 'vip2026' ),
+				'circle'       => __( '良い', 'vip2026' ),
+				'triangle'     => __( '条件付き', 'vip2026' ),
+				'cross'        => __( '非対応', 'vip2026' ),
+				'question'     => __( '不明', 'vip2026' ),
+				'check'        => __( '対応', 'vip2026' ),
+				'dash'         => __( '該当なし', 'vip2026' ),
+			];
+			$seen  = [];
+			$items = '';
+			foreach ( $mm[1] as $key ) {
+				if ( isset( $seen[ $key ] ) || ! isset( $labels[ $key ] ) ) {
+					continue;
+				}
+				$seen[ $key ] = true;
+				$items       .= '<li class="bcp-legend__item"><span class="bcp-cell-mark" data-bcp-mark="' . esc_attr( $key ) . '" aria-hidden="true"></span><span class="bcp-legend__label">' . esc_html( $labels[ $key ] ) . '</span></li>';
+			}
+			if ( '' !== $items ) {
+				$legend_html   = '<ul class="bcp-table-legend" aria-label="' . esc_attr__( '記号の凡例', 'vip2026' ) . '">' . $items . '</ul>';
+				$block_content = preg_replace( '/<\/figure>/', $legend_html . '</figure>', $block_content, 1 );
+			}
+		}
+
+		// C-11: 税込/税抜の切替 UI を <table> の直前へ挿入し、専用 JS を遅延 enqueue。
+		if ( $tax_toggle ) {
+			$switch = '<div class="bcp-tax-switch" role="group" aria-label="' . esc_attr__( '税表示の切替', 'vip2026' ) . '">'
+				. '<button type="button" class="bcp-tax-btn is-active" data-tax="in" aria-pressed="true">' . esc_html__( '税込', 'vip2026' ) . '</button>'
+				. '<button type="button" class="bcp-tax-btn" data-tax="ex" aria-pressed="false">' . esc_html__( '税抜', 'vip2026' ) . '</button>'
+				. '</div>';
+			$block_content = preg_replace( '/<table\b/', $switch . '<table', $block_content, 1 );
+			$this->maybe_enqueue_tax();
+		}
+
+		// C-10: 注釈（※書き）を </figure> の直後へ追加。空なら既定文を使う。
+		if ( $note ) {
+			$text = '' !== $note_text ? $note_text : '※効果・感じ方には個人差があります。';
+			$note_html = '<p class="bcp-table-note">' . esc_html( $text ) . '</p>';
+			$block_content = preg_replace( '/<\/figure>/', '</figure>' . $note_html, $block_content, 1 );
+		}
+
 		$this->maybe_enqueue_front_style();
 
 		// view スクリプト（フェード/ヒント制御・固定列幅測定）。
 		if ( '' !== $scrollable ) {
 			$this->maybe_enqueue_view();
+		}
+
+		// 出現アニメ時は、星評価を「★ 5 個の個別要素」に展開する
+		// （1 つずつ staggered でスケールさせるため。data-bcp-stars から full/half/empty を判定）。
+		if ( $animate && false !== strpos( $block_content, 'bcp-cell-stars' ) ) {
+			$block_content = preg_replace_callback(
+				'/<span\b([^>]*\bclass="[^"]*bcp-cell-stars[^"]*"[^>]*)>\s*<\/span>/',
+				static function ( $m ) {
+					if ( ! preg_match( '/data-bcp-stars="([0-9.]+)"/', $m[1], $vm ) ) {
+						return $m[0];
+					}
+					$v    = (float) $vm[1];
+					$full = (int) floor( $v );
+					$half = ( $v - $full ) >= 0.5 ? 1 : 0;
+					$stars = '';
+					for ( $i = 0; $i < 5; $i++ ) {
+						if ( $i < $full ) {
+							$cls = 'is-full';
+						} elseif ( $i === $full && $half ) {
+							$cls = 'is-half';
+						} else {
+							$cls = 'is-empty';
+						}
+						$stars .= '<span class="bcp-star ' . $cls . '" style="--i:' . $i . '" aria-hidden="true"></span>';
+					}
+					return '<span' . $m[1] . '>' . $stars . '</span>';
+				},
+				$block_content
+			);
+		}
+
+		// 出現アニメ発火スクリプト（IntersectionObserver）。
+		if ( $animate ) {
+			$this->maybe_enqueue_anim();
 		}
 
 		return $block_content;
@@ -284,6 +399,44 @@ final class Table_Extension {
 			[ 'in_footer' => true, 'strategy' => 'defer' ]
 		);
 		self::$view_enqueued = true;
+	}
+
+	/** 出現アニメ発火スクリプト（IntersectionObserver）を遅延 enqueue。 */
+	private function maybe_enqueue_anim(): void {
+		if ( self::$anim_enqueued ) {
+			return;
+		}
+		$path = self::path() . 'assets/js/table-anim.js';
+		if ( ! file_exists( $path ) ) {
+			return;
+		}
+		\wp_enqueue_script(
+			self::HANDLE . '-anim',
+			self::url() . 'assets/js/table-anim.js',
+			[],
+			(int) filemtime( $path ),
+			[ 'in_footer' => true, 'strategy' => 'defer' ]
+		);
+		self::$anim_enqueued = true;
+	}
+
+	/** C-11: 税込/税抜の切替スクリプトを遅延 enqueue。 */
+	private function maybe_enqueue_tax(): void {
+		if ( self::$tax_enqueued ) {
+			return;
+		}
+		$path = self::path() . 'assets/js/table-tax.js';
+		if ( ! file_exists( $path ) ) {
+			return;
+		}
+		\wp_enqueue_script(
+			self::HANDLE . '-tax',
+			self::url() . 'assets/js/table-tax.js',
+			[],
+			(int) filemtime( $path ),
+			[ 'in_footer' => true, 'strategy' => 'defer' ]
+		);
+		self::$tax_enqueued = true;
 	}
 
 	/**

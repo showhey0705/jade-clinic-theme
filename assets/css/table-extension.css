@@ -31,6 +31,13 @@
 	padding: 1em;
 }
 
+/* テキスト色フォーマットは <mark> を生成し、UA 既定で背景が黄色になる。
+   背景色を別途指定していない（テキスト色だけの）マークはセル内で背景を透明化し、
+   意図しない黄色ハイライトを防ぐ。背景色も付けた <mark> はインライン style が勝つので無影響。 */
+.wp-block-table mark.has-inline-color {
+	background-color: transparent;
+}
+
 /* 1 列目（見出し列）の背景色・文字色（Inspector「色」で figure に CSS 変数を設定） */
 .wp-block-table[style*="--bcp-col1-bg"] tr > :first-child {
 	background-color: var(--bcp-col1-bg) !important;
@@ -155,14 +162,23 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	width: 44px;
+	width: 56px; /* 参考シャドウの最大ぼかし(16/24/56px)の到達距離に合わせる */
 	z-index: 3;
 	pointer-events: none;
 	opacity: 0;
 }
+/* 参考: box-shadow 0 4 16 / 0 8 24 / 0 16 56 rgba(17,17,26,.1) ×3 の重なりを、
+   エッジから内側へ向かう多段グラデで再現（色 17,17,26・やわらかく拡散）。 */
 .bcp-fade-left {
 	left: 0;
-	background: linear-gradient( to right, var(--bcp-table-fade-color, rgba( 0, 0, 0, 0.28 )), transparent );
+	background: linear-gradient(
+		to right,
+		var(--bcp-table-fade-color, rgba( 17, 17, 26, 0.17 )) 0%,
+		rgba( 17, 17, 26, 0.11 ) 22%,
+		rgba( 17, 17, 26, 0.05 ) 50%,
+		rgba( 17, 17, 26, 0.015 ) 75%,
+		rgba( 17, 17, 26, 0 ) 100%
+	);
 }
 
 /* 1 列目固定時は、左フェードを固定列の右端（＝2 列目）から開始する。
@@ -173,7 +189,14 @@
 }
 .bcp-fade-right {
 	right: 0;
-	background: linear-gradient( to left, var(--bcp-table-fade-color, rgba( 0, 0, 0, 0.28 )), transparent );
+	background: linear-gradient(
+		to left,
+		var(--bcp-table-fade-color, rgba( 17, 17, 26, 0.17 )) 0%,
+		rgba( 17, 17, 26, 0.11 ) 22%,
+		rgba( 17, 17, 26, 0.05 ) 50%,
+		rgba( 17, 17, 26, 0.015 ) 75%,
+		rgba( 17, 17, 26, 0 ) 100%
+	);
 }
 
 @media (max-width: 781px) {
@@ -249,7 +272,7 @@
 /* ── 1 列目を th 風に（タグは td のまま、見た目だけ見出し化） ──── */
 .wp-block-table[data-bcp-firstcol-th] tbody tr > :first-child {
 	font-weight: 700;
-	background-color: var(--bcp-table-firstcol-bg, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 6%, transparent));
+	background-color: var(--bcp-table-firstcol-bg, var(--wp--preset--color--primary-accent, color-mix(in srgb, var(--wp--preset--color--primary, #8f6f52) 8%, var(--wp--preset--color--base, #fff))));
 }
 
 /* ── 各列で最低限維持する幅（長文セルで他列が潰れるのを防ぐ） ──── */
@@ -289,39 +312,155 @@
 	.wp-block-table[data-bcp-stack="sp"] :is(tbody, tfoot) tr > :first-child {
 		font-weight: 700;
 		text-align: left;
-		background-color: var(--bcp-table-firstcol-bg, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 6%, transparent));
+		background-color: var(--bcp-table-firstcol-bg, var(--wp--preset--color--primary-accent, color-mix(in srgb, var(--wp--preset--color--primary, #8f6f52) 8%, var(--wp--preset--color--base, #fff))));
 		padding: 0.55em 0.85em;
 		border-bottom: 1px solid var(--bcp-table-border, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 10%, transparent));
 	}
 
-	/* 値セル: 値は背景アイコンの上に重ねて中央表示（デスクトップと同じ見え方を維持）、
-	   プラン名は左側にタグとして絶対配置で重ねる。背景アイコンは全サイズで維持。 */
+	/* 値セル: プラン名ラベルを「値の上」に小さく積む積み重ね型。
+	   絶対配置をやめたので、ラベルが長くても被らず縦にもはみ出さない。
+	   値が複数要素（★＋割引など）でも通常フローで自然に縦積みされる。
+	   背景大アイコンのセルだけは上下余白を確保してアイコンが見切れないようにする。 */
 	.wp-block-table[data-bcp-stack="sp"] :is(tbody, tfoot) td[data-bcp-label] {
 		position: relative;
+		display: block;
 		text-align: center;
-		padding-left: 0.9em !important;
-		padding-right: 0.9em !important;
+		padding: 0.7em 0.9em;
 		border: 0;
 		border-bottom: 1px solid var(--bcp-table-border, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 8%, transparent));
 	}
 	.wp-block-table[data-bcp-stack="sp"] :is(tbody, tfoot) tr > td[data-bcp-label]:last-child {
 		border-bottom: 0;
 	}
-	/* 左側のプラン名タグ（縦中央・最前面） */
+	/* プラン名ラベル（値の上・小さめ・控えめ） */
 	.wp-block-table[data-bcp-stack="sp"] td[data-bcp-label]::before {
 		content: attr(data-bcp-label);
-		position: absolute;
-		left: 0.9em;
-		top: 50%;
-		transform: translateY( -50% );
-		max-width: 42%;
-		text-align: left;
-		line-height: 1.25;
+		display: block;
+		margin-bottom: 0.3em;
+		text-align: center;
+		line-height: 1.3;
 		font-weight: 700;
-		font-size: 0.92em;
-		color: var(--bcp-stack-label-color, var(--wp--preset--color--primary, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 72%, transparent)));
+		font-size: 0.78em;
+		color: var(--bcp-stack-label-color, var(--wp--preset--color--primary, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 58%, transparent)));
+		position: relative;
 		z-index: 2;
 	}
+	/* 背景大アイコンのセルは上下余白を確保（アイコンが label/値の裏で見切れないように） */
+	.wp-block-table[data-bcp-stack="sp"] td[data-bcp-label]:has(.bcp-cell-mark[data-bcp-mark-bg]) {
+		padding-top: var(--bcp-cellbg-pad, 1.1em);
+		padding-bottom: var(--bcp-cellbg-pad, 1.1em);
+	}
+}
+
+/* ════════════════════════════════════════════════════════════════
+ * データ列の揃え（テーブル設定「データ列の揃え」）
+ * 1 列目（見出し列）は左のまま、それ以外のセルをまとめて揃える。
+ * コア標準の「列の配置」(.has-text-align-*) を個別指定したセルは尊重する。
+ * ════════════════════════════════════════════════════════════════ */
+.wp-block-table[data-bcp-bodyalign="center"] th:not(:first-child):not([class*="has-text-align"]),
+.wp-block-table[data-bcp-bodyalign="center"] td:not(:first-child):not([class*="has-text-align"]) {
+	text-align: center;
+}
+.wp-block-table[data-bcp-bodyalign="right"] th:not(:first-child):not([class*="has-text-align"]),
+.wp-block-table[data-bcp-bodyalign="right"] td:not(:first-child):not([class*="has-text-align"]) {
+	text-align: right;
+}
+
+/* ── 推し列ハイライト（比較表で1列を強調）──────────────────
+   ブロックの追加CSSクラス is-bcp-recommend-1〜3 で「N番目のデータ列
+   （＝nth-child(N+1)）」を淡い色で強調。className はブロック属性なので
+   エディタで編集しても保持される（インライン背景のように剥がれない）。 */
+.wp-block-table[class*="is-bcp-recommend-"] :is(thead th, tbody th, tbody td, tfoot th, tfoot td) {
+	transition: background-color 0.2s ease;
+}
+/* 推し列 = Ollie 流のカード:
+   淡い primary tint ＋ border-light の左右枠 ＋ Ollie radius(lg) の角丸 ＋ ブランド色のトップバー。
+   色・枠・角丸はすべてデザイントークン参照（ハードコードしない）。 */
+.wp-block-table.is-bcp-recommend-1 :is(thead th, tbody th, tbody td, tfoot th, tfoot td):nth-child(2),
+.wp-block-table.is-bcp-recommend-2 :is(thead th, tbody th, tbody td, tfoot th, tfoot td):nth-child(3),
+.wp-block-table.is-bcp-recommend-3 :is(thead th, tbody th, tbody td, tfoot th, tfoot td):nth-child(4) {
+	background-color: var(--bcp-recommend-bg, color-mix(in srgb, var(--wp--preset--color--primary, #8f6f52) 18%, var(--wp--preset--color--base, #fff)));
+	border-left: 1px solid var(--bcp-recommend-edge, var(--wp--preset--color--border-light, color-mix(in srgb, var(--wp--preset--color--main, #231c15) 12%, transparent)));
+	border-right: 1px solid var(--bcp-recommend-edge, var(--wp--preset--color--border-light, color-mix(in srgb, var(--wp--preset--color--main, #231c15) 12%, transparent)));
+	position: relative;
+	z-index: 1;
+}
+/* 推し列のタブ角丸/枠を効かせるには border-collapse:separate が必須
+   （collapse だとセルの border-radius がブラウザ仕様で無視される）。 */
+.wp-block-table[class*="is-bcp-recommend-"] > table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+/* 上端: Ollie radius(lg) ＋ ブランド色のトップバー（見出し列との明確な差別化）。 */
+.wp-block-table.is-bcp-recommend-1 thead th:nth-child(2),
+.wp-block-table.is-bcp-recommend-2 thead th:nth-child(3),
+.wp-block-table.is-bcp-recommend-3 thead th:nth-child(4) {
+	border-top-left-radius: var(--wp--custom--radius--lg, 0.75rem);
+	border-top-right-radius: var(--wp--custom--radius--lg, 0.75rem);
+	border-top: 3px solid var(--wp--preset--color--primary, #8f6f52);
+}
+/* 下端: Ollie radius(lg) ＋ 下枠でカードを閉じる。 */
+.wp-block-table.is-bcp-recommend-1 tbody tr:last-child :nth-child(2),
+.wp-block-table.is-bcp-recommend-2 tbody tr:last-child :nth-child(3),
+.wp-block-table.is-bcp-recommend-3 tbody tr:last-child :nth-child(4) {
+	border-bottom-left-radius: var(--wp--custom--radius--lg, 0.75rem);
+	border-bottom-right-radius: var(--wp--custom--radius--lg, 0.75rem);
+	border-bottom: 1px solid var(--bcp-recommend-edge, var(--wp--preset--color--border-light, color-mix(in srgb, var(--wp--preset--color--main, #231c15) 12%, transparent)));
+}
+
+/* ── 推し列スタイル modifier（既定=カード。以下で上書き/装飾） ───────── */
+
+/* 塗り: ブランド色フィル＋明色テキスト/記号 */
+.wp-block-table.is-bcp-recstyle-solid.is-bcp-recommend-1 :is(thead th, tbody th, tbody td):nth-child(2),
+.wp-block-table.is-bcp-recstyle-solid.is-bcp-recommend-2 :is(thead th, tbody th, tbody td):nth-child(3),
+.wp-block-table.is-bcp-recstyle-solid.is-bcp-recommend-3 :is(thead th, tbody th, tbody td):nth-child(4) {
+	background-color: var(--wp--preset--color--primary, #8f6f52);
+	color: var(--wp--preset--color--base, #fff);
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+.wp-block-table.is-bcp-recstyle-solid.is-bcp-recommend-1 :is(td, th):nth-child(2) .bcp-cell-mark,
+.wp-block-table.is-bcp-recstyle-solid.is-bcp-recommend-2 :is(td, th):nth-child(3) .bcp-cell-mark,
+.wp-block-table.is-bcp-recstyle-solid.is-bcp-recommend-3 :is(td, th):nth-child(4) .bcp-cell-mark {
+	--bcp-mark-color: var(--wp--preset--color--base, #fff) !important;
+}
+
+/* アウトライン: 白背景＋ブランド色の枠線（塗らない） */
+.wp-block-table.is-bcp-recstyle-outline.is-bcp-recommend-1 :is(thead th, tbody th, tbody td):nth-child(2),
+.wp-block-table.is-bcp-recstyle-outline.is-bcp-recommend-2 :is(thead th, tbody th, tbody td):nth-child(3),
+.wp-block-table.is-bcp-recstyle-outline.is-bcp-recommend-3 :is(thead th, tbody th, tbody td):nth-child(4) {
+	background-color: var(--wp--preset--color--base, #fff);
+	border-left: 2px solid var(--wp--preset--color--primary, #8f6f52);
+	border-right: 2px solid var(--wp--preset--color--primary, #8f6f52);
+}
+.wp-block-table.is-bcp-recstyle-outline.is-bcp-recommend-1 tbody tr:last-child :nth-child(2),
+.wp-block-table.is-bcp-recstyle-outline.is-bcp-recommend-2 tbody tr:last-child :nth-child(3),
+.wp-block-table.is-bcp-recstyle-outline.is-bcp-recommend-3 tbody tr:last-child :nth-child(4) {
+	border-bottom: 2px solid var(--wp--preset--color--primary, #8f6f52);
+}
+
+/* リボン: カード＋ヘッダー上部に「おすすめ」ピル（--bcp-ribbon-label で文言上書き可） */
+.wp-block-table.is-bcp-recstyle-ribbon.is-bcp-recommend-1 thead th:nth-child(2),
+.wp-block-table.is-bcp-recstyle-ribbon.is-bcp-recommend-2 thead th:nth-child(3),
+.wp-block-table.is-bcp-recstyle-ribbon.is-bcp-recommend-3 thead th:nth-child(4) {
+	padding-top: 2em;
+}
+.wp-block-table.is-bcp-recstyle-ribbon.is-bcp-recommend-1 thead th:nth-child(2)::after,
+.wp-block-table.is-bcp-recstyle-ribbon.is-bcp-recommend-2 thead th:nth-child(3)::after,
+.wp-block-table.is-bcp-recstyle-ribbon.is-bcp-recommend-3 thead th:nth-child(4)::after {
+	content: var(--bcp-ribbon-label, "おすすめ");
+	position: absolute;
+	top: 0.5em;
+	left: 50%;
+	transform: translateX(-50%);
+	background: var(--wp--preset--color--primary, #8f6f52);
+	color: var(--wp--preset--color--base, #fff);
+	font-size: 0.7em;
+	font-weight: 700;
+	line-height: 1;
+	padding: 0.35em 0.8em;
+	border-radius: var(--wp--custom--radius--full, 999px);
+	white-space: nowrap;
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -376,13 +515,6 @@
 	position: relative;
 	z-index: 0; /* スタッキングコンテキストを作り、z-index:-1 のアイコンをセル背景の上・文字の下に置く */
 }
-/* 背景アイコンのセルは常に中央（テキストとアイコンを重ねる設計のため、
-   カラム配置で左右に寄せるとアイコンが分離するので中央固定）。 */
-.wp-block-table td:has(.bcp-cell-mark[data-bcp-mark-bg]),
-.wp-block-table th:has(.bcp-cell-mark[data-bcp-mark-bg]) {
-	text-align: center;
-}
-
 /* セル内の文字（テキストノードを除く要素）はアイコンより前面へ */
 :where(td, th):has(.bcp-cell-mark[data-bcp-mark-bg]) > :not(.bcp-cell-mark) {
 	position: relative;
@@ -410,6 +542,8 @@
    余白はアイコンサイズ（大/中/小）に追従。 */
 .wp-block-table td:has(.bcp-cell-mark[data-bcp-mark-bg]),
 .wp-block-table th:has(.bcp-cell-mark[data-bcp-mark-bg]) {
+	/* テキストとアイコンを重ねる設計のため中央固定（カラム配置で寄せると分離するため）。 */
+	text-align: center;
 	vertical-align: middle;
 	padding-top: var(--bcp-cellbg-pad, 1.1em);
 	padding-bottom: var(--bcp-cellbg-pad, 1.1em);
@@ -507,6 +641,48 @@
 .bcp-cell-stars[data-bcp-stars="4.5"]::after { width: 90%; }
 .bcp-cell-stars[data-bcp-stars="5"]::after { width: 100%; }
 
+/* ── 個別スター（フロントで PHP が ★ を 5 個生成。1 つずつアニメさせるため） ──
+   .bcp-star を持つときは上の擬似要素（★★★★★）を止め、子の★で描画する。
+   見た目は擬似要素版と一致（グレー地＋金の塗り、0.5 は半分）。 */
+.bcp-cell-stars:has(.bcp-star) {
+	display: inline-flex;
+	gap: 2px;
+	width: auto;
+}
+.bcp-cell-stars:has(.bcp-star)::before,
+.bcp-cell-stars:has(.bcp-star)::after {
+	content: none;
+}
+.bcp-star {
+	position: relative;
+	display: inline-block;
+	line-height: 1;
+	color: color-mix(in srgb, var(--wp--preset--color--contrast, #111) 18%, transparent);
+}
+/* グレーの★は常時表示（土台） */
+.bcp-star::before {
+	content: "★";
+}
+/* 金色の★は「塗り」レイヤー。full/half のときだけ表示し、これがポンと出る対象。 */
+.bcp-star::after {
+	content: "★";
+	position: absolute;
+	inset: 0;
+	color: var(--bcp-star-color, #f5a623);
+	opacity: 0;
+}
+.bcp-star.is-full::after {
+	opacity: 1;
+}
+.bcp-star.is-half::after {
+	opacity: 1;
+	width: 50%;
+	overflow: hidden;
+}
+.bcp-star.is-empty::after {
+	content: none;
+}
+
 /* ════════════════════════════════════════════════════════════════
  * ブロックスタイル（ストライプ / シンプル / ダブルライン）
  * SWELL の is-style-stripes / simple / double を参考にテーマ非依存で再現。
@@ -570,4 +746,162 @@
 	object-fit: cover;
 	border-radius: var(--wp--custom--radius--small, 8px);
 	margin: 0 auto 0.4em;
+}
+
+/* ════════════════════════════════════════════════════════════════
+ * A-1 行/列ハイライト（読み違い防止・ゼロJS）
+ * 行: 全テーブル共通。列: sticky/scroll/stack を使わない素の表のみ
+ *     （overflow:hidden が position:sticky を壊すため）。
+ * ════════════════════════════════════════════════════════════════ */
+/* 行ホバー: 半透明色を background-image（ベタ塗りグラデ）として重ねる。
+   - background-image はセルの background-color（推し列/見出し列の独自背景）の“上”に必ず描画されるため、
+     詳細度の取り合いに負けず均一に着色できる。
+   - box-shadow は border-collapse:collapse のセルでブラウザが描画しない（フロントで効かない）ため使わない。 */
+.wp-block-table tbody tr:hover > td,
+.wp-block-table tbody tr:hover > th,
+.wp-block-table tbody tr:focus-within > td,
+.wp-block-table tbody tr:focus-within > th {
+	background-image: linear-gradient(
+		var(--bcp-row-hl, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 6%, transparent)),
+		var(--bcp-row-hl, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 6%, transparent))
+	);
+}
+
+/* 列ハイライト: 素の表だけ（sticky 系と非両立のため除外） */
+figure.wp-block-table:not([data-bcp-scrollable]):not([data-bcp-theadfix]):not([data-bcp-cell1fixed]):not([data-bcp-stack]) > table {
+	overflow: hidden; /* 列ハイライトの縦長擬似要素をテーブル高でクリップ */
+}
+figure.wp-block-table:not([data-bcp-scrollable]):not([data-bcp-theadfix]):not([data-bcp-cell1fixed]):not([data-bcp-stack]) :where(td, th) {
+	position: relative;
+}
+figure.wp-block-table:not([data-bcp-scrollable]):not([data-bcp-theadfix]):not([data-bcp-cell1fixed]):not([data-bcp-stack]) td:hover::after,
+figure.wp-block-table:not([data-bcp-scrollable]):not([data-bcp-theadfix]):not([data-bcp-cell1fixed]):not([data-bcp-stack]) th:hover::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: -9999px;
+	width: 100%;
+	height: 19999px;
+	background: var(--bcp-col-hl, color-mix(in srgb, var(--wp--preset--color--contrast, #111) 4%, transparent));
+	z-index: -1;
+	pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════════════════════
+ * A-3 記号の凡例（サーバー描画・ゼロJS）
+ * ════════════════════════════════════════════════════════════════ */
+.bcp-table-legend {
+	list-style: none;
+	margin: 0.7em 0 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35em 0.42em;
+	font-size: 12px;
+	color: color-mix(in srgb, var(--wp--preset--color--contrast, #333) 80%, transparent);
+}
+.bcp-legend__item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+}
+.bcp-legend__label {
+	line-height: 1.2;
+}
+
+/* ════════════════════════════════════════════════════════════════
+ * B-6/7/8 出現アニメーション（IntersectionObserver で 1 回だけ発火）
+ * 動かすのは transform / opacity / clip-path のみ（コンポジタ寄り）。
+ * - prefers-reduced-motion: no-preference でのみ作動。
+ * - 初期非表示は (scripting: enabled) でガード → JS 無効/失敗時は必ず表示。
+ * - 発火は table-anim.js が .is-bcp-inview を付与（発火後 unobserve）。
+ * ════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: no-preference) {
+	/* 初期状態を隠すのは JS 有効時のみ（無効・未発火でも内容は必ず見える）。
+	   星は 1 つずつ、背景記号は単発で「視界に入った瞬間」に発火する。 */
+	@media (scripting: enabled) {
+		/* グレーの土台(::before)は常時表示。隠して動かすのは金の塗り(::after)だけ。 */
+		.wp-block-table[data-bcp-animate]:not(.is-bcp-inview) .bcp-star::after { opacity: 0; transform: scale( 0.6 ); }
+		.wp-block-table[data-bcp-animate]:not(.is-bcp-inview) .bcp-cell-mark[data-bcp-mark-bg] { opacity: 0; }
+	}
+
+	/* B-7 星評価: グレー5個の上に、金の塗りを 1 つずつ staggered でポンッと（やや overshoot）。
+	   --i は PHP が各星に付与（0〜4）。empty 星は ::after が無いので出ない。 */
+	.wp-block-table[data-bcp-animate].is-bcp-inview .bcp-star::after {
+		animation: bcp-star-pop 0.5s cubic-bezier( 0.34, 1.45, 0.5, 1 ) both;
+		animation-delay: calc( var(--i, 0) * 0.09s );
+	}
+
+	/* B-8 背景記号: ゆっくり膨らんで控えめに行き過ぎ→静かに 1.0 へ */
+	.wp-block-table[data-bcp-animate].is-bcp-inview .bcp-cell-mark[data-bcp-mark-bg] {
+		animation: bcp-mark-pop 0.9s cubic-bezier( 0.22, 1.12, 0.36, 1 ) 0.08s both;
+	}
+
+	@keyframes bcp-star-pop {
+		from { opacity: 0; transform: scale( 0.6 ); }
+		to   { opacity: 1; transform: scale( 1 ); }
+	}
+	@keyframes bcp-mark-pop {
+		from { opacity: 0; transform: translate( -50%, -50% ) scale( 0.82 ); }
+		to   { opacity: var(--bcp-mark-bg-opacity, 0.5); transform: translate( -50%, -50% ) scale( 1 ); }
+	}
+}
+
+/* ════════════════════════════════════════════════════════════════
+ * C-10 注釈スロット（※書き・サーバー描画・ゼロJS）
+ * テーブルの </figure> 直後に <p class="bcp-table-note"> を出力。
+ * ════════════════════════════════════════════════════════════════ */
+.bcp-table-note {
+	margin: 0.5em 0 0;
+	font-size: 12px;
+	line-height: 1.6;
+	color: color-mix(in srgb, var(--wp--preset--color--contrast, #333) 65%, transparent);
+}
+
+/* ════════════════════════════════════════════════════════════════
+ * C-11 税込/税抜トグル（figure[data-bcp-tax-mode] を table-tax.js が切替）
+ * 価格は二段 <span class="bcp-price"> で著者が記述。
+ * ════════════════════════════════════════════════════════════════ */
+.bcp-price__ex {
+	display: none;
+}
+.wp-block-table[data-bcp-tax-mode="ex"] .bcp-price__in {
+	display: none;
+}
+.wp-block-table[data-bcp-tax-mode="ex"] .bcp-price__ex {
+	display: inline;
+}
+.bcp-tax-switch {
+	display: inline-flex;
+	gap: 0;
+	margin: 0 0 0.6em;
+	border: 1px solid color-mix(in srgb, var(--wp--preset--color--contrast, #111) 18%, transparent);
+	border-radius: 999px;
+	overflow: hidden;
+}
+.bcp-tax-btn {
+	appearance: none;
+	border: 0;
+	background: transparent;
+	padding: 0.3em 0.9em;
+	font-size: 0.85em;
+	cursor: pointer;
+	line-height: 1.4;
+}
+.bcp-tax-btn.is-active {
+	background: var(--wp--preset--color--primary, #002416);
+	color: #fff;
+}
+
+/* ════════════════════════════════════════════════════════════════
+ * C-12 申込行(CTA)追従（スマホのみ・最終行を sticky・ゼロJS）
+ * ════════════════════════════════════════════════════════════════ */
+@media (max-width: 781px) {
+	.wp-block-table[data-bcp-sticky-cta] tbody tr:last-child > * {
+		position: sticky;
+		bottom: 0;
+		z-index: 4;
+		background: var(--wp--preset--color--base, #fff);
+		box-shadow: 0 -6px 16px rgba(17, 17, 26, 0.08);
+	}
 }
