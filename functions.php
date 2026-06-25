@@ -47,8 +47,53 @@ function setup(): void {
 		'style.css',
 		'assets/styles/japanese-typography.css',
 	) );
+
+	// View Transitions プラグインのページ遷移演出を調整。
+	// ヘッダーは全ページ共通なので `view-transition-name` を付けて固定レイヤーとして据え置き
+	// (遷移中も動かず常に表示される)。本文 (main) と投稿要素 (title/thumbnail/content) には
+	// 名前を付けず、root スナップショットのクロスフェードに委ねる = スライドせずフェードのみ。
+	//
+	// 仕組み: プラグインは `view-transition-name` を JS で動的付与する。main に名前があると
+	// ページ間で本文ボックスの位置差をモーフ補間し「左→右にスライド」して見えていた。main を
+	// 外すと main は root に取り込まれ、選択中アニメ (fade) のクロスフェードになる。
+	//
+	// この theme support 宣言は、プラグイン設定が override_theme_config=false のとき優先される
+	// (plvt_apply_settings_to_theme_support が args 付きテーマサポートを検出して早期 return)。
+	add_theme_support(
+		'view-transitions',
+		array(
+			'global-transition-names'    => array(
+				'header' => 'header',
+			),
+			'post-transition-names'      => array(),
+			'default-animation'          => 'fade',
+			'default-animation-duration' => 400,
+		)
+	);
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
+
+/**
+ * BCP の View Transitions モジュールへ「固定要素 (persistent element)」を申告する。
+ *
+ * `bcp_vt_persistent_names` フィルタは「CSS セレクタ => view-transition-name」のマップを
+ * 受け取り、BCP 側が該当要素へ固定の `view-transition-name` を付与する想定。名前付き要素は
+ * ページ遷移中も同一レイヤーとして据え置かれる (root スナップショットのクロスフェードに巻き込まれず、
+ * ヘッダーが遷移のたびに消えて再描画されるのを防ぐ)。
+ *
+ * フロントの実ヘッダーは `<header class="site-header wp-block-template-part">` (Ollie 親テーマの
+ * header テンプレートパート由来) なので `.site-header` で一致する。名前は既存の theme support
+ * `global-transition-names` (header => header) とは別系統だが、ヘッダー固定という意図を表す
+ * `vip-header` を割り当てる。
+ *
+ * NOTE: 既存の `add_theme_support( 'view-transitions', ... )` (setup()) と style.css の
+ * `@view-transition` 宣言は現行挙動なので据え置く。本フィルタはそれらと共存する追加申告。
+ */
+function vt_persistent_names( array $map ): array {
+	$map['.site-header'] = 'vip-header';
+	return $map;
+}
+add_filter( 'bcp_vt_persistent_names', __NAMESPACE__ . '\vt_persistent_names' );
 
 /**
  * フロント側スタイル enqueue。
