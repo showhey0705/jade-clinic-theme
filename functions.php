@@ -47,8 +47,35 @@ function setup(): void {
 		'style.css',
 		'assets/styles/japanese-typography.css',
 	) );
+
+	// View Transitions は BCP の View_Transitions モジュール (page-transitions 機能) が
+	// `@view-transition { navigation: auto; }` / 固定要素の view-transition-name / duration /
+	// reduced-motion をすべて出力する。第三者プラグイン依存の暫定 add_theme_support(
+	// 'view-transitions', ... ) は撤去し、固定要素の申告は下の bcp_vt_persistent_names
+	// フィルタ一本に集約する。
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
+
+/**
+ * BCP の View Transitions モジュールへ「固定要素 (persistent element)」を申告する。
+ *
+ * `bcp_vt_persistent_names` フィルタは「CSS セレクタ => view-transition-name」のマップを
+ * 受け取り、BCP 側が該当要素へ固定の `view-transition-name` を付与する想定。名前付き要素は
+ * ページ遷移中も同一レイヤーとして据え置かれる (root スナップショットのクロスフェードに巻き込まれず、
+ * ヘッダーが遷移のたびに消えて再描画されるのを防ぐ)。
+ *
+ * フロントの実ヘッダーは `<header class="site-header wp-block-template-part">` (Ollie 親テーマの
+ * header テンプレートパート由来) なので `.site-header` で一致する。ヘッダー固定という意図を表す
+ * `vip-header` を割り当てる。
+ *
+ * NOTE: View Transitions の有効化と `@view-transition` 等の CSS 出力は BCP モジュールが担う。
+ * 本フィルタは「この要素は固定 (persistent)」という申告のみを BCP へ渡す唯一の口。
+ */
+function vt_persistent_names( array $map ): array {
+	$map['.site-header'] = 'vip-header';
+	return $map;
+}
+add_filter( 'bcp_vt_persistent_names', __NAMESPACE__ . '\vt_persistent_names' );
 
 /**
  * フロント側スタイル enqueue。
