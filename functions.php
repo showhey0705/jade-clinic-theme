@@ -48,28 +48,11 @@ function setup(): void {
 		'assets/styles/japanese-typography.css',
 	) );
 
-	// View Transitions プラグインのページ遷移演出を調整。
-	// ヘッダーは全ページ共通なので `view-transition-name` を付けて固定レイヤーとして据え置き
-	// (遷移中も動かず常に表示される)。本文 (main) と投稿要素 (title/thumbnail/content) には
-	// 名前を付けず、root スナップショットのクロスフェードに委ねる = スライドせずフェードのみ。
-	//
-	// 仕組み: プラグインは `view-transition-name` を JS で動的付与する。main に名前があると
-	// ページ間で本文ボックスの位置差をモーフ補間し「左→右にスライド」して見えていた。main を
-	// 外すと main は root に取り込まれ、選択中アニメ (fade) のクロスフェードになる。
-	//
-	// この theme support 宣言は、プラグイン設定が override_theme_config=false のとき優先される
-	// (plvt_apply_settings_to_theme_support が args 付きテーマサポートを検出して早期 return)。
-	add_theme_support(
-		'view-transitions',
-		array(
-			'global-transition-names'    => array(
-				'header' => 'header',
-			),
-			'post-transition-names'      => array(),
-			'default-animation'          => 'fade',
-			'default-animation-duration' => 400,
-		)
-	);
+	// View Transitions は BCP の View_Transitions モジュール (page-transitions 機能) が
+	// `@view-transition { navigation: auto; }` / 固定要素の view-transition-name / duration /
+	// reduced-motion をすべて出力する。第三者プラグイン依存の暫定 add_theme_support(
+	// 'view-transitions', ... ) は撤去し、固定要素の申告は下の bcp_vt_persistent_names
+	// フィルタ一本に集約する。
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
 
@@ -82,12 +65,11 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
  * ヘッダーが遷移のたびに消えて再描画されるのを防ぐ)。
  *
  * フロントの実ヘッダーは `<header class="site-header wp-block-template-part">` (Ollie 親テーマの
- * header テンプレートパート由来) なので `.site-header` で一致する。名前は既存の theme support
- * `global-transition-names` (header => header) とは別系統だが、ヘッダー固定という意図を表す
+ * header テンプレートパート由来) なので `.site-header` で一致する。ヘッダー固定という意図を表す
  * `vip-header` を割り当てる。
  *
- * NOTE: 既存の `add_theme_support( 'view-transitions', ... )` (setup()) と style.css の
- * `@view-transition` 宣言は現行挙動なので据え置く。本フィルタはそれらと共存する追加申告。
+ * NOTE: View Transitions の有効化と `@view-transition` 等の CSS 出力は BCP モジュールが担う。
+ * 本フィルタは「この要素は固定 (persistent)」という申告のみを BCP へ渡す唯一の口。
  */
 function vt_persistent_names( array $map ): array {
 	$map['.site-header'] = 'vip-header';
