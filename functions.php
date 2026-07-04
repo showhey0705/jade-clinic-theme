@@ -38,7 +38,8 @@ function version(): string {
  *
  * Adobe Fonts はこの口（CSS link）では読み込まない。Kit `bzy5pnl` は JS async
  * loader 専用構成で `.css` エンドポイントが全ドメインに対して 412 を返すため、
- * `enqueue_typekit()` で `<script>` 経由で読み込む。
+ * `load_typekit()` で `<script>` 経由で読み込む（フロントは maybe_load_typekit で
+ * その書体を使うページのみ遅延読み込み）。
  */
 function setup(): void {
 	load_child_theme_textdomain( 'vip2026', get_stylesheet_directory() . '/languages' );
@@ -101,44 +102,78 @@ function enqueue_styles(): void {
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_styles', 20 );
 
 /**
- * Adobe Fonts（Typekit）の JS async loader を読み込む。
+ * Typekit の JS loader が配信する唯一の Web フォント（theme.json slug）に対応する
+ * ブロッククラス。このクラスを含むブロックが描画されたページでのみ Typekit を読み込む。
  *
- * 経緯: Adobe Fonts は `.css` エンドポイントを kit 設定で無効化できるため、
- * `.js` エンドポイント経由で動的に @font-face を注入する標準ローダーパターンを採用。
+ * Kit `bzy5pnl` は `fot-tsukuaoldmin-pr6n`（筑紫Aオールド明朝 Pr6N）1 書体構成で、
+ * theme.json では slug `tsuku-a-old-mincho` として登録されている。
+ */
+const TYPEKIT_FONT_CLASS = 'has-tsuku-a-old-mincho-font-family';
+
+/**
+ * Adobe Fonts（Typekit）の JS loader を enqueue する。
+ *
+ * Kit `bzy5pnl` は `.css` エンドポイントが全ドメインに対して 412 を返す JS 専用構成の
+ * ため `<script>` 経由でしか読み込めない。かつ JS embed は日本語フォントを全グリフ
+ * 一括（数 MB）で配信し動的サブセットが効かない。そこで inc/fonts.php の Google Fonts
+ * 遅延 enqueue と同じ方針で「その書体を実際に使うページだけ」読み込む（下記
+ * maybe_load_typekit）。使わないページでは 1 バイトも読み込まない。
  *
  * Kit ID 解決: starter デフォルトは `TYPEKIT_KIT = ''`（空）。サイト固有の Kit ID は
  * inc/{sitename}.php から `vip2026/typekit_kit` フィルタで返す。
  *
  *   add_filter( 'vip2026/typekit_kit', static fn(): string => 'xxxxxxx' );
- *
- * 適用先:
- *   - フロント (wp_enqueue_scripts)
- *   - ブロックエディタ親 + iframe キャンバス (enqueue_block_assets, is_admin guard)
  */
-function enqueue_typekit(): void {
+function load_typekit(): void {
 	$kit = (string) apply_filters( 'vip2026/typekit_kit', TYPEKIT_KIT );
 	if ( '' === $kit ) {
 		return; // Kit ID 未設定なら何もしない。starter デフォルトの挙動。
+	}
+	if ( wp_script_is( 'vip2026-typekit', 'enqueued' ) ) {
+		return; // 二重 enqueue 防止。
 	}
 	wp_enqueue_script(
 		'vip2026-typekit',
 		'https://use.typekit.net/' . $kit . '.js',
 		array(),
 		null,
-		false // head 配置でフォント取得を早める。FOUT 抑制のため async/defer は付けない。
+		true // フッター配置。描画をブロックしない。フォールバックはシステム明朝。
 	);
 	wp_add_inline_script(
 		'vip2026-typekit',
 		'try { Typekit.load({ async: true }); } catch (e) {}'
 	);
 }
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_typekit', 20 );
 
+/**
+ * フロント：TYPEKIT_FONT_CLASS を含むブロックが描画された時だけ Typekit を enqueue。
+ *
+ * inc/fonts.php の Google Fonts 遅延 enqueue と同じ仕組み。render_block は wp_head 送出後に
+ * 発火するため、スクリプトは wp_footer に出力される（＝レンダリング非ブロッキング）。
+ * fontFamily スタックに Hiragino Mincho ProN 等のフォールバックがあるので、未読み込みでも
+ * システム明朝で自然に描画される。
+ */
+function maybe_load_typekit( string $content ): string {
+	static $loaded = false;
+	if ( $loaded ) {
+		return $content;
+	}
+	if ( str_contains( $content, TYPEKIT_FONT_CLASS ) ) {
+		load_typekit();
+		$loaded = true;
+	}
+	return $content;
+}
+add_filter( 'render_block', __NAMESPACE__ . '\maybe_load_typekit', 10, 1 );
+
+/**
+ * エディタ：ピッカー UI と iframe キャンバス用に常時読み込む（フロントの遅延読み込みとは別）。
+ */
 function enqueue_typekit_in_editor(): void {
 	if ( ! is_admin() ) {
 		return;
 	}
-	enqueue_typekit();
+	load_typekit();
 }
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_typekit_in_editor' );
 
