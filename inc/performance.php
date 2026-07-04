@@ -70,3 +70,6 @@ function skip_ollie_woo_pattern_cleanup_on_front(): void {
 	remove_action( 'init', 'Ollie\\unregister_ollie_woocommerce_patterns', 999 );
 }
 add_action( 'init', __NAMESPACE__ . '\skip_ollie_woo_pattern_cleanup_on_front', 1 );
+
+// 動画の遅延読み込みは beauty-clinic-patterns の Video_Lazyload 機能へ一本化した
+// (inc/features/video-lazyload/)。子テーマ側の実装は二重処理を避けるため撤去済み。
