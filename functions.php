@@ -256,6 +256,12 @@ require_once get_stylesheet_directory() . '/inc/table-extension.php';
 require_once get_stylesheet_directory() . '/inc/ollie-i18n.php';
 
 /**
+ * アクセシビリティ補助（Lighthouse 対応）。
+ * title 未指定 iframe への title 付与、画像のみリンクへの aria-label 補完。
+ */
+require_once get_stylesheet_directory() . '/inc/accessibility.php';
+
+/**
  * jadeclinic.jp 専用：FB ドメイン認証 / JSON-LD / LP femcare のヘッダフッタ非表示。
  * 別サイト転用時はこの 1 行を消せば全部止まる。
  */
