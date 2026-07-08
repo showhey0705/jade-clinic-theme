@@ -253,6 +253,13 @@ require_once get_stylesheet_directory() . '/inc/button-line-defaults.php';
 require_once get_stylesheet_directory() . '/inc/performance.php';
 
 /**
+ * バイリンガルナビ(EN ラベル + 日本語サブラベル)。
+ * Navigation ブロック標準の「説明 (description)」属性をサブラベルとして描画する。
+ * フロント/エディタとも追加 JS ゼロ。スタイルは style.css 同梱。
+ */
+require_once get_stylesheet_directory() . '/inc/nav-bilingual.php';
+
+/**
  * 内部ブログカード(JADE Blog Card)。
  * 投稿エディタで「URL を単独段落として貼り付け」たとき、同サイト URL を
  * WP 標準の post-embed iframe ではなくサムネ + タイトル + 抜粋のカードに置換。

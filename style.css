@@ -5,7 +5,7 @@ Description: JADE CLINIC 公式サイト専用の Ollie 子テーマ。日本語
 Author:      VIPCREW
 Author URI:  https://photoshopvip.net
 Template:     ollie
-Version:      0.10.1
+Version:      0.10.2
 Requires at least: 6.6
 Requires PHP: 7.4
 License:      GNU General Public License v2 or later
@@ -775,4 +775,46 @@ a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__lin
   .icon-rotate-fast:hover i {
     transform: none;
   }
+}
+
+/* ==========================================================================
+   バイリンガルナビ(EN ラベル + 日本語サブラベル)
+   inc/nav-bilingual.php が Navigation ブロックの「説明」属性を
+   .nav-sublabel <span> として <a> 内に注入する。
+   :has() で「サブラベルを持つ項目だけ」縦積みにし、他のナビには影響させない。
+   ========================================================================== */
+
+.wp-block-navigation .wp-block-navigation-item__content:has(> .nav-sublabel) {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 0.25em;
+}
+
+.wp-block-navigation .nav-sublabel {
+	font-family: var(--wp--preset--font-family--jp-sans, inherit);
+	font-size: 0.62em;
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: 0.08em;
+	opacity: 0.62;
+	transition: opacity 0.2s ease;
+	white-space: nowrap;
+}
+
+.wp-block-navigation .wp-block-navigation-item:hover .nav-sublabel,
+.wp-block-navigation .wp-block-navigation-item a:focus-visible .nav-sublabel {
+	opacity: 1;
+}
+
+/* モバイルオーバーレイ(開いた状態)では左揃えで縦リズムを保つ */
+.wp-block-navigation__responsive-container.is-menu-open
+	.wp-block-navigation-item__content:has(> .nav-sublabel) {
+	align-items: flex-start;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-navigation .nav-sublabel {
+		transition: none;
+	}
 }
