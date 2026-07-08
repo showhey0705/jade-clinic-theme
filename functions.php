@@ -65,15 +65,29 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
  * ページ遷移中も同一レイヤーとして据え置かれる (root スナップショットのクロスフェードに巻き込まれず、
  * ヘッダーが遷移のたびに消えて再描画されるのを防ぐ)。
  *
- * フロントの実ヘッダーは `<header class="site-header wp-block-template-part">` (Ollie 親テーマの
- * header テンプレートパート由来) なので `.site-header` で一致する。ヘッダー固定という意図を表す
- * `vip-header` を割り当てる。
+ * IMPORTANT — backdrop-filter との非互換ルール (2026-07-08 判明):
+ * `view-transition-name` が付いた要素はレンダリング上「独立スナップショットグループ
+ * (backdrop root)」になり、その**内側**の `backdrop-filter` は背後のページコンテンツを
+ * 参照できず無効化される (仕様どおりの挙動)。以前 `.site-header` (テンプレートパートの
+ * ラッパー) に名前を付けていたところ、内側の `is-style-background-blur` (frosted glass
+ * ヘッダー) のぼかしが完全に効かなくなっていた。
+ *
+ * → ルール: backdrop-filter を使う要素の「祖先」には view-transition-name を付けない。
+ *
+ * そのため名前はラッパーではなく、ぼかし group の**内側**のコンテンツ行 (ロゴ + ナビの
+ * 横並び group) に付ける。これで遷移中のヘッダー内容の連続性は保ちつつ、外側 group の
+ * ぼかしは backdrop root の外に出るので正常に効く。
+ * (セレクタはページ内で一意に 1 要素へ一致させること — view-transition-name の重複は
+ * その遷移自体をスキップさせる)
  *
  * NOTE: View Transitions の有効化と `@view-transition` 等の CSS 出力は BCP モジュールが担う。
  * 本フィルタは「この要素は固定 (persistent)」という申告のみを BCP へ渡す唯一の口。
  */
 function vt_persistent_names( array $map ): array {
-	$map['.site-header'] = 'vip-header';
+	// BCP 設定既定 (persistent_header = '.site-header') のラッパー申告を撤回する。
+	// 残すと wrapper に bcp-vt-header が付き、内側の backdrop-filter が再び無効化される。
+	unset( $map['.site-header'] );
+	$map['.site-header .is-style-background-blur > .wp-block-group'] = 'vip-header';
 	return $map;
 }
 add_filter( 'bcp_vt_persistent_names', __NAMESPACE__ . '\vt_persistent_names' );
