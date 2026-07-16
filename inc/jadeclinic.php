@@ -63,8 +63,8 @@ function structured_data(): void {
 		'openingHoursSpecification' => array(
 			array(
 				'@type'     => 'OpeningHoursSpecification',
-				'dayOfWeek' => array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ),
-				'opens'     => '09:20',
+				'dayOfWeek' => array( 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ),
+				'opens'     => '09:00',
 				'closes'    => '18:00',
 			),
 			array(
@@ -76,6 +76,7 @@ function structured_data(): void {
 		),
 		'medicalSpecialty'         => array( 'Dermatology', 'PlasticSurgery' ),
 		'availableService'         => array(
+			array( '@type' => 'MedicalProcedure', 'name' => 'クマ取り（下眼瞼脱脂・裏ハムラ・表ハムラ）' ),
 			array( '@type' => 'MedicalProcedure', 'name' => 'しみ治療（ピコレーザー）' ),
 			array( '@type' => 'MedicalProcedure', 'name' => 'ピコトーニング' ),
 			array( '@type' => 'MedicalProcedure', 'name' => '糸リフト・フェイスリフト' ),
@@ -92,7 +93,10 @@ function structured_data(): void {
 			'name'  => '福岡市',
 		),
 		'sameAs'                   => array(
+			'https://maps.google.com/maps?cid=13411300600492262860',
 			'https://www.instagram.com/jadeclinic.o/',
+			'https://clinic.beauty.hotpepper.jp/H000748409/',
+			'https://tribeau.jp/clinics/5298',
 		),
 	);
 
