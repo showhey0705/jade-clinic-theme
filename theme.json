@@ -72,57 +72,57 @@
 				{
 					"name": "Brand",
 					"slug": "primary",
-					"color": "#5344F4"
+					"color": "#8F6F52"
 				},
 				{
 					"name": "Brand Accent",
 					"slug": "primary-accent",
-					"color": "#e9e7ff"
+					"color": "#DAD9D7"
 				},
 				{
 					"name": "Brand Alt",
 					"slug": "primary-alt",
-					"color": "#DEC9FF"
+					"color": "#355F3B"
 				},
 				{
 					"name": "Brand Alt Accent",
 					"slug": "primary-alt-accent",
-					"color": "#3d386b"
+					"color": "#FFFFFF"
 				},
 				{
 					"name": "Contrast",
 					"slug": "main",
-					"color": "#1E1E26"
+					"color": "#262524"
 				},
 				{
 					"name": "Contrast Accent",
 					"slug": "main-accent",
-					"color": "#d4d4ec"
+					"color": "#E4E2DD"
 				},
 				{
 					"name": "Base",
 					"slug": "base",
-					"color": "#fff"
+					"color": "#F3EEE7"
 				},
 				{
 					"name": "Base Accent",
 					"slug": "secondary",
-					"color": "#545473"
+					"color": "#615F5F"
 				},
 				{
 					"name": "Tint",
 					"slug": "tertiary",
-					"color": "#f8f7fc"
+					"color": "#F0EAE0"
 				},
 				{
 					"name": "Border Base",
 					"slug": "border-light",
-					"color": "#E3E3F0"
+					"color": "#DAD9D7"
 				},
 				{
 					"name": "Border Contrast",
 					"slug": "border-dark",
-					"color": "#4E4E60"
+					"color": "#AAA6A3"
 				}
 			]
 		},
@@ -364,6 +364,16 @@
 					"fontFamily": "\"DotGothic16\", sans-serif",
 					"name": "DotGothic16",
 					"slug": "dot-gothic-16"
+				},
+				{
+					"fontFamily": "\"Shippori Mincho\", 'Hiragino Mincho ProN', '游明朝', 'Noto Serif JP', serif",
+					"name": "Shippori Mincho",
+					"slug": "shippori-mincho"
+				},
+				{
+					"fontFamily": "\"Oswald\", 'Hiragino Sans', 'Noto Sans JP', sans-serif",
+					"name": "Oswald",
+					"slug": "oswald"
 				}
 			],
 			"fontSizes": [
@@ -491,7 +501,7 @@
 				":hover": {
 					"color": {
 						"background": "var:preset|color|primary-alt-accent",
-						"text": "var:preset|color|base"
+						"text": "var:preset|color|main"
 					}
 				}
 			},
