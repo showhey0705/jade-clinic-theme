@@ -44,6 +44,20 @@ function registry(): array {
 			'src'    => 'https://fonts.googleapis.com/css2?family=DotGothic16&display=swap',
 			'ver'    => null,
 		),
+		array(
+			'slug'   => 'shippori-mincho',
+			'handle' => 'vip2026-font-shippori-mincho',
+			// Google Fonts CSS。本文・和文見出し（Bronze/Forest スタイル）。
+			'src'    => 'https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap',
+			'ver'    => null,
+		),
+		array(
+			'slug'   => 'oswald',
+			'handle' => 'vip2026-font-oswald',
+			// Google Fonts CSS。ラベル・アイブロウ・数値（Bronze/Forest スタイル）。
+			'src'    => 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap',
+			'ver'    => null,
+		),
 	);
 
 	return $cache;

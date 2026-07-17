@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Aman at Sea2",
+  "description": "Warm sand + charcoal, bronze brand #8F6F52",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "name": "Brand",
+          "slug": "primary",
+          "color": "#8F6F52"
+        },
+        {
+          "name": "Brand Accent",
+          "slug": "primary-accent",
+          "color": "#DAD9D7"
+        },
+        {
+          "name": "Brand Alt",
+          "slug": "primary-alt",
+          "color": "#CAA48D"
+        },
+        {
+          "name": "Brand Alt Accent",
+          "slug": "primary-alt-accent",
+          "color": "#3A2C22"
+        },
+        {
+          "name": "Contrast",
+          "slug": "main",
+          "color": "#262524"
+        },
+        {
+          "name": "Contrast Accent",
+          "slug": "main-accent",
+          "color": "#E4E2DD"
+        },
+        {
+          "name": "Base",
+          "slug": "base",
+          "color": "#F3EEE7"
+        },
+        {
+          "name": "Base Accent",
+          "slug": "secondary",
+          "color": "#615F5F"
+        },
+        {
+          "name": "Tint",
+          "slug": "tertiary",
+          "color": "#EBE8E5"
+        },
+        {
+          "name": "Border Base",
+          "slug": "border-light",
+          "color": "#DAD9D7"
+        },
+        {
+          "name": "Border Contrast",
+          "slug": "border-dark",
+          "color": "#AAA6A3"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|base",
+      "text": "var:preset|color|main"
+    }
+  }
+}

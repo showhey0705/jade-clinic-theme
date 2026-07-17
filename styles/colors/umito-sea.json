@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Umito Sea",
+  "description": "White + navy + aqua (umito.jp)",
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "name": "Brand",
+          "slug": "primary",
+          "color": "#0E7C94"
+        },
+        {
+          "name": "Brand Accent",
+          "slug": "primary-accent",
+          "color": "#E3F4F8"
+        },
+        {
+          "name": "Brand Alt",
+          "slug": "primary-alt",
+          "color": "#3BBFD8"
+        },
+        {
+          "name": "Brand Alt Accent",
+          "slug": "primary-alt-accent",
+          "color": "#0A2A33"
+        },
+        {
+          "name": "Contrast",
+          "slug": "main",
+          "color": "#1B3758"
+        },
+        {
+          "name": "Contrast Accent",
+          "slug": "main-accent",
+          "color": "#DCEAF0"
+        },
+        {
+          "name": "Base",
+          "slug": "base",
+          "color": "#FFFFFF"
+        },
+        {
+          "name": "Base Accent",
+          "slug": "secondary",
+          "color": "#5E6B73"
+        },
+        {
+          "name": "Tint",
+          "slug": "tertiary",
+          "color": "#EDF0F4"
+        },
+        {
+          "name": "Border Base",
+          "slug": "border-light",
+          "color": "#DCE3EA"
+        },
+        {
+          "name": "Border Contrast",
+          "slug": "border-dark",
+          "color": "#B7C4CE"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|base",
+      "text": "var:preset|color|main"
+    }
+  }
+}
