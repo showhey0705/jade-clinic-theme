@@ -838,4 +838,53 @@ a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__lin
 .entry-content :where(ul, ol):not(.wp-block-list) > li,
 .wp-block-post-content :where(ul, ol):not(.wp-block-list) > li {
 	margin-bottom: var(--wp--preset--spacing--small);
+/* ============================================================
+   診療カレンダー (bcp/clinic-calendar) — JADE の見た目に合わせる
+   ------------------------------------------------------------
+   旧フッターの表組みカレンダー(core/table + light-section-fade
+   グラデーション)と同一の見た目になるよう、プラグインが公開して
+   いる CSS フックへサイト固有の値を与える。値はすべて旧実装の
+   実測値。プラグイン本体は特定テーマのトークンに依存しないため、
+   サイト固有の色・寸法はここで指定する。
+
+   セレクタを 3 回重ねているのは、プラグイン側の配色スキーム
+   (.bcp-cal.is-color-warm = 詳細度 0,2,0) を確実に上書きするため。
+   ============================================================ */
+
+.bcp-cal.bcp-cal.bcp-cal {
+	--bcp-cal-surface:   var(--wp--preset--gradient--light-section-fade);
+	--bcp-cal-radius:    5px;
+	--bcp-cal-head-bg:   rgba(236, 232, 227, 0.8);
+	--bcp-cal-line:      rgba(0, 0, 0, 0.05);
+	--bcp-cal-font-size: 13px;
+	--bcp-cal-cell-pad:  6.5px;
+
+	--bcp-cal-open-bg:   var(--wp--preset--color--primary);
+	--bcp-cal-open-fg:   #fff;
+	--bcp-cal-half-bg:   #d0c7bf;
+	--bcp-cal-half-fg:   var(--wp--preset--color--main);
+	--bcp-cal-half-line: rgba(0, 0, 0, 0.05);
+	--bcp-cal-closed-fg: var(--wp--preset--color--main);
+}
+
+/* 旧実装の罫線は 0.5px。 */
+.bcp-cal.bcp-cal.bcp-cal .bcp-cal__day,
+.bcp-cal.bcp-cal.bcp-cal .bcp-cal__wh,
+.bcp-cal.bcp-cal.bcp-cal .bcp-cal__month-title {
+	border: 0.5px solid var(--bcp-cal-line);
+}
+
+/* 月見出しと曜日ヘッダを 1 枚の帯として連続させる。 */
+.bcp-cal.bcp-cal.bcp-cal .bcp-cal__month-title {
+	margin-bottom: 0;
+	font-weight: 700;
+}
+
+.bcp-cal.bcp-cal.bcp-cal .bcp-cal__table {
+	width: 100%;
+	margin: 0;
+}
+
+.bcp-cal.bcp-cal.bcp-cal .bcp-cal__month {
+	padding-bottom: 0;
 }
