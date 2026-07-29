@@ -17,3 +17,9 @@ vendor/
 # 一時ファイル
 _make_screenshot.php
 *.tmp
+
+# Ollie Pro クラウドパターンのローカルキャッシュ（OllieWP のサブスク資産。再配布不可）
+patterns/cloud/
+
+# 削除待ち退避
+_to_delete/

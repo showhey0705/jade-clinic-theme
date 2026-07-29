@@ -5,7 +5,7 @@ Description: JADE CLINIC 公式サイト専用の Ollie 子テーマ。日本語
 Author:      VIPCREW
 Author URI:  https://photoshopvip.net
 Template:     ollie
-Version:      0.10.2
+Version:      0.10.3
 Requires at least: 6.6
 Requires PHP: 7.4
 License:      GNU General Public License v2 or later
@@ -817,4 +817,25 @@ a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__lin
 	.wp-block-navigation .nav-sublabel {
 		transition: none;
 	}
+}
+
+
+/* ============================================================
+   Ollie 1.6.1 互換パッチ（リストの下マージン）
+   ------------------------------------------------------------
+   親テーマ 1.6.1 で assets/styles/core-list.css の
+     .entry-content ul li / ol li { margin-bottom: … }
+   が削除され、theme.json の styles.blocks."core/list-item" へ移動した。
+   theme.json 経由で生成されるセレクタは
+     :root :where(.wp-block-list > li)
+   （WP の core/list-item selectors.root）になるため、本文内でも
+   `.wp-block-list` クラスを持たないリスト（クラシック HTML、プラグイン
+   出力、カスタムブロック内の ul / ol）からは下マージンが消える。
+   ここではその抜け落ちた分だけを補う。core/list ブロック自体には
+   当てないので、Global Styles でのリスト余白コントロールは維持される。
+   ============================================================ */
+
+.entry-content :where(ul, ol):not(.wp-block-list) > li,
+.wp-block-post-content :where(ul, ol):not(.wp-block-list) > li {
+	margin-bottom: var(--wp--preset--spacing--small);
 }
