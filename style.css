@@ -5,7 +5,7 @@ Description: JADE CLINIC 公式サイト専用の Ollie 子テーマ。日本語
 Author:      VIPCREW
 Author URI:  https://photoshopvip.net
 Template:     ollie
-Version:      0.10.3
+Version:      0.10.5
 Requires at least: 6.6
 Requires PHP: 7.4
 License:      GNU General Public License v2 or later
@@ -833,11 +833,23 @@ a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__lin
    出力、カスタムブロック内の ul / ol）からは下マージンが消える。
    ここではその抜け落ちた分だけを補う。core/list ブロック自体には
    当てないので、Global Styles でのリスト余白コントロールは維持される。
+
+   v0.10.4: このルールに閉じ括弧が無く、後続の診療カレンダー節が
+   まるごと入れ子 (li 配下限定) になって無効化していたのを修正。
+
+   v0.10.5: 対象を「class を持たないリスト」に限定 (:not([class]))。
+   このパッチが救いたい散文のリスト (クラシック HTML や旧 core/list
+   出力) は class を持たず、デザインされたコンポーネントのリスト
+   (.wp-block-list や各プラグインの UI) は必ず class を持つ、という
+   区別を利用する。特定プラグイン名に依存せずにコンポーネントへの
+   流れ弾 (例: 施術ヘルプポップオーバーのスペック行間が開く) を防ぐ。
+   .wp-block-list の除外もこれに包含される。
    ============================================================ */
 
-.entry-content :where(ul, ol):not(.wp-block-list) > li,
-.wp-block-post-content :where(ul, ol):not(.wp-block-list) > li {
+.entry-content :where(ul, ol):not([class]) > li,
+.wp-block-post-content :where(ul, ol):not([class]) > li {
 	margin-bottom: var(--wp--preset--spacing--small);
+}
 /* ============================================================
    診療カレンダー (bcp/clinic-calendar) — JADE の見た目に合わせる
    ------------------------------------------------------------
