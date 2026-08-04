@@ -25,6 +25,13 @@ add_filter( 'vip2026/typekit_kit', static function (): string {
 } );
 
 /**
+ * 地図 iframe の title(inc/accessibility.php の汎用化に伴いサイト固有文言はここで供給)。
+ */
+add_filter( 'vip2026/a11y/map_iframe_title', static function (): string {
+	return '地図: JADE CLINIC へのアクセス';
+} );
+
+/**
  * Facebook Meta Pixel ドメイン認証 meta。
  */
 function facebook_domain_verification(): void {

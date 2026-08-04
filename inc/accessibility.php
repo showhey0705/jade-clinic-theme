@@ -8,6 +8,11 @@
  * - ③ 画像のみのリンク（<a><img alt=""></a>）に、リンク先の記事タイトル等から
  *      aria-label を補い、スクリーンリーダーで識別可能な名前を持たせる
  *
+ * サイト固有の文言はフィルタで差し替える(汎用ファイルにサイト名をハードコードしない):
+ *
+ *   // 地図 iframe の title(既定: 「地図」)
+ *   add_filter( 'vip2026/a11y/map_iframe_title', fn() => '地図: ○○クリニックへのアクセス' );
+ *
  * @package vip2026
  */
 
@@ -35,7 +40,7 @@ function resolve_link_label( string $url ): string {
 		$label = (string) get_the_title( $pid );
 	}
 	if ( '' === $label ) {
-		$label = '詳細を見る';
+		$label = __( '詳細を見る', 'vip2026' );
 	}
 	$cache[ $url ] = $label;
 	return $label;
@@ -62,9 +67,16 @@ function fix_block( string $content, array $block ): string {
 				if ( preg_match( '/\btitle\s*=/i', $tag ) ) {
 					return $tag; // 既に title があるので触らない。
 				}
-				$label = preg_match( '/google\.com\/maps|maps\.google|goo\.gl\/maps/i', $tag )
-					? '地図: JADE CLINIC へのアクセス'
-					: '埋め込みコンテンツ';
+				if ( preg_match( '/google\.com\/maps|maps\.google|goo\.gl\/maps/i', $tag ) ) {
+					/**
+					 * 地図 iframe に付与する title。サイト側で固有の文言に差し替え可。
+					 *
+					 * @param string $title 既定は「地図」。
+					 */
+					$label = (string) apply_filters( 'vip2026/a11y/map_iframe_title', __( '地図', 'vip2026' ) );
+				} else {
+					$label = __( '埋め込みコンテンツ', 'vip2026' );
+				}
 				return preg_replace( '/<iframe\b/i', '<iframe title="' . esc_attr( $label ) . '"', $tag, 1 );
 			},
 			$content
@@ -91,7 +103,7 @@ function fix_block( string $content, array $block ): string {
 				if ( preg_match( '/\bhref\s*=\s*"([^"]+)"/i', $attrs, $h ) ) {
 					$label = resolve_link_label( $h[1] );
 				} else {
-					$label = '詳細を見る';
+					$label = __( '詳細を見る', 'vip2026' );
 				}
 				return '<a' . $attrs . ' aria-label="' . esc_attr( $label ) . '">' . $inner . '</a>';
 			},
