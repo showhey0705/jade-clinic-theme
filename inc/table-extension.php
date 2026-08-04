@@ -548,7 +548,8 @@ final class Table_Extension {
  * 起動しない（BCP\Table_Extension に委譲）。BCP 非導入サイトでのみテーマが提供する。
  */
 \add_action( 'after_setup_theme', static function () {
-	if ( ! \class_exists( '\\BCP\\Table_Extension' ) ) {
+	if ( ! \class_exists( '\\BCP\\Table_Extension' )
+		&& ! \class_exists( '\\PVIP\\Blocks\\Features\\Table_Extension' ) ) {
 		Table_Extension::instance();
 	}
 } );

@@ -102,7 +102,7 @@ html .is-layout-flex .wp-block-image {
    ======================================== */
 
 /* カスタマイズ可能なCSS変数 */
-.is-style-ken-burns {
+.wp-block-image.is-style-ken-burns {
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
@@ -118,13 +118,13 @@ html .is-layout-flex .wp-block-image {
 }
 
 /* ゆっくりズーム */
-.is-style-ken-burns.slow {
+.wp-block-image.is-style-ken-burns.slow {
 	--kb-duration: 45s;
 	--kb-scale-to: 1.3;
 }
 
 /* 画像本体のアニメーション */
-.is-style-ken-burns img {
+.wp-block-image.is-style-ken-burns img {
 	display: block;
 	width: 100%;
 	height: auto;
@@ -138,16 +138,16 @@ html .is-layout-flex .wp-block-image {
 }
 
 /* WordPressエディタで設定されたborder-radiusに対応 */
-.is-style-ken-burns.has-custom-border img {
+.wp-block-image.is-style-ken-burns.has-custom-border img {
 	border-radius: inherit;
 }
 
 /* 既存のスタイルバリエーションとの組み合わせ */
-.is-style-ken-burns.is-style-rounded img {
+.wp-block-image.is-style-ken-burns.is-style-rounded img {
 	border-radius: 10px;
 }
 
-.is-style-ken-burns.is-style-rounded-full img {
+.wp-block-image.is-style-ken-burns.is-style-rounded-full img {
 	border-radius: 1000px;
 }
 
@@ -166,23 +166,23 @@ html .is-layout-flex .wp-block-image {
 }
 
 /* エディタ内では選択時のみアニメーション */
-.block-editor-block-list__block .is-style-ken-burns img {
+.block-editor-block-list__block .wp-block-image.is-style-ken-burns img {
 	animation: none;
 }
 
-.block-editor-block-list__block.is-selected .is-style-ken-burns img {
+.block-editor-block-list__block.is-selected .wp-block-image.is-style-ken-burns img {
 	animation: kenburns var(--kb-duration) ease-in-out infinite alternate;
 }
 
 /* アクセシビリティ: モーション軽減設定 */
 @media (prefers-reduced-motion: reduce) {
-	.is-style-ken-burns img {
+	.wp-block-image.is-style-ken-burns img {
 		animation: none !important;
 		will-change: auto;
 	}
 
 	/* 代替: ホバー時のシンプルズーム */
-	.is-style-ken-burns:hover img {
+	.wp-block-image.is-style-ken-burns:hover img {
 		transform: scale(1.05);
 		transition: transform 0.3s ease-out;
 	}
@@ -190,7 +190,7 @@ html .is-layout-flex .wp-block-image {
 
 /* レスポンシブ: モバイルでは控えめに */
 @media (max-width: 768px) {
-	.is-style-ken-burns {
+	.wp-block-image.is-style-ken-burns {
 		--kb-duration: 20s;
 		--kb-scale-to: 1.1;
 		--kb-translate-x-to: -5%;
@@ -199,7 +199,7 @@ html .is-layout-flex .wp-block-image {
 }
 
 /* キャプション対応 */
-.is-style-ken-burns figcaption {
+.wp-block-image.is-style-ken-burns figcaption {
 	position: relative;
 	z-index: 2;
 }

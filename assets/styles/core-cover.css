@@ -201,3 +201,35 @@
     transition: none;
   }
 }
+
+/* ========================================
+   親テーマ(ollie/assets/styles/core-cover.css)からの復元
+   wp_enqueue_block_style() は get_theme_file_path() を使うため、
+   子テーマに同名ファイルがあると親のファイルは読まれない。
+   Ollie が register_block_style() で登録しているのに CSS だけ失われていた
+   バリエーションを持ち込む。
+   ※ 親にある @media(max-width:781px){.wp-block-cover:not(.has-aspect-ratio){min-height:430px!important}}
+     は cover-hero-height.css の高さプリセットと衝突するため意図的に移植しない。
+   ======================================== */
+
+.is-style-blur-image-less,
+.is-style-blur-image-more {
+	overflow: hidden;
+}
+
+.is-style-blur-image-less > .wp-block-cover__image-background,
+.is-style-blur-image-more > .wp-block-cover__image-background {
+	transform: scale(1.5);
+}
+
+.is-style-blur-image-less > .wp-block-cover__image-background {
+	filter: blur(25px);
+}
+
+.is-style-blur-image-more > .wp-block-cover__image-background {
+	filter: blur(75px);
+}
+
+.is-style-rounded-cover img {
+	border-radius: 5px;
+}
