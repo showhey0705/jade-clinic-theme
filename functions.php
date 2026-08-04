@@ -274,6 +274,21 @@ require_once get_stylesheet_directory() . '/inc/internal-blog-card.php';
  */
 require_once get_stylesheet_directory() . '/inc/table-extension.php';
 
+/**
+ * 投稿レイアウトデザイナー — テンプレートパーツエリア登録(photoshopvip2022 から移植)。
+ * single-hero / post-footer / related-posts エリアを追加し、
+ * patterns/single-hero-*.php(9種)を「置換」UI で選べるようにする。
+ * ヒーローの解決適用(single-layout-overrides)は pvip-blocks 依存のため移植しない。
+ */
+require_once get_stylesheet_directory() . '/inc/single-layout-areas.php';
+
+/**
+ * View Transitions のテーマ側コンパニオン(BCP 連携版)。
+ * persistent 要素(bcp_vt_persistent_names で申告済み)の old/new スナップショットを
+ * クロスフェードから外し、遷移中の二重描画ちらつきを防ぐ。BCP 無効時は自動 no-op。
+ */
+require_once get_stylesheet_directory() . '/inc/view-transitions.php';
+
 require_once get_stylesheet_directory() . '/inc/ollie-i18n.php';
 
 /**
