@@ -1,0 +1,10 @@
+/* 投稿ヒーロー — エディトリアル */
+.vip2026-hero--editorial .vip2026-hero__main-cell{border-right:1px solid var(--wp--preset--color--border-light);padding-right:var(--wp--preset--spacing--x-large)}
+.vip2026-hero--editorial .wp-block-post-terms a{color:var(--wp--preset--color--primary);text-decoration:none}
+.vip2026-hero--editorial .wp-block-post-excerpt{max-width:520px}
+.vip2026-hero--editorial .vip2026-hero__cell-k{font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0}
+.vip2026-hero--editorial .vip2026-hero__meta-table .wp-block-post-author,
+.vip2026-hero--editorial .vip2026-hero__meta-table .wp-block-post-date{font-weight:600}
+@media (max-width:781px){
+  .vip2026-hero--editorial .vip2026-hero__main-cell{border-right:0;padding-right:0}
+}

@@ -1,0 +1,13 @@
+/* 投稿ヒーロー — ベントー */
+.vip2026-hero--bento .vip2026-hero__bgrid{display:grid;gap:12px;grid-template-columns:1.6fr 1fr 1fr;grid-template-areas:"title title eye" "meta toc eye"}
+.vip2026-hero--bento .vip2026-bcard--title{grid-area:title;align-content:center}
+.vip2026-hero--bento .vip2026-bcard--eye{grid-area:eye;min-height:260px;overflow:hidden}
+.vip2026-hero--bento .vip2026-bcard--meta{grid-area:meta}
+.vip2026-hero--bento .vip2026-bcard--toc{grid-area:toc}
+.vip2026-hero--bento .vip2026-bcard--eye .wp-block-post-featured-image,
+.vip2026-hero--bento .vip2026-bcard--eye .wp-block-post-featured-image img{height:100%;width:100%;object-fit:cover;margin:0;display:block}
+.vip2026-hero--bento .vip2026-bcard__k{font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px}
+
+@media (max-width:781px){
+  .vip2026-hero--bento .vip2026-hero__bgrid{grid-template-columns:1fr;grid-template-areas:"title" "eye" "meta" "toc"}
+}

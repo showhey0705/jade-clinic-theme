@@ -1,0 +1,10 @@
+/* 投稿ヒーロー — 全幅カバー
+   ルートは group(vip2026-hero--cover)、cover は内側の alignfull。
+   旧 cover--vip2026-hero--cover.css から移設(ルートブロック変更に伴う規約リネーム)。 */
+.vip2026-hero--cover{overflow:hidden}
+.vip2026-hero--cover .wp-block-post-title{margin:0 0 .3em}
+.vip2026-hero--cover .wp-block-post-terms a{color:#fff;text-decoration:none}
+.vip2026-hero--cover .wp-block-post-author,
+.vip2026-hero--cover .wp-block-post-author a,
+.vip2026-hero--cover .wp-block-post-date,
+.vip2026-hero--cover .wp-block-post-date a{color:#fff}

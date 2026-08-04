@@ -1,0 +1,5 @@
+/* 投稿ヒーロー — 2カラム分割
+   ルートは group(alignfull・縦パディングのみ)、内側 columns は alignwide。
+   旧 columns--vip2026-hero--split.css から移設(ルートブロック変更に伴う規約リネーム)。 */
+.vip2026-hero--split .wp-block-post-featured-image{margin:0}
+.vip2026-hero--split .wp-block-post-featured-image img{width:100%;border-radius:12px;object-fit:cover;aspect-ratio:4/3}

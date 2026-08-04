@@ -1,0 +1,4 @@
+/* 投稿ヒーロー — 中央タイトル */
+.vip2026-hero--centered .wp-block-post-title{max-width:22ch;margin-inline:auto}
+.vip2026-hero--centered .wp-block-post-featured-image{margin-block:0}
+.vip2026-hero--centered .wp-block-post-featured-image img{width:100%;object-fit:cover;aspect-ratio:16/9;border-radius:12px}

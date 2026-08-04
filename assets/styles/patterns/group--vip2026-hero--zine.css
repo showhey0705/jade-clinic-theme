@@ -1,0 +1,8 @@
+/* 投稿ヒーロー — ズィーン */
+.vip2026-hero--zine{position:relative;overflow:hidden;background:var(--wp--preset--color--tertiary,#FAF7EF)}
+.vip2026-hero--zine::before{content:"";position:absolute;width:240px;height:240px;right:-50px;top:-50px;opacity:.42;background-image:radial-gradient(var(--wp--preset--color--primary-alt) 2.2px,transparent 2.2px);background-size:14px 14px;border-radius:50%;pointer-events:none}
+.vip2026-hero--zine::after{content:"";position:absolute;left:-34px;top:24px;transform:rotate(-35deg);width:130px;height:24px;background:rgba(83,68,244,.16);pointer-events:none}
+.vip2026-hero--zine>*{position:relative;z-index:1}
+.vip2026-zine-stamp{display:inline-block;font-size:12px;color:var(--wp--preset--color--primary);border:2px dashed var(--wp--preset--color--primary);border-radius:6px;padding:4px 12px;transform:rotate(-3deg);letter-spacing:.12em;background:rgba(255,255,255,.6)}
+.vip2026-hero--zine .is-style-zine-marker{display:inline;box-decoration-break:clone;-webkit-box-decoration-break:clone;background:linear-gradient(transparent 58%,var(--wp--preset--color--primary-alt) 58%,var(--wp--preset--color--primary-alt) 92%,transparent 92%);padding:0 2px;transform:rotate(-.4deg)}
+.vip2026-hero--zine .vip2026-zine-meta a{text-decoration:none}

@@ -1,0 +1,18 @@
+/* 投稿ヒーロー — シネマティック */
+.vip2026-hero--cinema{overflow:hidden}
+.vip2026-hero--cinema .vip2026-hero__screen{position:relative;overflow:hidden}
+/* 下部グラデーションがタイトル(contentPosition: bottom left)の可読性を担う。
+   フラット dim は 30 に抑えてあるため(パターン側)、下部は 45% から濃いめに落とす。 */
+.vip2026-hero--cinema .vip2026-hero__screen::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(rgba(12,12,18,.5),transparent 30%,transparent 40%,rgba(12,12,18,.78) 68%,rgba(12,12,18,.96))}
+/* タイトル類はグラデ(::after z:1)より上に。style.css に
+   body:not(.editor-styles-wrapper) .wp-block-cover:not(:has(…)) … {z-index:1} という
+   高特異度ルールがあり通常指定では勝てない(タイトルがグラデ下で減光しグレーに見える)
+   ため !important で確実に上へ。 */
+.vip2026-hero--cinema .vip2026-hero__screen .wp-block-cover__inner-container{position:relative;z-index:2 !important}
+.vip2026-hero--cinema .vip2026-hero__overline a{color:var(--wp--preset--color--primary-alt);text-decoration:none}
+/* 白背景寄りの明るい画像でも読めるよう、グラデに加えてシャドウで保険を掛ける */
+.vip2026-hero--cinema .wp-block-post-title{color:#fff;text-shadow:0 1px 3px rgba(12,12,18,.85),0 4px 32px rgba(12,12,18,.7)}
+.vip2026-hero--cinema .vip2026-hero__overline{text-shadow:0 1px 3px rgba(12,12,18,.85)}
+
+/* ズーム(Ken Burns)を体感できる速度に。既定の30sでは動きがほぼ知覚できない。 */
+.vip2026-hero--cinema .vip2026-hero__screen.is-style-ken-burns{--kb-duration:14s;--kb-scale-from:1.02;--kb-scale-to:1.18;--kb-translate-x-to:4%;--kb-translate-y-to:-3%}

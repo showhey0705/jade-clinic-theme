@@ -1,0 +1,23 @@
+/* 投稿ヒーロー共通(唯一の共有ファイル)
+   全ヒーローのルートブロックを core/group に統一したため、
+   旧 cover--vip2026-hero.css / columns--vip2026-hero.css(同内容の複製)は廃止。
+
+   — メタ行の整形
+   core/post-author は byline("by")と名前が別々の <p> で縦積みになるため、
+   ヒーローのメタ行(著者 · 日付)で高さが揃わない。インライン1行に直す。 */
+.vip2026-hero .wp-block-post-author{display:flex;align-items:baseline;gap:.35em}
+.vip2026-hero .wp-block-post-author__content{display:flex;align-items:baseline;gap:.35em;flex-wrap:nowrap;white-space:nowrap}
+.vip2026-hero .wp-block-post-author__byline,
+.vip2026-hero .wp-block-post-author__name{margin:0}
+
+/* 高さバリエーション — アイキャッチ画像ブロック版(centered / split)。
+   cover 系は cover-hero-height.css が担当。aspect-ratio 指定(split の 4/3)より
+   高さ指定を優先するため wrapper の比率を解除する。 */
+.vip2026-hero .wp-block-post-featured-image.is-style-hero-full,
+.vip2026-hero .wp-block-post-featured-image.is-style-hero-66,
+.vip2026-hero .wp-block-post-featured-image.is-style-hero-50{aspect-ratio:auto !important;width:100%}
+.vip2026-hero .wp-block-post-featured-image.is-style-hero-full img{height:88vh;width:100%;object-fit:cover}
+.vip2026-hero .wp-block-post-featured-image.is-style-hero-66 img{height:66vh;width:100%;object-fit:cover}
+.vip2026-hero .wp-block-post-featured-image.is-style-hero-50 img{height:50vh;width:100%;object-fit:cover}
+.vip2026-hero .wp-block-post-featured-image.is-style-hero-native{aspect-ratio:auto !important}
+.vip2026-hero .wp-block-post-featured-image.is-style-hero-native img{height:auto;width:100%}

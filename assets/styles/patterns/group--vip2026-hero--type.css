@@ -1,0 +1,7 @@
+/* 投稿ヒーロー — タイプファースト */
+.vip2026-hero--type .vip2026-hero__toprow{padding-bottom:14px;border-bottom:1.5px solid var(--wp--preset--color--main)}
+.vip2026-hero--type .vip2026-hero__toprow .wp-block-post-terms a{color:var(--wp--preset--color--primary);letter-spacing:.12em;text-decoration:none}
+.vip2026-hero--type .wp-block-post-title{letter-spacing:.01em}
+.vip2026-hero--type .vip2026-hero__bottomrow{letter-spacing:.06em}
+.vip2026-hero--type .vip2026-hero__bottomrow .wp-block-post-author,
+.vip2026-hero--type .vip2026-hero__bottomrow .wp-block-post-date{color:var(--wp--preset--color--secondary)}
