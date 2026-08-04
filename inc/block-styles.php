@@ -20,6 +20,12 @@ namespace VIP2026\BlockStyles;
  *
  * `assets/styles/core-{block}.css` を置けば、その core ブロックが
  * ページ内で使われた時にだけ CSS が読み込まれる。
+ *
+ * 重複配信の回避: 親 Ollie テーマの enqueue_custom_block_styles() は
+ * get_theme_file_uri() を使うため、子テーマに同名ファイルがあると親の
+ * ハンドル(ollie-block-*)が既に子テーマの CSS を指す。その場合に子側でも
+ * enqueue すると同一 URL の <link> が 2 本出るため、親に同名ファイルが
+ * 存在するもの(= 親ハンドル経由で配信済み)はスキップする。
  */
 function enqueue_core_block_extensions(): void {
 	$files = glob( get_stylesheet_directory() . '/assets/styles/core-*.css' );
@@ -28,9 +34,17 @@ function enqueue_core_block_extensions(): void {
 		return;
 	}
 
+	$parent_dir = get_template_directory() . '/assets/styles/';
+
 	foreach ( $files as $file ) {
 		$filename   = basename( $file, '.css' );
 		$block_name = str_replace( 'core-', 'core/', $filename );
+
+		// 親テーマに同名ファイルがある場合、親の ollie-block-* ハンドルが
+		// get_theme_file_uri() 経由で既に子テーマ版を配信している。
+		if ( file_exists( $parent_dir . $filename . '.css' ) ) {
+			continue;
+		}
 
 		wp_enqueue_block_style(
 			$block_name,
@@ -44,6 +58,28 @@ function enqueue_core_block_extensions(): void {
 	}
 }
 add_action( 'init', __NAMESPACE__ . '\enqueue_core_block_extensions' );
+
+/**
+ * 親 Ollie ハンドル(ollie-block-core-*)が子テーマの CSS を配信する場合の
+ * キャッシュバスティング。親は ver 未指定(= WP バージョン)のため、子テーマの
+ * CSS 更新でキャッシュが破棄されない。子テーマ側ファイルの filemtime を ver に付与する。
+ *
+ * @param string $src    スタイル URL。
+ * @param string $handle スタイルハンドル。
+ * @return string
+ */
+function bust_parent_block_style_cache( string $src, string $handle ): string {
+	if ( 0 !== strpos( $handle, 'ollie-block-core-' ) ) {
+		return $src;
+	}
+	$filename = substr( $handle, strlen( 'ollie-block-' ) ); // core-group 等。
+	$child    = get_stylesheet_directory() . '/assets/styles/' . $filename . '.css';
+	if ( file_exists( $child ) ) {
+		$src = add_query_arg( 'ver', (string) filemtime( $child ), $src );
+	}
+	return $src;
+}
+add_filter( 'style_loader_src', __NAMESPACE__ . '\bust_parent_block_style_cache', 10, 2 );
 
 /**
  * 子テーマ専用ブロックスタイル variation の定義。
@@ -82,6 +118,15 @@ function get_block_style_variations(): array {
 		'core/cover'     => array(
 			array( 'name' => 'circle-cover', 'label' => __( 'Circle', 'vip2026' ) ),
 			array( 'name' => 'ken-burns',    'label' => __( 'Ken Burns', 'vip2026' ) ),
+		),
+		// 投稿ヒーローパターン(single-hero-*)がカテゴリ/タグ表示に使う。
+		// photoshopvip2022 から post-terms-cat.css とセットで移植。
+		'core/post-terms' => array(
+			array( 'name' => 'cat-plain',     'label' => __( 'カテゴリ: 標準', 'vip2026' ),       'css' => 'post-terms-cat.css' ),
+			array( 'name' => 'cat-fill',      'label' => __( 'カテゴリ: 色背景', 'vip2026' ),     'css' => 'post-terms-cat.css' ),
+			array( 'name' => 'cat-underline', 'label' => __( 'カテゴリ: 色下線', 'vip2026' ),     'css' => 'post-terms-cat.css' ),
+			array( 'name' => 'cat-text',      'label' => __( 'カテゴリ: 色文字', 'vip2026' ),     'css' => 'post-terms-cat.css' ),
+			array( 'name' => 'cat-dark',      'label' => __( 'カテゴリ: ダーク背景', 'vip2026' ), 'css' => 'post-terms-cat.css' ),
 		),
 		'core/column'    => array(
 			array( 'name' => 'column-box-red', 'label' => __( 'Box RED', 'vip2026' ) ),
@@ -128,3 +173,84 @@ function register_block_style_variations(): void {
 	}
 }
 add_action( 'init', __NAMESPACE__ . '\register_block_style_variations', 20 );
+
+/**
+ * 親 Ollie の重複ブロックスタイルを外す。
+ *
+ * photoshopvip2022 では pvip-blocks の pvip-check / pvip-circled が Ollie の
+ * Check / Check Circle と重複するため外している(同じ役割の選択肢が 2 つ並ぶ
+ * のを防ぐ)。jadeclinic には代替を提供するプラグインが無いので、代替提供元
+ * (pvip-blocks の Features_Handler)が存在するときだけ発動する = 現状は no-op。
+ * starter へ還流したときに両サイトでファイルを共通化するためのガード。
+ *
+ * priority 30 = 親の register_block_styles()（10）と当テーマの登録（20）の後。
+ */
+function unregister_duplicate_block_styles(): void {
+	if ( ! class_exists( '\\PVIP\\Blocks\\Features\\Features_Handler' ) ) {
+		return; // 代替スタイルの提供元が無い環境では Ollie 標準を残す。
+	}
+	foreach ( array( 'list-check', 'list-check-circle' ) as $name ) {
+		unregister_block_style( 'core/list', $name );
+	}
+}
+add_action( 'init', __NAMESPACE__ . '\unregister_duplicate_block_styles', 30 );
+
+/**
+ * リストの項目間余白を全スタイルで統一する CSS を、
+ * core/list が実際に描画されたページにだけ配信する。
+ *
+ * Ollie 親テーマ由来の 3 種（list-check / list-check-circle / list-boxed）は
+ * blockGap を見ないため、スタイルを切り替えるたび項目間が変わる。
+ * list-gap-unify.css はこれらを blockGap 変数(--vip2026-list-gap、無ければ 0.3em)
+ * に揃える。pvip-blocks が無い環境ではフォールバック値がそのまま効く。
+ *
+ * ⚠️ 子テーマに `assets/styles/core-list.css` を置いてはいけない。
+ * 親の enqueue_custom_block_styles() は get_theme_file_uri() を使うため、
+ * 同名ファイルがあると親の core-list.css が**丸ごと差し替わり**、
+ * list-check などのスタイル定義そのものが消える。だから別名のファイルにしている。
+ *
+ * wp_enqueue_block_style() は「そのブロックがページに描画された時だけ」読み込む。
+ * path を渡すとコアがサイズ次第でインライン化してくれる。
+ */
+function enqueue_list_gap_unify(): void {
+	$rel  = '/assets/styles/list-gap-unify.css';
+	$path = get_stylesheet_directory() . $rel;
+
+	if ( ! is_readable( $path ) ) {
+		return;
+	}
+
+	$args = array(
+		'handle' => 'vip2026-list-gap-unify',
+		'src'    => get_stylesheet_directory_uri() . $rel,
+		'path'   => $path,
+		'ver'    => (string) filemtime( $path ),
+	);
+
+	wp_enqueue_block_style( 'core/list', $args );
+}
+add_action( 'init', __NAMESPACE__ . '\enqueue_list_gap_unify', 20 );
+
+/**
+ * エディタキャンバス（iframe）へも同じ CSS を届ける。
+ *
+ * enqueue_block_assets はフロントでも発火するため is_admin() でガードする
+ * （フロントは上の条件付き配信のままにする）。
+ */
+function enqueue_list_gap_unify_editor(): void {
+	if ( ! is_admin() ) {
+		return;
+	}
+	$rel  = '/assets/styles/list-gap-unify.css';
+	$path = get_stylesheet_directory() . $rel;
+
+	if ( is_readable( $path ) ) {
+		wp_enqueue_style(
+			'vip2026-list-gap-unify-editor',
+			get_stylesheet_directory_uri() . $rel,
+			array(),
+			(string) filemtime( $path )
+		);
+	}
+}
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_list_gap_unify_editor' );

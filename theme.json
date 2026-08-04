@@ -636,6 +636,13 @@
 					}
 				}
 			},
+			"core/list-item": {
+				"spacing": {
+					"margin": {
+						"bottom": "var(--vip2026-list-gap, 0.3em)"
+					}
+				}
+			},
 			"core/navigation": {
 				"typography": {
 					"fontWeight": "500"

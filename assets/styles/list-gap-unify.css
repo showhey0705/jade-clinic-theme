@@ -1,0 +1,57 @@
+/**
+ * リストの項目間余白を全スタイルで統一する。
+ * ---------------------------------------------------------------------------
+ * このサイトには 3 系統のリストが同居している。
+ *
+ *   1. pvip-blocks の 11 種（is-style-pvip-*）
+ *      → 項目間はコア標準の「ブロック間の間隔」（blockGap）で調整する。
+ *        プラグイン側(pvip-blocks 等)はサイト固有の橋渡しで
+ *        この変数へ値を供給できる(photoshopvip は style.css 参照)。
+ *   2. Ollie 親テーマ由来の Boxed（is-style-list-boxed）
+ *      （Check / Check Circle は pvip 側と重複するため子テーマで外した）
+ *   3. スタイル未指定の素のリスト
+ *
+ * 2 と 3 は自前では blockGap を見ない。同じ「リスト」なのに、スタイルを
+ * 切り替えるたびに項目間が変わるのは筋が悪いので、2 と 3 を 1 に合わせる。
+ * `--vip2026-list-gap` が無い環境（pvip 無効）でも、フォールバック値が
+ * pvip の既定と同じなので見た目は揃う。
+ *
+ * 3（素のリスト）の受け皿は当テーマの theme.json 側にある:
+ *   styles.blocks["core/list-item"].spacing.margin.bottom
+ *     = "var(--vip2026-list-gap, 0.3em)"
+ * ここではなく theme.json に置くのは、素のリストの余白の出所が
+ * もともと親の theme.json だから。同じ場所で上書きすれば詳細度争いが起きない。
+ *
+ * 詳細度メモ（Ollie 1.6.1 で前提が変わった）:
+ *   1.6.0 まで — 親の core-list.css が `.entry-content ul li { margin-bottom }` (0,1,2)。
+ *                記事本文の中だけに効いていた。
+ *   1.6.1 以降 — 親の theme.json の core/list-item へ移動。コアは core/list-item の
+ *                selectors.root を使って `:root :where(.wp-block-list > li)` (0,1,0) を
+ *                出力する。:where() の中身は詳細度に数えないので (0,1,0) しかないが、
+ *                効く範囲は `.entry-content` の外（ヘッダー・フッター・
+ *                テンプレートパーツ・パターン・エディタキャンバス）へ広がった。
+ *   当テーマは theme.json の同じキーを上書きするので、出力される規則は
+ *   (0,1,0) のまま値だけが差し替わる。つまり `.pvip-w8-*` のような
+ *   パターン側の (0,1,1) 以上の指定は今までどおり勝つ——素のリストを
+ *   統一するために、意図して余白を 0 にしている箇所を壊さない。
+ *   下の規則は `.wp-block-list.is-style-*` + `li` で (0,2,1)。
+ *
+ * 補足: 当テーマは spacingSizes を独自定義していて small の上限が 1.3rem = 20.8px
+ * （親の定義は 1rem = 16px）。親の値をそのまま継承すると、素のリストだけが
+ * 他の 4 倍の余白を持つことになっていた。上書きしている理由の実務的な半分はこれ。
+ */
+
+/* Check / Check Circle はスタイル登録こそ外したが、既存記事の HTML には
+   クラスが残っている。CSS は消さない——過去の記事を壊さないため。
+   親の core-list.css からは 1.6.1 で margin 指定そのものが消えたが、
+   ここを残すのは「この 3 種は blockGap 系に揃える」という意図の明示。 */
+.wp-block-list.is-style-list-check > li,
+.wp-block-list.is-style-list-check-circle > li,
+.wp-block-list.is-style-list-boxed > li {
+	margin-block: 0 var(--vip2026-list-gap, 0.3em);
+}
+
+/* 箱の中の最後の項目は下余白を持たない（親テーマと同じ意図）。 */
+.wp-block-list.is-style-list-boxed > li:last-child {
+	margin-block-end: 0;
+}
