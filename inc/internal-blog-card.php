@@ -11,8 +11,9 @@
  *      `wp-embedded-content` iframe を、内部 URL の場合だけカードに置換。
  *   2. `the_content` — `<p>https://stg-...</p>` の単独段落(URL が
  *      自動 oEmbed されず素のままになっているケース)も検出して置換。
- *   3. ショートコード `[jade_blogcard url="..."]` — 編集者が任意のリンクを
- *      明示的にカード表示したい場合の手動エントリ(jadeclinic はこの名称に一本化)。
+ *   3. ショートコード `[vip_blogcard url="..."]` — 編集者が任意のリンクを
+ *      明示的にカード表示したい場合の手動エントリ。
+ *      旧名 `[jade_blogcard ...]` は後方互換 alias として登録(既存記事保護)。
  *
  * デザイン: assets/styles/internal-blog-card.css を遅延 enqueue。
  *
@@ -29,6 +30,17 @@
  */
 
 namespace VIP2026\InternalBlogCard;
+
+// pvip-blocks のブログカード機能（プラグインへ移管済み）が ON のときは、二重適用を
+// 避けるためテーマ側は起動しない（クラス存在だけでなく機能トグルまで確認する —
+// プラグインが入っていても機能 OFF ならテーマ側が引き続きカードを出す）。
+// プラグイン側の動作確認後、このファイルは削除予定。
+if (
+	class_exists( '\\PVIP\\Blocks\\Features\\Features_Handler' )
+	&& \PVIP\Blocks\Features\Features_Handler::is_enabled( 'blogcard' )
+) {
+	return;
+}
 
 const STYLE_HANDLE = 'vip2026-internal-blog-card';
 const STYLE_REL    = '/assets/styles/internal-blog-card.css';
@@ -113,6 +125,25 @@ function read_global_stylesheet_css(): string {
 const IFRAME_RESET_CSS = 'html,body{margin:0;padding:0;background:transparent;font-family:inherit;}';
 
 /**
+ * the_content フィルタを通さずに抜粋を生成する。
+ *
+ * get_the_excerpt() は抜粋が空のとき wp_trim_excerpt() 経由で `the_content`
+ * フィルタを実行する。本文中に別の内部 URL があると autoembed →
+ * embed_oembed_html → build_card_html → get_the_excerpt … と連鎖し、
+ * 記事同士が相互リンクしていると無限再帰で致命的エラーになるため、
+ * ここではフィルタを一切通さず安全に組み立てる。
+ */
+function get_safe_excerpt( \WP_Post $post ): string {
+	if ( '' !== trim( (string) $post->post_excerpt ) ) {
+		return (string) $post->post_excerpt;
+	}
+	$text = (string) $post->post_content;
+	$text = excerpt_remove_blocks( $text );
+	$text = strip_shortcodes( $text );
+	return wp_trim_words( wp_strip_all_tags( $text ), 40, '…' );
+}
+
+/**
  * カード HTML を生成。post から featured image / title / excerpt / date を取り出す。
  */
 function build_card_html( \WP_Post $post ): string {
@@ -126,13 +157,17 @@ function build_card_html( \WP_Post $post ): string {
 		}
 	}
 
+	// 再帰ガード: 同一記事のカードを生成中に再突入したら素のリンクへフォールバック。
+	static $rendering = array();
+	if ( isset( $rendering[ $post->ID ] ) ) {
+		return '<a href="' . esc_url( get_permalink( $post ) ) . '">' . esc_html( get_the_title( $post ) ) . '</a>';
+	}
+	$rendering[ $post->ID ] = true;
+
 	$url      = get_permalink( $post );
 	$title    = get_the_title( $post );
 	$date     = mysql2date( 'Y.m.d', $post->post_date );
-	$excerpt  = trim( wp_strip_all_tags( get_the_excerpt( $post ) ) );
-	if ( '' === $excerpt ) {
-		$excerpt = wp_trim_words( wp_strip_all_tags( $post->post_content ), 40, '…' );
-	}
+	$excerpt  = trim( wp_strip_all_tags( get_safe_excerpt( $post ) ) );
 
 	// アイキャッチ。CPT director-blog 用には webp サムネを優先表示。
 	$thumb_html = '';
@@ -207,10 +242,12 @@ function build_card_html( \WP_Post $post ): string {
 				. $html;
 		}
 		// REST 経路はキャッシュバイパス。フロント側のキャッシュは <style> 無しを保持。
+		unset( $rendering[ $post->ID ] );
 		return $html;
 	}
 
 	set_transient( $cache_key, $html, CACHE_TTL );
+	unset( $rendering[ $post->ID ] );
 	return $html;
 }
 
@@ -295,12 +332,14 @@ function filter_the_content( string $content ): string {
 add_filter( 'the_content', __NAMESPACE__ . '\filter_the_content', 9 ); // wpautop(10) より早く
 
 /**
- * 3) ショートコード `[jade_blogcard url="..."]` / `[jade_blogcard id="123"]`
+ * 3) ショートコード `[vip_blogcard url="..."]` / `[vip_blogcard id="123"]`
  *
- * jadeclinic では `jade_blogcard` に一本化(既存記事もすべてこの名称)。
+ * 旧名 `[jade_blogcard ...]` も後方互換 alias として動作する(既存記事保護)。
+ * 新規記事では `vip_blogcard` を使うこと。
  *
- * shortcode_atts の第3引数(タグ名)は `jade_blogcard` 固定とし、
- * `shortcode_atts_jade_blogcard` フィルタを介して属性を一括拡張できるようにする。
+ * shortcode_atts の第3引数(タグ名)は `vip_blogcard` 固定とし、
+ * `shortcode_atts_vip_blogcard` フィルタを介して属性を一括拡張できるようにする。
+ * 旧名経由でも同じ関数を通すため、alias 側でもこのフィルタが走る。
  */
 function shortcode( $atts ): string {
 	$atts = shortcode_atts(
@@ -309,7 +348,7 @@ function shortcode( $atts ): string {
 			'id'  => 0,
 		),
 		$atts,
-		'jade_blogcard'
+		'vip_blogcard'
 	);
 
 	$post = null;
@@ -324,7 +363,12 @@ function shortcode( $atts ): string {
 	maybe_enqueue_style();
 	return build_card_html( $post );
 }
+add_shortcode( 'vip_blogcard', __NAMESPACE__ . '\shortcode' );
+// 後方互換: 旧名 `[jade_blogcard ...]` も同じハンドラに通す。既存記事の表示を壊さない。
 add_shortcode( 'jade_blogcard', __NAMESPACE__ . '\shortcode' );
+// 旧 starter 名 `[vip2026_blogcard ...]` も alias 登録。正準名は `vip_blogcard` に
+// 統一済み(starter 側も同じ)。3 名すべてを全環境で有効にしておく。
+add_shortcode( 'vip2026_blogcard', __NAMESPACE__ . '\shortcode' );
 
 /**
  * CSS は使われたページでだけ enqueue する。
