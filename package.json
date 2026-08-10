@@ -1,0 +1,11 @@
+{
+	"name": "vip2026",
+	"private": true,
+	"description": "JADE CLINIC 子テーマのアセットビルド(本番用 .min.css 生成)。開発は素の CSS を直接編集し、リリース前に `npm run build:min` を実行してコミットする。",
+	"scripts": {
+		"build:min": "esbuild style.css --minify --outfile=style.min.css --allow-overwrite && esbuild assets/styles/japanese-typography.css --minify --outfile=assets/styles/japanese-typography.min.css --allow-overwrite"
+	},
+	"devDependencies": {
+		"esbuild": "^0.27.0"
+	}
+}

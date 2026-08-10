@@ -93,22 +93,48 @@ function vt_persistent_names( array $map ): array {
 add_filter( 'bcp_vt_persistent_names', __NAMESPACE__ . '\vt_persistent_names' );
 
 /**
+ * 配信するテーマ CSS のファイル名 suffix を返す。
+ *
+ * 開発時 (WP_DEBUG / SCRIPT_DEBUG) は素の style.css をそのまま配信し、本番だけ
+ * `npm run build:min` が生成した `.min.css` を配信する(WordPress コアと同じ流儀)。
+ * ソースを編集 → リロードの開発体験は変わらない。`.min` が未生成の環境では
+ * 素ファイルへフォールバックする。
+ *
+ * @param string $rel テーマルートからの相対パス(拡張子 .css、suffix なし)。
+ * @return string suffix を差し込んだ相対パス。
+ */
+function minified_css( string $rel ): string {
+	$is_dev = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG );
+
+	if ( ! $is_dev ) {
+		$min = preg_replace( '/\.css$/', '.min.css', $rel );
+		if ( file_exists( get_stylesheet_directory() . '/' . $min ) ) {
+			return $min;
+		}
+	}
+
+	return $rel;
+}
+
+/**
  * フロント側スタイル enqueue。
  *
  * - 子テーマ style.css（親テーマ後に読まれるよう priority 20）
  * - 日本語タイポグラフィ補助 CSS
+ *
+ * どちらも本番では minified_css() 経由で .min.css が配信される。
  */
 function enqueue_styles(): void {
 	wp_enqueue_style(
 		'vip2026-style',
-		get_stylesheet_uri(),
+		get_stylesheet_directory_uri() . '/' . minified_css( 'style.css' ),
 		array(),
 		version()
 	);
 
 	wp_enqueue_style(
 		'vip2026-japanese-typography',
-		get_stylesheet_directory_uri() . '/assets/styles/japanese-typography.css',
+		get_stylesheet_directory_uri() . '/' . minified_css( 'assets/styles/japanese-typography.css' ),
 		array(),
 		version()
 	);
