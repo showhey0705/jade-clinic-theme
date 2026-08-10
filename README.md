@@ -88,11 +88,22 @@ textdomain は `vip2026`(変更しない)。文字列を追加・変更したら
 - **リリース時の約束**: 上記 2 ファイルを変更したら、コミット前に必ず再生成して `.min.css` も一緒にコミットする:
 
 ```bash
-npm install        # 初回のみ(esbuild が入る)
+npm ci             # 初回のみ(package-lock.json どおりに esbuild が入る)
 npm run build:min  # style.min.css / japanese-typography.min.css を再生成
 ```
 
+`node_modules/` は git 管理外、`package-lock.json` は管理下。`npm install` ではなく **`npm ci`** を使う(ロックを書き換えないので、どの環境でも同じ依存が入る)。`npm ci` が `package.json and package-lock.json are in sync` で落ちたら、依存を足したのに lock を更新していない状態 —— `npm install` を 1 回走らせて **lock もコミット**する。
+
 ⚠️ 再生成を忘れると**ローカルでは直っているのに本番だけ古いスタイルのまま**になる(逆パターンの白画面リスクはフォールバックがあるので無い)。対象ファイルを触った PR には `.min.css` の diff が含まれているはず、をレビュー観点にすると安全。
+
+### リリース前チェック
+
+テーマもプラグイン同様、**リリースのたびに 1 度ドキュメントを見直す**。
+
+1. `style.css` ヘッダの `Version` を bump したか(`functions.php` の `version()` はここを読むので二重管理は無い)
+2. CSS/JS を触ったなら `npm run build:min` 済みで `.min.css` もコミットしたか
+3. **この README が実装と食い違っていないか** —— 撤去した方式の説明が残っていないか / 新しい落とし穴を書いたか / コマンドがコピペでそのまま動くか
+4. 翻訳文字列を足したなら `languages/ja.po` → `.mo` を再生成したか
 
 ---
 
