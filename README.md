@@ -79,6 +79,21 @@ vip2026/
 
 textdomain は `vip2026`(変更しない)。文字列を追加・変更したら `languages/ja.po` を更新し、`wp i18n make-mo` で `.mo` を再生成する。
 
+### CSS の minify 配信(A方式 — 本番のみ)
+
+`style.css` と `assets/styles/japanese-typography.css` は、本番だけ minify 版(`.min.css`)が配信される(WordPress コアと同じ `.min` 並置方式)。
+
+- **開発時**(`WP_DEBUG` / `SCRIPT_DEBUG` が true — DevKinsta はこれ)は**素の CSS がそのまま配信される**ので、普段は「CSS を編集 → リロード」だけでよい。ビルド不要
+- **本番**では `functions.php` の `minified_css()` が `.min.css` に切り替える。`.min` が未生成の環境では素ファイルにフォールバックするので壊れない
+- **リリース時の約束**: 上記 2 ファイルを変更したら、コミット前に必ず再生成して `.min.css` も一緒にコミットする:
+
+```bash
+npm install        # 初回のみ(esbuild が入る)
+npm run build:min  # style.min.css / japanese-typography.min.css を再生成
+```
+
+⚠️ 再生成を忘れると**ローカルでは直っているのに本番だけ古いスタイルのまま**になる(逆パターンの白画面リスクはフォールバックがあるので無い)。対象ファイルを触った PR には `.min.css` の diff が含まれているはず、をレビュー観点にすると安全。
+
 ---
 
 ## 別サイトへの転用
