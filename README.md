@@ -1,6 +1,6 @@
 # JADE CLINIC Theme (vip2026)
 
-Ollie 親テーマをベースにした WordPress 子テーマ。jadeclinic.jp(美容皮膚科クリニック)向けのデプロイで稼働しているが、テーマ本体は**汎用 Ollie 子テーマ**として設計されており、jadeclinic 固有のロジックは `inc/jadeclinic.php` に隔離されている。
+Ollie 親テーマをベースにした WordPress 子テーマ。jadeclinic.jp(美容皮膚科クリニック)向けのデプロイで稼働しているが、テーマ本体は**汎用 Ollie 子テーマ**として設計されており、jadeclinic 固有のロジックは `inc/sites/jadeclinic.php` に隔離されている。
 
 - **表示名 (Theme Name)**: JADE CLINIC
 - **内部 slug / namespace / textdomain**: `vip2026`(他サイト転用を見据えたまま)
@@ -11,9 +11,17 @@ Ollie 親テーマをベースにした WordPress 子テーマ。jadeclinic.jp(�
 
 ## 設計思想
 
-「**汎用部分は `inc/` 直下、サイト固有部分は `inc/{site}.php` に隔離**」。
+「**汎用部分は `inc/` 直下、サイト固有部分は `inc/sites/{site}.php` に隔離**」。
 
-`functions.php` の末尾で `inc/jadeclinic.php` を読み込んでおり、別サイトに転用するときはこの `require_once` 1 行を外せばクリニック固有のロジック(FB Pixel ドメイン認証 / MedicalClinic JSON-LD / femcare LP のヘッダフッタ非表示)が全て止まる構造。
+`functions.php` 末尾の `load_site_module()` が `inc/sites/{slug}.php` を 1 ファイルだけ読み込む。どのサイトとして動くかは**コードを編集せずに**切り替えられる:
+
+1. wp-config.php で `define( 'VIP2026_SITE', 'one-est' );`(最優先)
+2. オプション `vip2026_site_slug`(BCP のはじめの設定などから設定する想定)
+3. 既定値 `jadeclinic`(後方互換 — 既存デプロイは無設定で従来どおり動く)
+
+`none` を指定すると何も読み込まず、素の汎用テーマとして動く。クリニック固有のロジック(FB Pixel ドメイン認証 / MedicalClinic JSON-LD / femcare LP のヘッダフッタ非表示)はすべてサイトファイル側にある。
+
+新しいクリニックサイトを立ち上げるときは、`inc/sites/one-est.php` をひな形に `inc/sites/{slug}.php` を作り、`styles/` にブランド用 style variation(例: `styles/one-est.json`)を足すだけでよい。
 
 ---
 
@@ -26,7 +34,7 @@ vip2026/
 ├── theme.json             ブロックエディタ設定(色 / タイポ / グラデ)
 ├── screenshot.png         テーマ一覧用サムネイル
 ├── inc/
-│   ├── jadeclinic.php     jadeclinic.jp 専用(別サイト転用時はここを切り離す)
+│   ├── sites/             サイト固有モジュール(jadeclinic.php / one-est.php ほか、1 サイト 1 ファイル)
 │   ├── block-styles.php   子テーマ独自のブロックスタイル登録
 │   ├── editor-controls.php エディタ UX(タイポ/スペーシング/シャドウ/枠線を常時表示)
 │   └── pattern-styles.php  assets/styles/patterns/{block}--{class}.css の自動 enqueue
@@ -51,7 +59,7 @@ vip2026/
 
 `assets/styles/patterns/{block}--{class}.css` を起動時にスキャンし、`is-style-{class}` がレンダリング HTML 内に出現したときだけ条件付き enqueue する。
 
-### jadeclinic.jp 専用処理(`inc/jadeclinic.php`)
+### jadeclinic.jp 専用処理(`inc/sites/jadeclinic.php`)
 
 | 機能 | 説明 |
 |---|---|
@@ -110,7 +118,7 @@ npm run build:min  # style.min.css / japanese-typography.min.css を再生成
 ## 別サイトへの転用
 
 1. `vip2026` ディレクトリを別サイトの `wp-content/themes/` 配下にコピー
-2. `functions.php` の末尾から `require_once .../inc/jadeclinic.php` を削除(または `inc/jadeclinic.php` 自体を別ファイル名で複製してロジックを差し替え)
+2. `inc/sites/{slug}.php` を作成し、wp-config.php の `VIP2026_SITE` 定数(またはオプション `vip2026_site_slug`)でその slug を指定
 3. `style.css` ヘッダの `Theme Name` / `Description` / `Theme URI` / `Author` を新サイト向けに差し替え
 4. `screenshot.png` を新サイト向けに差し替え
 

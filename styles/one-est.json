@@ -1,0 +1,108 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "One Est",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"name": "Brand",
+					"slug": "primary",
+					"color": "#44685A"
+				},
+				{
+					"name": "Brand Accent",
+					"slug": "primary-accent",
+					"color": "#DFE9E3"
+				},
+				{
+					"name": "Brand Alt",
+					"slug": "primary-alt",
+					"color": "#B8A16C"
+				},
+				{
+					"name": "Brand Alt Accent",
+					"slug": "primary-alt-accent",
+					"color": "#38321E"
+				},
+				{
+					"name": "Contrast",
+					"slug": "main",
+					"color": "#1C201D"
+				},
+				{
+					"name": "Contrast Accent",
+					"slug": "main-accent",
+					"color": "#CBD4CD"
+				},
+				{
+					"name": "Base",
+					"slug": "base",
+					"color": "#FFFFFF"
+				},
+				{
+					"name": "Base Accent",
+					"slug": "secondary",
+					"color": "#5C6B60"
+				},
+				{
+					"name": "Tint",
+					"slug": "tertiary",
+					"color": "#EEF1EC"
+				},
+				{
+					"name": "Border Base",
+					"slug": "border-light",
+					"color": "#D9E0D8"
+				},
+				{
+					"name": "Border Contrast",
+					"slug": "border-dark",
+					"color": "#6C8074"
+				}
+			]
+		},
+		"typography": {
+			"fluid": true
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|base",
+			"text": "var:preset|color|main"
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|jp-sans",
+			"fontSize": "var:preset|font-size|base",
+			"fontWeight": "430",
+			"letterSpacing": "0.03em",
+			"lineHeight": "var:custom|lineHeight|loose"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var:preset|font-family|jp-serif",
+					"fontWeight": "300",
+					"letterSpacing": "0.02em",
+					"lineHeight": "var:custom|lineHeight|snug"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "var:preset|color|primary"
+				}
+			},
+			"button": {
+				"color": {
+					"background": "var:preset|color|primary",
+					"text": "var:preset|color|base"
+				},
+				"typography": {
+					"fontFamily": "var:preset|font-family|jp-sans",
+					"fontWeight": "var:custom|fontWeight|regular",
+					"letterSpacing": "0.08em"
+				}
+			}
+		}
+	}
+}
