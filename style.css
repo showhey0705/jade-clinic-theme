@@ -5,7 +5,7 @@ Description: JADE CLINIC 公式サイト専用の Ollie 子テーマ。日本語
 Author:      VIPCREW
 Author URI:  https://photoshopvip.net
 Template:     ollie
-Version:      0.12.0
+Version:      0.12.3
 Requires at least: 6.6
 Requires PHP: 7.4
 License:      GNU General Public License v2 or later
@@ -560,16 +560,61 @@ html {
 # テキストリンク ホバーエフェクト
 --------------------------------------------------------------*/
 
-/* すべてのテキストリンク（ボタン・カード等の構造系リンク除く） - 下線エフェクト */
+/*
+ * すべてのテキストリンク（ボタン・カード等の構造系リンク除く） - 下線エフェクト
+ *
+ * 仕組み: text-decoration ではなく linear-gradient の背景を「下線」に見立てる。
+ * 既定は幅 0 で右下に寄せてあり、ホバーで幅 100% + 起点を左へ動かすことで
+ * 「左から右へ引かれる」アニメーションになる（transition は background-size）。
+ * --bg-h が線の太さ。個別に太くしたい箇所はこの変数だけ上書きすればよい。
+ * 色は linear-gradient に直書きせず currentColor へ寄せられるよう、
+ * --bcp-underline-color で差し替え可能にしてある（暗い写真の上の白文字など）。
+ */
 a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link) {
-  background: linear-gradient(0deg, var(--wp--preset--color--primary), var(--wp--preset--color--primary)) no-repeat right bottom / 0 var(--bg-h);
+  /* 線は 1px。2px だと和文の細い字面に対して太く、線だけが浮いて見える。 */
+  --bg-h: 1px;
+  --bcp-underline-color: var(--wp--preset--color--primary);
+  background: linear-gradient(0deg, var(--bcp-underline-color), var(--bcp-underline-color)) no-repeat right bottom / 0 var(--bg-h);
   transition: background-size 350ms;
-  --bg-h: 2px;
   padding-bottom: 2px;
   text-decoration: none;
 }
 
+/*
+ * 個々のリンク自身にホバー / キーボードフォーカスしたときに線を引く。
+ *
+ * このルールが無い間は下の .wp-block-cover:hover 経由でしか線が出ず、
+ * カバーのどこかに触れるとセクション内の全リンクが一斉に点灯していた。
+ * 「触れたリンクだけが反応する」のが本来の意図なので、ここを唯一の起点にする。
+ * :focus-visible も並べてあるのは、キーボード操作でも同じ手応えを返すため
+ * （マウス由来のフォーカスでは出ないので、クリック直後に線が残らない）。
+ */
+a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link):hover,
+a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link):focus-visible {
+  background-size: 100% var(--bg-h);
+  background-position-x: left;
+}
 
+/*
+ * 折り返したリンクの下線を、テキストの長さに沿わせる。
+ *
+ * コアは .wp-block-post-title :where(a) に display: inline-block を当てている。
+ * inline-block はボックスが 1 つしかないので、2 行に折り返した記事タイトルでは
+ * 「最後の行の下に、文字の長さと無関係な全幅の線」が 1 本だけ引かれる。
+ * 指しているのが 1 行目でも線は 2 行目の下に出るし、文字の無いところまで
+ * 線が伸びるので「押せそうに見えるのに押せない場所」が生まれてしまう。
+ *
+ * inline に戻したうえで box-decoration-break: clone を付けると、
+ * 背景が行ごとに複製され、各行の文字幅ぴったりに線が付く。
+ * 線の見えている範囲＝クリックできる範囲、が一致する。
+ * inline では padding-bottom が行の高さを押し広げないので、
+ * 行間が変わってレイアウトがずれる心配も無い。
+ */
+.wp-block-post-title a:not(.wp-block-button__link):not(.wp-element-button) {
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 
 /* ナビゲーションメニュー内のリンクは除外 */
 .wp-block-navigation a {
