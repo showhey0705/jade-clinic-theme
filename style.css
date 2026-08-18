@@ -5,7 +5,7 @@ Description: JADE CLINIC 公式サイト専用の Ollie 子テーマ。日本語
 Author:      VIPCREW
 Author URI:  https://photoshopvip.net
 Template:     ollie
-Version:      0.12.3
+Version:      0.12.4
 Requires at least: 6.6
 Requires PHP: 7.4
 License:      GNU General Public License v2 or later
@@ -593,6 +593,30 @@ a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__lin
 a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link):focus-visible {
   background-size: 100% var(--bg-h);
   background-position-x: left;
+}
+
+/*
+ * サイトのロゴ / サイトタイトルには線を引かない。
+ *
+ * ヘッダーのロゴは「いま見ているサイトそのもの」を指す常設の看板で、
+ * 本文中のリンクのように「どこかへ連れて行く手がかり」ではない。
+ * ホバーのたびに線が伸びると、看板が毎回反応しているように見えて
+ * うるさく、ブランド表示としても落ち着かない。
+ *
+ * 上の a:not(...) は子孫セレクタを :not() に書けないため、ここで打ち消す
+ * （background を切れば線は描かれない）。:not() を 3 つ並べたまま書いて
+ * いるのは詳細度のため —— 素の .wp-block-site-title a は (0,1,1) で、
+ * 打ち消したい相手 a:not()×3 の (0,3,1) に負ける。
+ * :hover / :focus-visible 側も同時に無効化しておく。
+ */
+.wp-block-site-title a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link),
+.wp-block-site-title a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link):hover,
+.wp-block-site-title a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link):focus-visible,
+.wp-block-site-logo a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link),
+.wp-block-site-logo a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link):hover,
+.wp-block-site-logo a:not(.wp-block-button__link):not(.wp-element-button):not(.vip2026-blogcard__link):focus-visible {
+  background: none;
+  padding-bottom: 0;
 }
 
 /*
