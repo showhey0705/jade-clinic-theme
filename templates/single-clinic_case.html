@@ -16,13 +16,15 @@
 
 <!-- wp:group {"metadata":{"name":"Tags"},"align":"wide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide"><!-- wp:group {"align":"wide","className":"post-meta","style":{"border":{"radius":"5px"},"spacing":{"margin":{"top":"var:preset|spacing|large"}}},"fontSize":"small","layout":{"type":"flex","justifyContent":"left"}} -->
-<div class="wp-block-group alignwide post-meta has-small-font-size" style="border-radius:5px;margin-top:var(--wp--preset--spacing--large)"><!-- wp:jet-engine/dynamic-terms {"from_tax":"shourei-type","className":"wp-block-jet-engine-dynamic-terms jet-sm-gb-wrapper jet-sm-gb-4fea3e44-3448-45e0-90ce-89a7815818de","blockID":"jet-sm-gb-4fea3e44-3448-45e0-90ce-89a7815818de","crocoblock_styles":{"_uniqueClassName":"cb-t0zwdd53","terms_alignment":"left"}} /-->
+<div class="wp-block-group alignwide post-meta has-small-font-size" style="border-radius:5px;margin-top:var(--wp--preset--spacing--large)"><!-- wp:post-terms {"term":"case_category","fontSize":"x-small"} /-->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"operation-eyes","dynamic_field_filter":true,"filter_callback":"jet_engine_label_by_glossary","labels_by_glossary":"1","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","blockID":"jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","crocoblock_styles":{"_uniqueClassName":"cb-lz684ld6","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /-->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bcp/case-field","args":{"field":"treatment"}}}},"fontSize":"x-small"} -->
+<p class="has-x-small-font-size"></p>
+<!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"operation-nose","dynamic_field_filter":true,"filter_callback":"jet_engine_label_by_glossary","labels_by_glossary":"2","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","blockID":"jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","crocoblock_styles":{"_uniqueClassName":"cb-fioevpkp","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /-->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"operation-face","dynamic_field_filter":true,"filter_callback":"jet_engine_label_by_glossary","labels_by_glossary":"4","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","blockID":"jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","crocoblock_styles":{"_uniqueClassName":"cb-akx5t2w2","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+
+</div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
@@ -36,7 +38,9 @@
 <p class="has-x-small-font-size" style="font-style:normal;font-weight:700">施術日</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"operation-date","dynamic_field_filter":true,"filter_callback":"jet_engine_date","date_format":"Y/m/d","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-e466add7-d16f-409a-acb3-3063fa63ca13","blockID":"jet-sm-gb-e466add7-d16f-409a-acb3-3063fa63ca13","crocoblock_styles":{"_uniqueClassName":"cb-vforps4u","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bcp/case-field","args":{"field":"date"}}}},"fontSize":"x-small"} -->
+<p class="has-x-small-font-size"></p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
@@ -44,7 +48,9 @@
 <p class="has-x-small-font-size" style="font-style:normal;font-weight:700">性別</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"gender","dynamic_field_filter":true,"filter_callback":"jet_engine_label_by_glossary","labels_by_glossary":"5","date_format":"Y/m/d","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-e466add7-d16f-409a-acb3-3063fa63ca13","blockID":"jet-sm-gb-e466add7-d16f-409a-acb3-3063fa63ca13","crocoblock_styles":{"_uniqueClassName":"cb-nkkjknai","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bcp/case-field","args":{"field":"gender"}}}},"fontSize":"x-small"} -->
+<p class="has-x-small-font-size"></p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
@@ -52,7 +58,9 @@
 <p class="has-x-small-font-size" style="font-style:normal;font-weight:700">年齢</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"gender_copy","hide_if_empty":true,"dynamic_field_filter":true,"filter_callback":"number_format","dynamic_field_custom":true,"dynamic_field_format":"%s歳","date_format":"Y/m/d","num_dec_point":"","num_thousands_sep":"","num_decimals":0,"className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-e466add7-d16f-409a-acb3-3063fa63ca13","blockID":"jet-sm-gb-e466add7-d16f-409a-acb3-3063fa63ca13","crocoblock_styles":{"_uniqueClassName":"cb-bmrx6utk","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bcp/case-field","args":{"field":"age"}}}},"fontSize":"x-small"} -->
+<p class="has-x-small-font-size"></p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
@@ -60,7 +68,9 @@
 <p class="has-x-small-font-size" style="font-style:normal;font-weight:700">費用</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"price","dynamic_field_filter":true,"filter_callback":"number_format","dynamic_field_custom":true,"dynamic_field_format":"\u005c %s","date_format":"Y/m/d","num_decimals":0,"className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-e466add7-d16f-409a-acb3-3063fa63ca13","blockID":"jet-sm-gb-e466add7-d16f-409a-acb3-3063fa63ca13","crocoblock_styles":{"_uniqueClassName":"cb-gghqmr6s","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bcp/case-field","args":{"field":"price"}}}},"fontSize":"x-small"} -->
+<p class="has-x-small-font-size"></p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column --></div>
@@ -75,7 +85,7 @@
 <p class="has-x-small-font-size" style="font-style:normal;font-weight:700">施術前</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"before","dynamic_field_filter":true,"filter_callback":"jet_engine_img_gallery_grid","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","blockID":"jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","crocoblock_styles":{"_uniqueClassName":"cb-sk2jndek","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+<!-- wp:bcp/case-timeline {"onlyStage":"before"} /--></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"metadata":{"name":"Project"},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}}} -->
@@ -83,7 +93,7 @@
 <p class="has-x-small-font-size" style="font-style:normal;font-weight:700">施術直後</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"after","dynamic_field_filter":true,"filter_callback":"jet_engine_img_gallery_grid","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","blockID":"jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","crocoblock_styles":{"_uniqueClassName":"cb-sry9zzku","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+<!-- wp:bcp/case-timeline {"onlyStage":"immediate"} /--></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -93,7 +103,7 @@
 <p class="has-x-small-font-size" style="font-style:normal;font-weight:700">施術１週間後</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"after-1week","dynamic_field_filter":true,"filter_callback":"jet_engine_img_gallery_grid","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","blockID":"jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","crocoblock_styles":{"_uniqueClassName":"cb-g2d7yxfk","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+<!-- wp:bcp/case-timeline {"onlyStage":"1week"} /--></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"metadata":{"name":"Project"},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}}} -->
@@ -101,7 +111,7 @@
 <p class="has-x-small-font-size" style="font-style:normal;font-weight:700">施術１か月後</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"after-1month","dynamic_field_filter":true,"filter_callback":"jet_engine_img_gallery_grid","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","blockID":"jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","crocoblock_styles":{"_uniqueClassName":"cb-ho805x5i","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+<!-- wp:bcp/case-timeline {"onlyStage":"1month"} /--></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
@@ -111,7 +121,7 @@
 <p class="has-x-small-font-size" style="font-style:normal;font-weight:700">施術３か月後</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"after-3months","dynamic_field_filter":true,"filter_callback":"jet_engine_img_gallery_grid","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","blockID":"jet-sm-gb-f22606a1-65c4-4136-b5e7-6dc9e3eecc75","crocoblock_styles":{"_uniqueClassName":"cb-k29felz7","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+<!-- wp:bcp/case-timeline {"onlyStage":"3months"} /--></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group --></section>
@@ -119,13 +129,15 @@
 
 <!-- wp:group {"metadata":{"name":"Tags"},"align":"wide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide"><!-- wp:group {"align":"wide","className":"post-meta","style":{"border":{"radius":"5px"},"spacing":{"margin":{"top":"var:preset|spacing|large"}}},"fontSize":"small","layout":{"type":"flex","justifyContent":"left"}} -->
-<div class="wp-block-group alignwide post-meta has-small-font-size" style="border-radius:5px;margin-top:var(--wp--preset--spacing--large)"><!-- wp:jet-engine/dynamic-terms {"from_tax":"shourei-type","className":"wp-block-jet-engine-dynamic-terms jet-sm-gb-wrapper jet-sm-gb-4fea3e44-3448-45e0-90ce-89a7815818de","blockID":"jet-sm-gb-4fea3e44-3448-45e0-90ce-89a7815818de","crocoblock_styles":{"_uniqueClassName":"cb-w17l8lbj","terms_alignment":"left"}} /-->
+<div class="wp-block-group alignwide post-meta has-small-font-size" style="border-radius:5px;margin-top:var(--wp--preset--spacing--large)"><!-- wp:post-terms {"term":"case_category","fontSize":"x-small"} /-->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"operation-eyes","dynamic_field_filter":true,"filter_callback":"jet_engine_label_by_glossary","labels_by_glossary":"1","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","blockID":"jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","crocoblock_styles":{"_uniqueClassName":"cb-wf9sqwqb","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /-->
+<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bcp/case-field","args":{"field":"treatment"}}}},"fontSize":"x-small"} -->
+<p class="has-x-small-font-size"></p>
+<!-- /wp:paragraph -->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"operation-nose","dynamic_field_filter":true,"filter_callback":"jet_engine_label_by_glossary","labels_by_glossary":"2","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","blockID":"jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","crocoblock_styles":{"_uniqueClassName":"cb-xvva551a","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /-->
 
-<!-- wp:jet-engine/dynamic-field {"dynamic_field_source":"meta","dynamic_field_post_meta":"operation-face","dynamic_field_filter":true,"filter_callback":"jet_engine_label_by_glossary","labels_by_glossary":"4","className":"wp-block-jet-engine-dynamic-field jet-sm-gb-wrapper jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","blockID":"jet-sm-gb-5ed16d4b-4d99-4a52-b759-cbb65f04c3a9","crocoblock_styles":{"_uniqueClassName":"cb-tplztlzd","field_width":"auto","field_alignment":"flex-start","content_alignment":"left"}} /--></div>
+
+</div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
@@ -155,7 +167,11 @@
 
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|large"}}}} -->
 <div class="wp-block-columns alignwide"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:jet-engine/listing-grid {"lisitng_id":"491","columns":"2","columns_tablet":"1","_block_id":"667a6aa0-6614-4daa-b145-95b6cceed6cd","className":"wp-block-jet-engine-listing-grid jet-sm-gb-wrapper jet-sm-gb-667a6aa0-6614-4daa-b145-95b6cceed6cd","blockID":"jet-sm-gb-667a6aa0-6614-4daa-b145-95b6cceed6cd","crocoblock_styles":{"_uniqueClassName":"cb-k71lrtr5"}} /--></div>
+<div class="wp-block-column"><!-- wp:bcp/related-cases {"heading":"","count":6,"columns":2,"cardStyle":"jade"} /-->
+
+<!-- wp:bcp/related-articles {"heading":"この施術に関する院長の記事","count":4,"layoutStyle":"list","columns":2,"fallbackLatest":true} /-->
+
+<!-- wp:bcp/treatment-cta /--></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 

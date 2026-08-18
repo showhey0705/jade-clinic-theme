@@ -110,6 +110,13 @@ function get_block_style_variations(): array {
 				'label' => __( 'キラッと', 'vip2026' ),
 				'css'   => 'button/button-shiny.css',
 			),
+			// 本文リンクと同じ「左から引かれる 1px の下線」をボタンにも。
+			// 塗りのボタンほど強くない導線（記事一覧の「すべて見る」等）向け。
+			array(
+				'name'  => 'underline',
+				'label' => __( '下線リンク', 'vip2026' ),
+				'css'   => 'button/button-underline.css',
+			),
 		),
 		'core/image'     => array(
 			array( 'name' => 'media-shine', 'label' => __( 'Shine', 'vip2026' ) ),

@@ -324,7 +324,36 @@ require_once get_stylesheet_directory() . '/inc/ollie-i18n.php';
 require_once get_stylesheet_directory() . '/inc/accessibility.php';
 
 /**
- * jadeclinic.jp 専用：FB ドメイン認証 / JSON-LD / LP femcare のヘッダフッタ非表示。
- * 別サイト転用時はこの 1 行を消せば全部止まる。
+ * サイト固有モジュールの読み込み（inc/sites/{slug}.php）。
+ *
+ * vip2026 は汎用 Ollie 子テーマとして複数クリニックサイトへ転用する。
+ * クリニック固有の SEO / トラッキング / LP 制御は inc/sites/ 配下に
+ * 1 サイト 1 ファイルで隔離し、どのファイルを読むかはコードを編集せずに
+ * 切り替えられる:
+ *
+ *   1. wp-config.php で `define( 'VIP2026_SITE', 'one-est' );`（最優先）
+ *   2. オプション `vip2026_site_slug`（BCP のはじめの設定などから設定する想定）
+ *   3. 既定値 'jadeclinic'（後方互換 — 既存デプロイは無設定で従来どおり動く）
+ *
+ * 'none' を指定すると何も読み込まない（素の汎用テーマとして動く）。
+ * 該当ファイルが存在しない slug も安全に何もしない。
  */
-require_once get_stylesheet_directory() . '/inc/jadeclinic.php';
+function load_site_module(): void {
+	$slug = defined( 'VIP2026_SITE' )
+		? (string) VIP2026_SITE
+		: (string) get_option( 'vip2026_site_slug', 'jadeclinic' );
+
+	/** サイト slug の最終上書き口（テスト / 特殊構成用）。 */
+	$slug = (string) apply_filters( 'vip2026/site_slug', $slug );
+	$slug = sanitize_key( $slug );
+
+	if ( '' === $slug || 'none' === $slug ) {
+		return;
+	}
+
+	$file = get_stylesheet_directory() . '/inc/sites/' . $slug . '.php';
+	if ( file_exists( $file ) ) {
+		require_once $file;
+	}
+}
+load_site_module();

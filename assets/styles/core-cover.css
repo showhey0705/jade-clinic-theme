@@ -188,8 +188,19 @@
 }
 
 
-/* カバーブロックにホバー時、内部のテキストリンクもホバー状態にする */
-.wp-block-cover:hover a:not(.wp-block-button__link):not(.wp-element-button) {
+/*
+ * カバーブロックにホバー時、内部のテキストリンクもホバー状態にする。
+ *
+ * 既定では効かせない（オプトイン）。
+ * このルールは元々ノークラスで全カバーに掛かっていたが、記事一覧のように
+ * カバーの中にリンクが複数あるセクションでは「どこかに触れると全リンクが
+ * 一斉に点灯する」ことになり、どれを指しているのか分からなくなっていた。
+ * 個々のリンクを光らせる本来の挙動は style.css の a:hover が担当する。
+ *
+ * カバー 1 枚がまるごと 1 つのリンクとして振る舞う設計（カード型バナーなど）
+ * でだけ使いたいので、追加 CSS クラスに is-link-sync を付けて有効化する。
+ */
+.wp-block-cover.is-link-sync:hover a:not(.wp-block-button__link):not(.wp-element-button) {
   background-size: 100% var(--bg-h);
   background-position-x: left;
 }
