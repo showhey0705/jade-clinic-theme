@@ -1,0 +1,197 @@
+name: Release theme
+
+# タグ push で発火する。BCP の release.yml と同じ形。
+#   v0.13.0        -> stable + beta の両方へ配信(顧客サイトへ届く)
+#   v0.13.0-beta.1 -> beta のみへ配信(自社サイトだけで先に検証する)
+#
+# 「テーマの自動更新はプラグインより怖い」——CSS の一手で全クライアントの
+# 見た目が同時に壊れるため。beta で 1 週間寝かせてから stable に上げる運用を
+# 前提にしている。
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+      - 'v*.*.*-beta.*'
+
+permissions:
+  contents: write
+
+env:
+  THEME_SLUG: vip2026
+  BUCKET: plugin-releases
+  PREFIX: themes/vip2026
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout (full history for git archive)
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Derive version and channel from tag
+        id: ver
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          VERSION="${TAG#v}"
+          CHANNEL="stable"
+          if [[ "$VERSION" == *-beta.* ]]; then
+            CHANNEL="beta"
+            VERSION="${VERSION%%-beta.*}"
+          fi
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Tag '$TAG' must be v<x.y.z> or v<x.y.z>-beta.<n>"
+            exit 1
+          fi
+          echo "tag=$TAG"          >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION"  >> "$GITHUB_OUTPUT"
+          echo "channel=$CHANNEL"  >> "$GITHUB_OUTPUT"
+          echo "channel = $CHANNEL / version = $VERSION"
+
+      # style.css の Version と supabase/theme.json の version が
+      # タグと一致しているか。ここを機械で止めないと、配信メタデータだけ
+      # 古いまま zip が新しい、という一番わかりにくい壊れ方をする。
+      - name: Verify version matches tag
+        run: |
+          STYLE_VERSION=$(grep -E '^Version:' style.css | head -1 | sed -E 's/Version:[[:space:]]*//' | tr -d ' \t\r')
+          JSON_VERSION=$(jq -r '.version' supabase/theme.json)
+          EXPECTED="${{ steps.ver.outputs.version }}"
+          echo "expected     = $EXPECTED"
+          echo "style.css    = $STYLE_VERSION"
+          echo "theme.json   = $JSON_VERSION"
+          if [[ "$STYLE_VERSION" != "$EXPECTED" || "$JSON_VERSION" != "$EXPECTED" ]]; then
+            echo "::error::Version mismatch. Run: bash scripts/bump-version.sh $EXPECTED"
+            exit 1
+          fi
+
+      # 本番は .min を配信する(A方式)。素の CSS を直したのに min を作り直して
+      # いないと、本番だけ古い見た目のまま——という事故になる。
+      - name: Verify minified assets are up to date
+        run: |
+          npm ci
+          npm run build:min
+          if ! git diff --quiet -- style.min.css assets/styles/japanese-typography.min.css; then
+            echo "::error::min アセットが古いです。npm run build:min を実行してコミットしてください。"
+            git --no-pager diff --stat -- style.min.css assets/styles/japanese-typography.min.css
+            exit 1
+          fi
+          echo "min assets are up to date"
+
+      - name: Build distribution zip
+        id: build
+        run: |
+          ZIP_NAME="${THEME_SLUG}.zip"
+          git archive --format=zip --prefix="${THEME_SLUG}/" --output="$ZIP_NAME" HEAD
+          echo "zip_name=$ZIP_NAME" >> "$GITHUB_OUTPUT"
+          ls -la "$ZIP_NAME"
+
+      # zip の中身を検証する。とくに vendor/ が抜けると更新チェッカー自体が
+      # 動かなくなり、「一度更新したら以後二度と更新が来ない」状態になる。
+      - name: Verify zip contents
+        run: |
+          LISTING=$(unzip -l "${THEME_SLUG}.zip")
+          FAIL=0
+          for REQUIRED in \
+            "${THEME_SLUG}/style.css" \
+            "${THEME_SLUG}/style.min.css" \
+            "${THEME_SLUG}/theme.json" \
+            "${THEME_SLUG}/functions.php" \
+            "${THEME_SLUG}/vendor/plugin-update-checker/plugin-update-checker.php" \
+            "${THEME_SLUG}/inc/update-checker.php" \
+            "${THEME_SLUG}/templates/" \
+            "${THEME_SLUG}/parts/" \
+            "${THEME_SLUG}/assets/"; do
+            if ! grep -q "$REQUIRED" <<<"$LISTING"; then
+              echo "::error::required path missing from zip: $REQUIRED"
+              FAIL=1
+            fi
+          done
+          for FORBIDDEN in \
+            "${THEME_SLUG}/node_modules/" \
+            "${THEME_SLUG}/supabase/" \
+            "${THEME_SLUG}/scripts/" \
+            "${THEME_SLUG}/.github/" \
+            "${THEME_SLUG}/_to_delete/" \
+            "${THEME_SLUG}/package.json"; do
+            if grep -q "$FORBIDDEN" <<<"$LISTING"; then
+              echo "::error::forbidden path found in zip: $FORBIDDEN (.gitattributes の export-ignore を確認)"
+              FAIL=1
+            fi
+          done
+          if [[ "$FAIL" != "0" ]]; then exit 1; fi
+          echo "zip contents verified"
+
+      - name: Render theme.json for upload
+        run: |
+          DOWNLOAD_URL="${{ secrets.SUPABASE_URL }}/storage/v1/object/public/${BUCKET}/${PREFIX}/${THEME_SLUG}.zip"
+          LAST_UPDATED=$(date -u +"%Y-%m-%d %H:%M:%S")
+          jq \
+            --arg v "${{ steps.ver.outputs.version }}" \
+            --arg d "$DOWNLOAD_URL" \
+            --arg t "$LAST_UPDATED" \
+            '.version = $v | .download_url = $d | .last_updated = $t' \
+            supabase/theme.json > theme-meta.json
+          echo "--- theme.json (for upload) ---"
+          cat theme-meta.json
+
+      - name: Upload zip to Supabase Storage (upsert)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SERVICE_KEY:  ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          URL="${SUPABASE_URL%/}/storage/v1/object/${BUCKET}/${PREFIX}/${THEME_SLUG}.zip"
+          HTTP=$(curl -sS -o /tmp/upload.out -w "%{http_code}" \
+            -X POST "$URL" \
+            -H "Authorization: Bearer $SERVICE_KEY" \
+            -H "apikey: $SERVICE_KEY" \
+            -H "Content-Type: application/zip" \
+            -H "x-upsert: true" \
+            --data-binary @"${THEME_SLUG}.zip")
+          echo "HTTP $HTTP"; cat /tmp/upload.out
+          if [[ "$HTTP" != "200" ]]; then echo "::error::zip upload failed"; exit 1; fi
+
+      # beta チャネルへは必ず配信する。stable へは正式タグのときだけ。
+      - name: Upload theme.json to beta channel
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SERVICE_KEY:  ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          URL="${SUPABASE_URL%/}/storage/v1/object/${BUCKET}/${PREFIX}/beta/theme.json"
+          HTTP=$(curl -sS -o /tmp/upload.out -w "%{http_code}" \
+            -X POST "$URL" \
+            -H "Authorization: Bearer $SERVICE_KEY" \
+            -H "apikey: $SERVICE_KEY" \
+            -H "Content-Type: application/json" \
+            -H "x-upsert: true" \
+            --data-binary @theme-meta.json)
+          echo "HTTP $HTTP"; cat /tmp/upload.out
+          if [[ "$HTTP" != "200" ]]; then echo "::error::beta metadata upload failed"; exit 1; fi
+
+      - name: Upload theme.json to stable channel
+        if: steps.ver.outputs.channel == 'stable'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SERVICE_KEY:  ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          URL="${SUPABASE_URL%/}/storage/v1/object/${BUCKET}/${PREFIX}/theme.json"
+          HTTP=$(curl -sS -o /tmp/upload.out -w "%{http_code}" \
+            -X POST "$URL" \
+            -H "Authorization: Bearer $SERVICE_KEY" \
+            -H "apikey: $SERVICE_KEY" \
+            -H "Content-Type: application/json" \
+            -H "x-upsert: true" \
+            --data-binary @theme-meta.json)
+          echo "HTTP $HTTP"; cat /tmp/upload.out
+          if [[ "$HTTP" != "200" ]]; then echo "::error::stable metadata upload failed"; exit 1; fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ steps.ver.outputs.tag }}
+          name: ${{ steps.ver.outputs.tag }}
+          prerelease: ${{ steps.ver.outputs.channel == 'beta' }}
+          generate_release_notes: true
+          files: ${{ env.THEME_SLUG }}.zip

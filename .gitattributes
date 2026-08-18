@@ -1,0 +1,23 @@
+# 配信 zip (git archive) から除外するもの。
+#
+# ここを書き忘れると、顧客サイトへ node_modules や CI 設定まで配られる。
+# 逆に vendor/ を除外すると更新チェッカーが動かなくなり
+# 「一度更新したら以後二度と更新が来ない」状態になるので、絶対に外さないこと。
+
+/.github            export-ignore
+/.gitattributes     export-ignore
+/.gitignore         export-ignore
+/scripts            export-ignore
+/supabase           export-ignore
+/node_modules       export-ignore
+/_to_delete         export-ignore
+/package.json       export-ignore
+/package-lock.json  export-ignore
+/README.md          export-ignore
+
+# 改行コードを固定しておく(Windows の協力者が入っても zip の中身が揺れない)
+*.php   text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.html  text eol=lf
