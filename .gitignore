@@ -11,8 +11,15 @@ Thumbs.db
 
 # Build / Cache
 node_modules/
-vendor/
 *.log
+
+# Composer (未使用だが予約)。
+#
+# vendor/ を丸ごと無視しないこと。vendor/plugin-update-checker/ は
+# テーマの自動更新チェッカー本体で、配信 zip に必ず同梱する必要がある。
+# ここを無視すると「一度更新したら以後二度と更新が来ない」テーマが配られる。
+# BCP プラグインの .gitignore も同じ方針(/vendor/composer/ だけを無視)。
+/vendor/composer/
 
 # 一時ファイル
 _make_screenshot.php
