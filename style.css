@@ -1,7 +1,7 @@
 /*
-Theme Name: JADE CLINIC
-Theme URI:  https://jadeclinic.jp/
-Description: JADE CLINIC 公式サイト専用の Ollie 子テーマ。日本語タイポグラフィと美容医療サイト向けの UI 拡張を組み込み、最新の WordPress ブロックエディタ機能に最適化しています。
+Theme Name: BCP Theme
+Theme URI:  https://photoshopvip.net/
+Description: 美容クリニック向けの Ollie 子テーマ。日本語タイポグラフィと美容医療サイト向けの UI 拡張を組み込み、最新の WordPress ブロックエディタ機能に最適化しています。サイト固有の設定は wp-config.php の VIP2026_SITE 定数と inc/sites/ に隔離され、テーマ本体は全クリニック共通のまま自動更新で配信されます。Beauty Clinic Patterns プラグインと組み合わせて使います。
 Author:      VIPCREW
 Author URI:  https://photoshopvip.net
 Template:     ollie

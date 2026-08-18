@@ -356,4 +356,14 @@ function load_site_module(): void {
 		require_once $file;
 	}
 }
+/*
+ * テーマの自動更新。
+ *
+ * Supabase Storage に置いた theme.json を見て、管理画面へ更新通知を出す。
+ * サイトごとにテーマのリポジトリを分けずに済ませるための仕組みで、
+ * BCP プラグインと同じ経路・同じライブラリ (Plugin Update Checker v5) を使う。
+ * 配信チャネル (stable / beta) と設定用の定数は inc/update-checker.php の冒頭を参照。
+ */
+require_once get_stylesheet_directory() . '/inc/update-checker.php';
+
 load_site_module();

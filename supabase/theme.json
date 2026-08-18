@@ -1,0 +1,13 @@
+{
+  "name": "BCP Theme",
+  "slug": "vip2026",
+  "version": "0.12.4",
+  "details_url": "https://github.com/showhey0705/jade-clinic-theme/releases",
+  "download_url": "",
+  "requires": "6.6",
+  "requires_php": "7.4",
+  "tested": "7.0",
+  "last_updated": "",
+  "author": "VIPCREW",
+  "author_homepage": "https://photoshopvip.net"
+}
