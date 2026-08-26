@@ -121,10 +121,16 @@ function get_block_style_variations(): array {
 		'core/image'     => array(
 			array( 'name' => 'media-shine', 'label' => __( 'Shine', 'vip2026' ) ),
 			array( 'name' => 'ken-burns',   'label' => __( 'Ken Burns', 'vip2026' ) ),
+			array( 'name' => 'card-apple',  'label' => __( 'カード影（Apple）', 'vip2026' ) ),
+		),
+		'core/post-featured-image' => array(
+			// カード影（Apple）。実 CSS は core-post-featured-image.css（規約ロード）。
+			array( 'name' => 'card-apple', 'label' => __( 'カード影（Apple）', 'vip2026' ) ),
 		),
 		'core/cover'     => array(
 			array( 'name' => 'circle-cover', 'label' => __( 'Circle', 'vip2026' ) ),
 			array( 'name' => 'ken-burns',    'label' => __( 'Ken Burns', 'vip2026' ) ),
+			array( 'name' => 'card-apple',   'label' => __( 'カード影（Apple）', 'vip2026' ) ),
 		),
 		// 投稿ヒーローパターン(single-hero-*)がカテゴリ/タグ表示に使う。
 		// photoshopvip2022 から post-terms-cat.css とセットで移植。
@@ -137,6 +143,16 @@ function get_block_style_variations(): array {
 		),
 		'core/column'    => array(
 			array( 'name' => 'column-box-red', 'label' => __( 'Box RED', 'vip2026' ) ),
+		),
+		'core/group'     => array(
+			// カード用の影 2 段（既定 / ホバー）。値は theme.json のプリセット
+			// card-apple / card-apple-hover を参照する。実 CSS は core-group.css に同居
+			// （core の register_block_style() はバリエーション単位ではなくブロック単位でしか
+			// 出し分けないため、独立ファイルにしてもリクエストが増えるだけ）。
+			array(
+				'name'  => 'card-apple',
+				'label' => __( 'カード影（Apple）', 'vip2026' ),
+			),
 		),
 		// core/group 系（stack-cards / horizontal-scroll / tabs）は variation 登録ではなく
 		// inc/pattern-styles.php の規約ベース自動ロードに移行。パターン挿入時のみ動く。

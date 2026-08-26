@@ -1,0 +1,38 @@
+/* Post Featured Image
+--------------------------------------------- */
+/* カード影（Apple） — is-style-card-apple
+---------------------------------------------
+ * 影の値は theme.json のプリセット（card-apple / card-apple-hover）を参照する。
+ * 出典は apple.com/store の商品カード（.rf-pcard-content, 実測 2026-08-25）:
+ *   既定   2px 4px 12px      rgba(0, 0, 0, .08)
+ *   ホバー 2px 8px 24px 2px  rgba(0, 0, 0, .08)
+ *   遷移   .3s cubic-bezier(0, 0, .5, 1)
+ *
+ * theme.json は :hover を書けないので、ホバー側のプリセットは
+ * 「CSS から変数として使う」ためだけに置いてある。ここがその使い手。
+ *
+ * 独立ファイルにしないのは、core の register_block_style() が
+ * バリエーション単位ではなく **ブロック単位** でしか CSS を出し分けないため。
+ *
+ * 画像は figure ではなく img に当てる。is-style-rounded などで角を丸めたとき、
+ * figure 側に影を出すと丸めた角の外に四角い影が残るため。 */
+.wp-block-post-featured-image.is-style-card-apple img {
+	box-shadow: var(--wp--preset--shadow--card-apple);
+	transition: box-shadow 0.3s cubic-bezier(0, 0, 0.5, 1);
+}
+
+/* 触れないデバイスでは hover が「タップ後に貼り付く」ので当てない
+   （Apple も html.no-touch で同じ切り分けをしている）。 */
+@media (hover: hover) {
+
+	.wp-block-post-featured-image.is-style-card-apple:hover img {
+		box-shadow: var(--wp--preset--shadow--card-apple-hover);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.wp-block-post-featured-image.is-style-card-apple img {
+		transition: none;
+	}
+}
