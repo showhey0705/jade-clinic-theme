@@ -1,5 +1,9 @@
 # BCP Theme (vip2026) — Claude 作業メモ
 
+> **5 リポジトリ共通の規約（同期の向き・バージョンの正・着手前の確認・落とし穴）は
+> `vip2026-starter/docs/PROJECT_RULES.md` が唯一の正。** ここには JADE テーマ固有の
+> 配信（beta / stable の 2 チャネル）と 1 リポ N サイトの運用だけを書く。
+
 Ollie 親テーマの子テーマ。美容クリニック向けの**製品テーマ**で、
 Beauty Clinic Patterns (BCP) プラグインと対で使う。
 

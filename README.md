@@ -1,4 +1,8 @@
-# JADE CLINIC Theme (vip2026)
+# JADE CLINIC Theme
+
+> **5 リポジトリ共通の規約（同期の向き・バージョンの正・リリース・落とし穴）は
+> `vip2026-starter/docs/PROJECT_RULES.md` が唯一の正。** この README はこのテーマの
+> 設計と開発手順に絞る。配信・タグ運用は `CLAUDE.md`。 (vip2026)
 
 Ollie 親テーマをベースにした WordPress 子テーマ。jadeclinic.jp(美容皮膚科クリニック)向けのデプロイで稼働しているが、テーマ本体は**汎用 Ollie 子テーマ**として設計されており、jadeclinic 固有のロジックは `inc/sites/jadeclinic.php` に隔離されている。
 
@@ -81,7 +85,11 @@ vip2026/
 
 ### バージョン管理
 
-`style.css` のヘッダ `Version` と `functions.php` の `VERSION` 定数の **両方を必ず一致** させる。PR を作る際は version bump コミットを 1 本含めること。
+**単一の真実は `style.css` のヘッダ `Version`。** `functions.php` の `version()` は
+それを読むだけで、定数は持たない（以前の `const VERSION` は二重管理になって乖離した
+ため撤去済み）。配信用の `supabase/theme.json` も一緒に上げる必要があるので、
+**版数は必ず `bash scripts/bump-version.sh X.Y.Z` を通す**（手で書き換えない。
+片方だけ直すと CI の `Verify version matches tag` で落ちる）。詳細は `CLAUDE.md`。
 
 ### 翻訳
 
