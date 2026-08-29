@@ -30,3 +30,8 @@ patterns/cloud/
 
 # 削除待ち退避
 _to_delete/
+
+# 削除できない環境 (Cowork のマウント等) で退避した stale な lock ファイル。
+.locktrash/
+_gitlock_trash_cw/
+_to_delete*/

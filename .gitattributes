@@ -21,3 +21,20 @@
 *.js    text eol=lf
 *.json  text eol=lf
 *.html  text eol=lf
+
+# 2026-08 追記 — 上のリストに無い拡張子 (md / yml / svg など) でも改行が揺れて
+# 「中身は同じなのに全行が変更扱い」になる事故が起きたため、既定を LF に固定する。
+# 上の個別指定はそのまま残す (意図が読めるほうがよいので消さない)。
+* text=auto eol=lf
+
+# バイナリは変換対象から外す。
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+*.otf  binary
+*.zip  binary
