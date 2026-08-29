@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>サイト別カスタマイズ 開発ガイド — BCP Theme</title>
+<style>
+  :root{
+    --bg:#F6F1E9;--bg2:#EFE8DB;--card:#fff;--soft:#FDFBF7;
+    --ink:#2B2620;--ink2:#6B6156;--ink3:#948A7C;--line:#DDD3C2;
+    --brz:#8A7355;--brz2:#6E5A40;--forest:#3E4A40;--sand:#E9DFCE;
+    --ok:#4A7A5A;--okbg:#E4EFE7;--lg:#06C755;
+    --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+    --sans:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.9}
+  h1,h2,h3,h4,h5{font-family:var(--serif);font-weight:500;line-height:1.55;text-wrap:balance}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+  header.top{padding:58px 0 38px;background:linear-gradient(180deg,#FBF8F2,var(--bg));border-bottom:1px solid var(--line)}
+  .kick{font-size:11px;letter-spacing:.26em;color:var(--brz);margin-bottom:12px}
+  header.top h1{font-size:29px;margin-bottom:14px}
+  header.top p{color:var(--ink2);max-width:820px;font-size:14.5px}
+  .where{margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 20px;max-width:820px;font-size:13px;color:var(--ink2)}
+  .where b{color:var(--ink);font-weight:500;font-family:var(--serif)}
+
+  nav.toc{position:sticky;top:0;z-index:60;background:rgba(246,241,233,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav.toc div{display:flex;gap:2px;overflow-x:auto;max-width:1180px;margin:0 auto;padding:9px 32px}
+  nav.toc a{flex:0 0 auto;font-size:12px;color:var(--ink2);text-decoration:none;padding:5px 13px;border-radius:999px;white-space:nowrap}
+  nav.toc a:hover{background:#fff;color:var(--brz2)}
+  nav.toc a.rec{color:var(--brz2)}
+
+  section.v{padding:50px 0;border-top:1px solid var(--line)}
+  section.v:first-of-type{border-top:none}
+  .vhead{display:flex;align-items:baseline;gap:13px;margin-bottom:7px;flex-wrap:wrap}
+  .vno{font-family:var(--serif);font-size:12px;letter-spacing:.16em;color:var(--brz);background:var(--sand);border-radius:4px;padding:4px 12px}
+  .vhead h2{font-size:22px}
+  .badge{font-size:10.5px;border-radius:999px;padding:3px 11px}
+  .b-rec{background:var(--okbg);color:var(--ok)}
+  .b-now{background:var(--bg2);color:var(--ink2)}
+  .b-tr{background:#F2EDE2;color:var(--brz2)}
+  .vsub{color:var(--ink2);font-size:14px;margin-bottom:24px;max-width:850px}
+
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:26px;align-items:start}
+  .stage{min-width:0;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 32px 32px;box-shadow:0 4px 20px rgba(90,74,50,.05)}
+  .stage.tint{background:var(--bg2)}
+  .stage.dark{background:#2B2620}
+  .stage.flush{padding:0;overflow:hidden}
+  .stagelabel{font-size:10px;letter-spacing:.2em;color:var(--ink3);margin-bottom:16px;text-align:center}
+  .side{display:flex;flex-direction:column;gap:12px}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:16px 19px}
+  .box h4{font-size:13.5px;margin-bottom:6px;color:var(--brz2)}
+  .box p{font-size:12.5px;color:var(--ink2);line-height:1.85}
+  .box.hi{border-color:var(--brz);background:#FCF9F3}
+  .box.cta{border-color:var(--ok);background:#F5FAF6}
+  .box.cta h4{color:var(--ok)}
+  .box ul{list-style:none;font-size:12.5px;color:var(--ink2);line-height:1.85}
+  .box li{padding-left:13px;position:relative}
+  .box li::before{content:"・";position:absolute;left:0;color:var(--brz)}
+
+  /* ページ内実物パーツ */
+  .eyebrow{font-size:10px;letter-spacing:.3em;color:var(--brz);margin-bottom:10px}
+  .h-main{font-size:30px;line-height:1.5;margin-bottom:12px}
+  .h-mid{font-size:22px;margin-bottom:10px}
+  .lead{font-size:13.5px;color:var(--ink2);line-height:1.9}
+  .pills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+  .pills span{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:4px 14px;color:var(--ink2);background:#fff}
+  .pills span b{color:var(--brz2);font-family:var(--serif);font-weight:500}
+  .btn{display:inline-block;background:var(--brz);color:#fff;text-decoration:none;font-size:13px;letter-spacing:.06em;padding:12px 30px;border-radius:3px;border:none;cursor:pointer;font-family:var(--sans)}
+  .btn.gh{background:transparent;border:1px solid var(--brz);color:var(--brz2)}
+  .btn.ln{background:var(--lg)}
+  .btn.w{background:#fff;color:var(--ink)}
+  .btn.lg{font-size:14.5px;padding:15px 40px}
+  .micro{font-size:11px;color:var(--ink3);margin-top:9px}
+  .photo{background:linear-gradient(145deg,#DBCDB4,#A98F72);border-radius:8px}
+  .photo.g{background:linear-gradient(145deg,#CBD0C0,#8E9B85)}
+  .photo.d{background:linear-gradient(145deg,#BFAE94,#7C654C)}
+  .sec-h{text-align:center;margin-bottom:24px}
+  .sec-h .en{font-family:var(--serif);font-size:20px;letter-spacing:.16em}
+  .sec-h .jp{font-size:12px;color:var(--ink2);margin-left:12px}
+  .sec-h .sub{font-size:12.5px;color:var(--ink2);margin-top:5px}
+
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+  th,td{padding:12px 15px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+  th{background:#FBF8F2;font-family:var(--serif);font-weight:500;font-size:12.5px}
+  tr:last-child td{border-bottom:none}
+  td.nm{font-family:var(--serif)}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--sand);margin-right:2px}
+  .dot.f{background:var(--brz)}
+
+  .note{background:#F2EDE2;border-left:3px solid var(--brz);border-radius:0 8px 8px 0;padding:20px 26px;margin-top:26px;font-size:13.5px;color:var(--ink2)}
+  .note b{color:var(--ink)}
+  footer{padding:42px 0 62px;text-align:center;font-size:11.5px;color:var(--ink3);border-top:1px solid var(--line)}
+  @media(max-width:1000px){.layout{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+  .cd{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:17px 18px}
+  .cd.on{border-color:var(--brz);background:#FBF6EC}
+  .cd .lb{font-family:var(--serif);font-size:10.5px;letter-spacing:.14em;color:var(--brz)}
+  .cd h5{font-size:14.5px;margin:5px 0 6px}
+  .cd p{font-size:12px;color:var(--ink2);line-height:1.7}
+  .cd .pr{font-family:var(--serif);font-size:16px;color:var(--brz2);margin-top:8px}
+  .tag{display:inline-block;font-size:10.5px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 11px;margin:0 4px 4px 0;color:var(--ink2)}
+  .tag.on{background:var(--brz);border-color:var(--brz);color:#fff}
+  .ctr{text-align:center}
+  .mt{margin-top:16px}
+  .rowx{display:flex;gap:10px;align-items:center}
+  .stack{display:flex;flex-direction:column;gap:9px}
+  .kv{display:flex;justify-content:space-between;font-size:12.5px;padding:9px 0;border-bottom:1px solid var(--line)}
+  .kv:last-child{border-bottom:none}
+  .kv b{font-family:var(--serif);color:var(--brz2);font-weight:500}
+  .band{background:#2B2620;border-radius:11px;padding:28px;text-align:center;color:#EFE7D8}
+  .band h3{color:#fff;font-size:21px;margin-bottom:8px}
+  .band p{font-size:12.5px;color:#B8B0A4}
+  .tbl{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .tbl th,.tbl td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
+  .tbl th{background:var(--soft);font-family:var(--serif);font-weight:500;font-size:12px}
+  .tbl tr:last-child td{border-bottom:none}
+  .tbl td.p{font-family:var(--serif);color:var(--brz2)}
+
+ header.hero{padding:66px 0 44px;background:linear-gradient(180deg,#FCFAF6,var(--bg));border-bottom:1px solid var(--line)}
+ header.hero h1{font-size:32px;margin-bottom:15px;line-height:1.45}
+ header.hero .sub{font-size:14.5px;color:var(--ink2);max-width:760px;line-height:1.95}
+ section.blk{padding:50px 0;border-top:1px solid var(--line)}
+ .bhead{display:flex;align-items:baseline;gap:13px;margin-bottom:8px;flex-wrap:wrap}
+ .bno{font-family:var(--serif);font-size:11px;letter-spacing:.22em;color:var(--brz);background:var(--sand);border-radius:4px;padding:4px 12px}
+ .bhead h2{font-size:23px}
+ .bsub{color:var(--ink2);font-size:14px;margin-bottom:24px;max-width:820px;line-height:1.9}
+
+ /* 3層図 */
+ .layers{display:flex;flex-direction:column;gap:0;max-width:760px}
+ .lay{border:1px solid var(--line);border-radius:11px;padding:20px 24px;background:var(--card);position:relative;margin-bottom:26px}
+ .lay:last-child{margin-bottom:0}
+ .lay::after{content:"▼";position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);color:var(--sand);font-size:13px}
+ .lay:last-child::after{display:none}
+ .lay .lv{font-size:10px;letter-spacing:.18em;color:var(--ink3);margin-bottom:6px}
+ .lay h3{font-size:17px;margin-bottom:5px}
+ .lay h3 code{font-size:13px;background:var(--bg2);padding:2px 8px;border-radius:4px;font-family:ui-monospace,Menlo,monospace;color:var(--brz2);font-weight:400}
+ .lay p{font-size:12.5px;color:var(--ink2);line-height:1.85}
+ .lay.no{background:#FBF3EE;border-color:#DCC4B6}
+ .lay.no .badge3{background:#B4795E;color:#fff}
+ .lay.ok{background:#F3F8F4;border-color:#B6D0BE}
+ .lay.ok .badge3{background:var(--ok);color:#fff}
+ .badge3{font-size:10.5px;border-radius:999px;padding:3px 12px;position:absolute;right:20px;top:20px}
+
+ /* 表 */
+ table.wh{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+ table.wh th,table.wh td{padding:13px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+ table.wh th{background:#FBF8F2;font-family:var(--serif);font-weight:500;font-size:12.5px}
+ table.wh tr:last-child td{border-bottom:none}
+ table.wh td code,.card2 code,.bsub code,li code,p code{font-size:11.5px;background:var(--bg2);padding:2px 7px;border-radius:4px;font-family:ui-monospace,Menlo,monospace;color:var(--brz2)}
+ .yes{color:var(--ok);font-family:var(--serif)}
+ .no2{color:#B4795E;font-family:var(--serif)}
+
+ .card2{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin-bottom:12px}
+ .card2 h3{font-size:16px;margin-bottom:8px}
+ .card2 h3 .n2{font-family:var(--serif);font-size:11px;letter-spacing:.16em;color:var(--brz);margin-right:9px}
+ .card2 p{font-size:13px;color:var(--ink2);line-height:1.9}
+ .card2 ul{list-style:none;font-size:12.5px;color:var(--ink2);line-height:1.9;margin-top:8px}
+ .card2 li{padding-left:15px;position:relative}
+ .card2 li::before{content:"・";position:absolute;left:0;color:var(--brz)}
+ .card2.hi2{border-color:var(--brz);background:#FCF9F3}
+
+ pre.sh{background:#2B2620;color:#E4DCC9;border-radius:9px;padding:16px 20px;font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.85;overflow-x:auto;margin:10px 0}
+ pre.sh .c{color:#948A7C}
+ .tree2{font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.95;color:var(--ink2);background:var(--soft);border:1px solid var(--line);border-radius:9px;padding:18px 22px;overflow-x:auto}
+ .tree2 b{color:var(--brz2);font-weight:500}
+ .tree2 .g{color:var(--ink3)}
+
+ .bad{background:#FBF3EE;border-left:3px solid #B4795E;border-radius:0 9px 9px 0;padding:16px 22px;margin-bottom:11px;font-size:13px;color:var(--ink2)}
+ .bad b{color:var(--ink)}
+ .good{background:#F3F8F4;border-left:3px solid var(--ok);border-radius:0 9px 9px 0;padding:16px 22px;margin-bottom:11px;font-size:13px;color:var(--ink2)}
+ .good b{color:var(--ink)}
+
+ .chk{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+ .chk .r{display:grid;grid-template-columns:30px 1fr 150px;gap:14px;padding:13px 20px;border-bottom:1px solid var(--line);font-size:13px;align-items:center}
+ .chk .r:last-child{border-bottom:none}
+ .chk .st{font-size:15px}
+ .chk .v{font-size:11.5px;color:var(--ink3);font-family:ui-monospace,Menlo,monospace;text-align:right}
+ @media(max-width:900px){.chk .r{grid-template-columns:26px 1fr}.chk .v{grid-column:2;text-align:left}}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-sag" viewBox="0 0 40 40"><path d="M11 28c0-8 4-14 9-14s9 6 9 14" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 31h26" stroke="currentColor" stroke-width="1.4"/><path d="M20 14V5M16.6 8.4L20 5l3.4 3.4" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-eye" viewBox="0 0 40 40"><path d="M5 20c5-7 9.5-10.5 15-10.5S30 13 35 20c-5 7-9.5 10.5-15 10.5S10 27 5 20z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="20" cy="20" r="4.5" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-mirror" viewBox="0 0 40 40"><ellipse cx="20" cy="16" rx="10" ry="12" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M20 28v7M15 35h10" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-camera" viewBox="0 0 40 40"><rect x="5" y="11" width="30" height="21" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="20" cy="21.5" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M14 11l2.5-3h7l2.5 3" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-mask" viewBox="0 0 40 40"><path d="M9 15c0-2 2-3 4-3h14c2 0 4 1 4 3v8c0 2-2 3-4 3H13c-2 0-4-1-4-3v-8z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M9 17H5m30 0h-4M9 21H5m30 0h-4M14 12v14M26 12v14" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-cream" viewBox="0 0 40 40"><rect x="12" y="14" width="16" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M16 14v-3a4 4 0 018 0v3" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-layers" viewBox="0 0 40 40"><path d="M20 6l14 7-14 7-14-7 14-7z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 20l14 7 14-7M6 27l14 7 14-7" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-clock" viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M20 11v9.5l6 3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-heart" viewBox="0 0 40 40"><path d="M20 32S7 24 7 16a6.5 6.5 0 0113-1 6.5 6.5 0 0113 1c0 8-13 16-13 16z" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-doctor" viewBox="0 0 40 40"><circle cx="20" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 34c0-6 5.4-10 12-10s12 4 12 10" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+</defs></svg>
+
+
+<header class="hero"><div class="wrap">
+<div class="kick">BCP Theme (vip2026) — 開発ガイド</div>
+<h1>サイト別カスタマイズの進め方</h1>
+<p class="sub">BCP プラグインと BCP テーマは<strong>どのサイトでも同じもの</strong>を使います。サイトごとの違いは、決められた2つの場所にだけ書きます。<br>このガイドは、<strong>one est のような新しいサイトを担当する方</strong>に向けたものです。WordPress の経験があれば読めるように書いてあります。</p>
+</div></header>
+
+<nav class="toc"><div>
+<a href="#arch">全体の作り</a><a href="#where">どこに書くか</a><a href="#how">実際の手順</a><a href="#never">やってはいけないこと</a><a href="#git">git の扱い</a><a href="#salon">サロンでの注意</a><a href="#status">現状</a>
+</div></nav>
+
+<section class="blk" id="arch"><div class="wrap">
+<div class="bhead"><span class="bno">1</span><h2>全体の作り — 3つの層</h2></div>
+<p class="bsub">上から順に「他人のもの」「みんなのもの」「このサイトのもの」です。<strong>下の層だけを触ります。</strong></p>
+<div class="layers">
+ <div class="lay no"><span class="badge3">触らない</span>
+  <div class="lv">L A Y E R &nbsp;1</div>
+  <h3>Ollie <code>themes/ollie</code></h3>
+  <p>市販のブロックテーマです。WordPress.org から配布されているものをそのまま入れています。更新も向こうから来ます。</p>
+ </div>
+ <div class="lay no"><span class="badge3">触らない</span>
+  <div class="lv">L A Y E R &nbsp;2</div>
+  <h3>BCP Theme <code>themes/vip2026</code> ＋ BCP プラグイン</h3>
+  <p>Ollie の<b>子テーマ</b>です（<code>Template: ollie</code>）。日本語タイポグラフィ、ブロックスタイル、パターンなどが入っています。プラグインとセットで<b>全サイト共通</b>。<br>どちらも Supabase 経由で<b>自動更新が配信されます</b>。ここを直接編集すると、次の更新で消えます。</p>
+ </div>
+ <div class="lay ok"><span class="badge3">ここに書く</span>
+  <div class="lv">L A Y E R &nbsp;3</div>
+  <h3>サイト設定</h3>
+  <p>サイトごとの違いを入れる層です。<b>「孫テーマ」は作りません</b>（WordPress が対応していないため）。代わりに、テーマの中に用意された2つの置き場所を使います。</p>
+ </div>
+</div>
+
+<div class="note" style="margin-top:24px"><b>どのサイトとして動くかは、<code>wp-config.php</code> の1行で決まります。</b><br>
+<pre class="sh" style="margin-top:10px">define( 'VIP2026_SITE', 'one-est' );</pre>
+テーマの <code>functions.php</code> がこの定数を読み、<code>inc/sites/one-est.php</code> を読み込みます。定数が無ければ <code>jadeclinic</code> として動き、<code>'none'</code> にすると何も読み込まない素のテーマになります。存在しない名前を書いても<b>何も起きないだけで壊れません</b>。</div>
+</div></section>
+
+<section class="blk" id="where"><div class="wrap">
+<div class="bhead"><span class="bno">2</span><h2>どこに書くか</h2></div>
+<p class="bsub">変えたいものによって置き場所が違います。<strong>この表がこのガイドの本体</strong>です。</p>
+<table class="wh"><thead><tr><th style="width:15em">変えたいもの</th><th style="width:20em">書く場所</th><th>補足</th></tr></thead><tbody>
+<tr><td><b>色・フォント・余白</b></td><td><code>styles/one-est.json</code></td><td>WordPress の<b>スタイルバリエーション</b>。管理画面の「外観 → エディター → スタイル」に候補として並び、クリックで切り替わります。コードを書かずに確認できます。</td></tr>
+<tr><td><b>SEO・トラッキング・構造化データ</b></td><td><code>inc/sites/one-est.php</code></td><td>PHP。<code>add_filter</code> / <code>add_action</code> を書きます。<code>inc/sites/jadeclinic.php</code> が実例です。</td></tr>
+<tr><td><b>細かい文言の差し替え</b></td><td>同上（テーマのフィルター経由）</td><td>例: <code>vip2026/a11y/map_iframe_title</code>、<code>vip2026/typekit_kit</code>。</td></tr>
+<tr><td><b>プラグイン側の挙動</b></td><td>同上（BCP のフィルター経由）</td><td>BCP は多数のフィルターを公開しています。<b>プラグイン本体は編集しません。</b></td></tr>
+<tr><td><b>「施術」→「メニュー」など<br>まとまった言い換え</b></td><td>翻訳ファイル（<code>.po</code> / <code>.mo</code>）</td><td>BCP には翻訳の仕組みが入っています。<b>「日本語 → 別の日本語」</b>に翻訳する形で、ファイルを1本も触らずに言葉を変えられます。</td></tr>
+<tr><td><b>そのサイト専用のパターン<br>・テンプレート</b></td><td style="color:#B4795E">要相談</td><td>スタイルバリエーションでは扱えません。数が少なければ再利用ブロック、多ければサイト専用プラグインを作る判断になります。<b>先に相談してください。</b></td></tr>
+</tbody></table>
+
+<div class="good" style="margin-top:20px"><b>覚え方:</b> <b>見た目は <code>styles/</code>、処理は <code>inc/sites/</code>、言葉は翻訳ファイル。</b>この3つで大半が片付きます。ここに収まらないものが出てきたら、それは「テーマ本体に足すべき機能」かもしれないので、自分のサイトだけで解決せずに相談してください。</div>
+</div></section>
+
+<section class="blk" id="how"><div class="wrap">
+<div class="bhead"><span class="bno">3</span><h2>実際の手順</h2></div>
+
+<div class="card2 hi2"><h3><span class="n2">STEP 1</span>環境をそろえる</h3>
+<p>サイトのフォルダには、テーマもプラグインも<b>配信されてきた完成品</b>が入っています。ここを git 管理する必要はありません。<b>ソースはリポジトリ側にあります。</b></p>
+<ul>
+<li>WordPress 管理画面で BCP プラグインとテーマを<b>最新に更新</b>する</li>
+<li><code>wp-config.php</code> に <code>define( 'VIP2026_SITE', 'one-est' );</code> があることを確認</li>
+<li>「外観 → エディター → スタイル」で <b>One Est</b> が選ばれているか確認</li>
+</ul></div>
+
+<div class="card2"><h3><span class="n2">STEP 2</span>変更はリポジトリで行う</h3>
+<p>テーマのリポジトリを clone し、<b>ブランチを切って</b>作業します。触るのは <code>styles/one-est.json</code> と <code>inc/sites/one-est.php</code> の2つだけ。</p>
+<pre class="sh"><span class="c"># ブランチを切る（feat/ か fix/ で始める）</span>
+git switch -c feat/one-est-brand-color
+
+<span class="c"># 触るのはこの2つだけ</span>
+styles/one-est.json
+inc/sites/one-est.php
+
+git add -A &amp;&amp; git commit -m "feat(one-est): ..."
+git push origin feat/one-est-brand-color</pre>
+<p>そのあと GitHub で <b>Pull Request</b> を出します。<code>main</code> へ直接 push はしません。</p></div>
+
+<div class="card2"><h3><span class="n2">STEP 3</span>手元で確認する</h3>
+<p>変更したファイルを、ローカルサイトのテーマフォルダへコピーして確認します。</p>
+<pre class="sh">cp styles/one-est.json \
+   ~/DevKinsta/public/one-est/wp-content/themes/vip2026/styles/</pre>
+<p><b>注意:</b> このコピーは確認用です。次にテーマの更新が来ると<b>上書きされて消えます</b>。必ずリポジトリ側にもコミットしてください。</p></div>
+
+<div class="card2"><h3><span class="n2">STEP 4</span>リリース</h3>
+<p>PR がマージされると、テーマのバージョンが上がり、Supabase から配信されます。各サイトの管理画面に更新通知が出るので、そこで更新すれば反映されます。<b>サイトへ手作業でファイルを置く運用はしません。</b></p></div>
+</div></section>
+
+<section class="blk" id="never"><div class="wrap">
+<div class="bhead"><span class="bno">4</span><h2>やってはいけないこと</h2></div>
+<p class="bsub">どれも「その場は動くが、次の更新で壊れる／他のサイトを巻き込む」ものです。</p>
+
+<div class="bad"><b>1. BCP プラグインのファイルを直接編集する</b><br>
+更新で消えます。しかも消えたことに気づくのは、たいてい公開後です。変えたい挙動は必ずフィルター経由で。フィルターが無ければ「フィルターを足してほしい」と依頼してください。</div>
+
+<div class="bad"><b>2. テーマ本体（<code>vip2026</code> 直下）を編集する</b><br>
+同じ理由で消えます。加えて、そのファイルは<b>他のサイトでも使われています</b>。one est のために変えた1行が、jadeclinic の表示を壊すことがあります。</div>
+
+<div class="bad"><b>3. サイトのフォルダごと git 管理する</b><br>
+テーマもプラグインもそれぞれ別のリポジトリで管理されているので、二重管理になって必ず食い違います。<b>サイトのフォルダは「配信結果」であってソースではありません。</b></div>
+
+<div class="bad"><b>4. テーマをコピーして「one-est 用」を作る</b><br>
+いちばんやりがちで、いちばん後悔します。最初は楽ですが、本体が改良されても取り込めなくなり、半年後には別物になります。<b>すでにその仕組みは用意されているので、必要ありません。</b></div>
+
+<div class="bad"><b>5. 管理画面のサイトエディターで直接デザインを変えて終わりにする</b><br>
+サイトエディターの変更は<b>データベースに保存されます</b>。ファイルではないので、git に残らず、他の環境にも移りません。試作には便利ですが、確定したら <code>styles/one-est.json</code> に書き戻してください。</div>
+</div></section>
+
+<section class="blk" id="git"><div class="wrap">
+<div class="bhead"><span class="bno">5</span><h2>git の扱い</h2></div>
+<p class="bsub">リポジトリは2つ。<strong>サイトのフォルダは含まれません。</strong></p>
+<div class="tree2"><b>github.com/showhey0705/jade-clinic-theme</b>  <span class="g">← テーマのソース</span>
+  ├── styles/one-est.json        <span class="g">one est の配色</span>
+  ├── inc/sites/one-est.php      <span class="g">one est の処理</span>
+  ├── inc/sites/jadeclinic.php   <span class="g">他サイトの処理（触らない）</span>
+  └── ...                        <span class="g">テーマ本体（触らない）</span>
+
+<b>github.com/showhey0705/beauty-clinic-patterns</b>  <span class="g">← プラグインのソース</span>
+  └── ...                        <span class="g">全部触らない</span>
+
+        │ Supabase 経由で自動配信
+        ▼
+
+<b>~/DevKinsta/public/one-est/</b>   <span class="g">← サイト。git 管理しない</span>
+<b>~/DevKinsta/public/jadeclinic/</b> <span class="g">← 同上</span></div>
+
+<div class="note" style="margin-top:20px"><b>ブランチの決まり:</b> <code>main</code> へ直接 push しません。<code>feat/...</code>（機能追加）か <code>fix/...</code>（修正）でブランチを切り、Pull Request を出します。作業が終わったブランチは削除してください。<br><br>
+<b>コミットメッセージ:</b> どのサイトの変更か分かるよう、<code>feat(one-est): ...</code> のようにサイト名を入れてください。</div>
+</div></section>
+
+<section class="blk" id="salon"><div class="wrap">
+<div class="bhead"><span class="bno">6</span><h2>サロンで使うときの注意</h2></div>
+<p class="bsub">BCP は<strong>美容クリニック（医療機関）向け</strong>に作られています。サロンは医療機関ではないので、逆向きの制約がかかります。<strong>技術より先に、ここを決めてください。</strong></p>
+
+<div class="card2"><h3>言葉が合わない</h3>
+<p>画面のあちこちに「施術」「症例」「院長」「診療時間」といった言葉が出ます。サロンでは「メニュー」「お客様の声」「オーナー」「営業時間」にしたいはずです。<b>翻訳ファイルで差し替えられます</b>ので、プラグインは触らないでください。</p></div>
+
+<div class="card2"><h3>使えない表現がある</h3>
+<p>サロンは医療行為をうたえません。<b>「治療」「治る」「〇〇が改善します」といった表現は薬機法に触れる可能性があります。</b>ビフォー・アフターの見せ方も、景品表示法の観点で書き方を変える必要があります。</p>
+<ul>
+<li>効果を断定しない（「〜が期待できます」も条件つきで注意）</li>
+<li>医療行為と誤認させる表現を使わない</li>
+<li>お客様の声には、個人の感想である旨と条件を添える</li>
+</ul>
+<p style="margin-top:8px">BCP には医療広告ガイドライン向けのチェッカーが入っていますが、<b>サロン向けの判定ではありません</b>。文言のルールは別途決めてください。</p></div>
+</div></section>
+
+<section class="blk" id="status"><div class="wrap">
+<div class="bhead"><span class="bno">7</span><h2>one est の現状</h2></div>
+<p class="bsub">2026年8月29日に、実際のサイト（<code>one-est.local</code>）と両方のフォルダを見て確認した内容です。</p>
+<div class="chk">
+ <div class="r"><span class="st">✅</span><div><b>有効なテーマは BCP Theme</b> — 旧方式ではなく、共通テーマ + サイト設定の形で動いています</div><div class="v">確認済み</div></div>
+ <div class="r"><span class="st">✅</span><div><b>仕組みが配線済み</b> — <code>wp-config.php</code> に <code>VIP2026_SITE = 'one-est'</code></div><div class="v">77行目</div></div>
+ <div class="r"><span class="st">✅</span><div><b>テーマは最新</b> — jadeclinic と <code>theme.json</code> まで完全に同一です</div><div class="v">0.14.0</div></div>
+ <div class="r"><span class="st">✅</span><div><b>プラグインも最新</b> — 配信されている最新版が入っています</div><div class="v">1.68.0</div></div>
+ <div class="r"><span class="st">✅</span><div><b>テーマに独自改造は入っていない</b> — 差分 0。触ってよい場所だけで運用されています</div><div class="v">きれいな状態</div></div>
+ <div class="r"><span class="st">✅</span><div><b>配色が用意されている</b> — <code>styles/one-est.json</code>。ダスティローズ <code>#C08B80</code> 基調</div><div class="v">2.1 KB</div></div>
+ <div class="r"><span class="st">📝</span><div><b>サイト設定ファイルはほぼ空</b> — <code>inc/sites/one-est.php</code> は地図の読み上げ文言のみ。TODO が2つ（Facebook のドメイン認証、構造化データ）</div><div class="v">1.3 KB</div></div>
+ <div class="r"><span class="st">📝</span><div><b>管理画面の言葉がクリニックのまま</b> — サイドバーに「美容クリニック / 施術 / 症例 / 院長ブログ」。サロン向けの言い換えが必要です</div><div class="v">翻訳で対応</div></div>
+ <div class="r"><span class="st">🗑️</span><div><b>旧テーマ「ONE EST」(v0.2.0) が残っている</b> — 現行が BCP Theme なので、使っていなければ削除できます</div><div class="v">未使用</div></div>
+</div>
+
+<div class="good" style="margin-top:22px"><b>状態はとても良いです。</b> 「共通のものを触らず、決められた場所にだけ書く」という設計が、実際にそのとおり守られています。テーマもプラグインも最新で、独自改造はゼロ。<b>ここから先は、決められた2つの場所に書き足していくだけ</b>です。</div>
+
+<div class="note" style="margin-top:14px"><b>次にやること:</b> ① 「外観 → エディター → スタイル」で <b>One Est</b> が選ばれているか確認（まだなら選ぶだけで配色が変わります） → ② 管理画面の言葉をサロン向けに言い換える翻訳ファイルを作る → ③ <code>inc/sites/one-est.php</code> の TODO を埋める → ④ 旧テーマ「ONE EST」を削除。</div>
+</div></section>
+
+<footer>BCP Theme — サイト別カスタマイズ 開発ガイド ／ 2026年8月29日<br>
+<span style="color:var(--ink3);font-size:10.5px">迷ったら、自分のサイトだけで解決せずに先に相談してください。</span></footer>
+</body></html>
