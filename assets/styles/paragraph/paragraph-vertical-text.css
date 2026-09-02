@@ -36,6 +36,19 @@
     ) !important;
 }
 
+/* 横並び / 縦積み（flex）の中では、レーン右端へのアンカーは要らない。
+   その場に置いて、並びは親の flex に任せる。高さも文章ぶんだけ
+   （38ch 固定だと短いキャッチコピーの下に空白が残る）。 */
+.is-layout-flex > .is-style-vertical-text {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-block: 0;
+    inline-size: auto;
+    max-inline-size: 38ch;
+    /* overflow-x:hidden で min-width が 0 になり、flex に潰されて列が隠れるのを防ぐ */
+    flex: 0 0 auto;
+}
+
 /* alignwide 選択時：wideSize レーンの右辺に切り替え */
 .is-style-vertical-text.alignwide {
     margin-right: max(
