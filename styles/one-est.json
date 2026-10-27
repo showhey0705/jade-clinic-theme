@@ -64,6 +64,14 @@
 		},
 		"typography": {
 			"fluid": true
+		},
+		"custom": {
+			"bcp": {
+				"look": "natural",
+				"tone": "day",
+				"motion": "some",
+				"density": "normal"
+			}
 		}
 	},
 	"styles": {

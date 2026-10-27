@@ -166,7 +166,13 @@
 				"tight": 1.1
 			},
 			"sale": "#E11D48",
-			"sale-fg": "#FFFFFF"
+			"sale-fg": "#FFFFFF",
+			"bcp": {
+				"look": "jade",
+				"tone": "day",
+				"motion": "some",
+				"density": "normal"
+			}
 		},
 		"layout": {
 			"contentSize": "640px",
