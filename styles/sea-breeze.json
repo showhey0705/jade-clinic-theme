@@ -64,6 +64,14 @@
 		},
 		"typography": {
 			"fluid": true
+		},
+		"custom": {
+			"bcp": {
+				"look": "clinical",
+				"tone": "day",
+				"motion": "none",
+				"density": "tight"
+			}
 		}
 	},
 	"styles": {
