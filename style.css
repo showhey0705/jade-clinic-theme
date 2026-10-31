@@ -80,7 +80,7 @@ Domain Path:  /languages
     width: 240px;
     height: 100px;
     z-index: 10;
-    background-image: url("https://jadeclinic.local/wp-content/uploads/2025/08/support-white2.svg");
+    background-image: url("/wp-content/uploads/2025/08/support-white2.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -325,7 +325,7 @@ h2.marker mark::after {
         left: 0;
         width: 240px;                  /* 横幅を決める */
         aspect-ratio: 799 / 1200;           /* 元画像に近い比率（または height: auto; は不可） */
-        background-image: url(http://jadeclinic.local/wp-content/uploads/2025/08/doctor-person.avif);
+        background-image: url(/wp-content/uploads/2025/08/doctor-person.avif);
         background-size: contain;      /* 枠に収める */
         background-repeat: no-repeat;
         background-position: bottom left;
@@ -340,7 +340,7 @@ h2.marker mark::after {
         right: 0;
         width: 240px;                  /* 横幅を決める */
         aspect-ratio: 799 / 1200;           /* 元画像に近い比率（または height: auto; は不可） */
-        background-image: url(http://jadeclinic.local/wp-content/uploads/2025/08/team-people.avif);
+        background-image: url(/wp-content/uploads/2025/08/team-people.avif);
         background-size: contain;      /* 枠に収める */
         background-repeat: no-repeat;
         background-position: bottom right;
